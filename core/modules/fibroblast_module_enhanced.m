@@ -2,7 +2,7 @@
 %
 % Models pancreatic stellate cell (PSC) biology in PDAC tumor microenvironment
 % with three functionally distinct CAF subtypes:
-%   - iCAF: inflammatory CAFs (IL-6, CCL5, CXCL12 secretion -> immunosuppression / T-cell exclusion)
+%   - iCAF: inflammatory CAFs (IL-6 and CXCL12 secretion -> immunosuppression / T-cell exclusion)
 %   - myCAF: myofibroblastic CAFs (ECM, TGFb, VEGF -> desmoplasia)
 %   - apCAF: antigen-presenting CAFs (tolerogenic antigen presentation -> Treg induction)
 %
@@ -31,7 +31,7 @@ qPSC = addspecies(model.Compartment(3),'qPSC',0,'InitialAmountUnits','cell');
 
 iCAF = addspecies(model.Compartment(3),'iCAF',0,'InitialAmountUnits','cell');
     set(iCAF,'Notes',['Inflammatory cancer-associated fibroblasts. ' ...
-        'Secrete IL-6, CCL5 and CXCL12, driving MDSC recruitment, M2 polarization, ' ...
+        'Secrete IL-6 and CXCL12, driving MDSC recruitment, M2 polarization, ' ...
         'and CXCR4-mediated T-cell exclusion (Elyada 2019, Ogawa 2021). ' ...
         'Driven by tumor-derived IL-1alpha; TGFb antagonizes via IL-1R1 repression.']);
 
@@ -318,7 +318,7 @@ p.UserData.Source = params.K_stiff_niche.Notes;
 % k_stroma_{myCAF,iCAF,apCAF}: subtype-specific weights. myCAFs are the structural
 %   /architectural CAF in PDAC (αSMA+, FAP+, collagen producers, peri-tumoral —
 %   Elyada 2019, Öhlund 2017 J Exp Med 214:579). iCAFs are inflammatory secretors
-%   (IL-6, CCL5) with minimal structural role; apCAFs are rare MHC-II+
+%   (IL-6, CXCL12) with minimal structural role; apCAFs are rare MHC-II+
 %   immunomodulatory cells (Huang 2022 Cancer Cell). Default ratios
 %   myCAF : iCAF : apCAF = 1.0 : 0.2 : 0.05 reflect the structural-vs-inflammatory
 %   distinction. LRRC15+ myCAFs specifically correlate with immunotherapy resistance
@@ -716,23 +716,6 @@ reaction = addreaction(model,'null -> V_T.IL1');
 reaction = addreaction(model,'V_T.IL1 -> null');
     set(reaction,'ReactionRate','k_IL1_deg*V_T.IL1*V_T');
     set(reaction,'Notes','IL-1alpha degradation in tumor');
-
-%% CCL5 Secretion by iCAFs (moved from CCL5_Treg_module)
-% CCL5 is inflammatory -> attributed to iCAFs
-
-% CCL5 secretion parameter (iCAF-derived)
-p = addparameter(model,'k_CCL5_sec_iCAF',params.k_CCL5_sec_iCAF.Value,'ValueUnits',params.k_CCL5_sec_iCAF.Units, 'Notes', 'CCL5 secretion rate by iCAFs');
-p.UserData.Source = params.k_CCL5_sec_iCAF.Notes;
-    p.UserData.derivedFrom = params.k_CCL5_sec_iCAF.derivedFrom;
-
-% Note: CCL5 species is created by CCL5_Treg_module. This reaction is added
-% after CCL5 species exists because fibroblast_module runs after CCL5_Treg_module
-% in assembly. If CCL5 species doesn't exist yet, skip gracefully.
-if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'CCL5'))
-    reaction = addreaction(model,'null -> V_T.CCL5');
-        set(reaction,'ReactionRate','k_CCL5_sec_iCAF*V_T.iCAF');
-        set(reaction,'Notes','CCL5 secretion by iCAFs (inflammatory chemokine, Treg recruitment)');
-end
 
 %% apCAF Tolerogenic Antigen Presentation (Elyada 2019)
 

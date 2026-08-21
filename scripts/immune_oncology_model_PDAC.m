@@ -63,7 +63,6 @@ model = cancer_module(model,'C1',params_out,1,'Gompertzian');
 % model = cancer_module(model,'C2',params_out,0); % chemotherapy-resistant clone
 % T cell Modules
 model = Treg_module(model,params_out);
-model = CCL5_Treg_module(model,params_out); % CCL5/CCR5-mediated Treg recruitment (Wang 2017 Oncogene + Tan 2009 J Immunol)
 model = Teff_module(model,params_out,{'C1'});
 % APC Module
 model = APC_module(model,params_out);

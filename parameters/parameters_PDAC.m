@@ -2532,7 +2532,7 @@ params.k_stroma_support.derivedFrom = {'Hwang 2008 DOI: 10.1158/0008-5472.CAN-07
 % Ratios myCAF : iCAF : apCAF = 1.0 : 0.2 : 0.05 reflect structural vs
 % inflammatory vs antigen-presenting function. myCAFs build the desmoplastic
 % architecture (αSMA+, FAP+, collagen producers — Elyada 2019, Öhlund 2017);
-% iCAFs are inflammatory secretors (IL-6, CCL5) with minimal structural role;
+% iCAFs are inflammatory secretors (IL-6, CXCL12) with minimal structural role;
 % apCAFs are rare MHC-II+ immunomodulatory cells (Huang 2022 Cancer Cell).
 % Defaults calibrated so 1.0 * (1.4*myCAF + 0.28*iCAF + 0.07*apCAF) at
 % submodel-median diagnosis ≈ old 1.05 * aPSC_total (preserves evolve_to_diagnosis).
@@ -2543,7 +2543,7 @@ params.k_stroma_myCAF.derivedFrom = {};
 
 params.k_stroma_iCAF.Value = 0.28;
 params.k_stroma_iCAF.Units = 'dimensionless';
-params.k_stroma_iCAF.Notes = 'Per-iCAF contribution to cancer C_max. iCAFs are inflammatory secretors (IL-6/CCL5), low αSMA, located distally from tumor — minimal structural carrying-capacity role (Elyada 2019, Öhlund 2017).';
+params.k_stroma_iCAF.Notes = 'Per-iCAF contribution to cancer C_max. iCAFs are inflammatory secretors (IL-6/CXCL12), low αSMA, located distally from tumor — minimal structural carrying-capacity role (Elyada 2019, Öhlund 2017).';
 params.k_stroma_iCAF.derivedFrom = {};
 
 params.k_stroma_apCAF.Value = 0.07;
@@ -3022,50 +3022,6 @@ params.k_Cy_on.Notes = "Build rate of the cyclophosphamide effect compartment fr
 params.Cy_eff_50.Value = 1;  % milligram (half-saturation of the Cy_eff -> Treg-proliferation throttle; fixed, weakly identifiable)
 params.Cy_eff_50.Units = "milligram";
 params.Cy_eff_50.Notes = "Half-saturation of the Cy effect compartment on tumor-Treg proliferation (structural; weakly identifiable, fixed)";
-
-%% CCL5/CCR5-Mediated Treg Recruitment Parameters
-% Cancer-cell CCL5 source: Wang et al. (2017) Oncogene - Cancer-FOXP3 directly
-%   activates CCL5 to recruit FOXP3+Treg cells in PDAC (DOI: 10.1038/onc.2016.458)
-% CCR5/Treg homing: Tan et al. (2009) J Immunol - CCR5-dependent Treg homing
-%   in murine PDAC (DOI: 10.4049/jimmunol.182.3.1746)
-% See also: Huffman et al. (2022) J Immunother Cancer - CCR2/CCR5 inhibition
-
-% CCL5 secretion rate by cancer cells
-% PDAC cancer cells express FOXP3 which activates CCL5 transcription
-% Similar magnitude to CCL2 secretion (k_CCL2_sec = 1.7e-12 nanomole/cell/day)
-params.k_CCL5_sec.Value = 1e-12;
-params.k_CCL5_sec.Units = 'nanomole/cell/day';
-params.k_CCL5_sec.Notes = 'CCL5 secretion rate by PDAC cancer cells. Cancer-FOXP3 activates CCL5 transcription (Wang 2017, DOI: 10.1038/onc.2016.458)';
-params.k_CCL5_sec.derivedFrom = {};
-
-% CCL5 degradation rate
-% Chemokine half-life typically 1-4 hours; similar to CCL2 (k_CCL2_deg = 0.06/hour = 1.44/day)
-params.k_CCL5_deg.Value = 1.5;
-params.k_CCL5_deg.Units = '1/day';
-params.k_CCL5_deg.Notes = 'CCL5 degradation rate. Chemokine half-life ~1-4 hours (similar to CCL2)';
-params.k_CCL5_deg.derivedFrom = {};
-
-% Half-maximal CCL5 concentration for CCR5-mediated Treg recruitment
-% CCR5 EC50 for CCL5 binding ~0.1-1 nM (similar to CCL2_50 = 0.23 nM)
-params.CCL5_50_Treg.Value = 1.0;
-params.CCL5_50_Treg.Units = 'nanomolarity';
-params.CCL5_50_Treg.Notes = 'Half-maximal CCL5 for Treg recruitment via CCR5. CCR5-CCL5 Kd ~0.1-1 nM. Lowered from 0.3 to match model CCL5 ~0.09 nM.';
-params.CCL5_50_Treg.derivedFrom = {};
-
-% CCR5-dependent Treg recruitment rate (additional to baseline q_Treg_T_in)
-% Tregs express CCR5 while CD8 T cells lack CCR5, providing selective recruitment
-% Set to ~2x baseline q_Treg_T_in (5.8e-05) to significantly enhance Treg infiltration
-params.k_CCR5_Treg_rec.Value = 1e-04;
-params.k_CCR5_Treg_rec.Units = '1/(centimeter^3*minute)';
-params.k_CCR5_Treg_rec.Notes = 'CCR5-dependent Treg recruitment rate. CCR5 knockdown significantly decreases Treg infiltration in murine PDAC (Tan 2009 J Immunol, DOI: 10.4049/jimmunol.182.3.1746). Rate ~2x baseline to provide strong selective Treg recruitment';
-params.k_CCR5_Treg_rec.derivedFrom = {};
-
-% CCL5 secretion rate by iCAFs (was k_CCL5_sec_apsc)
-% iCAFs secrete CCL5 in addition to cancer cells, contributing to Treg recruitment
-params.k_CCL5_sec_iCAF.Value =  3e-11;
-params.k_CCL5_sec_iCAF.Units = 'nanomole/cell/day';
-params.k_CCL5_sec_iCAF.Notes = 'CCL5 secretion rate by iCAFs. Was k_CCL5_sec_apsc. CCL5 is inflammatory -> iCAF attribution.';
-params.k_CCL5_sec_iCAF.derivedFrom = {'estimated'};
 
 %% apCAF-Specific Parameters (Tolerogenic Antigen Presentation)
 % apCAFs express MHC-II and present tumor antigen tolerogenically (Elyada 2019)

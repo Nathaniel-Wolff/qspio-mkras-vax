@@ -53,7 +53,6 @@
       <V_T_K_vasc>10300.0</V_T_K_vasc>
       <V_T_VEGF>0.0</V_T_VEGF>
       <V_T_Treg>0.0</V_T_Treg>
-      <V_T_CCL5>0.0</V_T_CCL5>
       <V_T_CD8>0.0</V_T_CD8>
       <V_T_cDC1>0.0</V_T_cDC1>
       <V_T_cDC2>0.0</V_T_cDC2>
@@ -239,11 +238,6 @@
       <f_nTreg>0.25</f_nTreg>
       <k_Treg_CD8_exh>0.1</k_Treg_CD8_exh>
       <H_P0>1.0</H_P0>
-      <k_CCL5_sec>1e-12</k_CCL5_sec>
-      <k_CCL5_deg>1.5</k_CCL5_deg>
-      <CCL5_50_Treg>1.0</CCL5_50_Treg>
-      <k_CCR5_Treg_rec>0.0001</k_CCR5_Treg_rec>
-      <H_CCL5_Treg>1.0</H_CCL5_Treg>
       <div_CD8>1110000.0</div_CD8>
       <n_CD8_clones>120.0</n_CD8_clones>
       <q_nCD8_LN_in>0.076</q_nCD8_LN_in>
@@ -595,7 +589,6 @@
       <aPSC_total>0.0</aPSC_total>
       <k_TGFb_sec_myCAF>2e-10</k_TGFb_sec_myCAF>
       <k_CXCL12_sec_cancer>5e-11</k_CXCL12_sec_cancer>
-      <k_CCL5_sec_iCAF>3e-11</k_CCL5_sec_iCAF>
       <H_P1_apCAF>0.0</H_P1_apCAF>
       <k_NK_rec>45000.0</k_NK_rec>
       <k_NK_death>0.07</k_NK_death>
