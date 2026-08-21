@@ -72,9 +72,9 @@ source .venv/bin/activate  # Activate virtual environment
 - `parameters/` - `parameters_PDAC.m` (the model's own defaults), posterior medians
 - `scenarios/` - Treatment scenario YAML configurations
 - `notes/model/` - mechanism audits, structural reviews, the design record
-- `tests/` - the model's own tests: MATLAB<->C++ parity, evolve-to-diagnosis,
-  qualitative behaviours. The corpus and campaign tests moved to pdac-paper.
-- `tests/qualitative_bounds.py` - Pydantic model, loader, provenance validation (DOI/PMID), and snapshot bounds checker for qualitative bounds
+- `tests/` - the model's own tests: MATLAB<->C++ parity and
+  evolve-to-diagnosis. Corpus-facing qualitative and reduction checks live in
+  pdac-paper; the obsolete classifier-coverage suite was retired at the split.
 - `notes/` - Working notes and planning documents
 - `presentations/` - Marp markdown slides (build with `npx @marp-team/marp-cli --no-stdin`)
 - `tests/` - Python test suite (pytest)
@@ -209,7 +209,6 @@ See `notes/calibration/calibration_strategy.md` for calibration workflow, target
 ### Configuration Files
 - `parameters/*.m` - PDAC parameter files
 - `pdac-paper`'s `parameters/pdac_priors.csv` - the prior master, kept in step with `parameters_PDAC.m` by `make check-priors-sync` (run from there)
-- `tests/qualitative_bounds.yaml` - 20 literature-backed structural bounds on TME observables (with required `evidence_snippet` verbatim quotes and DOI/PMID provenance)
 - `scenarios/*.yaml` - Treatment scenario configurations
   - `baseline_no_treatment.yaml` - Diagnosis snapshot (stop_time=1, evolve_to_diagnosis)
   - `gvax_neoadjuvant_zheng2022.yaml` - Neoadjuvant GVAX monotherapy (stop_time=21, evolve_to_diagnosis)
@@ -224,29 +223,11 @@ See `notes/calibration/calibration_strategy.md` for calibration workflow, target
 
 ## PDAC-Specific Workflows
 
-### Qualitative Bounds
+### Paper-facing behavior checks
 
-Qualitative bounds (`tests/qualitative_bounds.yaml`) encode literature-backed thresholds and ranges that the model must satisfy structurally. These are "sanity checks" — if the model violates any, no amount of SBI calibration will fix it.
-
-**Schema** (`tests/qualitative_bounds.py`):
-- `bound_id`: Unique identifier (e.g., `cd8_exhaustion_fraction_min_diagnosis`)
-- `lower`/`upper`: Inclusive bounds (at least one required)
-- `units`: Pint-parseable (e.g., `mmHg`, `dimensionless`, `uM`)
-- `rationale`: Why this value/range was chosen
-- `evidence_snippet`: Required verbatim quote from source supporting the threshold
-- `pmid`: PubMed ID (fallback when DOI is null for pre-DOI-era journals)
-- `primary_data_source`: Source provenance (same schema as calibration targets)
-- `category`: One of `baseline_tme`, `clinical_range`, `cell_composition`, `temporal_dynamics`, `treatment_response`
-
-**Provenance validation** (`validate_provenance()`): DOI-first via CrossRef, PMID-fallback via NCBI E-utilities, warning if neither. Checks year and first-author fuzzy match.
-
-**Snapshot bounds checker** (`check_snapshot_bounds()`, `is_valid_snapshot()`, `filter_valid_snapshots()`): 14 of 20 bounds can be evaluated from a single species dict (endpoint values at diagnosis). The `SNAPSHOT_OBSERVABLES` registry maps `bound_id` → compute function. The remaining 6 bounds require temporal/perturbation data and are only checked in the MATLAB-driven test suite. These snapshot checker functions are primarily used in tests for structural model validation during development; the same literature evidence may also be expressed as calibration targets for SBI.
-
-**Testing**:
-- `tests/test_qualitative_bounds.py` — fast schema, snapshot checker, DOI and PMID validation tests
-- `tests/scenarios/test_qualitative_behaviors.py` — ~85 tests: behavior tests pull thresholds from the YAML (not hardcoded) via `load_bounds()`, plus snapshot checker regression tests
-
-**Current coverage**: 20 bounds across 5 categories, all with evidence snippets and provenance.
+Calibration bounds, prior/design-space coverage, and model-reduction ablations
+belong to the pdac-paper checkout because their meaning depends on its corpus
+and priors. This repository keeps only tests of the assembled model itself.
 
 # In bayesflow_workflow.py or sbi_workflow.py
 MODEL_VERSION = 'baseline_gvax'  # Descriptive version name

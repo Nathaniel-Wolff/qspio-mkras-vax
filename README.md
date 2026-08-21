@@ -66,7 +66,7 @@ cpp/                     # generated C++ simulator (qsp/ode) and its CMake build
 resources/cpp/           # param_all.xml, the parameter file the simulator reads
 parameters/              # parameters_PDAC.m, posterior medians
 scenarios/               # treatment scenario YAMLs
-tests/                   # MATLAB<->C++ parity, evolve-to-diagnosis, qualitative behaviours
+tests/                   # model assembly/evolve-to-diagnosis and MATLAB<->C++ parity
 model_structure.json     # exported structure (parameters, species, rules)
 PDAC_model.sbml          # SBML export of the compiled model
 ```

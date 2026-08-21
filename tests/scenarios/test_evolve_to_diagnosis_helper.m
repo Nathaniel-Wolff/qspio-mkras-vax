@@ -9,23 +9,8 @@ function test_evolve_to_diagnosis_helper()
 %% Build model
 immune_oncology_model_PDAC;
 
-%% Apply median parameters from priors
-priors = readtable('parameters/pdac_priors.csv');
-for i = 1:height(priors)
-    pname = priors.name{i};
-    mval = exp(priors.dist_param1(i));
-    pobj = sbioselect(model, 'Name', pname, 'Type', 'parameter');
-    if ~isempty(pobj)
-        set(pobj, 'Value', mval);
-    else
-        sobj = sbioselect(model, 'Name', pname, 'Type', 'species');
-        if ~isempty(sobj)
-            for s = 1:length(sobj)
-                sobj(s).InitialAmount = mval;
-            end
-        end
-    end
-end
+% Use the model's own defaults. This test guards assembly and diagnosis-state
+% initialization, not calibration; paper-side priors are tested in pdac-paper.
 
 %% Check initial volume scale via set_healthy_populations
 model_ic = copyobj(model);
