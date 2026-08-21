@@ -22,7 +22,6 @@
 %   MDSC_module        -- V_T.MDSC
 %   macrophage_module  -- V_T.Mac_M1, V_T.Mac_M2
 %   fibroblast_module  -- V_T.qPSC, V_T.iCAF, V_T.myCAF, V_T.apCAF
-%   NK_module          -- V_T.NK
 
 function model = aggregate_observables_module(model)
 
@@ -96,13 +95,6 @@ addparameter(model, 'Tcell_total_T', 0, ...
     'ValueUnits', 'cell', 'ConstantValue', false, ...
     'Notes', 'All T cells in V_T (CD8 + CD4), the model side of a pan-CD3 stain.');
 addrule(model, 'Tcell_total_T = CD8_total_T + CD4_total_T', 'repeatedAssignment');
-
-% lymphocyte_total_T: the flow lymphocyte gate. The model has no B cells, which
-% are ~3.6% of that gate in Lim 2019.
-addparameter(model, 'lymphocyte_total_T', 0, ...
-    'ValueUnits', 'cell', 'ConstantValue', false, ...
-    'Notes', 'Lymphocytes in V_T (T cells + NK). No B-cell species exists in the model.');
-addrule(model, 'lymphocyte_total_T = Tcell_total_T + V_T.NK', 'repeatedAssignment');
 
 % Mac_total_T: what a pan-macrophage stain counts.
 addparameter(model, 'Mac_total_T', 0, ...

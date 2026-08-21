@@ -36,7 +36,6 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Species.V_P_aPD1",
     "Param.QSP.init_value.Species.V_P_aCD137",
     "Param.QSP.init_value.Species.V_P_Th",
-    "Param.QSP.init_value.Species.V_P_NK",
     "Param.QSP.init_value.Species.V_T_C_x",
     "Param.QSP.init_value.Species.V_T_CD8_exh",
     "Param.QSP.init_value.Species.V_T_CD8_pex",
@@ -73,9 +72,6 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Species.V_T_CXCL12",
     "Param.QSP.init_value.Species.V_T_IL6",
     "Param.QSP.init_value.Species.V_T_IL1",
-    "Param.QSP.init_value.Species.V_T_NK",
-    "Param.QSP.init_value.Species.V_T_XCL1",
-    "Param.QSP.init_value.Species.V_T_CXCL9",
     "Param.QSP.init_value.Species.V_T_CD8_TLA",
     "Param.QSP.init_value.Species.V_T_CD8_TLA_act",
     "Param.QSP.init_value.Species.V_T_CD8_vic",
@@ -581,34 +577,6 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.k_TGFb_sec_myCAF",
     "Param.QSP.init_value.Parameter.k_CXCL12_sec_cancer",
     "Param.QSP.init_value.Parameter.H_P1_apCAF",
-    "Param.QSP.init_value.Parameter.k_NK_rec",
-    "Param.QSP.init_value.Parameter.k_NK_death",
-    "Param.QSP.init_value.Parameter.k_NK_kill",
-    "Param.QSP.init_value.Parameter.K_NK_C",
-    "Param.QSP.init_value.Parameter.k_IFNg_NK_sec",
-    "Param.QSP.init_value.Parameter.IL10_50_NK",
-    "Param.QSP.init_value.Parameter.TGFb_50_NK",
-    "Param.QSP.init_value.Parameter.IL12_50_NK",
-    "Param.QSP.init_value.Parameter.q_NK_P_in",
-    "Param.QSP.init_value.Parameter.NK_P_steady",
-    "Param.QSP.init_value.Parameter.vol_NK",
-    "Param.QSP.init_value.Parameter.H_IL10_NK",
-    "Param.QSP.init_value.Parameter.H_TGFb_NK",
-    "Param.QSP.init_value.Parameter.H_IL12_NK",
-    "Param.QSP.init_value.Parameter.k_XCL1_NK",
-    "Param.QSP.init_value.Parameter.k_XCL1_deg",
-    "Param.QSP.init_value.Parameter.XCL1_50_cDC1",
-    "Param.QSP.init_value.Parameter.Emax_XCL1",
-    "Param.QSP.init_value.Parameter.H_XCL1_cDC1",
-    "Param.QSP.init_value.Parameter.k_CXCL9_sec",
-    "Param.QSP.init_value.Parameter.k_CXCL9_deg",
-    "Param.QSP.init_value.Parameter.IFNg_50_CXCL9",
-    "Param.QSP.init_value.Parameter.CXCL9_50_Trec",
-    "Param.QSP.init_value.Parameter.k_CXCR3_rec",
-    "Param.QSP.init_value.Parameter.k_CXCR3_NK_rec",
-    "Param.QSP.init_value.Parameter.H_IFNg_CXCL9",
-    "Param.QSP.init_value.Parameter.H_CXCL9_Trec",
-    "Param.QSP.init_value.Parameter.k_CXCR3_Th_rec",
     "Param.QSP.init_value.Parameter.k_GVAX_clearance",
     "Param.QSP.init_value.Parameter.V_ID_volume",
     "Param.QSP.init_value.Parameter.k_GMCSF_prod",
@@ -675,7 +643,6 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.Th_total_T",
     "Param.QSP.init_value.Parameter.CD4_total_T",
     "Param.QSP.init_value.Parameter.Tcell_total_T",
-    "Param.QSP.init_value.Parameter.lymphocyte_total_T",
     "Param.QSP.init_value.Parameter.Mac_total_T",
     "Param.QSP.init_value.Parameter.DC_total_T",
     "Param.QSP.init_value.Parameter.mDC_total_T",
@@ -686,7 +653,7 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.CAF_total_T",
 };
 
-QSPParam::QSPParam() :_param(674, 0) {}
+QSPParam::QSPParam() :_param(641, 0) {}
 
 double QSPParam::getVal(int n) const { return _param[n]; }
 
@@ -694,7 +661,7 @@ void QSPParam::_readParameters(const std::string& filename){
     namespace pt = boost::property_tree;
     pt::ptree tree;
     pt::read_xml(filename, tree, pt::xml_parser::trim_whitespace);
-    for (int i = 0; i < 674; i++){
+    for (int i = 0; i < 641; i++){
         try { _param[i] = tree.get<double>(_xml_paths[i]); }
         catch (const pt::ptree_bad_path&) {
             std::cerr << "WARNING: QSP param not found: "
@@ -704,7 +671,7 @@ void QSPParam::_readParameters(const std::string& filename){
 }
 
 void QSPParam::printParam(void) const {
-    for (int i = 0; i < 674; i++)
+    for (int i = 0; i < 641; i++)
         std::cout << _xml_paths[i] << " = " << _param[i] << std::endl;
 }
 

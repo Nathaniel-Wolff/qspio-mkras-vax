@@ -92,14 +92,6 @@ model = macrophage_module(model,params_out,{'C1'});
 % Fibroblast Module
 model = fibroblast_module_enhanced(model,params_out);
 
-% Innate immunity + chemokine trafficking (reactivated 2026-05-13)
-% NK_module: NK recruitment/killing/IFNg/XCL1 (depends on H_CXCL12_Texcl from fibroblast)
-% chemotaxis_module: CXCL9/10 IFNg-induced + CXCR3 recruitment of CD8/Th/NK
-% Order: NK first (chemotaxis references V_T.NK / V_P.NK / NK_P_steady),
-%        both before gvax_module (baseline immunity before treatment perturbation).
-model = NK_module(model, params_out, {'C1'});
-model = chemotaxis_module(model, params_out);
-
 model = gvax_module(model, params_out, 'add_cyclophosphamide', true);
 
 % Tertiary lymphoid aggregate (TLA) niche + urelumab/CD137 mechanism.

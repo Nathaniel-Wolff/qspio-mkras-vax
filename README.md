@@ -5,7 +5,7 @@ A quantitative systems pharmacology (QSP) model of pancreatic ductal adenocarcin
 exported to SBML and C++.
 
 The model captures PDAC tumour dynamics, immune cell populations (CD8/CD4 T cells,
-Tregs, macrophages, cDC1/cDC2, MDSCs, NK), fibroblast and ECM biology (iCAF/myCAF/
+Tregs, macrophages, cDC1/cDC2, MDSCs), fibroblast and ECM biology (iCAF/myCAF/
 apCAF, collagen), and pharmacokinetics for immunotherapy combinations — GVAX,
 nivolumab and urelumab, including the vaccine-induced tertiary lymphoid aggregate.
 

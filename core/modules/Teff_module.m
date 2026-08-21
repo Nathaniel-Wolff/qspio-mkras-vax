@@ -172,8 +172,8 @@ H_CXCL12_Texcl = addparameter(model,'H_CXCL12_Texcl',0,'ValueUnits','dimensionle
 % V_T.K_vasc (vasculature-dependent carrying capacity, from cancer_module) grows
 % slower than V_T as the tumor progresses, so vascular density V_T.K_vasc/V_T falls.
 % H_vasc multiplies the per-volume extravasation rate of every blood->tumor
-% recruitment reaction (CD8 baseline here; CD8/Th/NK CXCR3 routes in
-% chemotaxis_module). vasc_ratio is a dimensionless intermediate so the ^n_vasc
+% recruitment reaction (CD8 baseline here; Th baseline in Th_module).
+% vasc_ratio is a dimensionless intermediate so the ^n_vasc
 % term doesn't trip SimBiology dimensional analysis (same pattern as pO2_ratio).
 p = addparameter(model,'K50_vasc',params.K50_vasc.Value,'ValueUnits',params.K50_vasc.Units, 'Notes', 'EC50 for vascular-access gating of extravasation (V_T.K_vasc/V_T)');
 p.UserData.Source = params.K50_vasc.Notes;
@@ -302,7 +302,7 @@ reaction = addreaction(model,'V_T.CD8 -> null');
 % is a fixed point of the proportional effector+Tpex cascade, and draws with k_CD8_T_pro below
 % the ~0.15/day exhaustion-drain bifurcation free-fell into it. That was a band-aid on a SUPPLY
 % bug: 7c0366d fixed the supply chain properly (k_T_activation_per_APC bound to Bousso, residence
-% re-anchor, CXCR3 revival, CXCL9 anchor) and took cd8_density from 0.005 to 21 /mm^2, so the
+% re-anchor) and took cd8_density from 0.005 to 21 /mm^2, so the
 % collapse branch no longer exists and the seed was commented out. The parameter was nonetheless
 % left registered at Value=0 and never entered pdac_priors.csv, so it rode into the SBML/C++ as a
 % dead constant with no consumers. Parameter and reaction are now both gone. The CD4 analog

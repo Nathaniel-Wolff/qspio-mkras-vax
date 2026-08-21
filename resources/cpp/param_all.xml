@@ -44,7 +44,6 @@
       <V_P_aPD1>0.0</V_P_aPD1>
       <V_P_aCD137>0.0</V_P_aCD137>
       <V_P_Th>0.0</V_P_Th>
-      <V_P_NK>5000000.0</V_P_NK>
       <V_T_C_x>0.0</V_T_C_x>
       <V_T_CD8_exh>0.0</V_T_CD8_exh>
       <V_T_CD8_pex>0.0</V_T_CD8_pex>
@@ -81,9 +80,6 @@
       <V_T_CXCL12>0.0</V_T_CXCL12>
       <V_T_IL6>0.0</V_T_IL6>
       <V_T_IL1>0.0</V_T_IL1>
-      <V_T_NK>0.0</V_T_NK>
-      <V_T_XCL1>0.0</V_T_XCL1>
-      <V_T_CXCL9>0.0</V_T_CXCL9>
       <V_T_CD8_TLA>0.0</V_T_CD8_TLA>
       <V_T_CD8_TLA_act>0.0</V_T_CD8_TLA_act>
       <V_T_CD8_vic>0.0</V_T_CD8_vic>
@@ -590,34 +586,6 @@
       <k_TGFb_sec_myCAF>2e-10</k_TGFb_sec_myCAF>
       <k_CXCL12_sec_cancer>5e-11</k_CXCL12_sec_cancer>
       <H_P1_apCAF>0.0</H_P1_apCAF>
-      <k_NK_rec>45000.0</k_NK_rec>
-      <k_NK_death>0.07</k_NK_death>
-      <k_NK_kill>0.05</k_NK_kill>
-      <K_NK_C>10.0</K_NK_C>
-      <k_IFNg_NK_sec>1e-12</k_IFNg_NK_sec>
-      <IL10_50_NK>0.05</IL10_50_NK>
-      <TGFb_50_NK>0.5</TGFb_50_NK>
-      <IL12_50_NK>0.002</IL12_50_NK>
-      <q_NK_P_in>0.05</q_NK_P_in>
-      <NK_P_steady>5000000.0</NK_P_steady>
-      <vol_NK>523.598775598299</vol_NK>
-      <H_IL10_NK>0.0</H_IL10_NK>
-      <H_TGFb_NK>0.0</H_TGFb_NK>
-      <H_IL12_NK>0.0</H_IL12_NK>
-      <k_XCL1_NK>5e-13</k_XCL1_NK>
-      <k_XCL1_deg>10.0</k_XCL1_deg>
-      <XCL1_50_cDC1>1.0</XCL1_50_cDC1>
-      <Emax_XCL1>3.0</Emax_XCL1>
-      <H_XCL1_cDC1>0.0</H_XCL1_cDC1>
-      <k_CXCL9_sec>1.43e-09</k_CXCL9_sec>
-      <k_CXCL9_deg>10.0</k_CXCL9_deg>
-      <IFNg_50_CXCL9>0.005</IFNg_50_CXCL9>
-      <CXCL9_50_Trec>1.0</CXCL9_50_Trec>
-      <k_CXCR3_rec>0.1</k_CXCR3_rec>
-      <k_CXCR3_NK_rec>45000.0</k_CXCR3_NK_rec>
-      <H_IFNg_CXCL9>0.0</H_IFNg_CXCL9>
-      <H_CXCL9_Trec>0.0</H_CXCL9_Trec>
-      <k_CXCR3_Th_rec>0.1</k_CXCR3_Th_rec>
       <k_GVAX_clearance>0.1</k_GVAX_clearance>
       <V_ID_volume>0.0001</V_ID_volume>
       <k_GMCSF_prod>1e-08</k_GMCSF_prod>
@@ -684,7 +652,6 @@
       <Th_total_T>0.0</Th_total_T>
       <CD4_total_T>0.0</CD4_total_T>
       <Tcell_total_T>0.0</Tcell_total_T>
-      <lymphocyte_total_T>0.0</lymphocyte_total_T>
       <Mac_total_T>0.0</Mac_total_T>
       <DC_total_T>0.0</DC_total_T>
       <mDC_total_T>0.0</mDC_total_T>

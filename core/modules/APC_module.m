@@ -175,7 +175,7 @@ reaction = addreaction(model,'V_LN.mcDC1 -> null');
 % cDC2 Reactions (IRF4+ MHC-II presenting DCs)
 % =========================================================================
 
-% cDC2 recruitment into tumor (no XCL1 boost, impeded by ECM)
+% cDC2 recruitment into tumor (impeded by ECM)
 reaction = addreaction(model,'null -> V_T.cDC2');
     set(reaction,'ReactionRate','k_APC_death*cDC2_recruit_target_T*V_T*(1-H_pore_APC)');
     set(reaction,'Notes','cDC2 recruitment into tumor (ECM-impeded)');

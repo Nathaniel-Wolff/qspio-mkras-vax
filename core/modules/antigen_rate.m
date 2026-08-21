@@ -24,18 +24,18 @@ end
 % Antigen-release rate is driven by R_Tcell, the model-wide cancer-killing-rate
 % accumulator (declared in simbio_init.m as a repeatedAssignment). Every killing
 % module appends its contribution to R_Tcell during assembly: baseline death +
-% therapy + CTL killing (Teff_module), M1 macrophage phagocytosis
-% (macrophage_module), and NK killing (NK_module). Referencing R_Tcell BY NAME
+% therapy + CTL killing (Teff_module), and M1 macrophage phagocytosis
+% (macrophage_module). Referencing R_Tcell BY NAME
 % here -- rather than string-matching the CTL killing reaction at assembly time,
 % as this function used to (matched only 'k_C_Tcell_eff') -- makes antigen release:
-%   (1) COMPLETE: it now includes macrophage + NK killing, which the old
+%   (1) COMPLETE: it includes macrophage killing, which the old
 %       k_C_Tcell_eff-only scan missed entirely. Those reactions are also assembled
 %       AFTER antigen_module, so an assembly-time scan here could NEVER have seen
 %       them regardless of the search string (the "assembly order" bug). A by-name
 %       reference resolves against the fully-appended rule at simulation time.
 %   (2) CONSISTENT with H_HMGB1 (APC_module), which already keys DC maturation off
 %       this same R_Tcell -- so the antigen-release and DAMP arms of immunogenic
-%       killing can no longer disagree (mac/NK-killed cells released DAMPs but,
+%       killing can no longer disagree (macrophage-killed cells released DAMPs but,
 %       inconsistently, no antigen).
 % R_Tcell already includes the baseline death + therapy term (Teff_module's append
 % is '(k_Ci_death+k_Ci_therapy)*Ci + k_C_Tcell_eff*Ci'), so it is NOT added again

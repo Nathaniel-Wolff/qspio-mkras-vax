@@ -113,13 +113,6 @@
       "description": "Number of Th cells in the peripheral compartment"
     },
     {
-      "name": "V_P.NK",
-      "compartment": "V_P",
-      "base_name": "NK",
-      "units": "cell",
-      "description": "Number of NK cells in the peripheral compartment"
-    },
-    {
       "name": "V_T.C_x",
       "compartment": "V_T",
       "base_name": "C_x",
@@ -370,27 +363,6 @@
       "base_name": "IL1",
       "units": "nanomolarity",
       "description": "Interleukin-1alpha in tumor compartment. Tumor-derived; drives iCAF formation via NF-kB/LIF/JAK-STAT3. TGFb antagonizes signaling by downregulating IL-1R1."
-    },
-    {
-      "name": "V_T.NK",
-      "compartment": "V_T",
-      "base_name": "NK",
-      "units": "cell",
-      "description": "Number of NK cells in the tumor compartment"
-    },
-    {
-      "name": "V_T.XCL1",
-      "compartment": "V_T",
-      "base_name": "XCL1",
-      "units": "nanomolarity",
-      "description": ""
-    },
-    {
-      "name": "V_T.CXCL9",
-      "compartment": "V_T",
-      "base_name": "CXCL9",
-      "units": "nanomolarity",
-      "description": "Concentration of CXCL9/10 (lumped CXCR3 ligands) in the tumor compartment"
     },
     {
       "name": "V_T.CD8_TLA",
@@ -3573,174 +3545,6 @@
       "description": "Hill function for antigen-dependent apCAF Treg induction"
     },
     {
-      "name": "k_NK_rec",
-      "value": 45000,
-      "units": "cell/(milliliter*day)",
-      "description": "NK cell recruitment rate to tumor"
-    },
-    {
-      "name": "k_NK_death",
-      "value": 0.07,
-      "units": "1/day",
-      "description": "NK cell death/turnover rate"
-    },
-    {
-      "name": "k_NK_kill",
-      "value": 0.05,
-      "units": "1/day",
-      "description": "NK cell killing rate of tumor cells"
-    },
-    {
-      "name": "K_NK_C",
-      "value": 10,
-      "units": "dimensionless",
-      "description": "NK-tumor association coefficient"
-    },
-    {
-      "name": "k_IFNg_NK_sec",
-      "value": 1E-12,
-      "units": "nanomole/cell/day",
-      "description": "IFNg secretion rate by NK cells"
-    },
-    {
-      "name": "IL10_50_NK",
-      "value": 0.05,
-      "units": "nanomolarity",
-      "description": "IL-10 EC50 for NK suppression"
-    },
-    {
-      "name": "TGFb_50_NK",
-      "value": 0.5,
-      "units": "nanomolarity",
-      "description": "TGFb EC50 for NK suppression"
-    },
-    {
-      "name": "IL12_50_NK",
-      "value": 0.002,
-      "units": "nanomolarity",
-      "description": "IL-12 EC50 for NK activation"
-    },
-    {
-      "name": "q_NK_P_in",
-      "value": 0.05,
-      "units": "1/day",
-      "description": "NK peripheral homeostasis rate"
-    },
-    {
-      "name": "NK_P_steady",
-      "value": 5.0E+6,
-      "units": "cell",
-      "description": "Peripheral NK steady-state count"
-    },
-    {
-      "name": "vol_NK",
-      "value": 523.59877559829886,
-      "units": "micrometer^3/cell",
-      "description": "Volume of a single NK cell"
-    },
-    {
-      "name": "H_IL10_NK",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for IL-10 suppression of NK function"
-    },
-    {
-      "name": "H_TGFb_NK",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for TGFb suppression of NK function"
-    },
-    {
-      "name": "H_IL12_NK",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for IL-12 activation of NK function"
-    },
-    {
-      "name": "k_XCL1_NK",
-      "value": 5E-13,
-      "units": "nanomole/cell/day",
-      "description": "XCL1 secretion rate by NK cells"
-    },
-    {
-      "name": "k_XCL1_deg",
-      "value": 10,
-      "units": "1/day",
-      "description": "XCL1 degradation rate"
-    },
-    {
-      "name": "XCL1_50_cDC1",
-      "value": 1,
-      "units": "nanomolarity",
-      "description": "XCL1 EC50 for cDC1 recruitment"
-    },
-    {
-      "name": "Emax_XCL1",
-      "value": 3,
-      "units": "dimensionless",
-      "description": "Max XCL1-driven cDC1 recruitment amplification (Hill modifier saturation)"
-    },
-    {
-      "name": "H_XCL1_cDC1",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for XCL1 induction of cDC1 recruitment (Bottcher 2018 NK->cDC1 axis)"
-    },
-    {
-      "name": "k_CXCL9_sec",
-      "value": 1.43E-9,
-      "units": "nanomole/cell/day",
-      "description": "CXCL9/10 secretion rate by tumor cells, M1 macrophages, and cDC1s (IFNg-dependent)"
-    },
-    {
-      "name": "k_CXCL9_deg",
-      "value": 10,
-      "units": "1/day",
-      "description": "CXCL9/10 degradation rate"
-    },
-    {
-      "name": "IFNg_50_CXCL9",
-      "value": 0.005,
-      "units": "nanomolarity",
-      "description": "IFNg EC50 for CXCL9/10 induction (JAK-STAT1 dependent)"
-    },
-    {
-      "name": "CXCL9_50_Trec",
-      "value": 1,
-      "units": "nanomolarity",
-      "description": "Half-maximal CXCL9/10 concentration for CXCR3-mediated recruitment"
-    },
-    {
-      "name": "k_CXCR3_rec",
-      "value": 0.1,
-      "units": "1/(milliliter*day)",
-      "description": "CXCR3-dependent CD8 T cell recruitment rate (additive to baseline q_CD8_T_in)"
-    },
-    {
-      "name": "k_CXCR3_NK_rec",
-      "value": 45000,
-      "units": "cell/(milliliter*day)",
-      "description": "CXCR3-dependent NK cell recruitment rate (additive to baseline k_NK_rec)"
-    },
-    {
-      "name": "H_IFNg_CXCL9",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for IFNg induction of CXCL9/10 (JAK-STAT1)"
-    },
-    {
-      "name": "H_CXCL9_Trec",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill function for CXCR3-mediated T cell/NK recruitment"
-    },
-    {
-      "name": "k_CXCR3_Th_rec",
-      "value": 0.1,
-      "units": "1/(milliliter*day)",
-      "description": "CXCR3-dependent Th1 cell recruitment rate (additive to baseline q_Treg_T_in for Th)"
-    },
-    {
       "name": "k_GVAX_clearance",
       "value": 0.1,
       "units": "1/day",
@@ -4147,12 +3951,6 @@
       "value": 0,
       "units": "cell",
       "description": "All T cells in V_T (CD8 + CD4), the model side of a pan-CD3 stain."
-    },
-    {
-      "name": "lymphocyte_total_T",
-      "value": 0,
-      "units": "cell",
-      "description": "Lymphocytes in V_T (T cells + NK). No B-cell species exists in the model."
     },
     {
       "name": "Mac_total_T",
@@ -5088,13 +4886,11 @@
       "products": [
         "V_T.cDC1"
       ],
-      "rate_law": "k_APC_death*cDC1_recruit_target_T*V_T*(1-H_pore_APC)*(1 + Emax_XCL1*H_XCL1_cDC1)",
+      "rate_law": "k_APC_death*cDC1_recruit_target_T*V_T*(1-H_pore_APC)",
       "parameters": [
         "k_APC_death",
         "cDC1_recruit_target_T",
-        "H_pore_APC",
-        "Emax_XCL1",
-        "H_XCL1_cDC1"
+        "H_pore_APC"
       ]
     },
     {
@@ -7653,197 +7449,6 @@
       ]
     },
     {
-      "name": "Reaction_260",
-      "reactants": [],
-      "products": [
-        "V_P.NK"
-      ],
-      "rate_law": "q_NK_P_in*NK_P_steady",
-      "parameters": [
-        "q_NK_P_in",
-        "NK_P_steady"
-      ]
-    },
-    {
-      "name": "Reaction_261",
-      "reactants": [
-        "V_P.NK"
-      ],
-      "products": [],
-      "rate_law": "q_NK_P_in*V_P.NK",
-      "parameters": [
-        "q_NK_P_in"
-      ]
-    },
-    {
-      "name": "Reaction_262",
-      "reactants": [],
-      "products": [
-        "V_T.NK"
-      ],
-      "rate_law": "k_NK_rec*V_T*(C_total^2/(C_total^2 + K_C2_recruit))*(1-H_CXCL12_Texcl)*H_vasc",
-      "parameters": [
-        "C_total",
-        "H_CXCL12_Texcl",
-        "H_vasc",
-        "K_C2_recruit",
-        "k_NK_rec"
-      ]
-    },
-    {
-      "name": "Reaction_263",
-      "reactants": [
-        "V_T.NK"
-      ],
-      "products": [],
-      "rate_law": "k_NK_death*V_T.NK",
-      "parameters": [
-        "k_NK_death"
-      ]
-    },
-    {
-      "name": "Reaction_264",
-      "reactants": [
-        "V_T.NK"
-      ],
-      "products": [],
-      "rate_law": "k_cell_clear*V_T.NK*(K_C2_recruit/(C_total^2 + K_C2_recruit))",
-      "parameters": [
-        "k_cell_clear",
-        "C_total",
-        "K_C2_recruit"
-      ]
-    },
-    {
-      "name": "Reaction_265",
-      "reactants": [],
-      "products": [
-        "V_T.IFNg"
-      ],
-      "rate_law": "k_IFNg_NK_sec*V_T.NK*(1-H_TGFb_NK)*(1+H_IL12_NK)",
-      "parameters": [
-        "k_IFNg_NK_sec",
-        "H_TGFb_NK",
-        "H_IL12_NK"
-      ]
-    },
-    {
-      "name": "Reaction_266",
-      "reactants": [],
-      "products": [
-        "V_T.XCL1"
-      ],
-      "rate_law": "k_XCL1_NK*V_T.NK*(1-H_TGFb_NK)*(1+H_IL12_NK)",
-      "parameters": [
-        "H_TGFb_NK",
-        "H_IL12_NK",
-        "k_XCL1_NK"
-      ]
-    },
-    {
-      "name": "Reaction_267",
-      "reactants": [
-        "V_T.XCL1"
-      ],
-      "products": [],
-      "rate_law": "k_XCL1_deg*V_T.XCL1",
-      "parameters": [
-        "k_XCL1_deg"
-      ]
-    },
-    {
-      "name": "Reaction_268",
-      "reactants": [
-        "V_T.C1"
-      ],
-      "products": [
-        "V_T.C_x"
-      ],
-      "rate_law": "k_NK_kill*V_T.C1*V_T.NK/(V_T.NK+K_NK_C*C_total+cell)*(1-H_IL10_NK)*(1-H_TGFb_NK)*(1-H_MDSC)*(1+H_IL12_NK)",
-      "parameters": [
-        "cell",
-        "C_total",
-        "H_MDSC",
-        "k_NK_kill",
-        "K_NK_C",
-        "H_IL10_NK",
-        "H_TGFb_NK",
-        "H_IL12_NK"
-      ]
-    },
-    {
-      "name": "Reaction_269",
-      "reactants": [],
-      "products": [
-        "V_T.CXCL9"
-      ],
-      "rate_law": "k_CXCL9_sec*(C_total + V_T.Mac_M1 + V_T.mcDC1)*H_IFNg_CXCL9",
-      "parameters": [
-        "C_total",
-        "k_CXCL9_sec",
-        "H_IFNg_CXCL9"
-      ]
-    },
-    {
-      "name": "Reaction_270",
-      "reactants": [
-        "V_T.CXCL9"
-      ],
-      "products": [],
-      "rate_law": "k_CXCL9_deg*V_T.CXCL9",
-      "parameters": [
-        "k_CXCL9_deg"
-      ]
-    },
-    {
-      "name": "Reaction_271",
-      "reactants": [
-        "V_C.CD8"
-      ],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_CXCR3_rec*V_T*V_C.CD8*H_CXCL9_Trec*(1-H_CXCL12_Texcl)*H_vasc",
-      "parameters": [
-        "H_CXCL12_Texcl",
-        "H_vasc",
-        "k_CXCR3_rec",
-        "H_CXCL9_Trec"
-      ]
-    },
-    {
-      "name": "Reaction_272",
-      "reactants": [
-        "V_C.Th"
-      ],
-      "products": [
-        "V_T.Th"
-      ],
-      "rate_law": "k_CXCR3_Th_rec*V_T*V_C.Th*H_CXCL9_Trec*(1-H_CXCL12_Texcl)*H_vasc",
-      "parameters": [
-        "H_CXCL12_Texcl",
-        "H_vasc",
-        "H_CXCL9_Trec",
-        "k_CXCR3_Th_rec"
-      ]
-    },
-    {
-      "name": "Reaction_273",
-      "reactants": [],
-      "products": [
-        "V_T.NK"
-      ],
-      "rate_law": "k_CXCR3_NK_rec*V_T*(C_total^2/(C_total^2 + K_C2_recruit))*H_CXCL9_Trec*(1-H_CXCL12_Texcl)*H_vasc",
-      "parameters": [
-        "C_total",
-        "H_CXCL12_Texcl",
-        "H_vasc",
-        "K_C2_recruit",
-        "k_CXCR3_NK_rec",
-        "H_CXCL9_Trec"
-      ]
-    },
-    {
       "name": "GVAX_clearance_ID",
       "reactants": [
         "V_ID.GVAX_cells"
@@ -8046,7 +7651,7 @@
       ]
     },
     {
-      "name": "Reaction_291",
+      "name": "Reaction_277",
       "reactants": [],
       "products": [
         "V_T.CD8"
@@ -8061,7 +7666,7 @@
       ]
     },
     {
-      "name": "Reaction_292",
+      "name": "Reaction_278",
       "reactants": [
         "V_T.CD8"
       ],
@@ -8075,7 +7680,7 @@
       ]
     },
     {
-      "name": "Reaction_293",
+      "name": "Reaction_279",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -8088,7 +7693,7 @@
       ]
     },
     {
-      "name": "Reaction_294",
+      "name": "Reaction_280",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8101,7 +7706,7 @@
       ]
     },
     {
-      "name": "Reaction_295",
+      "name": "Reaction_281",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -8116,7 +7721,7 @@
       ]
     },
     {
-      "name": "Reaction_296",
+      "name": "Reaction_282",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8129,7 +7734,7 @@
       ]
     },
     {
-      "name": "Reaction_297",
+      "name": "Reaction_283",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8142,7 +7747,7 @@
       ]
     },
     {
-      "name": "Reaction_298",
+      "name": "Reaction_284",
       "reactants": [
         "V_T.CD8_vic"
       ],
@@ -8155,7 +7760,7 @@
       ]
     },
     {
-      "name": "Reaction_299",
+      "name": "Reaction_285",
       "reactants": [
         "V_T.C1"
       ],
@@ -8168,7 +7773,7 @@
       ]
     },
     {
-      "name": "Reaction_300",
+      "name": "Reaction_286",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -8183,7 +7788,7 @@
       ]
     },
     {
-      "name": "Reaction_301",
+      "name": "Reaction_287",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -8198,7 +7803,7 @@
       ]
     },
     {
-      "name": "Reaction_302",
+      "name": "Reaction_288",
       "reactants": [],
       "products": [
         "V_T.CD8_pex"

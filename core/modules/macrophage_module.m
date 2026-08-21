@@ -195,7 +195,7 @@ reaction = addreaction(model,'null -> V_T.IL10');
 % MDSC_module (which runs before this module). The existing arginase chain then
 % carries the M2 contribution to the killing rate with no new gate or EC50:
 % H_ArgI_Teff = V_T.ArgI/(ArgI_50_Teff+V_T.ArgI) -> H_MDSC = 1-(1-H_NO)*(1-H_ArgI_Teff)
-% -> (1-H_MDSC) on k_C_Tcell_eff (and NK killing). Before this, M2 suppressed CD8
+% -> (1-H_MDSC) on k_C_Tcell_eff. Before this, M2 suppressed CD8
 % only INDIRECTLY via TGFb (line 187) and IL-10 (line 192). Per-cell arginase rate
 % reused from MDSCs (k_ArgI_sec, Rodriguez PMID 19201693) -- both are Arg1-high
 % myeloid cells and the aggregate V_T.ArgI is unidentifiable by source. NO is NOT

@@ -320,7 +320,7 @@ params.rho_CD8_crowd.derivedFrom = {};
 % CD8 homing flux to stop ~1/3 of virtual patients collapsing to an unphysical ~0 CD8
 % (cd8_density q05 = 3e-5 /mm^2 vs real immune-cold PDAC 5-30 /mm^2). It was a band-aid on a
 % supply bug, and 7c0366d fixed the supply chain properly (k_T_activation_per_APC bound to
-% Bousso + residence re-anchor + CXCR3 revival + CXCL9 anchor; cd8_density 0.005 -> 21 /mm^2),
+% Bousso + residence re-anchor; cd8_density 0.005 -> 21 /mm^2),
 % which retired the need for the seed. Its reaction was commented out then, but the parameter
 % was left registered at Value = 0 and never entered pdac_priors.csv -- so it was carried into
 % the SBML/C++ as a dead constant with no consumers. Now removed from parameters, Teff_module,
@@ -1687,7 +1687,7 @@ params.k_TGFb_deg.Notes = '(Robertson-Tessi 2012, PMID: 22051568)';
 % Context-specific TGFb EC50s (mid-tier #13). The generic TGFb_50 (Robertson-
 % Tessi 2012) was shared across three distinct TGFb programs — Th->Treg
 % differentiation, M1->M2 polarization, chemoresistance — while the rest of the
-% TGFb-50 family is already per-context (TGFb_50_Teff/APC/NK/CAF_act/col_sec/
+% TGFb-50 family is already per-context (TGFb_50_Teff/APC/CAF_act/col_sec/
 % IL1R1/Th_exh). Split into three independently-calibratable EC50s, each
 % defaulting to the Robertson-Tessi 0.07 nM value (zero behaviour change at
 % default).
@@ -1764,7 +1764,7 @@ params.TGFb_baseline.Notes = '(Ivanović 2003, PMID: 12751375; Manuyakorn 2008, 
 % (Yang 2013/Liyanage 2002), k_TGFb_Msec (Matsuo 2000) and TGFb_baseline
 % (Ivanović 2003 etc.) all measure total TGFb (acid-activated or ELISA on
 % tissue lysate). The EC50 family (TGFb_50, TGFb_50_Teff, TGFb_50_APC,
-% TGFb_50_NK, TGFb_50_CAF_act, TGFb_50_col_sec, TGFb_50_IL1R1) is calibrated
+% TGFb_50_CAF_act, TGFb_50_col_sec, TGFb_50_IL1R1) is calibrated
 % against bioactive recombinant TGFb (Robertson-Tessi 2012). f_active_TGFb
 % scales total secretion into the bioactive pool represented by V_T.TGFb.
 % In vivo latent-to-active fractions vary: Annes 2004 reports basal ~0.1-1%
@@ -2057,170 +2057,6 @@ params.vol_Mcell.Units = 'micrometer^3/cell';
 params.vol_Mcell.Notes = ['Volume of a macrophage calculated based on the average macrophage diameter ' params.D_Mcell.Notes];
 params.vol_Mcell.Factors = ["D_Mcell", "cell"];
 params.vol_Mcell.Equation = '4/3*pi*(p(1)/2)^3/p(2)';
-
-
-%% NK Module Parameters
-% Reactivated 2026-05-13 after NK_module.m was disassembled. Values are
-% initial estimates anchored to biological order-of-magnitude; submodel
-% target extractions are pending (high-priority anchors: IL10_50_NK,
-% TGFb_50_NK, IL12_50_NK EC50s; k_NK_kill / K_NK_C pair; XCL1_50_cDC1).
-
-% NK recruitment rate to tumor (PDAC TME is NK-poor: ~10x lower than Mac_rec)
-params.k_NK_rec.Value = 4.5e4;
-params.k_NK_rec.Units = 'cell/(milliliter*day)';
-params.k_NK_rec.Notes = 'Initial estimate; PDAC TME is NK-poor at diagnosis (NK density ~5-15 cells/mm^2 vs M2 ~120), ~10x lower than k_Mac_rec. Pending submodel extraction.';
-params.k_NK_rec.derivedFrom = {};
-
-% NK death/turnover rate in tumor (NK half-life ~10 d, faster than Mac)
-params.k_NK_death.Value = 0.07;
-params.k_NK_death.Units = '1/day';
-params.k_NK_death.Notes = 'Initial estimate; NK tumor half-life ~10 d. Pending submodel extraction.';
-params.k_NK_death.derivedFrom = {};
-
-% NK killing rate of cancer cells (antigen-independent cytotoxicity)
-% In vivo sustained NK killing is much lower than peak in vitro lytic units;
-% calibrated so net early-tumor kill rate stays below growth rate (otherwise
-% evolve-to-diagnosis fails to establish tumor).
-params.k_NK_kill.Value = 0.05;
-params.k_NK_kill.Units = '1/day';
-params.k_NK_kill.Notes = 'Initial estimate; sustained in vivo NK cytotoxicity (10x lower than peak in vitro lytic units). Pending submodel from chromium-release E:T assays.';
-params.k_NK_kill.derivedFrom = {};
-
-% NK-cancer association coefficient (saturation term in kill reaction)
-% Higher K_NK_C => more NK needed per cancer cell to half-saturate killing.
-params.K_NK_C.Value = 10.0;
-params.K_NK_C.Units = 'dimensionless';
-params.K_NK_C.Notes = 'Initial estimate; NK:target saturation needs ~10x NK per cancer cell for half-max killing. Paired with k_NK_kill.';
-params.K_NK_C.derivedFrom = {};
-
-% IFNg secretion rate per NK cell (suppressed by TGFb, enhanced by IL-12)
-params.k_IFNg_NK_sec.Value = 1.0e-12;
-params.k_IFNg_NK_sec.Units = 'nanomole/cell/day';
-params.k_IFNg_NK_sec.Notes = 'Initial estimate; per-NK IFNg secretion under IL-12 stim, OOM of CD8 IFNg secretion. Pending extraction.';
-params.k_IFNg_NK_sec.derivedFrom = {};
-
-% IL-10 EC50 for NK suppression (canonical NK inhibitory pathway)
-params.IL10_50_NK.Value = 0.05;
-params.IL10_50_NK.Units = 'nanomolarity';
-params.IL10_50_NK.Notes = 'Initial estimate; IL-10 EC50 for NK function inhibition. Pending submodel.';
-params.IL10_50_NK.derivedFrom = {};
-
-% TGFb EC50 for NK suppression
-params.TGFb_50_NK.Value = 0.5;
-params.TGFb_50_NK.Units = 'nanomolarity';
-params.TGFb_50_NK.Notes = 'Initial estimate; TGFb EC50 for NK function inhibition. Pending submodel.';
-params.TGFb_50_NK.derivedFrom = {};
-
-% IL-12 EC50 for NK activation
-params.IL12_50_NK.Value = 0.002;
-params.IL12_50_NK.Units = 'nanomolarity';
-params.IL12_50_NK.Notes = 'Initial estimate; IL-12 EC50 for NK IFNg production (close to tumor IL-12 baseline ~0.001 nM). Pending submodel.';
-params.IL12_50_NK.derivedFrom = {};
-
-% Peripheral NK homeostasis rate (steady-state turnover)
-params.q_NK_P_in.Value = 0.05;
-params.q_NK_P_in.Units = '1/day';
-params.q_NK_P_in.Notes = 'Initial estimate; peripheral NK turnover for steady-state homeostasis.';
-params.q_NK_P_in.derivedFrom = {};
-
-% Peripheral NK steady-state count (NK ~5-10% of circulating lymphocytes)
-params.NK_P_steady.Value = 5e6;
-params.NK_P_steady.Units = 'cell';
-params.NK_P_steady.Notes = 'Initial estimate; peripheral NK count, ~5-10% of PBMC lymphocytes. Pending extraction.';
-params.NK_P_steady.derivedFrom = {};
-
-% NK cell diameter (primary; vol_NK derived via Factors/Equation pattern below)
-params.D_NK.Value = 10;
-params.D_NK.Units = 'micrometer';
-params.D_NK.Notes = 'NK cell diameter (intermediate between T cell ~7 um and macrophage ~21 um).';
-params.D_NK.derivedFrom = {};
-
-% NK cell volume (derived from D_NK; matches vol_cell/vol_Tcell/vol_Mcell pattern
-% so load_parameters.m attaches compound units micrometer^3/cell from the Equation eval)
-params.vol_NK.Value = [];
-params.vol_NK.Units = 'micrometer^3/cell';
-params.vol_NK.Notes = ['Volume of an NK cell calculated based on D_NK ' params.D_NK.Notes];
-params.vol_NK.Factors = ["D_NK", "cell"];
-params.vol_NK.Equation = '4/3*pi*(p(1)/2)^3/p(2)';
-
-% XCL1 secretion rate per NK (NK→cDC1 cross-priming axis)
-params.k_XCL1_NK.Value = 5e-13;
-params.k_XCL1_NK.Units = 'nanomole/cell/day';
-params.k_XCL1_NK.Notes = 'Initial estimate; XCL1 secretion per NK. Pending Bottcher 2018 extraction.';
-params.k_XCL1_NK.derivedFrom = {};
-
-% XCL1 degradation rate
-params.k_XCL1_deg.Value = 10;
-params.k_XCL1_deg.Units = '1/day';
-params.k_XCL1_deg.Notes = 'Initial estimate; chemokine half-life ~hours, k_deg ~10/day.';
-params.k_XCL1_deg.derivedFrom = {};
-
-% XCL1 EC50 for cDC1 recruitment via XCR1
-params.XCL1_50_cDC1.Value = 1.0;
-params.XCL1_50_cDC1.Units = 'nanomolarity';
-params.XCL1_50_cDC1.Notes = 'Initial estimate; XCL1 EC50 for XCR1-mediated cDC1 chemotaxis. Pending Bottcher 2018 submodel.';
-params.XCL1_50_cDC1.derivedFrom = {};
-
-% XCL1 → cDC1 recruitment fold-amplification (Emax of Hill modifier)
-params.Emax_XCL1.Value = 3.0;
-params.Emax_XCL1.Units = 'dimensionless';
-params.Emax_XCL1.Notes = 'Initial estimate; max XCL1-driven amplification of cDC1 recruitment (Bottcher 2018 reports ~2-5x).';
-params.Emax_XCL1.derivedFrom = {};
-
-
-%% CXCL9/10 Chemotaxis Module Parameters
-% Reactivated 2026-05-13 after chemotaxis_module.m was disassembled.
-% IFNg-induced CXCR3 ligand production (lumped CXCL9/CXCL10) drives
-% CXCR3+ CD8/Th/NK recruitment, opposed by CXCL12. Submodel anchors
-% pending: IFNg_50_CXCL9 (JAK-STAT1 dose-response), CXCL9_50_Trec
-% (Mikucki 2015 / Dangaj 2019 transwell migration).
-
-% CXCL9/10 secretion rate by tumor + M1 + mcDC1 (IFNg-induced)
-params.k_CXCL9_sec.Value = 1.43e-9;
-params.k_CXCL9_sec.Units = 'nanomole/cell/day';
-params.k_CXCL9_sec.Notes = 'Re-anchored 2026-06-24 to Antonelli 2010 (DOI 10.1016/j.cyto.2010.01.009, same paper as IFNg_50_CXCL9): IFNg-saturated CXCL9 secretion 256.7 pg/mL/24h from 3000 cells/well (Fig 1a), -> 1.43e-9 nmole/cell/day. ~1400x the old 1e-12 placeholder, which had kept bulk V_T.CXCL9 at ~pM; real production lifts it to ~10-30 nM. Maximal rate (IFNg 10000 U/ml is ~5900x IFNg_50_CXCL9, H->1). Epithelial (thyrocyte) proxy for the model''s producers (tumor/M1/cDC1). Submodel target k_CXCL9_sec_PDAC_deriv001.yaml.';
-params.k_CXCL9_sec.derivedFrom = {};
-
-% CXCL9/10 degradation rate
-params.k_CXCL9_deg.Value = 10;
-params.k_CXCL9_deg.Units = '1/day';
-params.k_CXCL9_deg.Notes = 'Initial estimate; chemokine half-life ~hours.';
-params.k_CXCL9_deg.derivedFrom = {};
-
-% IFNg EC50 for CXCL9 induction (JAK-STAT1 pathway)
-params.IFNg_50_CXCL9.Value = 0.005;
-params.IFNg_50_CXCL9.Units = 'nanomolarity';
-params.IFNg_50_CXCL9.Notes = 'Initial estimate; IFNg EC50 for CXCL9 induction. Pending submodel extraction.';
-params.IFNg_50_CXCL9.derivedFrom = {};
-
-% CXCL9 EC50 for CXCR3-mediated CD8/Th/NK recruitment
-params.CXCL9_50_Trec.Value = 1.0;
-params.CXCL9_50_Trec.Units = 'nanomolarity';
-params.CXCL9_50_Trec.Notes = 'EFFECTIVE bulk-referenced EC50, free SBI param (NOT a submodel target). Reconciled 2026-06-24: was split 1.0 (here) vs 0.0003 (priors). CXCR3 chemotaxis reads a near-vessel/endothelium-presented (GAG-bound) CXCL9 gradient, not the well-mixed bulk V_T.CXCL9 the Hill uses, so this EC50 absorbs the unmeasured bulk->local enrichment factor on top of the ~1-10 nM biochemical transwell EC50 (Mikucki 2015). Centered at the biochemical value (1.0 nM) with a wide prior (sigma 2.0) so SBI fits the effective gain; the down-tail covers the geometry discount. The old 0.0003 nM hack was mostly compensating for k_CXCL9_sec being ~1000x too low (placeholder), which kept bulk CXCL9 at ~pM. Bin-B scale-center (see submodel_priors EC50 audit).';
-params.CXCL9_50_Trec.derivedFrom = {};
-
-% CXCR3-driven CD8 recruitment rate (additive to baseline q_CD8_T_in)
-params.k_CXCR3_rec.Value = 0.1;
-params.k_CXCR3_rec.Units = '1/(milliliter*day)';
-params.k_CXCR3_rec.Notes = 'Re-centered 2026-06-24: was 1e-4, anchored to q_CD8_T_in via a per-minute/per-day unit slip — the note compared 1e-4 (1/(mL*day)) against q_CD8_T_in''s per-minute value 5.8e-5 (1/(cm^3*min)). q_CD8_T_in is actually 5.8e-5*1440 = 0.0835/(mL*day), so saturated CXCR3 at 1e-4 delivered ~835x less than the baseline door (mechanistically inert, and unreachable under the old prior). Now set to ~door parity (0.1) so a hot, CXCL9-high tumor roughly doubles its CD8 influx via this additive route.';
-params.k_CXCR3_rec.derivedFrom = {};
-
-% CXCR3-driven NK recruitment rate. For null -> V_T.NK (creation), rate must
-% be substance/time (cell/day); k_CXCR3_NK_rec needs cell/(mL*day) to give
-% cell/day after multiplication by V_T (mL). The CD8/Th equivalents use
-% 1/(mL*day) because their reactions are transfer-from-V_C (V_C.CD8 supplies
-% the cell unit), but NK creates from null and needs the cell unit explicitly
-% in the rate constant.
-params.k_CXCR3_NK_rec.Value = 4.5e4;
-params.k_CXCR3_NK_rec.Units = 'cell/(milliliter*day)';
-params.k_CXCR3_NK_rec.Notes = 'Re-centered 2026-06-24: was 1e-4, the same uniform placeholder used for the CD8/Th CXCR3 rates — but the NK route is null-source (creates cells), so its baseline k_NK_rec = 4.5e4 cell/(mL*day) is 8-9 OOM larger than the CD8/Th door, and 1e-4 made the CXCR3-NK route ~4.5e8x too weak (inert). Both reactions share the form V_T*(C^2/(C^2+K_C2_recruit))*..., so set to k_NK_rec parity: saturated CXCR3 roughly doubles NK influx in a hot (IFNg-high) tumor. SBI-fit (wide prior); k_NK_rec is itself a pending-submodel placeholder.';
-params.k_CXCR3_NK_rec.derivedFrom = {};
-
-% CXCR3-driven Th recruitment rate
-params.k_CXCR3_Th_rec.Value = 0.1;
-params.k_CXCR3_Th_rec.Units = '1/(milliliter*day)';
-params.k_CXCR3_Th_rec.Notes = 'Re-centered 2026-06-24 alongside k_CXCR3_rec (same per-minute/per-day unit slip vs the q_CD4_T_in door). CXCR3+ Th1 recruitment, additive; set to ~door parity (0.1).';
-params.k_CXCR3_Th_rec.derivedFrom = {};
 
 
 %% Phagocytosis Module
@@ -2748,7 +2584,7 @@ params.CXCL12_50_Texcl.Notes = 'CXCR4 receptor affinity for CXCL12. Anchored to 
 % As PDAC grows it outpaces its vascular support: V_T.K (vasculature-dependent
 % carrying capacity) grows slower than V_T, so vascular density V_T.K/V_T falls.
 % H_vasc = (V_T.K/V_T)^n_vasc / (K50_vasc^n_vasc + (V_T.K/V_T)^n_vasc) gates the
-% per-volume extravasation rate of CD8/Th/NK recruitment reactions, encoding the
+% per-volume extravasation rate of CD8/Th recruitment reactions, encoding the
 % documented progressive immune exclusion of growing PDAC (vessel collapse under
 % desmoplastic compression — Olive 2009, Provenzano 2012). Without this gate,
 % recruitment scales with raw tumor volume and intratumoral CD8 density rises

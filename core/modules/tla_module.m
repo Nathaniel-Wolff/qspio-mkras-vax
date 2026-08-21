@@ -323,7 +323,7 @@ for i = 1:numel(cancer_vic)
         set(r, 'ReactionRate', ['k_C_vic_eff*V_T.' ci]);
         set(r, 'Notes', 'Cancer cell killing by egressed vicinity effectors (CD8_vic; throttle-bypassing, urelumab antitumor pathway)');
     % Append to the model-wide cancer-kill accumulator R_Tcell so vicinity killing
-    % feeds antigen release consistently (same convention as Teff/macrophage/NK).
+    % feeds antigen release consistently (same convention as Teff/macrophage).
     rR = sbioselect(model, 'Type', 'rule', 'Where', 'Rule', 'regexp', ['R_Tcell\s*=']);
     if isempty(rR)
         warning('tla_module:noRTcell', 'R_Tcell rule not found; vicinity killing not added to antigen release.');
