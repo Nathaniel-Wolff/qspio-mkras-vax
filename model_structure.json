@@ -36,20 +36,6 @@
       "description": "Concentration of aPD1 in central compartment"
     },
     {
-      "name": "V_C.aPDL1",
-      "compartment": "V_C",
-      "base_name": "aPDL1",
-      "units": "nanomolarity",
-      "description": "Concentration of aPDL1 in central compartment"
-    },
-    {
-      "name": "V_C.aCTLA4",
-      "compartment": "V_C",
-      "base_name": "aCTLA4",
-      "units": "nanomolarity",
-      "description": "Concentration of aCTLA4 in central compartment"
-    },
-    {
       "name": "V_C.aCD137",
       "compartment": "V_C",
       "base_name": "aCD137",
@@ -111,20 +97,6 @@
       "base_name": "aPD1",
       "units": "nanomolarity",
       "description": "Concentration of aPD1 in peripheral compartment"
-    },
-    {
-      "name": "V_P.aPDL1",
-      "compartment": "V_P",
-      "base_name": "aPDL1",
-      "units": "nanomolarity",
-      "description": "Concentration of aPDL1 in peripheral compartment"
-    },
-    {
-      "name": "V_P.aCTLA4",
-      "compartment": "V_P",
-      "base_name": "aCTLA4",
-      "units": "nanomolarity",
-      "description": "Concentration of aCTLA4 in peripheral compartment"
     },
     {
       "name": "V_P.aCD137",
@@ -265,20 +237,6 @@
       "base_name": "aPD1",
       "units": "nanomolarity",
       "description": "Concentration of aPD1 in tumour compartment"
-    },
-    {
-      "name": "V_T.aPDL1",
-      "compartment": "V_T",
-      "base_name": "aPDL1",
-      "units": "nanomolarity",
-      "description": "Concentration of aPDL1 in tumour compartment"
-    },
-    {
-      "name": "V_T.aCTLA4",
-      "compartment": "V_T",
-      "base_name": "aCTLA4",
-      "units": "nanomolarity",
-      "description": "Concentration of aCTLA4 in tumour compartment"
     },
     {
       "name": "V_T.aCD137",
@@ -540,20 +498,6 @@
       "description": "Concentration of aPD1 in lymph node compartment"
     },
     {
-      "name": "V_LN.aPDL1",
-      "compartment": "V_LN",
-      "base_name": "aPDL1",
-      "units": "nanomolarity",
-      "description": "Concentration of aPDL1 in lymph node compartment"
-    },
-    {
-      "name": "V_LN.aCTLA4",
-      "compartment": "V_LN",
-      "base_name": "aCTLA4",
-      "units": "nanomolarity",
-      "description": "Concentration of aCTLA4 in lymph node compartment"
-    },
-    {
       "name": "V_LN.aCD137",
       "compartment": "V_LN",
       "base_name": "aCD137",
@@ -701,39 +645,11 @@
       "description": "concentration of PD1-aPD1-PD1 complex"
     },
     {
-      "name": "syn_CD8_C1.PDL1_aPDL1",
-      "compartment": "syn_CD8_C1",
-      "base_name": "PDL1_aPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1 complex"
-    },
-    {
-      "name": "syn_CD8_C1.PDL1_aPDL1_PDL1",
-      "compartment": "syn_CD8_C1",
-      "base_name": "PDL1_aPDL1_PDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1-PDL1 complex"
-    },
-    {
       "name": "syn_CD8_C1.TPDL1",
       "compartment": "syn_CD8_C1",
       "base_name": "TPDL1",
       "units": "molecule/micrometer^2",
       "description": "concentration of PDL1 in synapse of T cell"
-    },
-    {
-      "name": "syn_CD8_C1.TPDL1_aPDL1",
-      "compartment": "syn_CD8_C1",
-      "base_name": "TPDL1_aPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of TPDL1-aPDL1 complex"
-    },
-    {
-      "name": "syn_CD8_C1.TPDL1_aPDL1_TPDL1",
-      "compartment": "syn_CD8_C1",
-      "base_name": "TPDL1_aPDL1_TPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of TPDL1-aPDL1-TPDL1 complex"
     },
     {
       "name": "syn_CD8_C1.CD28_CD80",
@@ -855,20 +771,6 @@
       "description": "concentration of CD86 in synapse"
     },
     {
-      "name": "syn_CD8_C1.CTLA4_aCTLA4",
-      "compartment": "syn_CD8_C1",
-      "base_name": "CTLA4_aCTLA4",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of CTLA4-aCTLA4 complex"
-    },
-    {
-      "name": "syn_CD8_C1.CTLA4_aCTLA4_CTLA4",
-      "compartment": "syn_CD8_C1",
-      "base_name": "CTLA4_aCTLA4_CTLA4",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of CTLA4-aCTLA4-CTLA4 complex"
-    },
-    {
       "name": "syn_CD8_APC.PD1_PDL1",
       "compartment": "syn_CD8_APC",
       "base_name": "PD1_PDL1",
@@ -918,39 +820,11 @@
       "description": "concentration of PD1-aPD1-PD1 complex"
     },
     {
-      "name": "syn_CD8_APC.PDL1_aPDL1",
-      "compartment": "syn_CD8_APC",
-      "base_name": "PDL1_aPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1 complex"
-    },
-    {
-      "name": "syn_CD8_APC.PDL1_aPDL1_PDL1",
-      "compartment": "syn_CD8_APC",
-      "base_name": "PDL1_aPDL1_PDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1-PDL1 complex"
-    },
-    {
       "name": "syn_CD8_APC.TPDL1",
       "compartment": "syn_CD8_APC",
       "base_name": "TPDL1",
       "units": "molecule/micrometer^2",
       "description": "concentration of PDL1 in synapse of T cell"
-    },
-    {
-      "name": "syn_CD8_APC.TPDL1_aPDL1",
-      "compartment": "syn_CD8_APC",
-      "base_name": "TPDL1_aPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of TPDL1-aPDL1 complex"
-    },
-    {
-      "name": "syn_CD8_APC.TPDL1_aPDL1_TPDL1",
-      "compartment": "syn_CD8_APC",
-      "base_name": "TPDL1_aPDL1_TPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of TPDL1-aPDL1-TPDL1 complex"
     },
     {
       "name": "syn_CD8_APC.CD28_CD80",
@@ -1072,20 +946,6 @@
       "description": "concentration of CD86 in synapse"
     },
     {
-      "name": "syn_CD8_APC.CTLA4_aCTLA4",
-      "compartment": "syn_CD8_APC",
-      "base_name": "CTLA4_aCTLA4",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of CTLA4-aCTLA4 complex"
-    },
-    {
-      "name": "syn_CD8_APC.CTLA4_aCTLA4_CTLA4",
-      "compartment": "syn_CD8_APC",
-      "base_name": "CTLA4_aCTLA4_CTLA4",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of CTLA4-aCTLA4-CTLA4 complex"
-    },
-    {
       "name": "syn_M_C.CD47",
       "compartment": "syn_M_C",
       "base_name": "CD47",
@@ -1168,20 +1028,6 @@
       "base_name": "PD1_aPD1_PD1",
       "units": "molecule/micrometer^2",
       "description": "concentration of PD1-aPD1-PD1 complex"
-    },
-    {
-      "name": "syn_M_C.PDL1_aPDL1",
-      "compartment": "syn_M_C",
-      "base_name": "PDL1_aPDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1 complex"
-    },
-    {
-      "name": "syn_M_C.PDL1_aPDL1_PDL1",
-      "compartment": "syn_M_C",
-      "base_name": "PDL1_aPDL1_PDL1",
-      "units": "molecule/micrometer^2",
-      "description": "concentration of PDL1-aPDL1-PDL1 complex"
     },
     {
       "name": "syn_M_C.PDL1_CD80",
@@ -2282,126 +2128,6 @@
       "description": "Volume fraction of interstitial space available to aPD1 in TDLN compartment"
     },
     {
-      "name": "q_P_aPDL1",
-      "value": 5.56E-6,
-      "units": "liter/second",
-      "description": "Capillary filtration rate of aPDL1 between central and peripheral compartment"
-    },
-    {
-      "name": "q_T_aPDL1",
-      "value": 8.52E-5,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aPDL1 between central and tumor compartment"
-    },
-    {
-      "name": "q_LN_aPDL1",
-      "value": 3.25E-6,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aPDL1 between central and TDLN compartment"
-    },
-    {
-      "name": "q_LD_aPDL1",
-      "value": 0.0015,
-      "units": "1/minute",
-      "description": "Rate of lymphatic drainage of aPDL1 from TDLN to central compartment"
-    },
-    {
-      "name": "k_cl_aPDL1",
-      "value": 0.33,
-      "units": "liter/day",
-      "description": "Clearance rate of aPDL1 from central compartment"
-    },
-    {
-      "name": "gamma_C_aPDL1",
-      "value": 0.7,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aPDL1 in central compartment"
-    },
-    {
-      "name": "gamma_P_aPDL1",
-      "value": 0.057,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aPDL1 in peripheral compartment"
-    },
-    {
-      "name": "gamma_T_aPDL1",
-      "value": 0.522,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aPDL1 in tumor compartment"
-    },
-    {
-      "name": "gamma_LN_aPDL1",
-      "value": 0.2,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aPDL1 in TDLN compartment"
-    },
-    {
-      "name": "k_cln_aPDL1",
-      "value": 5.6,
-      "units": "nanomole/day",
-      "description": "Non-linear clearance rate of aPDL1 from central compartment"
-    },
-    {
-      "name": "Kc_aPDL1",
-      "value": 1.69,
-      "units": "nanomole/liter",
-      "description": "Half-maximal concentration of aPDL1 in central compartment for nonlinear clearance"
-    },
-    {
-      "name": "q_P_aCTLA4",
-      "value": 5.331E-6,
-      "units": "liter/second",
-      "description": "Capillary filtration rate of aCTLA4 between central and peripheral compartment"
-    },
-    {
-      "name": "q_T_aCTLA4",
-      "value": 8.52E-5,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aCTLA4 between central and tumor compartment"
-    },
-    {
-      "name": "q_LN_aCTLA4",
-      "value": 3.25E-6,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aCTLA4 between central and TDLN compartment"
-    },
-    {
-      "name": "q_LD_aCTLA4",
-      "value": 0.0015,
-      "units": "1/minute",
-      "description": "Rate of lymphatic drainage of aCTLA4 from TDLN to central compartment"
-    },
-    {
-      "name": "k_cl_aCTLA4",
-      "value": 0.3276,
-      "units": "liter/day",
-      "description": "Clearance rate of aCTLA4 from central compartment"
-    },
-    {
-      "name": "gamma_C_aCTLA4",
-      "value": 0.794,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCTLA4 in central compartment"
-    },
-    {
-      "name": "gamma_P_aCTLA4",
-      "value": 0.062,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCTLA4 in peripheral compartment"
-    },
-    {
-      "name": "gamma_T_aCTLA4",
-      "value": 0.522,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCTLA4 in tumor compartment"
-    },
-    {
-      "name": "gamma_LN_aCTLA4",
-      "value": 0.2,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCTLA4 in TDLN compartment"
-    },
-    {
       "name": "q_P_aCD137",
       "value": 8.8E-6,
       "units": "liter/second",
@@ -2492,12 +2218,6 @@
       "description": "kon of PD1-aPD1 binding "
     },
     {
-      "name": "kon_PDL1_aPDL1",
-      "value": 430000,
-      "units": "1/(molarity*second)",
-      "description": "kon of PDL1-aPDL1 binding "
-    },
-    {
       "name": "kon_CD28_CD80",
       "value": 0.13333333333333333,
       "units": "1/(micromolarity*nanometer*second)",
@@ -2528,12 +2248,6 @@
       "description": "kon of CD80-PDL1 binding "
     },
     {
-      "name": "kon_CTLA4_aCTLA4",
-      "value": 383000,
-      "units": "1/(molarity*second)",
-      "description": "kon of CTLA4-aCTLA4 binding "
-    },
-    {
       "name": "kon_CD80_CD80",
       "value": 0.00019666666666666669,
       "units": "1/(micromolarity*nanometer*second)",
@@ -2556,12 +2270,6 @@
       "value": 0.00268,
       "units": "1/second",
       "description": "koff of PD1-aPD1 binding "
-    },
-    {
-      "name": "koff_PDL1_aPDL1",
-      "value": 0.000172,
-      "units": "1/second",
-      "description": "koff of PDL1-aPDL1 binding "
     },
     {
       "name": "koff_CD28_CD80",
@@ -2594,12 +2302,6 @@
       "description": "koff of CD80-PDL1 binding "
     },
     {
-      "name": "koff_CTLA4_aCTLA4",
-      "value": 0.0069706,
-      "units": "1/second",
-      "description": "koff of CTLA4-aCTLA4 binding "
-    },
-    {
       "name": "koff_CD80_CD80",
       "value": 0.01003,
       "units": "1/second",
@@ -2607,18 +2309,6 @@
     },
     {
       "name": "Chi_PD1_aPD1",
-      "value": 33.333333095322743,
-      "units": "1/nanometer",
-      "description": "Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D "
-    },
-    {
-      "name": "Chi_PDL1_aPDL1",
-      "value": 33.333333095322743,
-      "units": "1/nanometer",
-      "description": "Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D "
-    },
-    {
-      "name": "Chi_CTLA4_aCTLA4",
       "value": 33.333333095322743,
       "units": "1/nanometer",
       "description": "Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D "
@@ -6032,186 +5722,6 @@
     {
       "name": "Reaction_115",
       "reactants": [
-        "V_C.aPDL1"
-      ],
-      "products": [
-        "V_P.aPDL1"
-      ],
-      "rate_law": "q_P_aPDL1*(V_C.aPDL1/gamma_C_aPDL1-V_P.aPDL1/gamma_P_aPDL1)",
-      "parameters": [
-        "q_P_aPDL1",
-        "gamma_C_aPDL1",
-        "gamma_P_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_116",
-      "reactants": [
-        "V_C.aPDL1"
-      ],
-      "products": [
-        "V_T.aPDL1"
-      ],
-      "rate_law": "q_T_aPDL1*(V_C.aPDL1/gamma_C_aPDL1-V_T.aPDL1/gamma_T_aPDL1)",
-      "parameters": [
-        "q_T_aPDL1",
-        "gamma_C_aPDL1",
-        "gamma_T_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_117",
-      "reactants": [
-        "V_C.aPDL1"
-      ],
-      "products": [
-        "V_LN.aPDL1"
-      ],
-      "rate_law": "q_LN_aPDL1*(V_C.aPDL1/gamma_C_aPDL1-V_LN.aPDL1/gamma_LN_aPDL1)",
-      "parameters": [
-        "q_LN_aPDL1",
-        "gamma_C_aPDL1",
-        "gamma_LN_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_118",
-      "reactants": [
-        "V_T.aPDL1"
-      ],
-      "products": [
-        "V_LN.aPDL1"
-      ],
-      "rate_law": "q_LD_aPDL1*V_T*V_T.aPDL1/gamma_T_aPDL1",
-      "parameters": [
-        "q_LD_aPDL1",
-        "gamma_T_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_119",
-      "reactants": [
-        "V_LN.aPDL1"
-      ],
-      "products": [
-        "V_C.aPDL1"
-      ],
-      "rate_law": "q_LD_aPDL1*V_T*V_LN.aPDL1/gamma_LN_aPDL1",
-      "parameters": [
-        "q_LD_aPDL1",
-        "gamma_LN_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_120",
-      "reactants": [
-        "V_C.aPDL1"
-      ],
-      "products": [],
-      "rate_law": "k_cl_aPDL1*V_C.aPDL1",
-      "parameters": [
-        "k_cl_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_121",
-      "reactants": [
-        "V_C.aPDL1"
-      ],
-      "products": [],
-      "rate_law": "k_cln_aPDL1*V_C.aPDL1/(V_C.aPDL1+Kc_aPDL1)",
-      "parameters": [
-        "k_cln_aPDL1",
-        "Kc_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_122",
-      "reactants": [
-        "V_C.aCTLA4"
-      ],
-      "products": [
-        "V_P.aCTLA4"
-      ],
-      "rate_law": "q_P_aCTLA4*(V_C.aCTLA4/gamma_C_aCTLA4-V_P.aCTLA4/gamma_P_aCTLA4)",
-      "parameters": [
-        "q_P_aCTLA4",
-        "gamma_C_aCTLA4",
-        "gamma_P_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_123",
-      "reactants": [
-        "V_C.aCTLA4"
-      ],
-      "products": [
-        "V_T.aCTLA4"
-      ],
-      "rate_law": "q_T_aCTLA4*(V_C.aCTLA4/gamma_C_aCTLA4-V_T.aCTLA4/gamma_T_aCTLA4)",
-      "parameters": [
-        "q_T_aCTLA4",
-        "gamma_C_aCTLA4",
-        "gamma_T_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_124",
-      "reactants": [
-        "V_C.aCTLA4"
-      ],
-      "products": [
-        "V_LN.aCTLA4"
-      ],
-      "rate_law": "q_LN_aCTLA4*(V_C.aCTLA4/gamma_C_aCTLA4-V_LN.aCTLA4/gamma_LN_aCTLA4)",
-      "parameters": [
-        "q_LN_aCTLA4",
-        "gamma_C_aCTLA4",
-        "gamma_LN_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_125",
-      "reactants": [
-        "V_T.aCTLA4"
-      ],
-      "products": [
-        "V_LN.aCTLA4"
-      ],
-      "rate_law": "q_LD_aCTLA4*V_T*V_T.aCTLA4/gamma_T_aCTLA4",
-      "parameters": [
-        "q_LD_aCTLA4",
-        "gamma_T_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_126",
-      "reactants": [
-        "V_LN.aCTLA4"
-      ],
-      "products": [
-        "V_C.aCTLA4"
-      ],
-      "rate_law": "q_LD_aCTLA4*V_T*V_LN.aCTLA4/gamma_LN_aCTLA4",
-      "parameters": [
-        "q_LD_aCTLA4",
-        "gamma_LN_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_127",
-      "reactants": [
-        "V_C.aCTLA4"
-      ],
-      "products": [],
-      "rate_law": "k_cl_aCTLA4*V_C.aCTLA4",
-      "parameters": [
-        "k_cl_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_128",
-      "reactants": [
         "V_C.aCD137"
       ],
       "products": [
@@ -6225,7 +5735,7 @@
       ]
     },
     {
-      "name": "Reaction_129",
+      "name": "Reaction_116",
       "reactants": [
         "V_C.aCD137"
       ],
@@ -6240,7 +5750,7 @@
       ]
     },
     {
-      "name": "Reaction_130",
+      "name": "Reaction_117",
       "reactants": [
         "V_C.aCD137"
       ],
@@ -6255,7 +5765,7 @@
       ]
     },
     {
-      "name": "Reaction_131",
+      "name": "Reaction_118",
       "reactants": [
         "V_T.aCD137"
       ],
@@ -6269,7 +5779,7 @@
       ]
     },
     {
-      "name": "Reaction_132",
+      "name": "Reaction_119",
       "reactants": [
         "V_LN.aCD137"
       ],
@@ -6283,7 +5793,7 @@
       ]
     },
     {
-      "name": "Reaction_133",
+      "name": "Reaction_120",
       "reactants": [
         "V_C.aCD137"
       ],
@@ -6294,7 +5804,7 @@
       ]
     },
     {
-      "name": "Reaction_134",
+      "name": "Reaction_121",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL1"
@@ -6310,7 +5820,7 @@
       ]
     },
     {
-      "name": "Reaction_135",
+      "name": "Reaction_122",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL2"
@@ -6327,7 +5837,7 @@
       ]
     },
     {
-      "name": "Reaction_136",
+      "name": "Reaction_123",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL1"
@@ -6341,7 +5851,7 @@
       ]
     },
     {
-      "name": "Reaction_137",
+      "name": "Reaction_124",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL2"
@@ -6356,7 +5866,7 @@
       ]
     },
     {
-      "name": "Reaction_138",
+      "name": "Reaction_125",
       "reactants": [
         "syn_CD8_C1.PD1",
         "syn_CD8_C1.PDL1"
@@ -6371,7 +5881,7 @@
       ]
     },
     {
-      "name": "Reaction_139",
+      "name": "Reaction_126",
       "reactants": [
         "syn_CD8_C1.PD1",
         "syn_CD8_C1.PDL2"
@@ -6386,7 +5896,7 @@
       ]
     },
     {
-      "name": "Reaction_140",
+      "name": "Reaction_127",
       "reactants": [
         "syn_CD8_C1.PD1"
       ],
@@ -6401,7 +5911,7 @@
       ]
     },
     {
-      "name": "Reaction_141",
+      "name": "Reaction_128",
       "reactants": [
         "syn_CD8_C1.PD1_aPD1",
         "syn_CD8_C1.PD1"
@@ -6417,38 +5927,7 @@
       ]
     },
     {
-      "name": "Reaction_142",
-      "reactants": [
-        "syn_CD8_C1.PDL1"
-      ],
-      "products": [
-        "syn_CD8_C1.PDL1_aPDL1"
-      ],
-      "rate_law": "2*kon_PDL1_aPDL1*(syn_CD8_C1.PDL1 * V_T.aPDL1/gamma_T_aPDL1) -  koff_PDL1_aPDL1*syn_CD8_C1.PDL1_aPDL1",
-      "parameters": [
-        "gamma_T_aPDL1",
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_143",
-      "reactants": [
-        "syn_CD8_C1.PDL1_aPDL1",
-        "syn_CD8_C1.PDL1"
-      ],
-      "products": [
-        "syn_CD8_C1.PDL1_aPDL1_PDL1"
-      ],
-      "rate_law": "Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(syn_CD8_C1.PDL1 * syn_CD8_C1.PDL1_aPDL1) -  2*koff_PDL1_aPDL1*syn_CD8_C1.PDL1_aPDL1_PDL1",
-      "parameters": [
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1",
-        "Chi_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_144",
+      "name": "Reaction_129",
       "reactants": [
         "syn_CD8_C1.CD28",
         "syn_CD8_C1.CD80"
@@ -6463,7 +5942,7 @@
       ]
     },
     {
-      "name": "Reaction_145",
+      "name": "Reaction_130",
       "reactants": [
         "syn_CD8_C1.CD28_CD80",
         "syn_CD8_C1.CD28"
@@ -6478,7 +5957,7 @@
       ]
     },
     {
-      "name": "Reaction_146",
+      "name": "Reaction_131",
       "reactants": [
         "syn_CD8_C1.CD28",
         "syn_CD8_C1.CD86"
@@ -6493,7 +5972,7 @@
       ]
     },
     {
-      "name": "Reaction_147",
+      "name": "Reaction_132",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80"
@@ -6508,7 +5987,7 @@
       ]
     },
     {
-      "name": "Reaction_148",
+      "name": "Reaction_133",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80_CTLA4"
@@ -6523,7 +6002,7 @@
       ]
     },
     {
-      "name": "Reaction_149",
+      "name": "Reaction_134",
       "reactants": [
         "syn_CD8_C1.CD80",
         "syn_CD8_C1.CTLA4_CD80_CTLA4"
@@ -6538,7 +6017,7 @@
       ]
     },
     {
-      "name": "Reaction_150",
+      "name": "Reaction_135",
       "reactants": [
         "syn_CD8_C1.CD80_CTLA4",
         "syn_CD8_C1.CD80"
@@ -6553,7 +6032,7 @@
       ]
     },
     {
-      "name": "Reaction_151",
+      "name": "Reaction_136",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80_CTLA4_CD80"
@@ -6568,7 +6047,7 @@
       ]
     },
     {
-      "name": "Reaction_152",
+      "name": "Reaction_137",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD86"
@@ -6583,7 +6062,7 @@
       ]
     },
     {
-      "name": "Reaction_153",
+      "name": "Reaction_138",
       "reactants": [
         "syn_CD8_C1.CD86_CTLA4",
         "syn_CD8_C1.CD86"
@@ -6598,38 +6077,7 @@
       ]
     },
     {
-      "name": "Reaction_154",
-      "reactants": [
-        "syn_CD8_C1.CTLA4"
-      ],
-      "products": [
-        "syn_CD8_C1.CTLA4_aCTLA4"
-      ],
-      "rate_law": "4*kon_CTLA4_aCTLA4*(syn_CD8_C1.CTLA4 * V_T.aCTLA4/gamma_T_aCTLA4) -  koff_CTLA4_aCTLA4*syn_CD8_C1.CTLA4_aCTLA4",
-      "parameters": [
-        "gamma_T_aCTLA4",
-        "kon_CTLA4_aCTLA4",
-        "koff_CTLA4_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_155",
-      "reactants": [
-        "syn_CD8_C1.CTLA4_aCTLA4",
-        "syn_CD8_C1.CTLA4"
-      ],
-      "products": [
-        "syn_CD8_C1.CTLA4_aCTLA4_CTLA4"
-      ],
-      "rate_law": "2*Chi_CTLA4_aCTLA4*kon_CTLA4_aCTLA4*(syn_CD8_C1.CTLA4 * syn_CD8_C1.CTLA4_aCTLA4) -  2*koff_CTLA4_aCTLA4*syn_CD8_C1.CTLA4_aCTLA4_CTLA4",
-      "parameters": [
-        "kon_CTLA4_aCTLA4",
-        "koff_CTLA4_aCTLA4",
-        "Chi_CTLA4_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_156",
+      "name": "Reaction_139",
       "reactants": [
         "syn_CD8_C1.CD80m",
         "syn_CD8_C1.CD80m"
@@ -6644,7 +6092,7 @@
       ]
     },
     {
-      "name": "Reaction_157",
+      "name": "Reaction_140",
       "reactants": [
         "syn_CD8_C1.CD80m",
         "syn_CD8_C1.PDL1"
@@ -6659,7 +6107,7 @@
       ]
     },
     {
-      "name": "Reaction_158",
+      "name": "Reaction_141",
       "reactants": [
         "syn_CD8_C1.PDL1_CD80",
         "syn_CD8_C1.CD28"
@@ -6674,7 +6122,7 @@
       ]
     },
     {
-      "name": "Reaction_159",
+      "name": "Reaction_142",
       "reactants": [
         "syn_CD8_C1.PDL1_CD80",
         "syn_CD8_C1.CTLA4"
@@ -6689,38 +6137,7 @@
       ]
     },
     {
-      "name": "Reaction_160",
-      "reactants": [
-        "syn_CD8_C1.TPDL1"
-      ],
-      "products": [
-        "syn_CD8_C1.TPDL1_aPDL1"
-      ],
-      "rate_law": "2*kon_PDL1_aPDL1*(syn_CD8_C1.TPDL1 * V_T.aPDL1/gamma_T_aPDL1) -  koff_PDL1_aPDL1*syn_CD8_C1.TPDL1_aPDL1",
-      "parameters": [
-        "gamma_T_aPDL1",
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_161",
-      "reactants": [
-        "syn_CD8_C1.TPDL1_aPDL1",
-        "syn_CD8_C1.TPDL1"
-      ],
-      "products": [
-        "syn_CD8_C1.TPDL1_aPDL1_TPDL1"
-      ],
-      "rate_law": "Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(syn_CD8_C1.TPDL1 * syn_CD8_C1.TPDL1_aPDL1) -  2*koff_PDL1_aPDL1*syn_CD8_C1.TPDL1_aPDL1_TPDL1",
-      "parameters": [
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1",
-        "Chi_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_162",
+      "name": "Reaction_143",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL1"
@@ -6736,7 +6153,7 @@
       ]
     },
     {
-      "name": "Reaction_163",
+      "name": "Reaction_144",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL2"
@@ -6753,7 +6170,7 @@
       ]
     },
     {
-      "name": "Reaction_164",
+      "name": "Reaction_145",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL1"
@@ -6767,7 +6184,7 @@
       ]
     },
     {
-      "name": "Reaction_165",
+      "name": "Reaction_146",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL2"
@@ -6782,7 +6199,7 @@
       ]
     },
     {
-      "name": "Reaction_166",
+      "name": "Reaction_147",
       "reactants": [
         "syn_CD8_APC.PD1",
         "syn_CD8_APC.PDL1"
@@ -6797,7 +6214,7 @@
       ]
     },
     {
-      "name": "Reaction_167",
+      "name": "Reaction_148",
       "reactants": [
         "syn_CD8_APC.PD1",
         "syn_CD8_APC.PDL2"
@@ -6812,7 +6229,7 @@
       ]
     },
     {
-      "name": "Reaction_168",
+      "name": "Reaction_149",
       "reactants": [
         "syn_CD8_APC.PD1"
       ],
@@ -6827,7 +6244,7 @@
       ]
     },
     {
-      "name": "Reaction_169",
+      "name": "Reaction_150",
       "reactants": [
         "syn_CD8_APC.PD1_aPD1",
         "syn_CD8_APC.PD1"
@@ -6843,38 +6260,7 @@
       ]
     },
     {
-      "name": "Reaction_170",
-      "reactants": [
-        "syn_CD8_APC.PDL1"
-      ],
-      "products": [
-        "syn_CD8_APC.PDL1_aPDL1"
-      ],
-      "rate_law": "2*kon_PDL1_aPDL1*(syn_CD8_APC.PDL1 * V_LN.aPDL1/gamma_LN_aPDL1) -  koff_PDL1_aPDL1*syn_CD8_APC.PDL1_aPDL1",
-      "parameters": [
-        "gamma_LN_aPDL1",
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_171",
-      "reactants": [
-        "syn_CD8_APC.PDL1_aPDL1",
-        "syn_CD8_APC.PDL1"
-      ],
-      "products": [
-        "syn_CD8_APC.PDL1_aPDL1_PDL1"
-      ],
-      "rate_law": "Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(syn_CD8_APC.PDL1 * syn_CD8_APC.PDL1_aPDL1) -  2*koff_PDL1_aPDL1*syn_CD8_APC.PDL1_aPDL1_PDL1",
-      "parameters": [
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1",
-        "Chi_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_172",
+      "name": "Reaction_151",
       "reactants": [
         "syn_CD8_APC.CD28",
         "syn_CD8_APC.CD80"
@@ -6889,7 +6275,7 @@
       ]
     },
     {
-      "name": "Reaction_173",
+      "name": "Reaction_152",
       "reactants": [
         "syn_CD8_APC.CD28_CD80",
         "syn_CD8_APC.CD28"
@@ -6904,7 +6290,7 @@
       ]
     },
     {
-      "name": "Reaction_174",
+      "name": "Reaction_153",
       "reactants": [
         "syn_CD8_APC.CD28",
         "syn_CD8_APC.CD86"
@@ -6919,7 +6305,7 @@
       ]
     },
     {
-      "name": "Reaction_175",
+      "name": "Reaction_154",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80"
@@ -6934,7 +6320,7 @@
       ]
     },
     {
-      "name": "Reaction_176",
+      "name": "Reaction_155",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80_CTLA4"
@@ -6949,7 +6335,7 @@
       ]
     },
     {
-      "name": "Reaction_177",
+      "name": "Reaction_156",
       "reactants": [
         "syn_CD8_APC.CD80",
         "syn_CD8_APC.CTLA4_CD80_CTLA4"
@@ -6964,7 +6350,7 @@
       ]
     },
     {
-      "name": "Reaction_178",
+      "name": "Reaction_157",
       "reactants": [
         "syn_CD8_APC.CD80_CTLA4",
         "syn_CD8_APC.CD80"
@@ -6979,7 +6365,7 @@
       ]
     },
     {
-      "name": "Reaction_179",
+      "name": "Reaction_158",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80_CTLA4_CD80"
@@ -6994,7 +6380,7 @@
       ]
     },
     {
-      "name": "Reaction_180",
+      "name": "Reaction_159",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD86"
@@ -7009,7 +6395,7 @@
       ]
     },
     {
-      "name": "Reaction_181",
+      "name": "Reaction_160",
       "reactants": [
         "syn_CD8_APC.CD86_CTLA4",
         "syn_CD8_APC.CD86"
@@ -7024,38 +6410,7 @@
       ]
     },
     {
-      "name": "Reaction_182",
-      "reactants": [
-        "syn_CD8_APC.CTLA4"
-      ],
-      "products": [
-        "syn_CD8_APC.CTLA4_aCTLA4"
-      ],
-      "rate_law": "4*kon_CTLA4_aCTLA4*(syn_CD8_APC.CTLA4 * V_LN.aCTLA4/gamma_LN_aCTLA4) -  koff_CTLA4_aCTLA4*syn_CD8_APC.CTLA4_aCTLA4",
-      "parameters": [
-        "gamma_LN_aCTLA4",
-        "kon_CTLA4_aCTLA4",
-        "koff_CTLA4_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_183",
-      "reactants": [
-        "syn_CD8_APC.CTLA4_aCTLA4",
-        "syn_CD8_APC.CTLA4"
-      ],
-      "products": [
-        "syn_CD8_APC.CTLA4_aCTLA4_CTLA4"
-      ],
-      "rate_law": "2*Chi_CTLA4_aCTLA4*kon_CTLA4_aCTLA4*(syn_CD8_APC.CTLA4 * syn_CD8_APC.CTLA4_aCTLA4) -  2*koff_CTLA4_aCTLA4*syn_CD8_APC.CTLA4_aCTLA4_CTLA4",
-      "parameters": [
-        "kon_CTLA4_aCTLA4",
-        "koff_CTLA4_aCTLA4",
-        "Chi_CTLA4_aCTLA4"
-      ]
-    },
-    {
-      "name": "Reaction_184",
+      "name": "Reaction_161",
       "reactants": [
         "syn_CD8_APC.CD80m",
         "syn_CD8_APC.CD80m"
@@ -7070,7 +6425,7 @@
       ]
     },
     {
-      "name": "Reaction_185",
+      "name": "Reaction_162",
       "reactants": [
         "syn_CD8_APC.CD80m",
         "syn_CD8_APC.PDL1"
@@ -7085,7 +6440,7 @@
       ]
     },
     {
-      "name": "Reaction_186",
+      "name": "Reaction_163",
       "reactants": [
         "syn_CD8_APC.PDL1_CD80",
         "syn_CD8_APC.CD28"
@@ -7100,7 +6455,7 @@
       ]
     },
     {
-      "name": "Reaction_187",
+      "name": "Reaction_164",
       "reactants": [
         "syn_CD8_APC.PDL1_CD80",
         "syn_CD8_APC.CTLA4"
@@ -7115,38 +6470,7 @@
       ]
     },
     {
-      "name": "Reaction_188",
-      "reactants": [
-        "syn_CD8_APC.TPDL1"
-      ],
-      "products": [
-        "syn_CD8_APC.TPDL1_aPDL1"
-      ],
-      "rate_law": "2*kon_PDL1_aPDL1*(syn_CD8_APC.TPDL1 * V_LN.aPDL1/gamma_LN_aPDL1) -  koff_PDL1_aPDL1*syn_CD8_APC.TPDL1_aPDL1",
-      "parameters": [
-        "gamma_LN_aPDL1",
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_189",
-      "reactants": [
-        "syn_CD8_APC.TPDL1_aPDL1",
-        "syn_CD8_APC.TPDL1"
-      ],
-      "products": [
-        "syn_CD8_APC.TPDL1_aPDL1_TPDL1"
-      ],
-      "rate_law": "Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(syn_CD8_APC.TPDL1 * syn_CD8_APC.TPDL1_aPDL1) -  2*koff_PDL1_aPDL1*syn_CD8_APC.TPDL1_aPDL1_TPDL1",
-      "parameters": [
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1",
-        "Chi_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_190",
+      "name": "Reaction_165",
       "reactants": [
         "V_LN.nCD4"
       ],
@@ -7158,7 +6482,7 @@
       ]
     },
     {
-      "name": "Reaction_191",
+      "name": "Reaction_166",
       "reactants": [],
       "products": [
         "V_LN.aTh"
@@ -7173,7 +6497,7 @@
       ]
     },
     {
-      "name": "Reaction_192",
+      "name": "Reaction_167",
       "reactants": [
         "V_LN.aTh"
       ],
@@ -7185,7 +6509,7 @@
       ]
     },
     {
-      "name": "Reaction_193",
+      "name": "Reaction_168",
       "reactants": [],
       "products": [
         "V_LN.Th"
@@ -7197,7 +6521,7 @@
       ]
     },
     {
-      "name": "Reaction_194",
+      "name": "Reaction_169",
       "reactants": [
         "V_T.Th"
       ],
@@ -7213,7 +6537,7 @@
       ]
     },
     {
-      "name": "Reaction_195",
+      "name": "Reaction_170",
       "reactants": [
         "V_C.Th"
       ],
@@ -7224,7 +6548,7 @@
       ]
     },
     {
-      "name": "Reaction_196",
+      "name": "Reaction_171",
       "reactants": [
         "V_P.Th"
       ],
@@ -7235,7 +6559,7 @@
       ]
     },
     {
-      "name": "Reaction_197",
+      "name": "Reaction_172",
       "reactants": [
         "V_LN.Th"
       ],
@@ -7246,7 +6570,7 @@
       ]
     },
     {
-      "name": "Reaction_198",
+      "name": "Reaction_173",
       "reactants": [
         "V_T.Th"
       ],
@@ -7263,7 +6587,7 @@
       ]
     },
     {
-      "name": "Reaction_199",
+      "name": "Reaction_174",
       "reactants": [
         "V_T.Th"
       ],
@@ -7279,7 +6603,7 @@
       ]
     },
     {
-      "name": "Reaction_200",
+      "name": "Reaction_175",
       "reactants": [
         "V_T.Th"
       ],
@@ -7296,7 +6620,7 @@
       ]
     },
     {
-      "name": "Reaction_201",
+      "name": "Reaction_176",
       "reactants": [
         "V_T.Th_exh"
       ],
@@ -7309,7 +6633,7 @@
       ]
     },
     {
-      "name": "Reaction_202",
+      "name": "Reaction_177",
       "reactants": [
         "V_C.Th"
       ],
@@ -7322,7 +6646,7 @@
       ]
     },
     {
-      "name": "Reaction_203",
+      "name": "Reaction_178",
       "reactants": [
         "V_P.Th"
       ],
@@ -7335,7 +6659,7 @@
       ]
     },
     {
-      "name": "Reaction_204",
+      "name": "Reaction_179",
       "reactants": [
         "V_C.Th"
       ],
@@ -7352,7 +6676,7 @@
       ]
     },
     {
-      "name": "Reaction_205",
+      "name": "Reaction_180",
       "reactants": [
         "V_LN.Th"
       ],
@@ -7365,7 +6689,7 @@
       ]
     },
     {
-      "name": "Reaction_206",
+      "name": "Reaction_181",
       "reactants": [],
       "products": [
         "V_T.Th"
@@ -7378,7 +6702,7 @@
       ]
     },
     {
-      "name": "Reaction_207",
+      "name": "Reaction_182",
       "reactants": [
         "V_T.Th"
       ],
@@ -7389,7 +6713,7 @@
       ]
     },
     {
-      "name": "Reaction_208",
+      "name": "Reaction_183",
       "reactants": [],
       "products": [
         "V_T.Th"
@@ -7402,7 +6726,7 @@
       ]
     },
     {
-      "name": "Reaction_209",
+      "name": "Reaction_184",
       "reactants": [],
       "products": [
         "V_T.IFNg"
@@ -7413,7 +6737,7 @@
       ]
     },
     {
-      "name": "Reaction_210",
+      "name": "Reaction_185",
       "reactants": [],
       "products": [
         "V_T.IFNg"
@@ -7424,7 +6748,7 @@
       ]
     },
     {
-      "name": "Reaction_211",
+      "name": "Reaction_186",
       "reactants": [],
       "products": [
         "V_LN.IFNg"
@@ -7435,7 +6759,7 @@
       ]
     },
     {
-      "name": "Reaction_212",
+      "name": "Reaction_187",
       "reactants": [],
       "products": [
         "V_LN.IFNg"
@@ -7446,7 +6770,7 @@
       ]
     },
     {
-      "name": "Reaction_213",
+      "name": "Reaction_188",
       "reactants": [
         "V_T.IFNg"
       ],
@@ -7457,7 +6781,7 @@
       ]
     },
     {
-      "name": "Reaction_214",
+      "name": "Reaction_189",
       "reactants": [
         "V_LN.IFNg"
       ],
@@ -7468,7 +6792,7 @@
       ]
     },
     {
-      "name": "Reaction_215",
+      "name": "Reaction_190",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -7481,7 +6805,7 @@
       ]
     },
     {
-      "name": "Reaction_216",
+      "name": "Reaction_191",
       "reactants": [
         "V_T.TGFb"
       ],
@@ -7492,7 +6816,7 @@
       ]
     },
     {
-      "name": "Reaction_217",
+      "name": "Reaction_192",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -7504,7 +6828,7 @@
       ]
     },
     {
-      "name": "Reaction_218",
+      "name": "Reaction_193",
       "reactants": [],
       "products": [
         "V_T.CCL2"
@@ -7516,7 +6840,7 @@
       ]
     },
     {
-      "name": "Reaction_219",
+      "name": "Reaction_194",
       "reactants": [
         "V_T.CCL2"
       ],
@@ -7527,7 +6851,7 @@
       ]
     },
     {
-      "name": "Reaction_220",
+      "name": "Reaction_195",
       "reactants": [],
       "products": [
         "V_T.MDSC"
@@ -7541,7 +6865,7 @@
       ]
     },
     {
-      "name": "Reaction_221",
+      "name": "Reaction_196",
       "reactants": [
         "V_T.MDSC"
       ],
@@ -7552,7 +6876,7 @@
       ]
     },
     {
-      "name": "Reaction_222",
+      "name": "Reaction_197",
       "reactants": [
         "V_T.MDSC"
       ],
@@ -7565,7 +6889,7 @@
       ]
     },
     {
-      "name": "Reaction_223",
+      "name": "Reaction_198",
       "reactants": [
         "V_T.NO"
       ],
@@ -7576,7 +6900,7 @@
       ]
     },
     {
-      "name": "Reaction_224",
+      "name": "Reaction_199",
       "reactants": [
         "V_T.ArgI"
       ],
@@ -7587,7 +6911,7 @@
       ]
     },
     {
-      "name": "Reaction_225",
+      "name": "Reaction_200",
       "reactants": [],
       "products": [
         "V_T.NO"
@@ -7598,7 +6922,7 @@
       ]
     },
     {
-      "name": "Reaction_226",
+      "name": "Reaction_201",
       "reactants": [],
       "products": [
         "V_T.ArgI"
@@ -7609,7 +6933,7 @@
       ]
     },
     {
-      "name": "Reaction_227",
+      "name": "Reaction_202",
       "reactants": [],
       "products": [
         "V_T.VEGF"
@@ -7620,7 +6944,7 @@
       ]
     },
     {
-      "name": "Reaction_228",
+      "name": "Reaction_203",
       "reactants": [],
       "products": [
         "V_T.Mac_M1"
@@ -7635,7 +6959,7 @@
       ]
     },
     {
-      "name": "Reaction_229",
+      "name": "Reaction_204",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -7648,7 +6972,7 @@
       ]
     },
     {
-      "name": "Reaction_230",
+      "name": "Reaction_205",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -7661,7 +6985,7 @@
       ]
     },
     {
-      "name": "Reaction_231",
+      "name": "Reaction_206",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -7672,7 +6996,7 @@
       ]
     },
     {
-      "name": "Reaction_232",
+      "name": "Reaction_207",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -7683,7 +7007,7 @@
       ]
     },
     {
-      "name": "Reaction_233",
+      "name": "Reaction_208",
       "reactants": [],
       "products": [
         "V_T.IL12"
@@ -7694,7 +7018,7 @@
       ]
     },
     {
-      "name": "Reaction_234",
+      "name": "Reaction_209",
       "reactants": [],
       "products": [
         "V_T.IL12"
@@ -7705,7 +7029,7 @@
       ]
     },
     {
-      "name": "Reaction_235",
+      "name": "Reaction_210",
       "reactants": [
         "V_T.IL12"
       ],
@@ -7716,7 +7040,7 @@
       ]
     },
     {
-      "name": "Reaction_236",
+      "name": "Reaction_211",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -7728,7 +7052,7 @@
       ]
     },
     {
-      "name": "Reaction_237",
+      "name": "Reaction_212",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -7739,7 +7063,7 @@
       ]
     },
     {
-      "name": "Reaction_238",
+      "name": "Reaction_213",
       "reactants": [],
       "products": [
         "V_T.ArgI"
@@ -7750,7 +7074,7 @@
       ]
     },
     {
-      "name": "Reaction_239",
+      "name": "Reaction_214",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -7761,7 +7085,7 @@
       ]
     },
     {
-      "name": "Reaction_240",
+      "name": "Reaction_215",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -7772,7 +7096,7 @@
       ]
     },
     {
-      "name": "Reaction_241",
+      "name": "Reaction_216",
       "reactants": [
         "V_T.IL10"
       ],
@@ -7783,7 +7107,7 @@
       ]
     },
     {
-      "name": "Reaction_242",
+      "name": "Reaction_217",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -7797,7 +7121,7 @@
       ]
     },
     {
-      "name": "Reaction_243",
+      "name": "Reaction_218",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -7812,7 +7136,7 @@
       ]
     },
     {
-      "name": "Reaction_244",
+      "name": "Reaction_219",
       "reactants": [],
       "products": [
         "syn_M_C.PDL1"
@@ -7827,7 +7151,7 @@
       ]
     },
     {
-      "name": "Reaction_245",
+      "name": "Reaction_220",
       "reactants": [],
       "products": [
         "syn_M_C.PDL2"
@@ -7843,7 +7167,7 @@
       ]
     },
     {
-      "name": "Reaction_246",
+      "name": "Reaction_221",
       "reactants": [],
       "products": [
         "syn_M_C.PDL1"
@@ -7856,7 +7180,7 @@
       ]
     },
     {
-      "name": "Reaction_247",
+      "name": "Reaction_222",
       "reactants": [],
       "products": [
         "syn_M_C.PDL2"
@@ -7870,7 +7194,7 @@
       ]
     },
     {
-      "name": "Reaction_248",
+      "name": "Reaction_223",
       "reactants": [
         "syn_M_C.CD47",
         "syn_M_C.SIRPa"
@@ -7885,7 +7209,7 @@
       ]
     },
     {
-      "name": "Reaction_249",
+      "name": "Reaction_224",
       "reactants": [
         "syn_M_C.PD1",
         "syn_M_C.PDL1"
@@ -7900,7 +7224,7 @@
       ]
     },
     {
-      "name": "Reaction_250",
+      "name": "Reaction_225",
       "reactants": [
         "syn_M_C.PD1",
         "syn_M_C.PDL2"
@@ -7915,7 +7239,7 @@
       ]
     },
     {
-      "name": "Reaction_251",
+      "name": "Reaction_226",
       "reactants": [
         "syn_M_C.PD1"
       ],
@@ -7930,7 +7254,7 @@
       ]
     },
     {
-      "name": "Reaction_252",
+      "name": "Reaction_227",
       "reactants": [
         "syn_M_C.PD1_aPD1",
         "syn_M_C.PD1"
@@ -7946,38 +7270,7 @@
       ]
     },
     {
-      "name": "Reaction_253",
-      "reactants": [
-        "syn_M_C.PDL1"
-      ],
-      "products": [
-        "syn_M_C.PDL1_aPDL1"
-      ],
-      "rate_law": "2*kon_PDL1_aPDL1*(syn_M_C.PDL1 * V_T.aPDL1/gamma_T_aPDL1) -  koff_PDL1_aPDL1*syn_M_C.PDL1_aPDL1",
-      "parameters": [
-        "gamma_T_aPDL1",
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_254",
-      "reactants": [
-        "syn_M_C.PDL1_aPDL1",
-        "syn_M_C.PDL1"
-      ],
-      "products": [
-        "syn_M_C.PDL1_aPDL1_PDL1"
-      ],
-      "rate_law": "Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(syn_M_C.PDL1 * syn_M_C.PDL1_aPDL1) -  2*koff_PDL1_aPDL1*syn_M_C.PDL1_aPDL1_PDL1",
-      "parameters": [
-        "kon_PDL1_aPDL1",
-        "koff_PDL1_aPDL1",
-        "Chi_PDL1_aPDL1"
-      ]
-    },
-    {
-      "name": "Reaction_255",
+      "name": "Reaction_228",
       "reactants": [
         "syn_M_C.CD80m",
         "syn_M_C.CD80m"
@@ -7992,7 +7285,7 @@
       ]
     },
     {
-      "name": "Reaction_256",
+      "name": "Reaction_229",
       "reactants": [
         "syn_M_C.CD80m",
         "syn_M_C.PDL1"
@@ -8007,7 +7300,7 @@
       ]
     },
     {
-      "name": "Reaction_257",
+      "name": "Reaction_230",
       "reactants": [
         "V_T.C1"
       ],
@@ -8025,7 +7318,7 @@
       ]
     },
     {
-      "name": "Reaction_258",
+      "name": "Reaction_231",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -8037,7 +7330,7 @@
       ]
     },
     {
-      "name": "Reaction_259",
+      "name": "Reaction_232",
       "reactants": [],
       "products": [
         "V_T.qPSC"
@@ -8049,7 +7342,7 @@
       ]
     },
     {
-      "name": "Reaction_260",
+      "name": "Reaction_233",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -8063,7 +7356,7 @@
       ]
     },
     {
-      "name": "Reaction_261",
+      "name": "Reaction_234",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -8079,7 +7372,7 @@
       ]
     },
     {
-      "name": "Reaction_262",
+      "name": "Reaction_235",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -8092,7 +7385,7 @@
       ]
     },
     {
-      "name": "Reaction_263",
+      "name": "Reaction_236",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -8106,7 +7399,7 @@
       ]
     },
     {
-      "name": "Reaction_264",
+      "name": "Reaction_237",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -8122,7 +7415,7 @@
       ]
     },
     {
-      "name": "Reaction_265",
+      "name": "Reaction_238",
       "reactants": [],
       "products": [
         "V_T.myCAF"
@@ -8140,7 +7433,7 @@
       ]
     },
     {
-      "name": "Reaction_266",
+      "name": "Reaction_239",
       "reactants": [],
       "products": [
         "V_T.iCAF"
@@ -8158,7 +7451,7 @@
       ]
     },
     {
-      "name": "Reaction_267",
+      "name": "Reaction_240",
       "reactants": [],
       "products": [
         "V_T.apCAF"
@@ -8175,7 +7468,7 @@
       ]
     },
     {
-      "name": "Reaction_268",
+      "name": "Reaction_241",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -8188,7 +7481,7 @@
       ]
     },
     {
-      "name": "Reaction_269",
+      "name": "Reaction_242",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -8202,7 +7495,7 @@
       ]
     },
     {
-      "name": "Reaction_270",
+      "name": "Reaction_243",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -8216,7 +7509,7 @@
       ]
     },
     {
-      "name": "Reaction_271",
+      "name": "Reaction_244",
       "reactants": [
         "V_T.apCAF"
       ],
@@ -8230,7 +7523,7 @@
       ]
     },
     {
-      "name": "Reaction_272",
+      "name": "Reaction_245",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -8241,7 +7534,7 @@
       ]
     },
     {
-      "name": "Reaction_273",
+      "name": "Reaction_246",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -8252,7 +7545,7 @@
       ]
     },
     {
-      "name": "Reaction_274",
+      "name": "Reaction_247",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -8263,7 +7556,7 @@
       ]
     },
     {
-      "name": "Reaction_275",
+      "name": "Reaction_248",
       "reactants": [
         "V_T.apCAF"
       ],
@@ -8274,7 +7567,7 @@
       ]
     },
     {
-      "name": "Reaction_276",
+      "name": "Reaction_249",
       "reactants": [],
       "products": [
         "V_T.collagen"
@@ -8289,7 +7582,7 @@
       ]
     },
     {
-      "name": "Reaction_277",
+      "name": "Reaction_250",
       "reactants": [
         "V_T.collagen"
       ],
@@ -8302,7 +7595,7 @@
       ]
     },
     {
-      "name": "Reaction_278",
+      "name": "Reaction_251",
       "reactants": [],
       "products": [
         "V_T.CXCL12"
@@ -8313,7 +7606,7 @@
       ]
     },
     {
-      "name": "Reaction_279",
+      "name": "Reaction_252",
       "reactants": [],
       "products": [
         "V_T.CXCL12"
@@ -8325,7 +7618,7 @@
       ]
     },
     {
-      "name": "Reaction_280",
+      "name": "Reaction_253",
       "reactants": [
         "V_T.CXCL12"
       ],
@@ -8336,7 +7629,7 @@
       ]
     },
     {
-      "name": "Reaction_281",
+      "name": "Reaction_254",
       "reactants": [],
       "products": [
         "V_T.IL6"
@@ -8347,7 +7640,7 @@
       ]
     },
     {
-      "name": "Reaction_282",
+      "name": "Reaction_255",
       "reactants": [],
       "products": [
         "V_T.IL6"
@@ -8359,7 +7652,7 @@
       ]
     },
     {
-      "name": "Reaction_283",
+      "name": "Reaction_256",
       "reactants": [],
       "products": [
         "V_T.IL6"
@@ -8370,7 +7663,7 @@
       ]
     },
     {
-      "name": "Reaction_284",
+      "name": "Reaction_257",
       "reactants": [
         "V_T.IL6"
       ],
@@ -8381,7 +7674,7 @@
       ]
     },
     {
-      "name": "Reaction_285",
+      "name": "Reaction_258",
       "reactants": [],
       "products": [
         "V_T.IL1"
@@ -8393,7 +7686,7 @@
       ]
     },
     {
-      "name": "Reaction_286",
+      "name": "Reaction_259",
       "reactants": [
         "V_T.IL1"
       ],
@@ -8404,7 +7697,7 @@
       ]
     },
     {
-      "name": "Reaction_287",
+      "name": "Reaction_260",
       "reactants": [],
       "products": [
         "V_T.CCL5"
@@ -8415,7 +7708,7 @@
       ]
     },
     {
-      "name": "Reaction_288",
+      "name": "Reaction_261",
       "reactants": [
         "V_T.P1"
       ],
@@ -8426,7 +7719,7 @@
       ]
     },
     {
-      "name": "Reaction_289",
+      "name": "Reaction_262",
       "reactants": [
         "V_T.Th"
       ],
@@ -8441,7 +7734,7 @@
       ]
     },
     {
-      "name": "Reaction_290",
+      "name": "Reaction_263",
       "reactants": [],
       "products": [
         "V_T.VEGF"
@@ -8452,7 +7745,7 @@
       ]
     },
     {
-      "name": "Reaction_291",
+      "name": "Reaction_264",
       "reactants": [],
       "products": [
         "V_P.NK"
@@ -8464,7 +7757,7 @@
       ]
     },
     {
-      "name": "Reaction_292",
+      "name": "Reaction_265",
       "reactants": [
         "V_P.NK"
       ],
@@ -8475,7 +7768,7 @@
       ]
     },
     {
-      "name": "Reaction_293",
+      "name": "Reaction_266",
       "reactants": [],
       "products": [
         "V_T.NK"
@@ -8490,7 +7783,7 @@
       ]
     },
     {
-      "name": "Reaction_294",
+      "name": "Reaction_267",
       "reactants": [
         "V_T.NK"
       ],
@@ -8501,7 +7794,7 @@
       ]
     },
     {
-      "name": "Reaction_295",
+      "name": "Reaction_268",
       "reactants": [
         "V_T.NK"
       ],
@@ -8514,7 +7807,7 @@
       ]
     },
     {
-      "name": "Reaction_296",
+      "name": "Reaction_269",
       "reactants": [],
       "products": [
         "V_T.IFNg"
@@ -8527,7 +7820,7 @@
       ]
     },
     {
-      "name": "Reaction_297",
+      "name": "Reaction_270",
       "reactants": [],
       "products": [
         "V_T.XCL1"
@@ -8540,7 +7833,7 @@
       ]
     },
     {
-      "name": "Reaction_298",
+      "name": "Reaction_271",
       "reactants": [
         "V_T.XCL1"
       ],
@@ -8551,7 +7844,7 @@
       ]
     },
     {
-      "name": "Reaction_299",
+      "name": "Reaction_272",
       "reactants": [
         "V_T.C1"
       ],
@@ -8571,7 +7864,7 @@
       ]
     },
     {
-      "name": "Reaction_300",
+      "name": "Reaction_273",
       "reactants": [],
       "products": [
         "V_T.CXCL9"
@@ -8584,7 +7877,7 @@
       ]
     },
     {
-      "name": "Reaction_301",
+      "name": "Reaction_274",
       "reactants": [
         "V_T.CXCL9"
       ],
@@ -8595,7 +7888,7 @@
       ]
     },
     {
-      "name": "Reaction_302",
+      "name": "Reaction_275",
       "reactants": [
         "V_C.CD8"
       ],
@@ -8611,7 +7904,7 @@
       ]
     },
     {
-      "name": "Reaction_303",
+      "name": "Reaction_276",
       "reactants": [
         "V_C.Th"
       ],
@@ -8627,7 +7920,7 @@
       ]
     },
     {
-      "name": "Reaction_304",
+      "name": "Reaction_277",
       "reactants": [],
       "products": [
         "V_T.NK"
@@ -8845,7 +8138,7 @@
       ]
     },
     {
-      "name": "Reaction_322",
+      "name": "Reaction_295",
       "reactants": [],
       "products": [
         "V_T.CD8"
@@ -8860,7 +8153,7 @@
       ]
     },
     {
-      "name": "Reaction_323",
+      "name": "Reaction_296",
       "reactants": [
         "V_T.CD8"
       ],
@@ -8874,7 +8167,7 @@
       ]
     },
     {
-      "name": "Reaction_324",
+      "name": "Reaction_297",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -8887,7 +8180,7 @@
       ]
     },
     {
-      "name": "Reaction_325",
+      "name": "Reaction_298",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8900,7 +8193,7 @@
       ]
     },
     {
-      "name": "Reaction_326",
+      "name": "Reaction_299",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -8915,7 +8208,7 @@
       ]
     },
     {
-      "name": "Reaction_327",
+      "name": "Reaction_300",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8928,7 +8221,7 @@
       ]
     },
     {
-      "name": "Reaction_328",
+      "name": "Reaction_301",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -8941,7 +8234,7 @@
       ]
     },
     {
-      "name": "Reaction_329",
+      "name": "Reaction_302",
       "reactants": [
         "V_T.CD8_vic"
       ],
@@ -8954,7 +8247,7 @@
       ]
     },
     {
-      "name": "Reaction_330",
+      "name": "Reaction_303",
       "reactants": [
         "V_T.C1"
       ],
@@ -8967,7 +8260,7 @@
       ]
     },
     {
-      "name": "Reaction_331",
+      "name": "Reaction_304",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -8982,7 +8275,7 @@
       ]
     },
     {
-      "name": "Reaction_332",
+      "name": "Reaction_305",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -8997,7 +8290,7 @@
       ]
     },
     {
-      "name": "Reaction_333",
+      "name": "Reaction_306",
       "reactants": [],
       "products": [
         "V_T.CD8_pex"

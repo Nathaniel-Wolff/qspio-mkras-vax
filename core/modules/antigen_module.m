@@ -176,14 +176,12 @@ end
 
 % Update Hill Function for Antigens
 if ID == '0'
-    % Adds TCR kinetic proofreading or receptor occupancy to the model for Treg
-    % model = TCR_RO_module(model,ID,params);
+    % Adds TCR kinetic proofreading to the model for Treg
     model = TCR_KPR_module(model,ID,params);
 else
     % Adds TCR kinetic proofreading to the model for Teff
     %(it only works with 1 MHC at the moment)
     model = TCR_KPR_module(model,ID,params);
-    % model = TCR_RO_module(model,ID,params);
 end
 
 % Rename Objects with 'species_name'

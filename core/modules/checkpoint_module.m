@@ -28,8 +28,7 @@
 % there would flow through this existing synapse to lower CD28 occupancy naturally — NOT
 % a Hill multiplier on H_CD28_APC (that would collide with the assignmentRule above).
 % Deferred as a refinement (Med severity): the costim axis is already dynamic and
-% checkpoint-aware, the change is invasive to this binding model, and it interacts with
-% the anti-CTLA-4 PK (aCTLA4 already binds CTLA4 in this synapse). See
+% checkpoint-aware, and the change is invasive to this binding model. See
 % notes/model/mechanism_audit_reconciliation.md (#8) for the full adjudication.
 
 
@@ -123,9 +122,6 @@ kon.UserData.Source = params.kon_PD1_PDL2.Notes;
 kon = addparameter(model,'kon_PD1_aPD1',params.kon_PD1_aPD1.Value,'ValueUnits',params.kon_PD1_aPD1.Units, 'Notes', 'kon of PD1-aPD1 binding ');
 kon.UserData.Source = params.kon_PD1_aPD1.Notes;
     kon.UserData.derivedFrom = params.kon_PD1_aPD1.derivedFrom;
-kon = addparameter(model,'kon_PDL1_aPDL1',params.kon_PDL1_aPDL1.Value,'ValueUnits',params.kon_PDL1_aPDL1.Units, 'Notes', 'kon of PDL1-aPDL1 binding ');
-kon.UserData.Source = params.kon_PDL1_aPDL1.Notes;
-    kon.UserData.derivedFrom = params.kon_PDL1_aPDL1.derivedFrom;
 kon = addparameter(model,'kon_CD28_CD80',params.kon_CD28_CD80.Value,'ValueUnits',params.kon_CD28_CD80.Units, 'Notes', 'kon of CD28-CD80 binding ');
 kon.UserData.Source = params.kon_CD28_CD80.Notes;
     kon.UserData.derivedFrom = params.kon_CD28_CD80.derivedFrom;
@@ -141,9 +137,6 @@ kon.UserData.Source = params.kon_CTLA4_CD86.Notes;
 kon = addparameter(model,'kon_CD80_PDL1',params.kon_CD80_PDL1.Value,'ValueUnits',params.kon_CD80_PDL1.Units, 'Notes', 'kon of CD80-PDL1 binding ');
 kon.UserData.Source = params.kon_CD80_PDL1.Notes;
     kon.UserData.derivedFrom = params.kon_CD80_PDL1.derivedFrom;
-kon = addparameter(model,'kon_CTLA4_aCTLA4',params.kon_CTLA4_aCTLA4.Value,'ValueUnits',params.kon_CTLA4_aCTLA4.Units, 'Notes', 'kon of CTLA4-aCTLA4 binding ');
-kon.UserData.Source = params.kon_CTLA4_aCTLA4.Notes;
-    kon.UserData.derivedFrom = params.kon_CTLA4_aCTLA4.derivedFrom;
 kon = addparameter(model,'kon_CD80_CD80',params.kon_CD80_CD80.Value,'ValueUnits',params.kon_CD80_CD80.Units, 'Notes', 'kon of CD80 self-association ');
 kon.UserData.Source = params.kon_CD80_CD80.Notes;
     kon.UserData.derivedFrom = params.kon_CD80_CD80.derivedFrom;
@@ -158,9 +151,6 @@ koff.UserData.Source = params.koff_PD1_PDL2.Notes;
 koff = addparameter(model,'koff_PD1_aPD1' ,params.koff_PD1_aPD1.Value ,'ValueUnits',params.koff_PD1_aPD1.Units, 'Notes', 'koff of PD1-aPD1 binding ');
 koff.UserData.Source = params.koff_PD1_aPD1.Notes;
     koff.UserData.derivedFrom = params.koff_PD1_aPD1.derivedFrom;
-koff = addparameter(model,'koff_PDL1_aPDL1',params.koff_PDL1_aPDL1.Value,'ValueUnits',params.koff_PDL1_aPDL1.Units, 'Notes', 'koff of PDL1-aPDL1 binding ');
-koff.UserData.Source = params.koff_PDL1_aPDL1.Notes;
-    koff.UserData.derivedFrom = params.koff_PDL1_aPDL1.derivedFrom;
 koff = addparameter(model,'koff_CD28_CD80' ,params.koff_CD28_CD80.Value ,'ValueUnits',params.koff_CD28_CD80.Units, 'Notes', 'koff of CD28-CD80 binding ');
 koff.UserData.Source = params.koff_CD28_CD80.Notes;
     koff.UserData.derivedFrom = params.koff_CD28_CD80.derivedFrom;
@@ -176,9 +166,6 @@ koff.UserData.Source = params.koff_CTLA4_CD86.Notes;
 koff = addparameter(model,'koff_CD80_PDL1' ,params.koff_CD80_PDL1.Value ,'ValueUnits',params.koff_CD80_PDL1.Units, 'Notes', 'koff of CD80-PDL1 binding ');
 koff.UserData.Source = params.koff_CD80_PDL1.Notes;
     koff.UserData.derivedFrom = params.koff_CD80_PDL1.derivedFrom;
-koff = addparameter(model,'koff_CTLA4_aCTLA4',params.koff_CTLA4_aCTLA4.Value,'ValueUnits',params.koff_CTLA4_aCTLA4.Units, 'Notes', 'koff of CTLA4-aCTLA4 binding ');
-koff.UserData.Source = params.koff_CTLA4_aCTLA4.Notes;
-    koff.UserData.derivedFrom = params.koff_CTLA4_aCTLA4.derivedFrom;
 koff = addparameter(model,'koff_CD80_CD80',params.koff_CD80_CD80.Value,'ValueUnits',params.koff_CD80_CD80.Units, 'Notes', 'koff of CD80 self-association ');
 koff.UserData.Source = params.koff_CD80_CD80.Notes;
     koff.UserData.derivedFrom = params.koff_CD80_CD80.derivedFrom;
@@ -187,12 +174,6 @@ koff.UserData.Source = params.koff_CD80_CD80.Notes;
 p = addparameter(model,'Chi_PD1_aPD1' ,params.Chi_PD1_aPD1.Value,'ValueUnits',params.Chi_PD1_aPD1.Units, 'Notes', 'Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D ');
 p.UserData.Source = params.Chi_PD1_aPD1.Notes;
     p.UserData.derivedFrom = params.Chi_PD1_aPD1.derivedFrom;
-p = addparameter(model,'Chi_PDL1_aPDL1' ,params.Chi_PDL1_aPDL1.Value,'ValueUnits',params.Chi_PDL1_aPDL1.Units, 'Notes', 'Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D ');
-p.UserData.Source = params.Chi_PDL1_aPDL1.Notes;
-    p.UserData.derivedFrom = params.Chi_PDL1_aPDL1.derivedFrom;
-p = addparameter(model,'Chi_CTLA4_aCTLA4' ,params.Chi_CTLA4_aCTLA4.Value,'ValueUnits',params.Chi_CTLA4_aCTLA4.Units, 'Notes', 'Antibody cross-arm binding efficiency that also includes the conversion of kon from 3D to 2D ');
-p.UserData.Source = params.Chi_CTLA4_aCTLA4.Notes;
-    p.UserData.derivedFrom = params.Chi_CTLA4_aCTLA4.derivedFrom;
 
 % PD1-related Hill parameters
 p = addparameter(model,'PD1_50',params.PD1_50.Value,'ValueUnits',params.PD1_50.Units, 'Notes', 'PD1/PDL1 concentration for half-maximal T cell inactivation ');
@@ -256,11 +237,7 @@ x = addspecies(comp,'PDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Note
 x = addspecies(comp,'PDL2',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PDL2 in synapse');
 x = addspecies(comp,'PD1_aPD1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PD1-aPD1 complex');
 x = addspecies(comp,'PD1_aPD1_PD1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PD1-aPD1-PD1 complex');
-x = addspecies(comp,'PDL1_aPDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PDL1-aPDL1 complex');
-x = addspecies(comp,'PDL1_aPDL1_PDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PDL1-aPDL1-PDL1 complex');
 x = addspecies(comp,'TPDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of PDL1 in synapse of T cell');
-x = addspecies(comp,'TPDL1_aPDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of TPDL1-aPDL1 complex');
-x = addspecies(comp,'TPDL1_aPDL1_TPDL1',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of TPDL1-aPDL1-TPDL1 complex');
 
 x = addspecies(comp,'CD28_CD80',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CD28-CD80 complex');
 x = addspecies(comp,'CD28_CD80_CD28',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CD28-CD80-CD28 complex');
@@ -279,8 +256,6 @@ x = addspecies(comp,'CTLA4',0,'InitialAmountUnits','molecule/micrometer^2', 'Not
 x = addspecies(comp,'CD80',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CD80 dimer in synapse');
 x = addspecies(comp,'CD80m',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CD80 monomer in synapse');
 x = addspecies(comp,'CD86',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CD86 in synapse');
-x = addspecies(comp,'CTLA4_aCTLA4',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CTLA4-aCTLA4 complex');
-x = addspecies(comp,'CTLA4_aCTLA4_CTLA4',0,'InitialAmountUnits','molecule/micrometer^2', 'Notes', 'concentration of CTLA4-aCTLA4-CTLA4 complex');
 
 % Update Input Parameters
 addrule(model,[comp.Name,'.PD1',' = '  ,Tname,'_PD1_total /A_Tcell' ] ,'initialAssignment');
@@ -290,16 +265,16 @@ addrule(model,[comp.Name,'.TPDL1',' = ',Tname,'_PDL1_total /A_Tcell'] ,'initialA
 if Cname(1)=='C'
     addrule(model,[comp.Name,'.PDL1 = ',Cname,'_PDL1_base /A_cell'] ,'initialAssignment');
     addrule(model,[comp.Name,'.PDL2 = ',Cname,'_PDL1_base*r_PDL2',Cname,' /A_cell'] ,'initialAssignment');
-    addrule(model,[comp.Name,'_PDL1_total = ',comp.Name,'.PDL1+',comp.Name,'.PD1_PDL1+',comp.Name,'.PDL1_aPDL1+2*',comp.Name,'.PDL1_aPDL1_PDL1+',...
-                                              comp.Name,'.PDL1_CD80+',comp.Name,'.PDL1_CD80_CD28+',comp.Name,'.PDL1_CD80_CTLA4'] ,'repeatedAssignment');
+    addrule(model,[comp.Name,'_PDL1_total = ',comp.Name,'.PDL1+',comp.Name,'.PD1_PDL1+',comp.Name,'.PDL1_CD80+',...
+                                              comp.Name,'.PDL1_CD80_CD28+',comp.Name,'.PDL1_CD80_CTLA4'] ,'repeatedAssignment');
     addrule(model,[comp.Name,'_PDL2_total = ',comp.Name,'.PD1_PDL2+',comp.Name,'.PDL2'] ,'repeatedAssignment');
     addrule(model,[comp.Name,'.CD80 = ',Cname,'_CD80_total /A_cell'] ,'initialAssignment');
     addrule(model,[comp.Name,'.CD86 = ',Cname,'_CD86_total /A_cell'] ,'initialAssignment');
 elseif Cname(1)=='A'
     addrule(model,[comp.Name,'.PDL1 = ',Cname,'_PDL1_base /A_APC'] ,'initialAssignment');
     addrule(model,[comp.Name,'.PDL2 = ',Cname,'_PDL1_base*r_PDL2',Cname,' /A_APC'] ,'initialAssignment');
-    addrule(model,[comp.Name,'_PDL1_total = ',comp.Name,'.PDL1+',comp.Name,'.PD1_PDL1+',comp.Name,'.PDL1_aPDL1+2*',comp.Name,'.PDL1_aPDL1_PDL1+',...
-                                              comp.Name,'.PDL1_CD80+',comp.Name,'.PDL1_CD80_CD28+',comp.Name,'.PDL1_CD80_CTLA4'] ,'repeatedAssignment');
+    addrule(model,[comp.Name,'_PDL1_total = ',comp.Name,'.PDL1+',comp.Name,'.PD1_PDL1+',comp.Name,'.PDL1_CD80+',...
+                                              comp.Name,'.PDL1_CD80_CD28+',comp.Name,'.PDL1_CD80_CTLA4'] ,'repeatedAssignment');
     addrule(model,[comp.Name,'_PDL2_total = ',comp.Name,'.PD1_PDL2+',comp.Name,'.PDL2'] ,'repeatedAssignment');
     addrule(model,[comp.Name,'.CD80 = ',Cname,'_CD80_total /A_APC'] ,'initialAssignment');
     addrule(model,[comp.Name,'.CD86 = ',Cname,'_CD86_total /A_APC'] ,'initialAssignment');
@@ -350,7 +325,7 @@ R = addreaction(model,['null -> ' comp.Name,'.PDL2']);
     set (R, 'ReactionRate', ['k_in_PDL1*(',Cname,'_PDL1_base/',A_pre,'*r_PDL2',Cname,'-',comp.Name,'_PDL2_total)']);
     set (R, 'Notes'       , 'Translocation of PDL2 between cell surface and cytoplasm');
 
-% Dynamics of PD1/PDL1/PDL2/aPD1/aPDL1
+% Dynamics of PD1/PDL1/PDL2/aPD1
 R = addreaction(model,[comp.Name,'.PD1 + ',comp.Name,'.PDL1 <-> ',comp.Name,'.PD1_PDL1']);
     set (R, 'ReactionRate', ['kon_PD1_PDL1*(',comp.Name,'.PD1)*(',comp.Name,'.PDL1)  -  koff_PD1_PDL1*',comp.Name,'.PD1_PDL1']);
     set (R, 'Notes'       , 'binding and unbinding of PD1 PDL1 in synapse');
@@ -363,14 +338,7 @@ R = addreaction(model,[comp.Name,'.PD1 <-> ',comp.Name,'.PD1_aPD1']);
 R = addreaction(model,[comp.Name,'.PD1_aPD1 + ',comp.Name,'.PD1 <-> ',comp.Name,'.PD1_aPD1_PD1']);
     set (R, 'ReactionRate', ['Chi_PD1_aPD1*kon_PD1_aPD1*(',comp.Name,'.PD1 * ',comp.Name,'.PD1_aPD1) -  2*koff_PD1_aPD1*',comp.Name,'.PD1_aPD1_PD1']);
     set (R, 'Notes'       , ['binding and unbinding of PD1 to PD1-aPD1 on ',Tname,' surface in synapse']);
-R = addreaction(model,[comp.Name,'.PDL1 <-> ',comp.Name,'.PDL1_aPDL1']);
-    set (R, 'ReactionRate', ['2*kon_PDL1_aPDL1*(',comp.Name,'.PDL1 * ',compDrug.Name,'.aPDL1/',gamma,'_aPDL1) -  koff_PDL1_aPDL1*',comp.Name,'.PDL1_aPDL1']);
-    set (R, 'Notes'       , ['binding and unbinding of PDL1 to aPDL1 on ',Cname,' surface in synapse']);
-R = addreaction(model,[comp.Name,'.PDL1_aPDL1 + ',comp.Name,'.PDL1 <-> ',comp.Name,'.PDL1_aPDL1_PDL1']);
-    set (R, 'ReactionRate', ['Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(',comp.Name,'.PDL1 * ',comp.Name,'.PDL1_aPDL1) -  2*koff_PDL1_aPDL1*',comp.Name,'.PDL1_aPDL1_PDL1']);
-    set (R, 'Notes'       , ['binding and unbinding of PDL1 to PDL1-aPDL1 on ',Cname,' surface in synapse']);
-
-% Dynamics of CD28/CTLA4/CD80/CD86/aCTLA4/aPDL1
+% Dynamics of CD28/CTLA4/CD80/CD86
 % CD28-CD80
 R = addreaction(model,[comp.Name,'.CD28 + ',comp.Name,'.CD80 <-> ',comp.Name,'.CD28_CD80']);
     set (R, 'ReactionRate', ['2*kon_CD28_CD80*(',comp.Name,'.CD28)*(',comp.Name,'.CD80)  -  koff_CD28_CD80*',comp.Name,'.CD28_CD80']);
@@ -405,13 +373,6 @@ R = addreaction(model,[comp.Name,'.CTLA4 + ',comp.Name,'.CD86 <-> ',comp.Name,'.
 R = addreaction(model,[comp.Name,'.CD86_CTLA4 + ',comp.Name,'.CD86 <-> ',comp.Name,'.CD86_CTLA4_CD86']);
     set (R, 'ReactionRate', ['kon_CTLA4_CD86*(',comp.Name,'.CD86_CTLA4)*(',comp.Name,'.CD86)  -  2*koff_CTLA4_CD86*',comp.Name,'.CD86_CTLA4_CD86']);
     set (R, 'Notes'       , 'binding and unbinding of CD86-CTLA4 and CD86 in synapse');
-% CTLA4-aCTLA4
-R = addreaction(model,[comp.Name,'.CTLA4 <-> ',comp.Name,'.CTLA4_aCTLA4']);
-    set (R, 'ReactionRate', ['4*kon_CTLA4_aCTLA4*(',comp.Name,'.CTLA4 * ',compDrug.Name,'.aCTLA4/',gamma,'_aCTLA4) -  koff_CTLA4_aCTLA4*',comp.Name,'.CTLA4_aCTLA4']);
-    set (R, 'Notes'       , ['binding and unbinding of CTLA4 to aCTLA4 on ',Tname,' surface in synapse']);
-R = addreaction(model,[comp.Name,'.CTLA4_aCTLA4 + ',comp.Name,'.CTLA4 <-> ',comp.Name,'.CTLA4_aCTLA4_CTLA4']);
-    set (R, 'ReactionRate', ['2*Chi_CTLA4_aCTLA4*kon_CTLA4_aCTLA4*(',comp.Name,'.CTLA4 * ',comp.Name,'.CTLA4_aCTLA4) -  2*koff_CTLA4_aCTLA4*',comp.Name,'.CTLA4_aCTLA4_CTLA4']);
-    set (R, 'Notes'       , ['binding and unbinding of CTLA4 to aCTLA4 on ',Tname,' surface in synapse']);
 % CD80 dimer dissociation
 R = addreaction(model,[comp.Name,'.CD80m + ',comp.Name,'.CD80m <-> ',comp.Name,'.CD80']);
     set (R, 'ReactionRate', ['kon_CD80_CD80*(',comp.Name,'.CD80m)*(',comp.Name,'.CD80m) - koff_CD80_CD80*',comp.Name,'.CD80']);
@@ -426,14 +387,6 @@ R = addreaction(model,[comp.Name,'.PDL1_CD80 + ',comp.Name,'.CD28 <-> ',comp.Nam
 R = addreaction(model,[comp.Name,'.PDL1_CD80 + ',comp.Name,'.CTLA4 <-> ',comp.Name,'.PDL1_CD80_CTLA4']);
     set (R, 'ReactionRate', ['2*kon_CTLA4_CD80*(',comp.Name,'.PDL1_CD80)*(',comp.Name,'.CTLA4)  - koff_CTLA4_CD80*',comp.Name,'.PDL1_CD80_CTLA4']);
     set (R, 'Notes'       , 'binding and unbinding of PDL1-CD80 and CTLA4 in synapse');
-% TPDL1-aPDL1
-R = addreaction(model,[comp.Name,'.TPDL1 <-> ',comp.Name,'.TPDL1_aPDL1']);
-    set (R, 'ReactionRate', ['2*kon_PDL1_aPDL1*(',comp.Name,'.TPDL1 * ',compDrug.Name,'.aPDL1/',gamma,'_aPDL1) -  koff_PDL1_aPDL1*',comp.Name,'.TPDL1_aPDL1']);
-    set (R, 'Notes'       , ['binding and unbinding of PDL1 to aPDL1 on ',Cname,' surface in synapse']);
-R = addreaction(model,[comp.Name,'.TPDL1_aPDL1 + ',comp.Name,'.TPDL1 <-> ',comp.Name,'.TPDL1_aPDL1_TPDL1']);
-    set (R, 'ReactionRate', ['Chi_PDL1_aPDL1*kon_PDL1_aPDL1*(',comp.Name,'.TPDL1 * ',comp.Name,'.TPDL1_aPDL1) -  2*koff_PDL1_aPDL1*',comp.Name,'.TPDL1_aPDL1_TPDL1']);
-    set (R, 'Notes'       , ['binding and unbinding of PDL1 to PDL1-aPDL1 on ',Cname,' surface in synapse']);
-
 % Update PD1 Hill Function
 addrule(model,['H_PD1_',Cname,' = ((',comp.Name,'.PD1_PDL1+',comp.Name,'.PD1_PDL2)/PD1_50)^n_PD1/(((',comp.Name,'.PD1_PDL1+',comp.Name,'.PD1_PDL2)/PD1_50)^n_PD1 + 1)'],'repeatedAssignment');
 % Anti-PD-1 occupancy fraction of synaptic PD1 (drug-engagement gate, =0 without

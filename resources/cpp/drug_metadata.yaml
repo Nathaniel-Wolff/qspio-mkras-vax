@@ -10,9 +10,7 @@
 #                  'per_bsa'    (dose = value × patient_BSA_m2, in mg)
 #                  'direct'     (dose = value, in mg or cells)
 #   targets        List of {species, fraction} entries; fractions should sum
-#                  to 1 for a single dose. For drugs with two absorption
-#                  sites (entinostat, cabozantinib) the fraction splits the
-#                  total dose between species.
+#                  to 1 for a single dose.
 #
 # Values seeded from pdac-build/core/model_compilation/schedule_dosing.m
 # (schedule_dosing.m is still the MATLAB source of truth; refactoring it
@@ -39,41 +37,6 @@ drugs:
     dose_basis: per_weight
     targets:
       - {species: V_C.aPD1, fraction: 1.0}
-
-  atezolizumab:
-    mw: 1.436e8
-    units: mole
-    dose_basis: per_weight
-    targets:
-      - {species: V_C.aPDL1, fraction: 1.0}
-
-  durvalumab:
-    mw: 1.49e8
-    units: mole
-    dose_basis: per_weight
-    targets:
-      - {species: V_C.aPDL1, fraction: 1.0}
-
-  ipilimumab:
-    mw: 1.486349e8
-    units: mole
-    dose_basis: per_weight
-    targets:
-      - {species: V_C.aCTLA4, fraction: 1.0}
-
-  tremelimumab:
-    mw: 1.4638e8
-    units: mole
-    dose_basis: per_weight
-    targets:
-      - {species: V_C.aCTLA4, fraction: 1.0}
-
-  aCD47:
-    mw: 7.8e7
-    units: mole
-    dose_basis: per_weight
-    targets:
-      - {species: V_C.aCD47, fraction: 1.0}
 
   GVAX:
     units: cell

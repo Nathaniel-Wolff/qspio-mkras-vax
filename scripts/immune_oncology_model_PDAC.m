@@ -74,12 +74,8 @@ antigen   = create_antigen({'C1'},[5.4e-13],'antigenID',1);
 model = antigen_module(model,'1',params_out,antigen);
 % PK Modules
 params_aPD1    = pk_parameters('nivolumab');
-params_aPDL1   = pk_parameters('durvalumab');
-params_aCTLA4  = pk_parameters('tremelimumab');
 params_aCD137  = pk_parameters('urelumab');   % anti-CD137/4-1BB agonist (Heumann Arm C)
 model = pk_module(model,'aPD1',params_aPD1);
-model = pk_module(model,'aPDL1',params_aPDL1,'n');
-model = pk_module(model,'aCTLA4' ,params_aCTLA4);
 % Urelumab PK: 4-compartment drug species V_{C,P,T,LN}.aCD137. Always added
 % (=0 when undosed) so the TLA-local H_CD137_T CD8-activation Hill in tla_module
 % (reads V_T.aCD137) is well-defined for every scenario.
@@ -92,10 +88,8 @@ model = checkpoint_module(model,params_out,'CD8','APC');
 % QSPIO-HCC Modules
 model = Th_module(model,params_out);
 model = cytokine_tcell_module(model, params_out);  % Centralized T-cell cytokine reactions (IL2, IFNg, TGFb)
-model = MDSC_module(model,params_out,{'C1'},'inostat',0,'drugName','entinostat');
-% model = nabpaclitaxel_module(model,params_out);
-% model = cabozantinib_module(model,params_out); % Disabled due to numerical instability
-model = macrophage_module(model,params_out,{'C1'},'aCD47',0); % PK module in development for aCD47
+model = MDSC_module(model,params_out,{'C1'});
+model = macrophage_module(model,params_out,{'C1'});
 % Fibroblast Module
 model = fibroblast_module_enhanced(model,params_out);
 
