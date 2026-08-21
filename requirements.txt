@@ -1,0 +1,14 @@
+# Python requirements for QSPIO-PDAC — the model, and what builds and tests it.
+#
+# This repository is MATLAB and C++. Six Python files remain — the cluster
+# status report and the test suite — and this is what they import. The
+# inference stack left with workflows/ on 2026-08-19; the fit lives in
+# pdac-paper, which carries its own requirements.
+
+# SBML -> C++ ODE generation, and the MATLAB <-> C++ parity harness.
+qsp-codegen @ git+ssh://git@github.com/popellab/qsp-codegen.git@main
+# Cluster job state, read by scripts/hpc_status.py.
+qsp-hpc-tools @ git+ssh://git@github.com/popellab/qsp-hpc-tools.git@main
+
+numpy>=1.20.0            # tests/scenarios/_coverage.py
+pytest>=7.0.0

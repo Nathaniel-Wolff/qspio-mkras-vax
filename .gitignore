@@ -1,0 +1,113 @@
+# MATLAB
+*.m~
+*.asv
+startup.m
+*.mat
+.sim_outputs.json
+
+# Python virtual environment
+venv/
+env/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node modules and React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and OS
+.DS_Store
+.claude
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+
+# Generated/large files
+*.html
+sources
+*.xlsx
+*.pdf
+
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+scratch
+batch_jobs
+cache
+
+sbi-logs
+results/
+
+# Generated figures and slide previews
+figures/
+**/figures/
+presentations/slide_previews/
+
+# Quarto rendering artifacts
+**/libs/bootstrap/
+**/libs/clipboard/
+**/libs/quarto-html/
+
+.coverage
+.qsp-hpc/
+workflows/local_test.py
+
+validation-outputs
+
+jobs
+to-review
+
+.mcp.json
+
+# Submodel comparison cache
+
+# Office temp files
+~$*
+
+# Staged extraction working directory
+work/
+
+# Source PDFs for submodel target extraction (large, per-paper subfolders)
+
+# Rendered presentation HTML (build output of marp .md sources)
+presentations/*.html
+
+# Redundant codegen param dump. qsp-codegen's generate() emits param_all.xml
+# into its out-dir, but the tracked/consumed param file is the refresh-tool
+# merge target resources/cpp/param_all.xml (built from qsp_params_xml_snippet.xml).
+cpp/qsp/ode/param_all.xml
+
+# Fetched simulator pools, not artifacts of this repo.
+artifacts/
+
+# omega elicitation build products. Both regenerate in seconds from committed
+# inputs, and a 500 KB matrix in a diff is not reviewable either way.
+#   packs.json    <- elicit_omega.py pack, from pdac_priors + the .m + model_structure
+#   omega_corr.*  <- elicit_omega.py build-matrix, from loadings.json + omega_axes.yaml
+parameters/omega_corr.csv
+parameters/omega_corr.npz
+.jax_cache/
+
+# LLM panel and audit run outputs. Untracked before the 2026-08-19 prune,
+# and briefly committed by a `git add -A` during it. They are process
+# artifacts of a review, not the model.
+notes/
+
+# Leftovers from the 2026-08-19 prunes, still on disk in working trees.
+# Ignored so a `git add -A` cannot sweep them back in.
+model_catalog.txt
+sbi-logs/
+workflows/
+presentations/
