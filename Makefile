@@ -110,7 +110,7 @@ refresh-cpp: export-sbml model-structure
 	@# and writes generated C++ into the in-repo $(CPP_ODE_DIR). qsp-codegen
 	@# is a pinned sibling tool (pip install -e if editing).
 	@echo ">> qsp-codegen: $(CURDIR)/PDAC_model.sbml -> $(CPP_ODE_DIR) ..."
-	$(QSP_CODEGEN) --sbml $(CURDIR)/PDAC_model.sbml --out-dir $(CPP_ODE_DIR)
+	$(QSP_CODEGEN) generate --sbml $(CURDIR)/PDAC_model.sbml --out-dir $(CPP_ODE_DIR)
 	@echo ">> qsp-refresh-param-xml: $(CPP_ODE_DIR)/qsp_params_xml_snippet.xml -> $(CPP_PARAM_XML) ..."
 	$(QSP_REFRESH_XML) \
 	    --snippet $(CPP_ODE_DIR)/qsp_params_xml_snippet.xml \

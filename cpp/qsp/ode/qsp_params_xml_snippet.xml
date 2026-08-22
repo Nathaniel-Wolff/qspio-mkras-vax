@@ -607,9 +607,8 @@
       <HMGB1_50_ID>10000000.0</HMGB1_50_ID>
       <H_HMGB1_ID>0.0</H_HMGB1_ID>
       <J_mature_ID>0.0</J_mature_ID>
-      <f_epitope_spread_CD8>4.0</f_epitope_spread_CD8>
+      <f_epitope_spread>4.89897948556636</f_epitope_spread>
       <H_P1_spread>0.0</H_P1_spread>
-      <f_epitope_spread_CD4>6.0</f_epitope_spread_CD4>
       <k_Cy_clear>2.5</k_Cy_clear>
       <k_Cy_Treg_deplete>0.15</k_Cy_Treg_deplete>
       <Cy_50_Treg>50.0</Cy_50_Treg>

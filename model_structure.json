@@ -3683,22 +3683,16 @@
       "description": ""
     },
     {
-      "name": "f_epitope_spread_CD8",
-      "value": 4,
+      "name": "f_epitope_spread",
+      "value": 4.8989794855663558,
       "units": "dimensionless",
-      "description": "Max fold-broadening of the tumor-specific CD8 repertoire under saturating GVAX antigen (cross-presentation-limited epitope spreading; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated)."
+      "description": "Shared effective fold-broadening of tumor-specific CD4 and CD8 repertoires under saturating GVAX antigen (qualitatively anchored to Thomas 2004 PMID 15289501; geometric-mean initial value; estimated and requires reduced-model refit)."
     },
     {
       "name": "H_P1_spread",
       "value": 0,
       "units": "dimensionless",
       "description": "Vaccine-antigen Hill gating epitope-spreading clonal recruitment (Path A); 0 at diagnosis"
-    },
-    {
-      "name": "f_epitope_spread_CD4",
-      "value": 6,
-      "units": "dimensionless",
-      "description": "Max fold-broadening of the tumor-specific CD4 helper repertoire under saturating GVAX antigen (MHC-II default-pathway epitope spreading, broader than CD8; GM-CSF preferentially recruits cDC2/moDCs; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated)."
     },
     {
       "name": "k_Cy_clear",
@@ -4572,13 +4566,13 @@
       "products": [
         "V_LN.aCD8"
       ],
-      "rate_law": "k_T_activation_per_APC*V_LN.mcDC1*H_P1*V_LN.nCD8*H_CD4_help*(n_CD8_clones*(1 + f_epitope_spread_CD8*H_P1_spread))",
+      "rate_law": "k_T_activation_per_APC*V_LN.mcDC1*H_P1*V_LN.nCD8*H_CD4_help*(n_CD8_clones*(1 + f_epitope_spread*H_P1_spread))",
       "parameters": [
         "n_CD8_clones",
         "k_T_activation_per_APC",
         "H_CD4_help",
         "H_P1",
-        "f_epitope_spread_CD8",
+        "f_epitope_spread",
         "H_P1_spread"
       ]
     },
@@ -6202,13 +6196,13 @@
       "products": [
         "V_LN.aTh"
       ],
-      "rate_law": "k_T_activation_per_APC*V_LN.mcDC2*H_P1_II*V_LN.nCD4*(n_CD4_clones*(1 + f_epitope_spread_CD4*H_P1_spread))",
+      "rate_law": "k_T_activation_per_APC*V_LN.mcDC2*H_P1_II*V_LN.nCD4*(n_CD4_clones*(1 + f_epitope_spread*H_P1_spread))",
       "parameters": [
         "n_CD4_clones",
         "k_T_activation_per_APC",
         "H_P1_II",
-        "H_P1_spread",
-        "f_epitope_spread_CD4"
+        "f_epitope_spread",
+        "H_P1_spread"
       ]
     },
     {

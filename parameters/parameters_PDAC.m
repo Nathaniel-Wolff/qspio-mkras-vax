@@ -214,24 +214,19 @@ params.VEGF_conc_initial.Notes = 'Baseline VEGF concentration (varied). From ang
 params.n_clones_tum.Value = 120;
 params.n_clones_tum.Units = 'dimensionless';
 params.n_clones_tum.Notes = '(Morisaki 2021 PMID: 34193879; Narang 2019, PMID: 30832597)';
-% Vaccine-driven epitope spreading (Path A): max fold-broadening of the
-% tumor-specific CD8 repertoire under saturating GVAX antigen. GVAX (whole-cell,
+% Vaccine-driven epitope spreading (Path A): effective fold-broadening of the
+% tumor-specific T-cell repertoire under saturating GVAX antigen. GVAX (whole-cell,
 % GM-CSF) cross-primes new specificities (Thomas 2004 J Exp Med PMID 15289501:
 % mesothelin-specific CD8 induced by a vaccine that does not define that antigen).
-% Epitope-spreading intensities: scale n_CD8_clones / n_CD4_clones in the
+% One shared intensity scales n_CD8_clones / n_CD4_clones in the
 % naive->aCD8 / naive->aTh commitment reactions via the vaccine-antigen Hill
-% H_P1_spread (=0 at diagnosis). SEPARATE for CD8 and CD4: CD8 broadening runs
-% through the rate-limiting, cDC1-restricted cross-presentation pathway and is
-% downstream of CD4 help, whereas CD4 broadening uses the promiscuous MHC-II
-% default pathway -- so f_..._CD4 >= f_..._CD8. Both estimated, SBI-calibrated.
-params.f_epitope_spread_CD8.Value = 4;
-params.f_epitope_spread_CD8.Units = 'dimensionless';
-params.f_epitope_spread_CD8.Notes = 'Max fold-broadening of the tumor-specific CD8 repertoire under saturating GVAX antigen (cross-presentation-limited epitope spreading; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated).';
-params.f_epitope_spread_CD8.derivedFrom = {};
-params.f_epitope_spread_CD4.Value = 6;
-params.f_epitope_spread_CD4.Units = 'dimensionless';
-params.f_epitope_spread_CD4.Notes = 'Max fold-broadening of the tumor-specific CD4 helper repertoire under saturating GVAX antigen (MHC-II default-pathway epitope spreading, broader than CD8; GM-CSF preferentially recruits cDC2/moDCs; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated).';
-params.f_epitope_spread_CD4.derivedFrom = {};
+% H_P1_spread (=0 at diagnosis). A shared parameter retains vaccine-driven
+% broadening without asserting an independently identifiable CD4:CD8 asymmetry.
+% Its initial value is the geometric mean of the retired medians 4 and 6; refit.
+params.f_epitope_spread.Value = 4.898979485566356;
+params.f_epitope_spread.Units = 'dimensionless';
+params.f_epitope_spread.Notes = 'Shared effective fold-broadening of tumor-specific CD4 and CD8 repertoires under saturating GVAX antigen (qualitatively anchored to Thomas 2004 PMID 15289501; geometric-mean initial value; estimated and requires reduced-model refit).';
+params.f_epitope_spread.derivedFrom = {};
 % Self-antigen-specific T cell clone number
 params.n_clones_slf.Value = 100;
 params.n_clones_slf.Units = 'dimensionless';

@@ -205,7 +205,7 @@ addrule(model, 'IL2_niche = k_IL2_sec*IL2_supply/(k_IL2_cons*IL2_demand/IL2_50 +
 %
 % CRITICAL DEPENDENCY: H_div_help only swings the RIGHT way because the CD4 help
 % arm now responds to vaccine -- which required CD4-arm epitope spreading
-% (gvax_module Path A, f_epitope_spread_CD4). WITHOUT it the naive-CD4 pool craters
+% (gvax_module Path A, f_epitope_spread). WITHOUT it the naive-CD4 pool craters
 % and V_LN.Th *drops* under vaccine (0.76x), so H_div_help would move backwards
 % (0.61->0.54) and N_aT would FALL. With CD4 spreading, V_LN.Th rises ~7x and the
 % gate fires forward. N_aTh (CD4) keeps the unlicensed bare-H_CD28_APC form --

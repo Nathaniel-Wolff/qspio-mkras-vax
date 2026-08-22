@@ -237,26 +237,20 @@ end
 % cannot broaden under vaccine (cd8_fc deficit Path A; see
 % notes/calibration/cd8_fc_vaccine_expansion_deficit.md). Here we scale the recruited
 % clone count in the naive-CD8 -> aCD8 commitment reaction by a vaccine-antigen-gated
-% spreading factor (1 + f_epitope_spread_CD8*H_P1_spread). H_P1_spread reuses the same
+% spreading factor (1 + f_epitope_spread*H_P1_spread). H_P1_spread reuses the same
 % P1_GVAX-concentration Hill the maturation flux uses, so it is identically 0 at
 % diagnosis (P1_GVAX = 0 -> multiplier = 1, baseline untouched) and rises under GVAX
 % (~0.83 at d21). Only the commitment reaction (uniquely identified by the
 % H_CD4_help*n_CD8_clones substring) is rewritten; the n_CD8_clones PARAMETER is
 % unchanged, so the antigen_rate.m and TCR_KPR_module.m clone-count usages are
 % unaffected.
-% CD4 and CD8 spreading intensities are SEPARATE: CD8 broadening runs through the
-% rate-limiting, cDC1-restricted cross-presentation pathway and is downstream of CD4
-% help (licensed cross-priming), whereas CD4 broadening uses the promiscuous MHC-II
-% default pathway -- so the helper repertoire broadens more readily and f_..._CD4 >=
-% f_..._CD8 is the prior expectation. (The CD8 commitment already carries H_CD4_help,
-% but it sits saturated, so the explicit CD8 term currently carries the CD8 broadening
-% directly; the cleaner long-term form routes CD8 spreading through a *responsive* help
-% signal and retires this explicit CD8 term -- same caveat shape as the B7-licensing
-% note in checkpoint_module.) Both medians are estimates; SBI finds the ratio.
-f_spread_CD8 = sbioselect(model,'Type','parameter','Name','f_epitope_spread_CD8');
-if isempty(f_spread_CD8)
-    addparameter(model,'f_epitope_spread_CD8',params.f_epitope_spread_CD8.Value, ...
-        'ValueUnits',params.f_epitope_spread_CD8.Units,'Notes',params.f_epitope_spread_CD8.Notes);
+% CD4 and CD8 use one effective intensity. The active treatment targets do not
+% identify two independent amplitudes, so pathway-specific presentation detail is
+% retained in the surrounding reactions rather than asserted as a fitted ratio.
+f_spread = sbioselect(model,'Type','parameter','Name','f_epitope_spread');
+if isempty(f_spread)
+    addparameter(model,'f_epitope_spread',params.f_epitope_spread.Value, ...
+        'ValueUnits',params.f_epitope_spread.Units,'Notes',params.f_epitope_spread.Notes);
 end
 H_P1_spread = sbioselect(model,'Type','parameter','Name','H_P1_spread');
 if isempty(H_P1_spread)
@@ -271,7 +265,7 @@ if isempty(rxnACD8)
 else
     for i = 1:numel(rxnACD8)
         rate = get(rxnACD8(i),'ReactionRate');
-        newrate = strrep(rate,'n_CD8_clones','(n_CD8_clones*(1 + f_epitope_spread_CD8*H_P1_spread))');
+        newrate = strrep(rate,'n_CD8_clones','(n_CD8_clones*(1 + f_epitope_spread*H_P1_spread))');
         if ~strcmp(rate,newrate)
             set(rxnACD8(i),'ReactionRate',newrate);
         end
@@ -288,15 +282,10 @@ end
 % the antigen-presentation gain is cancelled and V_LN.aTh barely rises (1.19x) while
 % V_LN.aCD8 (which has this term) reaches 3.9x. The clone factor sits on the aTh
 % PRODUCTION (null -> V_LN.aTh) not the naive-pool drain, so scaling it boosts helper
-% output without accelerating the naive depletion. Uses the dedicated f_epitope_spread_CD4
-% intensity (>= the CD8 one; see the asymmetry note above). The reaction is uniquely
+% output without accelerating the naive depletion. It uses the same effective
+% spreading intensity as CD8. The reaction is uniquely
 % identified by the H_P1_II*V_LN.nCD4*n_CD4_clones substring; the n_CD4_clones PARAMETER
 % is unchanged so antigen_rate.m / TCR_KPR_module.m are untouched.
-f_spread_CD4 = sbioselect(model,'Type','parameter','Name','f_epitope_spread_CD4');
-if isempty(f_spread_CD4)
-    addparameter(model,'f_epitope_spread_CD4',params.f_epitope_spread_CD4.Value, ...
-        'ValueUnits',params.f_epitope_spread_CD4.Units,'Notes',params.f_epitope_spread_CD4.Notes);
-end
 rxnATh = sbioselect(model,'Type','reaction','Where','ReactionRate','regexp','H_P1_II\*V_LN\.nCD4\*n_CD4_clones');
 if isempty(rxnATh)
     warning('gvax_module:noAThcommit', ...
@@ -304,7 +293,7 @@ if isempty(rxnATh)
 else
     for i = 1:numel(rxnATh)
         rate = get(rxnATh(i),'ReactionRate');
-        newrate = strrep(rate,'n_CD4_clones','(n_CD4_clones*(1 + f_epitope_spread_CD4*H_P1_spread))');
+        newrate = strrep(rate,'n_CD4_clones','(n_CD4_clones*(1 + f_epitope_spread*H_P1_spread))');
         if ~strcmp(rate,newrate)
             set(rxnATh(i),'ReactionRate',newrate);
         end
@@ -571,5 +560,4 @@ if add_cy
 end
 
 end
-
 
