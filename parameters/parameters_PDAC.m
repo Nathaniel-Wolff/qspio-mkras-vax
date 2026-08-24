@@ -2855,25 +2855,16 @@ params.Cy_eff_50.Units = "milligram";
 params.Cy_eff_50.Notes = "Half-saturation of the Cy effect compartment on tumor-Treg proliferation (structural; weakly identifiable, fixed)";
 
 %% apCAF-Specific Parameters (Tolerogenic Antigen Presentation)
-% apCAFs express MHC-II and present tumor antigen tolerogenically (Elyada 2019)
-params.k_P1_up_apCAF.Value = 1.44;
-params.k_P1_up_apCAF.Units = '1/(cell*day)';
-params.k_P1_up_apCAF.Notes = 'Antigen uptake rate by apCAFs. ~0.1x of k_up (14.4); less efficient than professional APCs (Elyada 2019 PMID: 31197017).';
-params.k_P1_up_apCAF.derivedFrom = {'Elyada 2019 PMID: 31197017'};
-
-params.k_apCAF_Treg.Value = 0.03;
-params.k_apCAF_Treg.Units = '1/day';
-params.k_apCAF_Treg.Notes = 'Max Th-to-Treg conversion rate via apCAF tolerogenic presentation. Reduced from 0.5 to 0.03 (~1.5x TGFb pathway rate 0.022/day); apCAFs lack costimulatory molecules and are less efficient than professional APCs. Original 0.5 had no lit backing (Elyada 2019 PMID: 31197017).';
-params.k_apCAF_Treg.derivedFrom = {'Elyada 2019 PMID: 31197017'};
-
-params.K_apCAF_Treg.Value = 1e8;
-params.K_apCAF_Treg.Units = 'cell';
-params.K_apCAF_Treg.Notes = 'Half-max apCAF count for saturation of tolerogenic Treg induction. Set to 1e8 (top of the ~1e7-1e8 substantial-CAF-fraction range) so the Hill term only saturates when apCAFs are a substantial fraction of total CAFs; matches the pdac_priors.csv prior median (mu=ln(1e8)). (Stale earlier note claimed "raised to 1e7" — value and prior are both 1e8.)';
-params.K_apCAF_Treg.derivedFrom = {'estimated'};
+% apCAFs express MHC-II, engage antigen-specific CD4 T cells, and can induce
+% Tregs without canonical costimulation (Elyada 2019; Huang 2022).
+params.k_apCAF_iTreg.Value = 0.15;
+params.k_apCAF_iTreg.Units = '1/day';
+params.k_apCAF_iTreg.Notes = 'Effective antigen-specific induced-Treg rate via apCAF presentation. Multiplied by the apCAF fraction and a local-antigen QSS gate; contact geometry and absolute-count saturation are collapsed into this one fitted coordinate. The initial value preserves the retired formulation at the nominal 10% apCAF share (0.15/day * 0.1 = 0.015/day, matching 0.03/day at its half-max count gate). Requires refit. Elyada 2019 PMID: 31197017; Huang 2022 PMID: 35523176.';
+params.k_apCAF_iTreg.derivedFrom = {'Elyada 2019 PMID: 31197017', 'Huang 2022 PMID: 35523176', 'estimated'};
 
 params.P1_50_apCAF.Value = 1e-9;
 params.P1_50_apCAF.Units = 'molarity';
-params.P1_50_apCAF.Notes = 'EC50 for antigen-dependent Treg induction by apCAFs. Raised from 1e-12 to 1e-9 M; 1e-12 was effectively zero (always-on). 1e-9 M requires meaningful antigen levels for activation.';
+params.P1_50_apCAF.Notes = 'Fixed EC50 for the quasi-steady local-antigen gate on apCAF MHC-II-dependent Treg induction. Held at 1e-9 M and not varied across patients pending an operating-range trace.';
 params.P1_50_apCAF.derivedFrom = {'estimated'};
 
 %% Th Tumor-Local Proliferation Parameters
@@ -2929,7 +2920,7 @@ params.k_Th_seed.derivedFrom = {};
 %   data prefers the apCAF→Treg-cap pathway off, so the additive-cap
 %   formulation introduced in the 2026-05-01 PR was rolled back to the
 %   simpler logistic. The remaining apCAF→Treg coupling is the direct
-%   Th→Treg conversion via k_apCAF_Treg in fibroblast_module_enhanced.
+%   antigen-specific Th→Treg contribution via k_apCAF_iTreg in fibroblast_module_enhanced.
 % alpha_Th_cap and CD8_50_Tcap RETIRED 2026-06-22 (route-2 Th cap fix): the
 % CD8-inflammation Hill they parameterized was dead (H_CD8~1 everywhere) and
 % only inflated the data-anchored rho_Th_max cap. Removed from Th_module +

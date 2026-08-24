@@ -578,14 +578,12 @@
       <IL1_ratio>0.0</IL1_ratio>
       <H_IL1_eff>0.0</H_IL1_eff>
       <k_vas_myCAF_sec>0.002</k_vas_myCAF_sec>
-      <k_P1_up_apCAF>1.44</k_P1_up_apCAF>
-      <k_apCAF_Treg>0.03</k_apCAF_Treg>
-      <K_apCAF_Treg>100000000.0</K_apCAF_Treg>
+      <k_apCAF_iTreg>0.15</k_apCAF_iTreg>
       <P1_50_apCAF>1e-09</P1_50_apCAF>
       <aPSC_total>0.0</aPSC_total>
       <k_TGFb_sec_myCAF>2e-10</k_TGFb_sec_myCAF>
       <k_CXCL12_sec_cancer>5e-11</k_CXCL12_sec_cancer>
-      <H_P1_apCAF>0.0</H_P1_apCAF>
+      <H_apCAF_pMHCII>0.0</H_apCAF_pMHCII>
       <k_GVAX_clearance>0.1</k_GVAX_clearance>
       <V_ID_volume>0.0001</V_ID_volume>
       <k_GMCSF_prod>1e-08</k_GMCSF_prod>

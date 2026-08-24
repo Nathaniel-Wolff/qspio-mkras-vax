@@ -479,18 +479,12 @@ p = addparameter(model,'k_vas_myCAF_sec',params.k_vas_myCAF_sec.Value,'ValueUnit
 p.UserData.Source = params.k_vas_myCAF_sec.Notes;
     p.UserData.derivedFrom = params.k_vas_myCAF_sec.derivedFrom;
 
-% apCAF-specific parameters
-p = addparameter(model,'k_P1_up_apCAF',params.k_P1_up_apCAF.Value,'ValueUnits',params.k_P1_up_apCAF.Units, 'Notes', 'Antigen uptake rate by apCAFs');
-p.UserData.Source = params.k_P1_up_apCAF.Notes;
-    p.UserData.derivedFrom = params.k_P1_up_apCAF.derivedFrom;
-
-p = addparameter(model,'k_apCAF_Treg',params.k_apCAF_Treg.Value,'ValueUnits',params.k_apCAF_Treg.Units, 'Notes', 'Max Th->Treg conversion rate via apCAF');
-p.UserData.Source = params.k_apCAF_Treg.Notes;
-    p.UserData.derivedFrom = params.k_apCAF_Treg.derivedFrom;
-
-p = addparameter(model,'K_apCAF_Treg',params.K_apCAF_Treg.Value,'ValueUnits',params.K_apCAF_Treg.Units, 'Notes', 'Half-max apCAF count for Treg induction saturation');
-p.UserData.Source = params.K_apCAF_Treg.Notes;
-    p.UserData.derivedFrom = params.K_apCAF_Treg.derivedFrom;
+% apCAF-specific parameters. The functional coordinate is an effective
+% antigen-specific induced-Treg rate; contact geometry is represented by the
+% apCAF fraction rather than a second, absolute-cell-count saturation curve.
+p = addparameter(model,'k_apCAF_iTreg',params.k_apCAF_iTreg.Value,'ValueUnits',params.k_apCAF_iTreg.Units, 'Notes', 'Effective antigen-specific induced-Treg rate via apCAF presentation');
+p.UserData.Source = params.k_apCAF_iTreg.Notes;
+    p.UserData.derivedFrom = params.k_apCAF_iTreg.derivedFrom;
 
 p = addparameter(model,'P1_50_apCAF',params.P1_50_apCAF.Value,'ValueUnits',params.P1_50_apCAF.Units, 'Notes', 'EC50 for antigen-dependent Treg induction by apCAFs');
 p.UserData.Source = params.P1_50_apCAF.Notes;
@@ -717,30 +711,34 @@ reaction = addreaction(model,'V_T.IL1 -> null');
     set(reaction,'ReactionRate','k_IL1_deg*V_T.IL1*V_T');
     set(reaction,'Notes','IL-1alpha degradation in tumor');
 
-%% apCAF Tolerogenic Antigen Presentation (Elyada 2019)
+%% apCAF Tolerogenic Antigen Presentation (Elyada 2019; Huang 2022)
 
-% Reaction A: Antigen sequestration by apCAFs
-% apCAFs take up P1 but do NOT process it into productive T cell activation - it's a sink
-% Competes with professional APC uptake (k_up * V_T.APC * V_T.P1 * V_T)
-if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'P1'))
-    reaction = addreaction(model,'V_T.P1 -> null');
-        set(reaction,'ReactionRate','k_P1_up_apCAF*V_T.apCAF*V_T.P1*V_T');
-        set(reaction,'Notes','Antigen sequestration by apCAFs (competes with professional APC uptake, Elyada 2019)');
-end
-
-% Reaction B: Tolerogenic Th -> Treg conversion by apCAFs
-% ADDITIONAL to existing TGFb-dependent Th->Treg pathway in Th_module
-% Creates distinct antigen-dependent, cell-contact-dependent tolerance circuit
-% H_P1_apCAF rule for antigen-dependent Treg induction
+% apCAFs present tumor antigen to CD4 T cells without canonical costimulation
+% and can induce antigen-specific Tregs. Represent that biology as one
+% additive contribution to the existing Th -> Treg flux. The apCAF fraction
+% captures encounter opportunity without introducing an unidentifiable
+% absolute-cell-count gate. P1 is a presentation gate, not an apCAF sink.
 if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'P1')) && ...
    ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'Th'))
-    H_P1_apCAF = addparameter(model,'H_P1_apCAF',0,'ValueUnits','dimensionless','ConstantValue',false, ...
-        'Notes', 'Hill function for antigen-dependent apCAF Treg induction');
-    addrule(model, 'H_P1_apCAF = V_T.P1/(V_T.P1 + P1_50_apCAF)', 'repeatedAssignment');
+    H_apCAF_pMHCII = addparameter(model,'H_apCAF_pMHCII',0,'ValueUnits','dimensionless','ConstantValue',false, ...
+        'Notes', 'Quasi-steady antigen-presentation gate for apCAF MHC-II-dependent Treg induction');
+    addrule(model, 'H_apCAF_pMHCII = V_T.P1/(V_T.P1 + P1_50_apCAF)', 'repeatedAssignment');
 
-    reaction = addreaction(model,'V_T.Th -> V_T.Treg');
-        set(reaction,'ReactionRate','k_apCAF_Treg*V_T.Th*(V_T.apCAF/(V_T.apCAF + K_apCAF_Treg))*H_P1_apCAF');
-        set(reaction,'Notes','Tolerogenic Th->Treg conversion by apCAFs (antigen-dependent, Elyada 2019)');
+    didAppendApCAF = false;
+    for i = 1:length(model.reaction)
+        if strcmp(model.reaction(i).reaction, 'V_T.Th -> V_T.Treg')
+            baseRate = get(model.reaction(i),'ReactionRate');
+            apCAFRate = 'k_apCAF_iTreg*V_T.Th*(V_T.apCAF/(aPSC_total + cell))*H_apCAF_pMHCII';
+            set(model.reaction(i),'ReactionRate',['(' baseRate ') + ' apCAFRate]);
+            set(model.reaction(i),'Notes','TGFb/ArgI and antigen-specific apCAF contributions to Th->Treg conversion. The Th pool is the model''s local conventional-CD4 substrate; no separate intratumoral naive-CD4 state is represented.');
+            didAppendApCAF = true;
+            break
+        end
+    end
+    if ~didAppendApCAF
+        warning('fibroblast_module_enhanced:missingThToTreg', ...
+            'Could not append the apCAF contribution because V_T.Th -> V_T.Treg was not found.');
+    end
 end
 
 %% Add rules for Hill functions used by immune modules

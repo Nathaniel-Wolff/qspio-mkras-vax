@@ -569,14 +569,12 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.IL1_ratio",
     "Param.QSP.init_value.Parameter.H_IL1_eff",
     "Param.QSP.init_value.Parameter.k_vas_myCAF_sec",
-    "Param.QSP.init_value.Parameter.k_P1_up_apCAF",
-    "Param.QSP.init_value.Parameter.k_apCAF_Treg",
-    "Param.QSP.init_value.Parameter.K_apCAF_Treg",
+    "Param.QSP.init_value.Parameter.k_apCAF_iTreg",
     "Param.QSP.init_value.Parameter.P1_50_apCAF",
     "Param.QSP.init_value.Parameter.aPSC_total",
     "Param.QSP.init_value.Parameter.k_TGFb_sec_myCAF",
     "Param.QSP.init_value.Parameter.k_CXCL12_sec_cancer",
-    "Param.QSP.init_value.Parameter.H_P1_apCAF",
+    "Param.QSP.init_value.Parameter.H_apCAF_pMHCII",
     "Param.QSP.init_value.Parameter.k_GVAX_clearance",
     "Param.QSP.init_value.Parameter.V_ID_volume",
     "Param.QSP.init_value.Parameter.k_GMCSF_prod",
@@ -652,7 +650,7 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.CAF_total_T",
 };
 
-QSPParam::QSPParam() :_param(640, 0) {}
+QSPParam::QSPParam() :_param(638, 0) {}
 
 double QSPParam::getVal(int n) const { return _param[n]; }
 
@@ -660,7 +658,7 @@ void QSPParam::_readParameters(const std::string& filename){
     namespace pt = boost::property_tree;
     pt::ptree tree;
     pt::read_xml(filename, tree, pt::xml_parser::trim_whitespace);
-    for (int i = 0; i < 640; i++){
+    for (int i = 0; i < 638; i++){
         try { _param[i] = tree.get<double>(_xml_paths[i]); }
         catch (const pt::ptree_bad_path&) {
             std::cerr << "WARNING: QSP param not found: "
@@ -670,7 +668,7 @@ void QSPParam::_readParameters(const std::string& filename){
 }
 
 void QSPParam::printParam(void) const {
-    for (int i = 0; i < 640; i++)
+    for (int i = 0; i < 638; i++)
         std::cout << _xml_paths[i] << " = " << _param[i] << std::endl;
 }
 
