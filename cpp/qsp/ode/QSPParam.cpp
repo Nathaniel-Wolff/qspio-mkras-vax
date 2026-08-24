@@ -551,8 +551,6 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.k_CXCL12_deg",
     "Param.QSP.init_value.Parameter.CXCL12_50_Texcl",
     "Param.QSP.init_value.Parameter.k_IL6_sec_iCAF",
-    "Param.QSP.init_value.Parameter.k_IL6_sec_C",
-    "Param.QSP.init_value.Parameter.k_IL6_sec_TAM",
     "Param.QSP.init_value.Parameter.k_IL6_deg",
     "Param.QSP.init_value.Parameter.IL6_50_MDSC",
     "Param.QSP.init_value.Parameter.IL6_50_M2",
@@ -649,7 +647,7 @@ const char* QSPParam::_xml_paths[] = {
     "Param.QSP.init_value.Parameter.CAF_total_T",
 };
 
-QSPParam::QSPParam() :_param(637, 0) {}
+QSPParam::QSPParam() :_param(635, 0) {}
 
 double QSPParam::getVal(int n) const { return _param[n]; }
 
@@ -657,7 +655,7 @@ void QSPParam::_readParameters(const std::string& filename){
     namespace pt = boost::property_tree;
     pt::ptree tree;
     pt::read_xml(filename, tree, pt::xml_parser::trim_whitespace);
-    for (int i = 0; i < 637; i++){
+    for (int i = 0; i < 635; i++){
         try { _param[i] = tree.get<double>(_xml_paths[i]); }
         catch (const pt::ptree_bad_path&) {
             std::cerr << "WARNING: QSP param not found: "
@@ -667,7 +665,7 @@ void QSPParam::_readParameters(const std::string& filename){
 }
 
 void QSPParam::printParam(void) const {
-    for (int i = 0; i < 637; i++)
+    for (int i = 0; i < 635; i++)
         std::cout << _xml_paths[i] << " = " << _param[i] << std::endl;
 }
 

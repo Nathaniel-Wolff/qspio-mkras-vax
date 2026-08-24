@@ -2597,27 +2597,12 @@ params.n_vasc.Notes = 'Hill coefficient for vascular-access gating of extravasat
 params.n_vasc.derivedFrom = {};
 
 %% IL-6 Module Parameters (Myeloid Immunosuppression)
-% IL-6 secretion rate by iCAFs (was k_IL6_sec_apsc)
-params.k_IL6_sec_iCAF.Value = 2e-11;
+% Effective iCAF-scaled IL-6 source. C11 retired separately fitted cancer and
+% TAM source rates and absorbed their diagnosis flux into this coordinate.
+params.k_IL6_sec_iCAF.Value = 1.1036219418946422e-9;
 params.k_IL6_sec_iCAF.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_iCAF.Notes = 'IL-6 secretion by iCAFs. Was k_IL6_sec_apsc. iCAFs are the major IL-6 source in PDAC (Elyada 2019 PMID: 31197017; Mace 2018 PMID: 29196415).';
-params.k_IL6_sec_iCAF.derivedFrom = {'Elyada 2019 PMID: 31197017', 'Mace 2018 PMID: 29196415'};
-% IL-6 secretion rate by PDAC cancer cells (van Duijneveldt 2020: PDAC cell
-% lines exhibit variable IL-6 expression, consistently higher than normal
-% epithelium but generally lower than CAFs). Seeded at ~25% of iCAF rate;
-% SBI-calibrated against IL-6 tumor-tissue and downstream MDSC/M2 observables.
-params.k_IL6_sec_C.Value = 5e-12;
-params.k_IL6_sec_C.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_C.Notes = 'IL-6 secretion by PDAC cancer cells. van Duijneveldt 2020 DOI:10.1042/CS20191211 identifies PDAC cell lines as IL-6 producers (lower than CAFs). Initial estimate, SBI-calibrated.';
-params.k_IL6_sec_C.derivedFrom = {'van Duijneveldt 2020 DOI:10.1042/CS20191211'};
-% IL-6 secretion rate by TAMs (M1+M2 pooled). van Duijneveldt 2020 cites IHC
-% + IL-6-KO myeloid mouse model (causal evidence for myeloid IL-6 contribution
-% to PanIN progression) but no relative magnitude vs CAFs. Seeded at ~50% of
-% iCAF rate; SBI-calibrated.
-params.k_IL6_sec_TAM.Value = 1e-11;
-params.k_IL6_sec_TAM.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_TAM.Notes = 'IL-6 secretion by TAMs (M1+M2 pooled). van Duijneveldt 2020 DOI:10.1042/CS20191211 identifies TAMs as IL-6 producers with causal mouse-model evidence. Initial estimate, SBI-calibrated.';
-params.k_IL6_sec_TAM.derivedFrom = {'van Duijneveldt 2020 DOI:10.1042/CS20191211'};
+params.k_IL6_sec_iCAF.Notes = 'Effective iCAF-scaled IL-6 source rate. Initialized to preserve the pre-C11 total source flux at prior-centre diagnosis (1.1036219419e-9); source fractions stayed within ~1% across all paper arms and through day 365. The underlying iCAF culture anchor is translated by the fixed C11 absorption factor 3.676852. Cancer- and TAM-derived IL-6 are acknowledged but not separately attributed. Requires updated-sampler refit.';
+params.k_IL6_sec_iCAF.derivedFrom = {'Saga 2018 DOI: 10.3390/ijms19103043', 'C11 nominal source-flux trace', 'estimated'};
 % IL-6 degradation rate
 params.k_IL6_deg.Value = 16.0;
 params.k_IL6_deg.Units = '1/day';

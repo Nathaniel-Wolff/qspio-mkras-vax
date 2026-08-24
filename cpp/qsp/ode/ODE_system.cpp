@@ -28,7 +28,7 @@ void ODE_system::initSolver(realtype t){
     check_flag(&flag, "CVodeRootInit", 1);
 }
 
-state_type ODE_system::_class_parameter = state_type(484, 0);
+state_type ODE_system::_class_parameter = state_type(482, 0);
 
 void ODE_system::setup_class_parameters(QSPParam& param){
     //k_cell_clear, index: 0, units: MWDERIVEDUNIT_1__day
@@ -787,217 +787,213 @@ void ODE_system::setup_class_parameters(QSPParam& param){
     _class_parameter[P_CXCL12_50_Texcl] = PFILE(QSP_CXCL12_50_Texcl) * 1e-06;
     //k_IL6_sec_iCAF, index: 377, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_IL6_sec_iCAF] = PFILE(QSP_k_IL6_sec_iCAF) * 6970071747.68519;
-    //k_IL6_sec_C, index: 378, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
-    _class_parameter[P_k_IL6_sec_C] = PFILE(QSP_k_IL6_sec_C) * 6970071747.68519;
-    //k_IL6_sec_TAM, index: 379, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
-    _class_parameter[P_k_IL6_sec_TAM] = PFILE(QSP_k_IL6_sec_TAM) * 6970071747.68519;
-    //k_IL6_deg, index: 380, units: MWDERIVEDUNIT_1__day
+    //k_IL6_deg, index: 378, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IL6_deg] = PFILE(QSP_k_IL6_deg) * 1.15740740740741e-05;
-    //IL6_50_MDSC, index: 381, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_MDSC, index: 379, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_MDSC] = PFILE(QSP_IL6_50_MDSC) * 1e-06;
-    //IL6_50_M2, index: 382, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_M2, index: 380, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_M2] = PFILE(QSP_IL6_50_M2) * 1e-06;
-    //IL6_50_iCAF, index: 383, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_iCAF, index: 381, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_iCAF] = PFILE(QSP_IL6_50_iCAF) * 1e-06;
-    //f_IL6_iCAF, index: 384, units: dimensionless
+    //f_IL6_iCAF, index: 382, units: dimensionless
     _class_parameter[P_f_IL6_iCAF] = PFILE(QSP_f_IL6_iCAF) * 1;
-    //H_IL6_iCAF, index: 385, units: dimensionless
+    //H_IL6_iCAF, index: 383, units: dimensionless
     _class_parameter[P_H_IL6_iCAF] = PFILE(QSP_H_IL6_iCAF) * 1;
-    //k_IL1_sec, index: 386, units: MWDERIVEDUNIT_nanomole__cell_day
+    //k_IL1_sec, index: 384, units: MWDERIVEDUNIT_nanomole__cell_day
     _class_parameter[P_k_IL1_sec] = PFILE(QSP_k_IL1_sec) * 6970071747.68519;
-    //k_IL1_deg, index: 387, units: MWDERIVEDUNIT_1__day
+    //k_IL1_deg, index: 385, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IL1_deg] = PFILE(QSP_k_IL1_deg) * 1.15740740740741e-05;
-    //IL1_50, index: 388, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL1_50, index: 386, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL1_50] = PFILE(QSP_IL1_50) * 1e-06;
-    //n_IL1, index: 389, units: dimensionless
+    //n_IL1, index: 387, units: dimensionless
     _class_parameter[P_n_IL1] = PFILE(QSP_n_IL1) * 1;
-    //TGFb_50_IL1R1, index: 390, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_IL1R1, index: 388, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_IL1R1] = PFILE(QSP_TGFb_50_IL1R1) * 1e-06;
-    //Emax_IL1R1, index: 391, units: dimensionless
+    //Emax_IL1R1, index: 389, units: dimensionless
     _class_parameter[P_Emax_IL1R1] = PFILE(QSP_Emax_IL1R1) * 1;
-    //IL1_ratio, index: 392, units: dimensionless
+    //IL1_ratio, index: 390, units: dimensionless
     _class_parameter[P_IL1_ratio] = PFILE(QSP_IL1_ratio) * 1;
-    //H_IL1_eff, index: 393, units: dimensionless
+    //H_IL1_eff, index: 391, units: dimensionless
     _class_parameter[P_H_IL1_eff] = PFILE(QSP_H_IL1_eff) * 1;
-    //k_vas_myCAF_sec, index: 394, units: MWDERIVEDUNIT_picogram__cell_day
+    //k_vas_myCAF_sec, index: 392, units: MWDERIVEDUNIT_picogram__cell_day
     _class_parameter[P_k_vas_myCAF_sec] = PFILE(QSP_k_vas_myCAF_sec) * 6970.07174768519;
-    //k_apCAF_iTreg, index: 395, units: MWDERIVEDUNIT_1__day
+    //k_apCAF_iTreg, index: 393, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_apCAF_iTreg] = PFILE(QSP_k_apCAF_iTreg) * 1.15740740740741e-05;
-    //P1_50_apCAF, index: 396, units: MWBUILTINUNIT_molarity
+    //P1_50_apCAF, index: 394, units: MWBUILTINUNIT_molarity
     _class_parameter[P_P1_50_apCAF] = PFILE(QSP_P1_50_apCAF) * 1000;
-    //aPSC_total, index: 397, units: MWUSERUNIT_cell
+    //aPSC_total, index: 395, units: MWUSERUNIT_cell
     _class_parameter[P_aPSC_total] = PFILE(QSP_aPSC_total) * 1.66053872801495e-24;
-    //k_TGFb_sec_myCAF, index: 398, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_TGFb_sec_myCAF, index: 396, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_TGFb_sec_myCAF] = PFILE(QSP_k_TGFb_sec_myCAF) * 6970071747.68519;
-    //k_CXCL12_sec_cancer, index: 399, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_CXCL12_sec_cancer, index: 397, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_CXCL12_sec_cancer] = PFILE(QSP_k_CXCL12_sec_cancer) * 6970071747.68519;
-    //H_apCAF_pMHCII, index: 400, units: dimensionless
+    //H_apCAF_pMHCII, index: 398, units: dimensionless
     _class_parameter[P_H_apCAF_pMHCII] = PFILE(QSP_H_apCAF_pMHCII) * 1;
-    //k_GVAX_clearance, index: 401, units: MWDERIVEDUNIT_1__day
+    //k_GVAX_clearance, index: 399, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_GVAX_clearance] = PFILE(QSP_k_GVAX_clearance) * 1.15740740740741e-05;
-    //V_ID_volume, index: 402, units: MWBUILTINUNIT_liter
+    //V_ID_volume, index: 400, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_ID_volume] = PFILE(QSP_V_ID_volume) * 0.001;
-    //k_GMCSF_prod, index: 403, units: MWDERIVEDUNIT_nanomolarity__cell__day
+    //k_GMCSF_prod, index: 401, units: MWDERIVEDUNIT_nanomolarity__cell__day
     _class_parameter[P_k_GMCSF_prod] = PFILE(QSP_k_GMCSF_prod) * 6970071747685.19;
-    //k_GMCSF_deg, index: 404, units: MWDERIVEDUNIT_1__day
+    //k_GMCSF_deg, index: 402, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_GMCSF_deg] = PFILE(QSP_k_GMCSF_deg) * 1.15740740740741e-05;
-    //k_APC_recruit_ID, index: 405, units: MWDERIVEDUNIT_cell__day
+    //k_APC_recruit_ID, index: 403, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_k_APC_recruit_ID] = PFILE(QSP_k_APC_recruit_ID) * 1.92191982409137e-29;
-    //EC50_GMCSF, index: 406, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //EC50_GMCSF, index: 404, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_EC50_GMCSF] = PFILE(QSP_EC50_GMCSF) * 1e-06;
-    //k_APC_mature_ID, index: 407, units: MWDERIVEDUNIT_1__day
+    //k_APC_mature_ID, index: 405, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_mature_ID] = PFILE(QSP_k_APC_mature_ID) * 1.15740740740741e-05;
-    //k_APC_mig_ID_LN, index: 408, units: MWDERIVEDUNIT_1__day
+    //k_APC_mig_ID_LN, index: 406, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_mig_ID_LN] = PFILE(QSP_k_APC_mig_ID_LN) * 1.15740740740741e-05;
-    //k_APC_death_ID, index: 409, units: MWDERIVEDUNIT_1__day
+    //k_APC_death_ID, index: 407, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_death_ID] = PFILE(QSP_k_APC_death_ID) * 1.15740740740741e-05;
-    //sigma_P1_per_mAPC, index: 410, units: MWDERIVEDUNIT_nanomole__cell
+    //sigma_P1_per_mAPC, index: 408, units: MWDERIVEDUNIT_nanomole__cell
     _class_parameter[P_sigma_P1_per_mAPC] = PFILE(QSP_sigma_P1_per_mAPC) * 602214199000000;
-    //EC50_P1_mature, index: 411, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //EC50_P1_mature, index: 409, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_EC50_P1_mature] = PFILE(QSP_EC50_P1_mature) * 1e-06;
-    //K_APC_ID, index: 412, units: MWUSERUNIT_cell
+    //K_APC_ID, index: 410, units: MWUSERUNIT_cell
     _class_parameter[P_K_APC_ID] = PFILE(QSP_K_APC_ID) * 1.66053872801495e-24;
-    //k_APC_recruit0, index: 413, units: MWDERIVEDUNIT_cell__day
+    //k_APC_recruit0, index: 411, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_k_APC_recruit0] = PFILE(QSP_k_APC_recruit0) * 1.92191982409137e-29;
-    //k_mAPC_death_ID, index: 414, units: MWDERIVEDUNIT_1__day
+    //k_mAPC_death_ID, index: 412, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_mAPC_death_ID] = PFILE(QSP_k_mAPC_death_ID) * 1.15740740740741e-05;
-    //y_Ag_per_cell, index: 415, units: MWDERIVEDUNIT_nanomole__cell
+    //y_Ag_per_cell, index: 413, units: MWDERIVEDUNIT_nanomole__cell
     _class_parameter[P_y_Ag_per_cell] = PFILE(QSP_y_Ag_per_cell) * 602214199000000;
-    //k_P1_deg_ID, index: 416, units: MWDERIVEDUNIT_1__day
+    //k_P1_deg_ID, index: 414, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_P1_deg_ID] = PFILE(QSP_k_P1_deg_ID) * 1.15740740740741e-05;
-    //K_APC_mig, index: 417, units: MWUSERUNIT_cell
+    //K_APC_mig, index: 415, units: MWUSERUNIT_cell
     _class_parameter[P_K_APC_mig] = PFILE(QSP_K_APC_mig) * 1.66053872801495e-24;
-    //k_cDC1_Ag_transfer, index: 418, units: MWDERIVEDUNIT_1__cell_day
+    //k_cDC1_Ag_transfer, index: 416, units: MWDERIVEDUNIT_1__cell_day
     _class_parameter[P_k_cDC1_Ag_transfer] = PFILE(QSP_k_cDC1_Ag_transfer) * 6.97007174768519e+18;
-    //k_GVAX_present, index: 419, units: MWDERIVEDUNIT_1__day__cell
+    //k_GVAX_present, index: 417, units: MWDERIVEDUNIT_1__day__cell
     _class_parameter[P_k_GVAX_present] = PFILE(QSP_k_GVAX_present) * 6.97007174768519e+18;
-    //H_GMCSF_ID, index: 420, units: dimensionless
+    //H_GMCSF_ID, index: 418, units: dimensionless
     _class_parameter[P_H_GMCSF_ID] = PFILE(QSP_H_GMCSF_ID) * 1;
-    //HMGB1_50_ID, index: 421, units: MWDERIVEDUNIT_cell__day
+    //HMGB1_50_ID, index: 419, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_HMGB1_50_ID] = PFILE(QSP_HMGB1_50_ID) * 1.92191982409137e-29;
-    //H_HMGB1_ID, index: 422, units: dimensionless
+    //H_HMGB1_ID, index: 420, units: dimensionless
     _class_parameter[P_H_HMGB1_ID] = PFILE(QSP_H_HMGB1_ID) * 1;
-    //J_mature_ID, index: 423, units: MWDERIVEDUNIT_cell__day
+    //J_mature_ID, index: 421, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_J_mature_ID] = PFILE(QSP_J_mature_ID) * 1.92191982409137e-29;
-    //f_epitope_spread, index: 424, units: dimensionless
+    //f_epitope_spread, index: 422, units: dimensionless
     _class_parameter[P_f_epitope_spread] = PFILE(QSP_f_epitope_spread) * 1;
-    //H_P1_spread, index: 425, units: dimensionless
+    //H_P1_spread, index: 423, units: dimensionless
     _class_parameter[P_H_P1_spread] = PFILE(QSP_H_P1_spread) * 1;
-    //k_Cy_clear, index: 426, units: MWDERIVEDUNIT_1__day
+    //k_Cy_clear, index: 424, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_clear] = PFILE(QSP_k_Cy_clear) * 1.15740740740741e-05;
-    //k_Cy_Treg_deplete, index: 427, units: MWDERIVEDUNIT_1__day
+    //k_Cy_Treg_deplete, index: 425, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_Treg_deplete] = PFILE(QSP_k_Cy_Treg_deplete) * 1.15740740740741e-05;
-    //Cy_50_Treg, index: 428, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
+    //Cy_50_Treg, index: 426, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
     _class_parameter[P_Cy_50_Treg] = PFILE(QSP_Cy_50_Treg) * 1e-06;
-    //k_Cy_eff_decay, index: 429, units: MWDERIVEDUNIT_1__day
+    //k_Cy_eff_decay, index: 427, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_eff_decay] = PFILE(QSP_k_Cy_eff_decay) * 1.15740740740741e-05;
-    //Emax_Cy_Treg, index: 430, units: dimensionless
+    //Emax_Cy_Treg, index: 428, units: dimensionless
     _class_parameter[P_Emax_Cy_Treg] = PFILE(QSP_Emax_Cy_Treg) * 1;
-    //k_Cy_on, index: 431, units: MWDERIVEDUNIT_milligram__day
+    //k_Cy_on, index: 429, units: MWDERIVEDUNIT_milligram__day
     _class_parameter[P_k_Cy_on] = PFILE(QSP_k_Cy_on) * 1.15740740740741e-11;
-    //Cy_eff_50, index: 432, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
+    //Cy_eff_50, index: 430, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
     _class_parameter[P_Cy_eff_50] = PFILE(QSP_Cy_eff_50) * 1e-06;
-    //CD137_50, index: 433, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CD137_50, index: 431, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CD137_50] = PFILE(QSP_CD137_50) * 1e-06;
-    //k_CXCL13_sec, index: 434, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_CXCL13_sec, index: 432, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_CXCL13_sec] = PFILE(QSP_k_CXCL13_sec) * 6970071747.68519;
-    //k_CXCL13_ff, index: 435, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_CXCL13_ff, index: 433, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_CXCL13_ff] = PFILE(QSP_k_CXCL13_ff) * 6970071747.68519;
-    //k_CXCL13_deg, index: 436, units: MWDERIVEDUNIT_1__day
+    //k_CXCL13_deg, index: 434, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CXCL13_deg] = PFILE(QSP_k_CXCL13_deg) * 1.15740740740741e-05;
-    //CXCL13_50_TLA, index: 437, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CXCL13_50_TLA, index: 435, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CXCL13_50_TLA] = PFILE(QSP_CXCL13_50_TLA) * 1e-06;
-    //k_TLA_form, index: 438, units: MWDERIVEDUNIT_1__day
+    //k_TLA_form, index: 436, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_form] = PFILE(QSP_k_TLA_form) * 1.15740740740741e-05;
-    //k_TLA_decay, index: 439, units: MWDERIVEDUNIT_1__day
+    //k_TLA_decay, index: 437, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_decay] = PFILE(QSP_k_TLA_decay) * 1.15740740740741e-05;
-    //k_TLA_seq, index: 440, units: MWDERIVEDUNIT_1__day
+    //k_TLA_seq, index: 438, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_seq] = PFILE(QSP_k_TLA_seq) * 1.15740740740741e-05;
-    //k_TLA_release, index: 441, units: MWDERIVEDUNIT_1__day
+    //k_TLA_release, index: 439, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_release] = PFILE(QSP_k_TLA_release) * 1.15740740740741e-05;
-    //a_TLA, index: 442, units: dimensionless
+    //a_TLA, index: 440, units: dimensionless
     _class_parameter[P_a_TLA] = PFILE(QSP_a_TLA) * 1;
-    //k_CD137_act, index: 443, units: MWDERIVEDUNIT_1__day
+    //k_CD137_act, index: 441, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_act] = PFILE(QSP_k_CD137_act) * 1.15740740740741e-05;
-    //k_CD137_deact, index: 444, units: MWDERIVEDUNIT_1__day
+    //k_CD137_deact, index: 442, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_deact] = PFILE(QSP_k_CD137_deact) * 1.15740740740741e-05;
-    //f_act_base, index: 445, units: dimensionless
+    //f_act_base, index: 443, units: dimensionless
     _class_parameter[P_f_act_base] = PFILE(QSP_f_act_base) * 1;
-    //k_TLA_egress, index: 446, units: MWDERIVEDUNIT_1__day
+    //k_TLA_egress, index: 444, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_egress] = PFILE(QSP_k_TLA_egress) * 1.15740740740741e-05;
-    //phi_vic_kill, index: 447, units: dimensionless
+    //phi_vic_kill, index: 445, units: dimensionless
     _class_parameter[P_phi_vic_kill] = PFILE(QSP_phi_vic_kill) * 1;
-    //k_vic_decay, index: 448, units: MWDERIVEDUNIT_1__day
+    //k_vic_decay, index: 446, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_vic_decay] = PFILE(QSP_k_vic_decay) * 1.15740740740741e-05;
-    //k_CD137_reinvig, index: 449, units: MWDERIVEDUNIT_1__day
+    //k_CD137_reinvig, index: 447, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_reinvig] = PFILE(QSP_k_CD137_reinvig) * 1.15740740740741e-05;
-    //f_CD137_func, index: 450, units: dimensionless
+    //f_CD137_func, index: 448, units: dimensionless
     _class_parameter[P_f_CD137_func] = PFILE(QSP_f_CD137_func) * 1;
-    //k_CD137_prolif, index: 451, units: MWDERIVEDUNIT_1__day
+    //k_CD137_prolif, index: 449, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_prolif] = PFILE(QSP_k_CD137_prolif) * 1.15740740740741e-05;
-    //k_CD8_T_vac_pro, index: 452, units: MWDERIVEDUNIT_1__day
+    //k_CD8_T_vac_pro, index: 450, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD8_T_vac_pro] = PFILE(QSP_k_CD8_T_vac_pro) * 1.15740740740741e-05;
-    //k_CD137_latch_on, index: 453, units: MWDERIVEDUNIT_1__day
+    //k_CD137_latch_on, index: 451, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_latch_on] = PFILE(QSP_k_CD137_latch_on) * 1.15740740740741e-05;
-    //k_CD137_latch_off, index: 454, units: MWDERIVEDUNIT_1__day
+    //k_CD137_latch_off, index: 452, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_latch_off] = PFILE(QSP_k_CD137_latch_off) * 1.15740740740741e-05;
-    //H_CD137_T, index: 455, units: dimensionless
+    //H_CD137_T, index: 453, units: dimensionless
     _class_parameter[P_H_CD137_T] = PFILE(QSP_H_CD137_T) * 1;
-    //CXCL13, index: 456, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CXCL13, index: 454, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CXCL13] = PFILE(QSP_CXCL13) * 1e-06;
-    //H_CXCL13, index: 457, units: dimensionless
+    //H_CXCL13, index: 455, units: dimensionless
     _class_parameter[P_H_CXCL13] = PFILE(QSP_H_CXCL13) * 1;
-    //CD8_T_tot, index: 458, units: MWUSERUNIT_cell
+    //CD8_T_tot, index: 456, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_T_tot] = PFILE(QSP_CD8_T_tot) * 1.66053872801495e-24;
-    //k_C_vic_eff, index: 459, units: MWDERIVEDUNIT_1__day
+    //k_C_vic_eff, index: 457, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_C_vic_eff] = PFILE(QSP_k_C_vic_eff) * 1.15740740740741e-05;
-    //CD8_total_T, index: 460, units: MWUSERUNIT_cell
+    //CD8_total_T, index: 458, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_total_T] = PFILE(QSP_CD8_total_T) * 1.66053872801495e-24;
-    //nucleated_total_T, index: 461, units: MWUSERUNIT_cell
+    //nucleated_total_T, index: 459, units: MWUSERUNIT_cell
     _class_parameter[P_nucleated_total_T] = PFILE(QSP_nucleated_total_T) * 1.66053872801495e-24;
-    //CD8_exh_total_T, index: 462, units: MWUSERUNIT_cell
+    //CD8_exh_total_T, index: 460, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_exh_total_T] = PFILE(QSP_CD8_exh_total_T) * 1.66053872801495e-24;
-    //Th_total_T, index: 463, units: MWUSERUNIT_cell
+    //Th_total_T, index: 461, units: MWUSERUNIT_cell
     _class_parameter[P_Th_total_T] = PFILE(QSP_Th_total_T) * 1.66053872801495e-24;
-    //CD4_total_T, index: 464, units: MWUSERUNIT_cell
+    //CD4_total_T, index: 462, units: MWUSERUNIT_cell
     _class_parameter[P_CD4_total_T] = PFILE(QSP_CD4_total_T) * 1.66053872801495e-24;
-    //Tcell_total_T, index: 465, units: MWUSERUNIT_cell
+    //Tcell_total_T, index: 463, units: MWUSERUNIT_cell
     _class_parameter[P_Tcell_total_T] = PFILE(QSP_Tcell_total_T) * 1.66053872801495e-24;
-    //Mac_total_T, index: 466, units: MWUSERUNIT_cell
+    //Mac_total_T, index: 464, units: MWUSERUNIT_cell
     _class_parameter[P_Mac_total_T] = PFILE(QSP_Mac_total_T) * 1.66053872801495e-24;
-    //DC_total_T, index: 467, units: MWUSERUNIT_cell
+    //DC_total_T, index: 465, units: MWUSERUNIT_cell
     _class_parameter[P_DC_total_T] = PFILE(QSP_DC_total_T) * 1.66053872801495e-24;
-    //mDC_total_T, index: 468, units: MWUSERUNIT_cell
+    //mDC_total_T, index: 466, units: MWUSERUNIT_cell
     _class_parameter[P_mDC_total_T] = PFILE(QSP_mDC_total_T) * 1.66053872801495e-24;
-    //cDC1_lineage_T, index: 469, units: MWUSERUNIT_cell
+    //cDC1_lineage_T, index: 467, units: MWUSERUNIT_cell
     _class_parameter[P_cDC1_lineage_T] = PFILE(QSP_cDC1_lineage_T) * 1.66053872801495e-24;
-    //cDC2_lineage_T, index: 470, units: MWUSERUNIT_cell
+    //cDC2_lineage_T, index: 468, units: MWUSERUNIT_cell
     _class_parameter[P_cDC2_lineage_T] = PFILE(QSP_cDC2_lineage_T) * 1.66053872801495e-24;
-    //immune_total_T, index: 471, units: MWUSERUNIT_cell
+    //immune_total_T, index: 469, units: MWUSERUNIT_cell
     _class_parameter[P_immune_total_T] = PFILE(QSP_immune_total_T) * 1.66053872801495e-24;
-    //CD8_total_C, index: 472, units: MWUSERUNIT_cell
+    //CD8_total_C, index: 470, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_total_C] = PFILE(QSP_CD8_total_C) * 1.66053872801495e-24;
-    //CAF_total_T, index: 473, units: MWUSERUNIT_cell
+    //CAF_total_T, index: 471, units: MWUSERUNIT_cell
     _class_parameter[P_CAF_total_T] = PFILE(QSP_CAF_total_T) * 1.66053872801495e-24;
-    //V_C (compartment), index: 474, units: MWBUILTINUNIT_liter
+    //V_C (compartment), index: 472, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_C] = PFILE(QSP_V_C) * 0.001;
-    //V_P (compartment), index: 475, units: MWBUILTINUNIT_liter
+    //V_P (compartment), index: 473, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_P] = PFILE(QSP_V_P) * 0.001;
-    //V_LN (compartment), index: 476, units: MWDERIVEDUNIT_millimeter___3
+    //V_LN (compartment), index: 474, units: MWDERIVEDUNIT_millimeter___3
     _class_parameter[P_V_LN] = PFILE(QSP_V_LN) * 1e-09;
-    //V_e (compartment), index: 477, units: litre
+    //V_e (compartment), index: 475, units: litre
     _class_parameter[P_V_e] = PFILE(QSP_V_e) * 0.001;
-    //A_e (compartment), index: 478, units: MWDERIVEDUNIT_micrometer___2
+    //A_e (compartment), index: 476, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_A_e] = PFILE(QSP_A_e) * 1e-12;
-    //A_s (compartment), index: 479, units: MWDERIVEDUNIT_micrometer___2
+    //A_s (compartment), index: 477, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_A_s] = PFILE(QSP_A_s) * 1e-12;
-    //syn_CD8_C1 (compartment), index: 480, units: MWDERIVEDUNIT_micrometer___2
+    //syn_CD8_C1 (compartment), index: 478, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_CD8_C1] = PFILE(QSP_syn_CD8_C1) * 1e-12;
-    //syn_CD8_APC (compartment), index: 481, units: MWDERIVEDUNIT_micrometer___2
+    //syn_CD8_APC (compartment), index: 479, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_CD8_APC] = PFILE(QSP_syn_CD8_APC) * 1e-12;
-    //syn_M_C (compartment), index: 482, units: MWDERIVEDUNIT_micrometer___2
+    //syn_M_C (compartment), index: 480, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_M_C] = PFILE(QSP_syn_M_C) * 1e-12;
-    //V_ID (compartment), index: 483, units: MWBUILTINUNIT_liter
+    //V_ID (compartment), index: 481, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_ID] = PFILE(QSP_V_ID) * 0.001;
 }
 
@@ -3307,79 +3303,75 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
 
     realtype ReactionFlux251 = PARAM(P_k_IL6_sec_iCAF) * SPVAR(SP_V_T_iCAF);
 
-    realtype ReactionFlux252 = PARAM(P_k_IL6_sec_C) * AUX_VAR_C_total;
+    realtype ReactionFlux252 = PARAM(P_k_IL6_deg) * (SPVAR(SP_V_T_IL6) / AUX_VAR_V_T) * AUX_VAR_V_T;
 
-    realtype ReactionFlux253 = PARAM(P_k_IL6_sec_TAM) * (SPVAR(SP_V_T_Mac_M1) + SPVAR(SP_V_T_Mac_M2));
+    realtype ReactionFlux253 = PARAM(P_k_IL1_sec) * AUX_VAR_C_total;
 
-    realtype ReactionFlux254 = PARAM(P_k_IL6_deg) * (SPVAR(SP_V_T_IL6) / AUX_VAR_V_T) * AUX_VAR_V_T;
+    realtype ReactionFlux254 = PARAM(P_k_IL1_deg) * (SPVAR(SP_V_T_IL1) / AUX_VAR_V_T) * AUX_VAR_V_T;
 
-    realtype ReactionFlux255 = PARAM(P_k_IL1_sec) * AUX_VAR_C_total;
+    realtype ReactionFlux255 = PARAM(P_k_vas_myCAF_sec) * SPVAR(SP_V_T_myCAF);
 
-    realtype ReactionFlux256 = PARAM(P_k_IL1_deg) * (SPVAR(SP_V_T_IL1) / AUX_VAR_V_T) * AUX_VAR_V_T;
+    realtype ReactionFlux256 = PARAM(P_k_GVAX_clearance) * SPVAR(SP_V_ID_GVAX_cells);
 
-    realtype ReactionFlux257 = PARAM(P_k_vas_myCAF_sec) * SPVAR(SP_V_T_myCAF);
+    realtype ReactionFlux257 = PARAM(P_k_GMCSF_prod) * SPVAR(SP_V_ID_GVAX_cells) * PARAM(P_V_ID);
 
-    realtype ReactionFlux258 = PARAM(P_k_GVAX_clearance) * SPVAR(SP_V_ID_GVAX_cells);
+    realtype ReactionFlux258 = PARAM(P_k_GMCSF_deg) * SPVAR(SP_V_ID_GMCSF);
 
-    realtype ReactionFlux259 = PARAM(P_k_GMCSF_prod) * SPVAR(SP_V_ID_GVAX_cells) * PARAM(P_V_ID);
+    realtype ReactionFlux259 = PARAM(P_y_Ag_per_cell) * PARAM(P_k_GVAX_clearance) * SPVAR(SP_V_ID_GVAX_cells);
 
-    realtype ReactionFlux260 = PARAM(P_k_GMCSF_deg) * SPVAR(SP_V_ID_GMCSF);
+    realtype ReactionFlux260 = PARAM(P_k_P1_deg_ID) * SPVAR(SP_V_ID_P1_GVAX);
 
-    realtype ReactionFlux261 = PARAM(P_y_Ag_per_cell) * PARAM(P_k_GVAX_clearance) * SPVAR(SP_V_ID_GVAX_cells);
+    realtype ReactionFlux261 = ((PARAM(P_k_APC_recruit0) + PARAM(P_k_APC_recruit_ID) * AUX_VAR_H_GMCSF_ID) * PARAM(P_K_APC_ID)) / (PARAM(P_K_APC_ID) + SPVAR(SP_V_ID_APC) + SPVAR(SP_V_ID_mAPC));
 
-    realtype ReactionFlux262 = PARAM(P_k_P1_deg_ID) * SPVAR(SP_V_ID_P1_GVAX);
+    realtype ReactionFlux262 = AUX_VAR_J_mature_ID;
 
-    realtype ReactionFlux263 = ((PARAM(P_k_APC_recruit0) + PARAM(P_k_APC_recruit_ID) * AUX_VAR_H_GMCSF_ID) * PARAM(P_K_APC_ID)) / (PARAM(P_K_APC_ID) + SPVAR(SP_V_ID_APC) + SPVAR(SP_V_ID_mAPC));
+    realtype ReactionFlux263 = PARAM(P_sigma_P1_per_mAPC) * AUX_VAR_J_mature_ID;
 
-    realtype ReactionFlux264 = AUX_VAR_J_mature_ID;
+    realtype ReactionFlux264 = PARAM(P_k_GVAX_present) * PARAM(P_cell) * SPVAR(SP_V_ID_P1_GVAX) / PARAM(P_V_ID) * PARAM(P_V_e);
 
-    realtype ReactionFlux265 = PARAM(P_sigma_P1_per_mAPC) * AUX_VAR_J_mature_ID;
+    realtype ReactionFlux265 = PARAM(P_k_APC_death_ID) * SPVAR(SP_V_ID_APC);
 
-    realtype ReactionFlux266 = PARAM(P_k_GVAX_present) * PARAM(P_cell) * SPVAR(SP_V_ID_P1_GVAX) / PARAM(P_V_ID) * PARAM(P_V_e);
+    realtype ReactionFlux266 = PARAM(P_k_mAPC_death_ID) * SPVAR(SP_V_ID_mAPC);
 
-    realtype ReactionFlux267 = PARAM(P_k_APC_death_ID) * SPVAR(SP_V_ID_APC);
+    realtype ReactionFlux267 = PARAM(P_k_APC_mig_ID_LN) * SPVAR(SP_V_ID_mAPC) / (1.0 + SPVAR(SP_V_LN_mcDC2) / PARAM(P_K_APC_mig));
 
-    realtype ReactionFlux268 = PARAM(P_k_mAPC_death_ID) * SPVAR(SP_V_ID_mAPC);
+    realtype ReactionFlux268 = PARAM(P_k_cDC1_Ag_transfer) * SPVAR(SP_V_LN_cDC1) * SPVAR(SP_V_LN_mcDC2);
 
-    realtype ReactionFlux269 = PARAM(P_k_APC_mig_ID_LN) * SPVAR(SP_V_ID_mAPC) / (1.0 + SPVAR(SP_V_LN_mcDC2) / PARAM(P_K_APC_mig));
+    realtype ReactionFlux269 = PARAM(P_k_Cy_clear) * SPVAR(SP_V_C_Cy);
 
-    realtype ReactionFlux270 = PARAM(P_k_cDC1_Ag_transfer) * SPVAR(SP_V_LN_cDC1) * SPVAR(SP_V_LN_mcDC2);
+    realtype ReactionFlux270 = PARAM(P_k_Cy_on) * (SPVAR(SP_V_C_Cy) / (PARAM(P_Cy_50_Treg) + SPVAR(SP_V_C_Cy)));
 
-    realtype ReactionFlux271 = PARAM(P_k_Cy_clear) * SPVAR(SP_V_C_Cy);
+    realtype ReactionFlux271 = PARAM(P_k_Cy_eff_decay) * SPVAR(SP_V_C_Cy_eff);
 
-    realtype ReactionFlux272 = PARAM(P_k_Cy_on) * (SPVAR(SP_V_C_Cy) / (PARAM(P_Cy_50_Treg) + SPVAR(SP_V_C_Cy)));
+    realtype ReactionFlux272 = PARAM(P_k_Cy_Treg_deplete) * SPVAR(SP_V_T_Treg) * (SPVAR(SP_V_C_Cy) / (PARAM(P_Cy_50_Treg) + SPVAR(SP_V_C_Cy)));
 
-    realtype ReactionFlux273 = PARAM(P_k_Cy_eff_decay) * SPVAR(SP_V_C_Cy_eff);
+    realtype ReactionFlux273 = PARAM(P_k_CD8_T_vac_pro) * SPVAR(SP_V_T_CD8) * AUX_VAR_H_P1_spread / (1.0 + (AUX_VAR_CD8_T_tot / (PARAM(P_rho_CD8_max) * AUX_VAR_V_T + PARAM(P_cell))));
 
-    realtype ReactionFlux274 = PARAM(P_k_Cy_Treg_deplete) * SPVAR(SP_V_T_Treg) * (SPVAR(SP_V_C_Cy) / (PARAM(P_Cy_50_Treg) + SPVAR(SP_V_C_Cy)));
+    realtype ReactionFlux274 = PARAM(P_k_TLA_seq) * PARAM(P_a_TLA) * SPVAR(SP_V_T_CD8);
 
-    realtype ReactionFlux275 = PARAM(P_k_CD8_T_vac_pro) * SPVAR(SP_V_T_CD8) * AUX_VAR_H_P1_spread / (1.0 + (AUX_VAR_CD8_T_tot / (PARAM(P_rho_CD8_max) * AUX_VAR_V_T + PARAM(P_cell))));
+    realtype ReactionFlux275 = PARAM(P_k_TLA_release) * SPVAR(SP_V_T_CD8_TLA);
 
-    realtype ReactionFlux276 = PARAM(P_k_TLA_seq) * PARAM(P_a_TLA) * SPVAR(SP_V_T_CD8);
+    realtype ReactionFlux276 = PARAM(P_k_TLA_release) * SPVAR(SP_V_T_CD8_TLA_act);
 
-    realtype ReactionFlux277 = PARAM(P_k_TLA_release) * SPVAR(SP_V_T_CD8_TLA);
+    realtype ReactionFlux277 = PARAM(P_k_CD137_act) * (PARAM(P_f_act_base) + (((1.0 - PARAM(P_f_act_base))) * SPVAR(SP_L_CD137))) * SPVAR(SP_V_T_CD8_TLA);
 
-    realtype ReactionFlux278 = PARAM(P_k_TLA_release) * SPVAR(SP_V_T_CD8_TLA_act);
+    realtype ReactionFlux278 = PARAM(P_k_CD137_deact) * SPVAR(SP_V_T_CD8_TLA_act);
 
-    realtype ReactionFlux279 = PARAM(P_k_CD137_act) * (PARAM(P_f_act_base) + (((1.0 - PARAM(P_f_act_base))) * SPVAR(SP_L_CD137))) * SPVAR(SP_V_T_CD8_TLA);
+    realtype ReactionFlux279 = PARAM(P_k_TLA_egress) * SPVAR(SP_V_T_CD8_TLA_act);
 
-    realtype ReactionFlux280 = PARAM(P_k_CD137_deact) * SPVAR(SP_V_T_CD8_TLA_act);
+    realtype ReactionFlux280 = PARAM(P_k_vic_decay) * SPVAR(SP_V_T_CD8_vic);
 
-    realtype ReactionFlux281 = PARAM(P_k_TLA_egress) * SPVAR(SP_V_T_CD8_TLA_act);
+    realtype ReactionFlux281 = AUX_VAR_k_C_vic_eff * SPVAR(SP_V_T_C1);
 
-    realtype ReactionFlux282 = PARAM(P_k_vic_decay) * SPVAR(SP_V_T_CD8_vic);
+    realtype ReactionFlux282 = PARAM(P_k_CD137_reinvig) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * PARAM(P_f_CD137_func);
 
-    realtype ReactionFlux283 = AUX_VAR_k_C_vic_eff * SPVAR(SP_V_T_C1);
+    realtype ReactionFlux283 = PARAM(P_k_CD137_reinvig) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * ((1.0 - PARAM(P_f_CD137_func)));
 
-    realtype ReactionFlux284 = PARAM(P_k_CD137_reinvig) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * PARAM(P_f_CD137_func);
+    realtype ReactionFlux284 = PARAM(P_k_CD137_prolif) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * ((1.0 - SPVAR(SP_V_T_CD8_pex) / (PARAM(P_rho_pex_max) * AUX_VAR_V_T + PARAM(P_cell))));
 
-    realtype ReactionFlux285 = PARAM(P_k_CD137_reinvig) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * ((1.0 - PARAM(P_f_CD137_func)));
+    realtype ReactionFlux285 = (PARAM(P_k_CD137_latch_on) * AUX_VAR_H_CD137_T * ((1.0 - SPVAR(SP_L_CD137))) - PARAM(P_k_CD137_latch_off) * SPVAR(SP_L_CD137));
 
-    realtype ReactionFlux286 = PARAM(P_k_CD137_prolif) * SPVAR(SP_V_T_CD8_pex) * AUX_VAR_H_CD137_T * ((1.0 - SPVAR(SP_V_T_CD8_pex) / (PARAM(P_rho_pex_max) * AUX_VAR_V_T + PARAM(P_cell))));
-
-    realtype ReactionFlux287 = (PARAM(P_k_CD137_latch_on) * AUX_VAR_H_CD137_T * ((1.0 - SPVAR(SP_L_CD137))) - PARAM(P_k_CD137_latch_off) * SPVAR(SP_L_CD137));
-
-    realtype ReactionFlux288 = (PARAM(P_k_TLA_form) * AUX_VAR_H_CXCL13 * ((1.0 - SPVAR(SP_TLA))) - PARAM(P_k_TLA_decay) * SPVAR(SP_TLA));
+    realtype ReactionFlux286 = (PARAM(P_k_TLA_form) * AUX_VAR_H_CXCL13 * ((1.0 - SPVAR(SP_TLA))) - PARAM(P_k_TLA_decay) * SPVAR(SP_TLA));
 
     //ODE right-hand side:
 
@@ -3390,8 +3382,8 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
     NV_DATA_S(ydot)[SP_V_C_aPD1] = - ReactionFlux106 - ReactionFlux107 - ReactionFlux108 + ReactionFlux110 - ReactionFlux111;
     NV_DATA_S(ydot)[SP_V_C_aCD137] = - ReactionFlux112 - ReactionFlux113 - ReactionFlux114 + ReactionFlux116 - ReactionFlux117;
     NV_DATA_S(ydot)[SP_V_C_Th] = - ReactionFlux167 - ReactionFlux174 + ReactionFlux175 - ReactionFlux176 + ReactionFlux177;
-    NV_DATA_S(ydot)[SP_V_C_Cy] = - ReactionFlux271;
-    NV_DATA_S(ydot)[SP_V_C_Cy_eff] = ReactionFlux272 - ReactionFlux273;
+    NV_DATA_S(ydot)[SP_V_C_Cy] = - ReactionFlux269;
+    NV_DATA_S(ydot)[SP_V_C_Cy_eff] = ReactionFlux270 - ReactionFlux271;
     NV_DATA_S(ydot)[SP_V_P_nCD4] = ReactionFlux10 - ReactionFlux12 + ReactionFlux15 - ReactionFlux16;
     NV_DATA_S(ydot)[SP_V_P_Treg] = - ReactionFlux26 + ReactionFlux31 - ReactionFlux32;
     NV_DATA_S(ydot)[SP_V_P_nCD8] = ReactionFlux36 - ReactionFlux38 + ReactionFlux41 - ReactionFlux42;
@@ -3399,15 +3391,15 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
     NV_DATA_S(ydot)[SP_V_P_aPD1] = ReactionFlux106;
     NV_DATA_S(ydot)[SP_V_P_aCD137] = ReactionFlux112;
     NV_DATA_S(ydot)[SP_V_P_Th] = - ReactionFlux168 + ReactionFlux174 - ReactionFlux175;
-    NV_DATA_S(ydot)[SP_V_T_C_x] = - ReactionFlux1 + ReactionFlux4 + ReactionFlux68 + ReactionFlux227 + ReactionFlux283;
-    NV_DATA_S(ydot)[SP_V_T_CD8_exh] = ReactionFlux55 - ReactionFlux59 + ReactionFlux60 + ReactionFlux285;
-    NV_DATA_S(ydot)[SP_V_T_CD8_pex] = ReactionFlux54 + ReactionFlux56 + ReactionFlux57 + ReactionFlux58 - ReactionFlux60 - ReactionFlux61 - ReactionFlux62 - ReactionFlux63 - ReactionFlux284 - ReactionFlux285 + ReactionFlux286;
+    NV_DATA_S(ydot)[SP_V_T_C_x] = - ReactionFlux1 + ReactionFlux4 + ReactionFlux68 + ReactionFlux227 + ReactionFlux281;
+    NV_DATA_S(ydot)[SP_V_T_CD8_exh] = ReactionFlux55 - ReactionFlux59 + ReactionFlux60 + ReactionFlux283;
+    NV_DATA_S(ydot)[SP_V_T_CD8_pex] = ReactionFlux54 + ReactionFlux56 + ReactionFlux57 + ReactionFlux58 - ReactionFlux60 - ReactionFlux61 - ReactionFlux62 - ReactionFlux63 - ReactionFlux282 - ReactionFlux283 + ReactionFlux284;
     NV_DATA_S(ydot)[SP_V_T_Th_exh] = - ReactionFlux2 + ReactionFlux170 + ReactionFlux171 + ReactionFlux172 - ReactionFlux173;
-    NV_DATA_S(ydot)[SP_V_T_C1] = ReactionFlux3 - ReactionFlux4 - ReactionFlux68 - ReactionFlux227 - ReactionFlux283;
+    NV_DATA_S(ydot)[SP_V_T_C1] = ReactionFlux3 - ReactionFlux4 - ReactionFlux68 - ReactionFlux227 - ReactionFlux281;
     NV_DATA_S(ydot)[SP_V_T_K_vasc] = ReactionFlux7 - ReactionFlux8;
-    NV_DATA_S(ydot)[SP_V_T_VEGF] = ReactionFlux5 - ReactionFlux6 + ReactionFlux199 + ReactionFlux257;
-    NV_DATA_S(ydot)[SP_V_T_Treg] = - ReactionFlux28 - ReactionFlux29 + ReactionFlux30 + ReactionFlux33 + ReactionFlux166 - ReactionFlux274;
-    NV_DATA_S(ydot)[SP_V_T_CD8] = ReactionFlux52 - ReactionFlux53 - ReactionFlux54 - ReactionFlux55 - ReactionFlux56 - ReactionFlux57 - ReactionFlux58 + ReactionFlux62 + ReactionFlux63 + ReactionFlux66 + ReactionFlux275 - ReactionFlux276 + ReactionFlux277 + ReactionFlux278 + ReactionFlux282 + ReactionFlux284;
+    NV_DATA_S(ydot)[SP_V_T_VEGF] = ReactionFlux5 - ReactionFlux6 + ReactionFlux199 + ReactionFlux255;
+    NV_DATA_S(ydot)[SP_V_T_Treg] = - ReactionFlux28 - ReactionFlux29 + ReactionFlux30 + ReactionFlux33 + ReactionFlux166 - ReactionFlux272;
+    NV_DATA_S(ydot)[SP_V_T_CD8] = ReactionFlux52 - ReactionFlux53 - ReactionFlux54 - ReactionFlux55 - ReactionFlux56 - ReactionFlux57 - ReactionFlux58 + ReactionFlux62 + ReactionFlux63 + ReactionFlux66 + ReactionFlux273 - ReactionFlux274 + ReactionFlux275 + ReactionFlux276 + ReactionFlux280 + ReactionFlux282;
     NV_DATA_S(ydot)[SP_V_T_cDC1] = ReactionFlux69 - ReactionFlux70 - ReactionFlux73;
     NV_DATA_S(ydot)[SP_V_T_cDC2] = ReactionFlux77 - ReactionFlux78 - ReactionFlux81;
     NV_DATA_S(ydot)[SP_V_T_mcDC1] = ReactionFlux73 - ReactionFlux74 - ReactionFlux75;
@@ -3433,21 +3425,21 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
     NV_DATA_S(ydot)[SP_V_T_apCAF] = ReactionFlux232 + ReactionFlux237 - ReactionFlux241 - ReactionFlux245;
     NV_DATA_S(ydot)[SP_V_T_collagen] = ReactionFlux246 - ReactionFlux247;
     NV_DATA_S(ydot)[SP_V_T_CXCL12] = ReactionFlux248 + ReactionFlux249 - ReactionFlux250;
-    NV_DATA_S(ydot)[SP_V_T_IL6] = ReactionFlux251 + ReactionFlux252 + ReactionFlux253 - ReactionFlux254;
-    NV_DATA_S(ydot)[SP_V_T_IL1] = ReactionFlux255 - ReactionFlux256;
-    NV_DATA_S(ydot)[SP_V_T_CD8_TLA] = ReactionFlux276 - ReactionFlux277 - ReactionFlux279 + ReactionFlux280;
-    NV_DATA_S(ydot)[SP_V_T_CD8_TLA_act] = - ReactionFlux278 + ReactionFlux279 - ReactionFlux280 - ReactionFlux281;
-    NV_DATA_S(ydot)[SP_V_T_CD8_vic] = ReactionFlux281 - ReactionFlux282;
+    NV_DATA_S(ydot)[SP_V_T_IL6] = ReactionFlux251 - ReactionFlux252;
+    NV_DATA_S(ydot)[SP_V_T_IL1] = ReactionFlux253 - ReactionFlux254;
+    NV_DATA_S(ydot)[SP_V_T_CD8_TLA] = ReactionFlux274 - ReactionFlux275 - ReactionFlux277 + ReactionFlux278;
+    NV_DATA_S(ydot)[SP_V_T_CD8_TLA_act] = - ReactionFlux276 + ReactionFlux277 - ReactionFlux278 - ReactionFlux279;
+    NV_DATA_S(ydot)[SP_V_T_CD8_vic] = ReactionFlux279 - ReactionFlux280;
     NV_DATA_S(ydot)[SP_V_LN_nCD4] = ReactionFlux11 - ReactionFlux14 + ReactionFlux17 - ReactionFlux18 - ReactionFlux19 - ReactionFlux21 - ReactionFlux162;
     NV_DATA_S(ydot)[SP_V_LN_aTreg] = ReactionFlux20 + ReactionFlux22 - ReactionFlux23;
     NV_DATA_S(ydot)[SP_V_LN_Treg] = ReactionFlux24 - ReactionFlux27 - ReactionFlux34;
     NV_DATA_S(ydot)[SP_V_LN_nCD8] = ReactionFlux37 - ReactionFlux40 + ReactionFlux43 - ReactionFlux44 - ReactionFlux45;
     NV_DATA_S(ydot)[SP_V_LN_aCD8] = ReactionFlux46 - ReactionFlux47;
     NV_DATA_S(ydot)[SP_V_LN_CD8] = ReactionFlux48 - ReactionFlux51 - ReactionFlux67;
-    NV_DATA_S(ydot)[SP_V_LN_cDC1] = ReactionFlux71 - ReactionFlux72 - ReactionFlux270;
+    NV_DATA_S(ydot)[SP_V_LN_cDC1] = ReactionFlux71 - ReactionFlux72 - ReactionFlux268;
     NV_DATA_S(ydot)[SP_V_LN_cDC2] = ReactionFlux79 - ReactionFlux80;
-    NV_DATA_S(ydot)[SP_V_LN_mcDC1] = ReactionFlux74 - ReactionFlux76 + ReactionFlux270;
-    NV_DATA_S(ydot)[SP_V_LN_mcDC2] = ReactionFlux82 - ReactionFlux84 + ReactionFlux269;
+    NV_DATA_S(ydot)[SP_V_LN_mcDC1] = ReactionFlux74 - ReactionFlux76 + ReactionFlux268;
+    NV_DATA_S(ydot)[SP_V_LN_mcDC2] = ReactionFlux82 - ReactionFlux84 + ReactionFlux267;
     NV_DATA_S(ydot)[SP_V_LN_aPD1] = ReactionFlux108 + ReactionFlux109 - ReactionFlux110;
     NV_DATA_S(ydot)[SP_V_LN_aCD137] = ReactionFlux114 + ReactionFlux115 - ReactionFlux116;
     NV_DATA_S(ydot)[SP_V_LN_aTh] = ReactionFlux163 - ReactionFlux164;
@@ -3455,7 +3447,7 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
     NV_DATA_S(ydot)[SP_V_LN_IFNg] = ReactionFlux183 + ReactionFlux184 - ReactionFlux186;
     NV_DATA_S(ydot)[SP_V_e_P0] = ReactionFlux89 - ReactionFlux90;
     NV_DATA_S(ydot)[SP_V_e_p0] = ReactionFlux90 - ReactionFlux91 - ReactionFlux92 + ReactionFlux93;
-    NV_DATA_S(ydot)[SP_V_e_P1] = ReactionFlux99 - ReactionFlux100 + ReactionFlux266;
+    NV_DATA_S(ydot)[SP_V_e_P1] = ReactionFlux99 - ReactionFlux100 + ReactionFlux264;
     NV_DATA_S(ydot)[SP_V_e_p1] = ReactionFlux100 - ReactionFlux101 - ReactionFlux102 + ReactionFlux103;
     NV_DATA_S(ydot)[SP_A_e_M1] = - ReactionFlux85 - ReactionFlux92 + ReactionFlux93 - ReactionFlux102 + ReactionFlux103;
     NV_DATA_S(ydot)[SP_A_e_M1p0] = ReactionFlux92 - ReactionFlux93 - ReactionFlux95;
@@ -3528,13 +3520,13 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
     NV_DATA_S(ydot)[SP_syn_M_C_PDL1_CD80] = ReactionFlux226;
     NV_DATA_S(ydot)[SP_syn_M_C_CD80] = ReactionFlux225;
     NV_DATA_S(ydot)[SP_syn_M_C_CD80m] = - ReactionFlux225 - ReactionFlux225 - ReactionFlux226;
-    NV_DATA_S(ydot)[SP_V_ID_GVAX_cells] = - ReactionFlux258;
-    NV_DATA_S(ydot)[SP_V_ID_APC] = ReactionFlux263 - ReactionFlux264 - ReactionFlux267;
-    NV_DATA_S(ydot)[SP_V_ID_mAPC] = ReactionFlux264 - ReactionFlux268 - ReactionFlux269;
-    NV_DATA_S(ydot)[SP_V_ID_GMCSF] = ReactionFlux259 - ReactionFlux260;
-    NV_DATA_S(ydot)[SP_V_ID_P1_GVAX] = ReactionFlux261 - ReactionFlux262 - ReactionFlux265;
-    NV_DATA_S(ydot)[SP_L_CD137] = ReactionFlux287;
-    NV_DATA_S(ydot)[SP_TLA] = ReactionFlux288;
+    NV_DATA_S(ydot)[SP_V_ID_GVAX_cells] = - ReactionFlux256;
+    NV_DATA_S(ydot)[SP_V_ID_APC] = ReactionFlux261 - ReactionFlux262 - ReactionFlux265;
+    NV_DATA_S(ydot)[SP_V_ID_mAPC] = ReactionFlux262 - ReactionFlux266 - ReactionFlux267;
+    NV_DATA_S(ydot)[SP_V_ID_GMCSF] = ReactionFlux257 - ReactionFlux258;
+    NV_DATA_S(ydot)[SP_V_ID_P1_GVAX] = ReactionFlux259 - ReactionFlux260 - ReactionFlux263;
+    NV_DATA_S(ydot)[SP_L_CD137] = ReactionFlux285;
+    NV_DATA_S(ydot)[SP_TLA] = ReactionFlux286;
 
     return 0;
 }
@@ -3542,15 +3534,15 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
 // --- Analytical Jacobian (generated) ---
 const sunindextype ODE_system::_jac_col_ptrs[] = {
     0, 3, 6, 9, 12, 16, 20, 23, 26, 28, 30, 32, 34, 36, 38, 40,
-    42, 89, 136, 183, 230, 282, 292, 294, 342, 391, 395, 399, 402, 404, 406, 410,
-    417, 424, 472, 479, 497, 501, 510, 521, 524, 573, 624, 631, 644, 691, 740, 788,
-    835, 882, 887, 894, 898, 902, 906, 916, 920, 922, 928, 931, 935, 938, 940, 941,
-    944, 951, 955, 957, 961, 967, 970, 972, 975, 979, 982, 988, 992, 996, 998, 1002,
-    1006, 1019, 1032, 1041, 1046, 1049, 1054, 1059, 1060, 1064, 1067, 1070, 1075, 1080, 1085, 1090,
-    1094, 1097, 1104, 1108, 1112, 1120, 1130, 1139, 1143, 1149, 1152, 1155, 1162, 1167, 1170, 1173,
-    1176, 1177, 1185, 1192, 1199, 1204, 1209, 1214, 1219, 1223, 1226, 1233, 1241, 1245, 1253, 1263,
-    1272, 1276, 1282, 1285, 1288, 1299, 1300, 1301, 1312, 1323, 1330, 1335, 1338, 1341, 1344, 1347,
-    1349, 1353, 1358, 1361, 1365, 1367, 1374, 1377, 1378,
+    42, 89, 136, 183, 230, 281, 291, 293, 341, 390, 394, 398, 401, 403, 405, 409,
+    416, 423, 471, 478, 496, 500, 509, 520, 523, 571, 621, 628, 641, 688, 737, 785,
+    832, 879, 884, 891, 895, 899, 903, 913, 917, 919, 925, 928, 932, 935, 937, 938,
+    941, 948, 952, 954, 958, 964, 967, 969, 972, 976, 979, 985, 989, 993, 995, 999,
+    1003, 1016, 1029, 1038, 1043, 1046, 1051, 1056, 1057, 1061, 1064, 1067, 1072, 1077, 1082, 1087,
+    1091, 1094, 1101, 1105, 1109, 1117, 1127, 1136, 1140, 1146, 1149, 1152, 1159, 1164, 1167, 1170,
+    1173, 1174, 1182, 1189, 1196, 1201, 1206, 1211, 1216, 1220, 1223, 1230, 1238, 1242, 1250, 1260,
+    1269, 1273, 1279, 1282, 1285, 1296, 1297, 1298, 1309, 1320, 1327, 1332, 1335, 1338, 1341, 1344,
+    1346, 1350, 1355, 1358, 1362, 1364, 1371, 1374, 1375,
 };
 
 const sunindextype ODE_system::_jac_row_indices[] = {
@@ -3570,77 +3562,76 @@ const sunindextype ODE_system::_jac_row_indices[] = {
     41, 44, 45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85,
     137, 138, 139, 140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 39,
-    40, 41, 44, 45, 46, 47, 48, 49, 50, 51, 63, 64, 65, 66, 70, 72,
-    82, 83, 84, 85, 137, 138, 139, 140, 150, 151, 1, 3, 6, 20, 21, 23,
-    24, 33, 36, 40, 21, 22, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20,
-    21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41,
-    43, 44, 45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85,
-    137, 138, 139, 140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20,
-    21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 40,
-    41, 44, 45, 46, 47, 48, 52, 63, 64, 65, 66, 70, 72, 82, 83, 84,
-    85, 137, 138, 139, 140, 150, 151, 25, 27, 29, 30, 26, 28, 29, 30, 27,
-    42, 63, 28, 64, 29, 70, 23, 30, 33, 72, 4, 31, 65, 82, 85, 137,
-    140, 5, 17, 18, 24, 32, 66, 150, 1, 3, 4, 5, 6, 16, 17, 18,
-    19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-    36, 40, 41, 44, 45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83,
-    84, 85, 137, 138, 139, 140, 150, 151, 34, 40, 41, 83, 84, 138, 139, 16,
-    19, 20, 23, 25, 26, 27, 28, 29, 30, 33, 35, 40, 41, 44, 45, 46,
-    48, 36, 37, 38, 43, 16, 20, 25, 26, 27, 28, 29, 30, 37, 16, 20,
-    23, 25, 26, 27, 28, 29, 30, 33, 38, 36, 39, 40, 1, 3, 4, 5,
-    6, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-    32, 33, 35, 36, 40, 41, 42, 44, 45, 46, 47, 48, 50, 63, 64, 65,
-    66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151, 1, 3, 4,
-    5, 6, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-    30, 31, 32, 33, 35, 36, 38, 40, 41, 43, 44, 45, 46, 47, 48, 50,
+    40, 41, 44, 45, 46, 47, 48, 49, 51, 63, 64, 65, 66, 70, 72, 82,
+    83, 84, 85, 137, 138, 139, 140, 150, 151, 1, 3, 6, 20, 21, 23, 24,
+    33, 36, 40, 21, 22, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21,
+    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 43,
+    44, 45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137,
+    138, 139, 140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21,
+    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 40, 41,
+    44, 45, 46, 47, 48, 52, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85,
+    137, 138, 139, 140, 150, 151, 25, 27, 29, 30, 26, 28, 29, 30, 27, 42,
+    63, 28, 64, 29, 70, 23, 30, 33, 72, 4, 31, 65, 82, 85, 137, 140,
+    5, 17, 18, 24, 32, 66, 150, 1, 3, 4, 5, 6, 16, 17, 18, 19,
+    20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+    40, 41, 44, 45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84,
+    85, 137, 138, 139, 140, 150, 151, 34, 40, 41, 83, 84, 138, 139, 16, 19,
+    20, 23, 25, 26, 27, 28, 29, 30, 33, 35, 40, 41, 44, 45, 46, 48,
+    36, 37, 38, 43, 16, 20, 25, 26, 27, 28, 29, 30, 37, 16, 20, 23,
+    25, 26, 27, 28, 29, 30, 33, 38, 36, 39, 40, 1, 3, 4, 5, 6,
+    16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    33, 35, 36, 40, 41, 42, 44, 45, 46, 47, 48, 63, 64, 65, 66, 70,
+    72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151, 1, 3, 4, 5, 6,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+    32, 33, 35, 36, 38, 40, 41, 43, 44, 45, 46, 47, 48, 63, 64, 65,
+    66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151, 25, 26, 27,
+    28, 40, 41, 42, 16, 18, 20, 24, 25, 26, 27, 28, 29, 30, 40, 41,
+    43, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26,
+    27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46, 47, 48,
     63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151,
-    25, 26, 27, 28, 40, 41, 42, 16, 18, 20, 24, 25, 26, 27, 28, 29,
-    30, 40, 41, 43, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23,
-    24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45,
-    46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139,
-    140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24,
-    25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46,
-    47, 48, 49, 50, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138,
-    139, 140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 22,
-    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44,
-    45, 46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138,
-    139, 140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23,
-    24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45,
-    46, 47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139,
-    140, 150, 151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24,
-    25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46,
-    47, 48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140,
-    150, 151, 3, 6, 24, 33, 49, 36, 40, 41, 44, 45, 46, 50, 44, 45,
-    46, 51, 24, 52, 53, 151, 24, 52, 53, 54, 16, 20, 24, 25, 26, 27,
-    28, 29, 30, 54, 0, 55, 56, 67, 56, 57, 1, 57, 59, 60, 67, 68,
-    2, 58, 59, 59, 60, 67, 68, 3, 60, 69, 61, 63, 62, 58, 59, 63,
-    55, 56, 61, 63, 64, 67, 147, 4, 65, 107, 110, 5, 66, 59, 60, 67,
-    68, 6, 58, 59, 60, 68, 69, 69, 108, 109, 70, 71, 71, 74, 75, 55,
-    67, 72, 73, 73, 74, 76, 71, 73, 74, 75, 76, 77, 71, 74, 75, 78,
-    73, 74, 76, 79, 74, 77, 55, 56, 77, 78, 58, 59, 77, 79, 16, 18,
-    20, 24, 25, 26, 27, 28, 29, 30, 80, 82, 83, 16, 18, 20, 24, 25,
-    26, 27, 28, 29, 30, 81, 82, 84, 18, 24, 80, 81, 82, 83, 84, 85,
-    86, 80, 82, 83, 97, 103, 81, 82, 84, 18, 24, 82, 85, 86, 18, 24,
-    82, 85, 86, 87, 88, 89, 100, 102, 88, 89, 100, 90, 100, 104, 91, 92,
-    93, 101, 102, 91, 92, 94, 101, 102, 91, 93, 94, 101, 102, 92, 93, 94,
-    101, 102, 95, 96, 101, 104, 95, 96, 104, 83, 97, 98, 99, 100, 101, 103,
-    83, 97, 98, 100, 83, 97, 99, 101, 88, 89, 90, 97, 98, 100, 102, 104,
-    91, 92, 93, 94, 95, 97, 99, 101, 102, 104, 88, 91, 92, 93, 94, 100,
-    101, 102, 103, 83, 97, 102, 103, 90, 95, 96, 100, 101, 104, 105, 107, 108,
-    106, 107, 109, 105, 106, 107, 108, 109, 110, 111, 105, 107, 108, 122, 128, 106,
-    107, 109, 107, 110, 111, 107, 110, 111, 112, 59, 60, 67, 68, 113, 114, 125,
-    127, 59, 60, 67, 68, 113, 114, 125, 59, 60, 67, 68, 115, 125, 129, 116,
-    117, 118, 126, 127, 116, 117, 119, 126, 127, 116, 118, 119, 126, 127, 117, 118,
-    119, 126, 127, 120, 121, 126, 129, 120, 121, 129, 108, 122, 123, 124, 125, 126,
-    128, 59, 60, 67, 68, 108, 122, 123, 125, 108, 122, 124, 126, 113, 114, 115,
-    122, 123, 125, 127, 129, 116, 117, 118, 119, 120, 122, 124, 126, 127, 129, 113,
-    116, 117, 118, 119, 125, 126, 127, 128, 108, 122, 127, 128, 115, 120, 121, 125,
-    126, 129, 130, 131, 132, 130, 131, 132, 16, 20, 25, 26, 27, 28, 29, 30,
-    130, 131, 132, 133, 134, 16, 20, 25, 26, 27, 28, 29, 30, 135, 137, 138,
-    16, 20, 25, 26, 27, 28, 29, 30, 136, 137, 139, 135, 136, 137, 138, 139,
-    140, 141, 135, 137, 138, 142, 144, 136, 137, 139, 137, 140, 141, 137, 140, 141,
-    138, 142, 144, 143, 144, 138, 142, 143, 144, 145, 146, 147, 148, 149, 146, 147,
-    149, 64, 146, 147, 151, 146, 148, 24, 59, 67, 72, 146, 147, 149, 52, 53,
-    150, 151,
+    1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27,
+    28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46, 47, 48, 49,
+    50, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150,
+    151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+    26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46, 47,
+    48, 63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150,
+    151, 1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26,
+    27, 28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46, 47, 48,
+    63, 64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151,
+    1, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27,
+    28, 29, 30, 31, 32, 33, 35, 36, 40, 41, 44, 45, 46, 47, 48, 63,
+    64, 65, 66, 70, 72, 82, 83, 84, 85, 137, 138, 139, 140, 150, 151, 3,
+    6, 24, 33, 49, 36, 40, 41, 44, 45, 46, 50, 44, 45, 46, 51, 24,
+    52, 53, 151, 24, 52, 53, 54, 16, 20, 24, 25, 26, 27, 28, 29, 30,
+    54, 0, 55, 56, 67, 56, 57, 1, 57, 59, 60, 67, 68, 2, 58, 59,
+    59, 60, 67, 68, 3, 60, 69, 61, 63, 62, 58, 59, 63, 55, 56, 61,
+    63, 64, 67, 147, 4, 65, 107, 110, 5, 66, 59, 60, 67, 68, 6, 58,
+    59, 60, 68, 69, 69, 108, 109, 70, 71, 71, 74, 75, 55, 67, 72, 73,
+    73, 74, 76, 71, 73, 74, 75, 76, 77, 71, 74, 75, 78, 73, 74, 76,
+    79, 74, 77, 55, 56, 77, 78, 58, 59, 77, 79, 16, 18, 20, 24, 25,
+    26, 27, 28, 29, 30, 80, 82, 83, 16, 18, 20, 24, 25, 26, 27, 28,
+    29, 30, 81, 82, 84, 18, 24, 80, 81, 82, 83, 84, 85, 86, 80, 82,
+    83, 97, 103, 81, 82, 84, 18, 24, 82, 85, 86, 18, 24, 82, 85, 86,
+    87, 88, 89, 100, 102, 88, 89, 100, 90, 100, 104, 91, 92, 93, 101, 102,
+    91, 92, 94, 101, 102, 91, 93, 94, 101, 102, 92, 93, 94, 101, 102, 95,
+    96, 101, 104, 95, 96, 104, 83, 97, 98, 99, 100, 101, 103, 83, 97, 98,
+    100, 83, 97, 99, 101, 88, 89, 90, 97, 98, 100, 102, 104, 91, 92, 93,
+    94, 95, 97, 99, 101, 102, 104, 88, 91, 92, 93, 94, 100, 101, 102, 103,
+    83, 97, 102, 103, 90, 95, 96, 100, 101, 104, 105, 107, 108, 106, 107, 109,
+    105, 106, 107, 108, 109, 110, 111, 105, 107, 108, 122, 128, 106, 107, 109, 107,
+    110, 111, 107, 110, 111, 112, 59, 60, 67, 68, 113, 114, 125, 127, 59, 60,
+    67, 68, 113, 114, 125, 59, 60, 67, 68, 115, 125, 129, 116, 117, 118, 126,
+    127, 116, 117, 119, 126, 127, 116, 118, 119, 126, 127, 117, 118, 119, 126, 127,
+    120, 121, 126, 129, 120, 121, 129, 108, 122, 123, 124, 125, 126, 128, 59, 60,
+    67, 68, 108, 122, 123, 125, 108, 122, 124, 126, 113, 114, 115, 122, 123, 125,
+    127, 129, 116, 117, 118, 119, 120, 122, 124, 126, 127, 129, 113, 116, 117, 118,
+    119, 125, 126, 127, 128, 108, 122, 127, 128, 115, 120, 121, 125, 126, 129, 130,
+    131, 132, 130, 131, 132, 16, 20, 25, 26, 27, 28, 29, 30, 130, 131, 132,
+    133, 134, 16, 20, 25, 26, 27, 28, 29, 30, 135, 137, 138, 16, 20, 25,
+    26, 27, 28, 29, 30, 136, 137, 139, 135, 136, 137, 138, 139, 140, 141, 135,
+    137, 138, 142, 144, 136, 137, 139, 137, 140, 141, 137, 140, 141, 138, 142, 144,
+    143, 144, 138, 142, 143, 144, 145, 146, 147, 148, 149, 146, 147, 149, 64, 146,
+    147, 151, 146, 148, 24, 59, 67, 72, 146, 147, 149, 52, 53, 150, 151,
 };
 
 int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
@@ -3654,7 +3645,7 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     // Restamp the sparsity pattern every call: cheap, and
     // robust against CVODE reallocating between solves.
     for (sunindextype k = 0; k <= 152; ++k) colptrs[k] = _jac_col_ptrs[k];
-    for (sunindextype k = 0; k < 1378; ++k) rowvals[k] = _jac_row_indices[k];
+    for (sunindextype k = 0; k < 1375; ++k) rowvals[k] = _jac_row_indices[k];
 
     // Common subexpressions extracted by sympy.cse() from the
     // ~1.7 MB naive Jacobian — compresses to ~40 KB of output.
@@ -5996,1120 +5987,1117 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     data[261] = SPVAR(SP_V_T_apCAF)*x930 - x613 + x927*x934;
     data[262] = x636;
     data[263] = PARAM(P_k_CXCL12_sec_cancer);
-    data[264] = PARAM(P_k_IL6_sec_C);
-    data[265] = PARAM(P_k_IL1_sec);
-    data[266] = x442;
-    data[267] = x444;
-    data[268] = x89;
-    data[269] = x100;
-    data[270] = x640;
-    data[271] = x642;
-    data[272] = x646;
-    data[273] = x667;
-    data[274] = x674;
-    data[275] = x675;
-    data[276] = x676;
-    data[277] = x684;
-    data[278] = x688;
-    data[279] = x689;
-    data[280] = x696;
-    data[281] = x714;
-    data[282] = x938;
-    data[283] = x939;
-    data[284] = x940;
-    data[285] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*x941;
-    data[286] = -std::pow(x921, 0.66666666666666663)*x922;
-    data[287] = -x938;
-    data[288] = -x939;
-    data[289] = -x940;
-    data[290] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_MDSC_rec)*PARAM(P_n_vasc)*x11*x13*x459*x468*x935 - x460*x942;
-    data[291] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*PARAM(P_n_vasc)*x11*x13*x468*x491*x935 - x492*x942;
-    data[292] = SPVAR(SP_V_T_C1)*PARAM(P_k_vas_growth)*x323*x9 - x327*x943;
-    data[293] = -PARAM(P_k_vas_deg);
-    data[294] = x719;
-    data[295] = x728;
-    data[296] = x732;
-    data[297] = x735;
-    data[298] = x741;
-    data[299] = x947;
-    data[300] = x874;
-    data[301] = x948 + x951;
-    data[302] = x783;
-    data[303] = -x784 - x946;
-    data[304] = x786;
-    data[305] = -SPVAR(SP_V_C_Cy)*x42 + SPVAR(SP_V_T_Treg)*x332*(SPVAR(SP_V_T_Treg)*x787 - x46) - PARAM(P_k_Treg_death) - x292*x923 + x331*x48 + x795;
-    data[306] = x799 - x948 + x949;
-    data[307] = -x807 - x953;
-    data[308] = -x811 - x954;
-    data[309] = x815 + x953;
-    data[310] = x818 + x954;
-    data[311] = x446*x947;
-    data[312] = x447*x947;
-    data[313] = x731;
-    data[314] = x734;
-    data[315] = x823;
-    data[316] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_Tsec) + x824;
-    data[317] = x829;
-    data[318] = x835;
-    data[319] = x836;
-    data[320] = PARAM(P_k_IL10_sec_Treg);
-    data[321] = x844;
-    data[322] = x850;
-    data[323] = x851;
-    data[324] = x852;
-    data[325] = x854;
-    data[326] = x814;
-    data[327] = x817;
-    data[328] = x729;
-    data[329] = x733;
-    data[330] = x856;
-    data[331] = x857;
-    data[332] = x859;
-    data[333] = x862;
-    data[334] = x863;
-    data[335] = x864;
-    data[336] = x865;
-    data[337] = x867;
-    data[338] = x868;
-    data[339] = x869;
-    data[340] = x870;
-    data[341] = x872;
-    data[342] = x719;
-    data[343] = x728;
-    data[344] = x732;
-    data[345] = x735;
-    data[346] = x741;
-    data[347] = x956;
-    data[348] = x292 + x874;
-    data[349] = x951 + x957;
-    data[350] = x783;
-    data[351] = -x784 - x955;
-    data[352] = x786;
-    data[353] = x796;
-    data[354] = SPVAR(SP_V_ID_P1_GVAX)*SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_vac_pro)*x378*x384*x387*x961 + SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_CD8_T_vac_pro)*x384*x387*x960 + SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_pro)*x378*x961 - SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_death)*(-x372*x760 + x959) + PARAM(P_k_CD8_T_pro)*x960 - PARAM(P_k_CD8_death)*(SPVAR(SP_V_T_CD8)*x959 + 1.0) - x292 + x720 - x721 + x723 + x726 - x755 - x758 - x759 - x762 - x765 - x767 - x775 - x950 - x957 - x958;
-    data[355] = -x807 - x963;
-    data[356] = -x811 - x964;
-    data[357] = x815 + x963;
-    data[358] = x818 + x964;
-    data[359] = x446*x956;
-    data[360] = x447*x956;
-    data[361] = x731;
-    data[362] = x734;
-    data[363] = x823;
-    data[364] = PARAM(P_k_IFNg_Tsec);
-    data[365] = x824;
-    data[366] = x829;
-    data[367] = x835;
-    data[368] = x836;
-    data[369] = x844;
-    data[370] = x850;
-    data[371] = x851;
-    data[372] = x852;
-    data[373] = x854;
-    data[374] = x958;
-    data[375] = x814;
-    data[376] = x817;
-    data[377] = x729;
-    data[378] = x733;
-    data[379] = x856;
-    data[380] = x857;
-    data[381] = x859;
-    data[382] = x862;
-    data[383] = x863;
-    data[384] = x864;
-    data[385] = x865;
-    data[386] = x867;
-    data[387] = x868;
-    data[388] = x869;
-    data[389] = x870;
-    data[390] = x872;
-    data[391] = -PARAM(P_k_APC_death) - x966;
-    data[392] = x966;
-    data[393] = x967;
-    data[394] = x968;
-    data[395] = -PARAM(P_k_APC_death) - x969;
-    data[396] = x969;
-    data[397] = x967;
-    data[398] = x968;
-    data[399] = x971;
-    data[400] = PARAM(P_k_IL12_sec);
-    data[401] = x970;
-    data[402] = x971;
-    data[403] = x970;
-    data[404] = -PARAM(P_k_P0_up)*x972 - PARAM(P_k_xP0_deg);
-    data[405] = PARAM(P_k_P0_up)*x973;
-    data[406] = -x974;
-    data[407] = -PARAM(P_k_P1_up)*x972 - PARAM(P_k_xP1_deg);
-    data[408] = x974;
-    data[409] = PARAM(P_k_P1_up)*x973;
-    data[410] = x976;
-    data[411] = -x976 - x977;
-    data[412] = x977;
-    data[413] = -x979;
-    data[414] = x979;
-    data[415] = -x980;
-    data[416] = x980;
-    data[417] = x981;
-    data[418] = -x985;
-    data[419] = x225*x986 - x225*x987 + x985 + x988;
-    data[420] = -x988;
-    data[421] = -x981 - x989;
-    data[422] = x989;
-    data[423] = PARAM(P_k_CD137_latch_on)*x211*x690*x9 - x694*x984;
-    data[424] = x719;
-    data[425] = x728;
-    data[426] = x732;
-    data[427] = x735;
-    data[428] = x741;
-    data[429] = x748;
-    data[430] = x874;
-    data[431] = x776;
-    data[432] = x990;
-    data[433] = x785;
-    data[434] = x786;
-    data[435] = x796 + x991;
-    data[436] = x799;
-    data[437] = x808;
-    data[438] = x812;
-    data[439] = x816;
-    data[440] = x819;
-    data[441] = x820;
-    data[442] = x821;
-    data[443] = x731;
-    data[444] = x734;
-    data[445] = SPVAR(SP_V_T_Th)*PARAM(P_k_Th_pro_tumor)*x453*(-x451 + x790*x895) - PARAM(P_k_CD4_death) + PARAM(P_k_Th_pro_tumor)/x452 - x822 - x990 - x991;
-    data[446] = PARAM(P_k_IFNg_Thsec);
-    data[447] = x824;
-    data[448] = x829;
-    data[449] = x835;
-    data[450] = x836;
-    data[451] = x844;
-    data[452] = x850;
-    data[453] = x851;
-    data[454] = x852;
-    data[455] = x854;
-    data[456] = x814;
-    data[457] = x817;
-    data[458] = x729;
-    data[459] = x733;
-    data[460] = x856;
-    data[461] = x857;
-    data[462] = x859;
-    data[463] = x862;
-    data[464] = x863;
-    data[465] = x864;
-    data[466] = x865;
-    data[467] = x867;
-    data[468] = x868;
-    data[469] = x869;
-    data[470] = x870;
-    data[471] = x872;
-    data[472] = x992;
-    data[473] = x993;
-    data[474] = -x993;
-    data[475] = PARAM(P_k_out_PDL1)*x651*x657*x9 - x649*x995 - x658*x994;
-    data[476] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x651*x671*x9 - x670*x995 - x671*x997;
-    data[477] = PARAM(P_k_out_PDL1)*x651*x680*x9 - x680*x996;
-    data[478] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x651*x686*x9 - x686*x997;
-    data[479] = x999;
-    data[480] = -x1000;
-    data[481] = x1001;
-    data[482] = -x1003;
-    data[483] = -x1006;
-    data[484] = -x1007;
-    data[485] = x1006;
-    data[486] = x1007;
-    data[487] = x446*x999;
-    data[488] = x447*x999;
-    data[489] = x1000 + x1003;
-    data[490] = -PARAM(P_k_TGFb_deg);
-    data[491] = -x1008;
-    data[492] = x1008;
-    data[493] = x1011 - x1012 + x1014;
-    data[494] = -x1011 + x1012 + x1016;
-    data[495] = -x1014 - x1016;
-    data[496] = x635*(-x302*x632 + x618*x619*x9);
-    data[497] = -PARAM(P_k_MDSC_death) - x292;
-    data[498] = PARAM(P_k_NO_sec);
-    data[499] = PARAM(P_k_ArgI_sec);
-    data[500] = PARAM(P_k_IL10_sec_MDSC);
-    data[501] = x1017;
-    data[502] = -x1017;
-    data[503] = x1020;
-    data[504] = x1021;
-    data[505] = -x1020;
-    data[506] = -x1021;
-    data[507] = x1017*x446;
-    data[508] = x1017*x447;
-    data[509] = -PARAM(P_k_NO_deg);
-    data[510] = x1022;
-    data[511] = -x1022;
-    data[512] = x1023;
-    data[513] = x1025;
-    data[514] = x1026;
-    data[515] = -x1025;
-    data[516] = -x1026;
-    data[517] = x1022*x446;
-    data[518] = x1022*x447;
-    data[519] = -x1023;
-    data[520] = -PARAM(P_k_ArgI_deg);
-    data[521] = PARAM(P_k_MDSC_rec)*x11*x13*x459*x468 - x464*x473;
-    data[522] = -PARAM(P_k_CCL2_deg);
-    data[523] = PARAM(P_k_Mac_rec)*x11*x13*x468*x491 - x461*x493;
-    data[524] = x1031;
-    data[525] = x1037;
-    data[526] = x1041;
-    data[527] = x1044;
-    data[528] = x1049;
-    data[529] = x1055;
-    data[530] = x1060;
-    data[531] = x1078;
-    data[532] = x1081;
-    data[533] = -x1054 - x1082;
-    data[534] = x1083;
-    data[535] = x1086;
-    data[536] = x1087;
-    data[537] = -x1091 - x1095;
-    data[538] = -x1096 - x1098;
-    data[539] = x1091 + x1101;
-    data[540] = x1096 + x1103;
-    data[541] = x1055*x446;
-    data[542] = x1055*x447;
-    data[543] = x1040;
-    data[544] = x1043;
-    data[545] = x1104;
-    data[546] = x1105;
-    data[547] = x1110;
-    data[548] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*PARAM(P_n_vasc)*PARAM(P_vol_Mcell)*x2*x468*x491*x65*x66*x9 + SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*x11*x1111*x13*x468 + PARAM(P_k_Mac_rec)*PARAM(P_vol_Mcell)*x11*x13*x2*x463*x466*x491*x77 - x1112 - x1118 - x1119;
-    data[549] = x1118;
-    data[550] = PARAM(P_k_IL12_Msec);
-    data[551] = x1127;
-    data[552] = x1133;
-    data[553] = x1134;
-    data[554] = x1135;
-    data[555] = -SPVAR(SP_V_T_collagen)*x1136 + x1137;
-    data[556] = PARAM(P_k_IL6_sec_TAM);
-    data[557] = x1100;
-    data[558] = x1102;
-    data[559] = x1038;
-    data[560] = x1042;
-    data[561] = x1139;
-    data[562] = x1140;
-    data[563] = x1142;
-    data[564] = x1145;
-    data[565] = x1146;
-    data[566] = x1147;
-    data[567] = x1148;
-    data[568] = x1150;
-    data[569] = x1151;
-    data[570] = x1152;
-    data[571] = x1153;
-    data[572] = x1155;
-    data[573] = x1031;
-    data[574] = x1037;
-    data[575] = x1041;
-    data[576] = x1044;
-    data[577] = x1049;
-    data[578] = x1053;
-    data[579] = x1060;
-    data[580] = x1078;
-    data[581] = x1081;
-    data[582] = -x1082;
-    data[583] = x1083;
-    data[584] = PARAM(P_k_vas_Msec);
-    data[585] = x1086;
-    data[586] = x1087;
-    data[587] = -x1095 - x1157;
-    data[588] = -x1098 - x1158;
-    data[589] = x1101 + x1157;
-    data[590] = x1103 + x1158;
-    data[591] = x1053*x446;
-    data[592] = x1053*x447;
-    data[593] = x1040;
-    data[594] = x1043;
-    data[595] = x1104;
-    data[596] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_Msec) + x1105;
-    data[597] = x1110;
-    data[598] = PARAM(P_k_ArgI_sec);
-    data[599] = x1106*x493 + x1109*x495 + x1111*x487 - x1112 + x1159;
-    data[600] = -x1119 - x1159;
-    data[601] = PARAM(P_k_IL10_sec);
-    data[602] = x1127;
-    data[603] = x1133;
-    data[604] = x1134;
-    data[605] = x1135;
-    data[606] = -SPVAR(SP_V_T_collagen)*(x1136 + x1161) + x1137;
-    data[607] = PARAM(P_k_IL6_sec_TAM);
-    data[608] = x1100;
-    data[609] = x1102;
-    data[610] = x1038;
-    data[611] = x1042;
-    data[612] = x1139;
-    data[613] = x1140;
-    data[614] = x1142;
-    data[615] = x1145;
-    data[616] = x1146;
-    data[617] = x1147;
-    data[618] = x1148;
-    data[619] = x1150;
-    data[620] = x1151;
-    data[621] = x1152;
-    data[622] = x1153;
-    data[623] = x1155;
-    data[624] = x1164;
-    data[625] = x1165;
-    data[626] = -x1164;
-    data[627] = -x1165;
-    data[628] = -x1166;
-    data[629] = x1166;
-    data[630] = -PARAM(P_k_IL12_deg);
-    data[631] = x1167;
-    data[632] = -x1168;
-    data[633] = -x1167;
-    data[634] = x1168;
-    data[635] = -x1171;
-    data[636] = -x1172;
-    data[637] = x1171;
-    data[638] = x1172;
-    data[639] = x1167*x446;
-    data[640] = x1167*x447;
-    data[641] = -x1173;
-    data[642] = x1173;
-    data[643] = -PARAM(P_k_IL10_deg);
-    data[644] = -x1177;
-    data[645] = -x1182;
-    data[646] = -x1183 - x1185;
-    data[647] = -x1186 - x1187;
-    data[648] = -x1188 + x1189 - x1190 - x1191;
-    data[649] = x1195;
-    data[650] = -x1197 + x1199;
-    data[651] = x1174*x241 + x1197 - x1199 + x1200 - x1201*x225 + x1202 + x1203 + x1204*x225 - x1205 + x1206 - x1208 + x1209 + x1210 - x1212 + x1213;
-    data[652] = x1216;
-    data[653] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x308*x309*x313*x316*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_qPSCcell)*x0*x2*x311*x77 - x1180*x319) - x1195;
-    data[654] = x1180*x328 - x1184*x326;
-    data[655] = x1174*x334 + x1177 + x1217;
-    data[656] = x1174*x373 + x1174*x383 + x1174*x390 + x1182 - x1200 - x1202 - x1203 + x1205 - x1206 + x1208 - x1209 - x1210 + x1212 - x1213;
-    data[657] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_qPSCcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_qPSCcell)*x2*x423 - x1222;
-    data[658] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_qPSCcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_qPSCcell)*x2*x423 - x1223;
-    data[659] = x1222 - x1225;
-    data[660] = x1223 - x1226;
-    data[661] = x1195*x446;
-    data[662] = x1195*x447;
-    data[663] = x1185;
-    data[664] = x1187;
-    data[665] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*PARAM(P_vol_qPSCcell)*x2*x448*x450*x453 + PARAM(P_k_Th_seed)*PARAM(P_vol_qPSCcell)*x16*x18*x2 + x1188 - x1189 + x1190 + x1191 - x1216 - x1217;
-    data[666] = x1174*x454;
-    data[667] = x1227*x465 - x1229*x470 + x1230*x473 + x481*(-x1174*x477 + x1180*x480);
-    data[668] = PARAM(P_vol_qPSCcell)*x1231 + x1227*x493 - x1229*x494 + x1230*x495 + x1233 - x1236;
-    data[669] = -x1233 + x1236;
-    data[670] = PARAM(P_k_CAF_encounter)*PARAM(P_vol_qPSCcell)*x2*x523*x524 + PARAM(P_k_CAF_encounter)*x524*x8*(x6*x93 - x9) - PARAM(P_k_PSC_to_apCAF) - PARAM(P_k_qpsc_death) - x1239 - x1242 - x292;
-    data[671] = -SPVAR(SP_V_T_iCAF)*x1246 + x1242 + x1243 + x1248*x589 + x1249 - x1251 + x1252 - x1253;
-    data[672] = -SPVAR(SP_V_T_myCAF)*x1246 + x1239 - x1243 + x1248*x932 - x1249 + x1251 - x1252 + x1253;
-    data[673] = -SPVAR(SP_V_T_apCAF)*x1246 + PARAM(P_k_PSC_to_apCAF) + x1247*x934;
-    data[674] = -SPVAR(SP_V_T_collagen)*(x1180*x853 - x1184*x629) + x1184*x625 + x635*(x1193*x632 - x1215*x620);
-    data[675] = x1225;
-    data[676] = x1226;
-    data[677] = x1183;
-    data[678] = x1186;
-    data[679] = -x1254*x637;
-    data[680] = -x1254*x641;
-    data[681] = x1256;
-    data[682] = PARAM(P_k_out_PDL1)*PARAM(P_vol_qPSCcell)*x2*x657*x660*x661*x80 - x1257*x658 - x1258*x649;
-    data[683] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_qPSCcell)*x2*x660*x661*x671*x80 - x1257*x673 - x1258*x670;
-    data[684] = -x1256;
-    data[685] = x1259;
-    data[686] = -x1257*x681 + x1260*x681;
-    data[687] = -x1257*x687 + x1260*x687;
-    data[688] = -x1259;
-    data[689] = x1180*x695 - x1184*x693;
-    data[690] = -x1261*x711 + x1261*x713;
-    data[691] = -x1265;
-    data[692] = -x1270;
-    data[693] = -x1271 - x1273;
-    data[694] = -x1274 - x1275;
-    data[695] = -x1277;
-    data[696] = x1281;
-    data[697] = -x1283 + x1285;
-    data[698] = x1262*x241 + x1283 - x1285 + x1286 - x1287*x225 + x1288 + x1289 + x1290*x225 - x1291 + x1292 - x1294 + x1295 + x1296 - x1298 + x1299;
-    data[699] = x1301 + x1302 + x1303 - x1305 + x1306;
-    data[700] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_iCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_iCAFcell)*x0*x2*x311*x77 - x1268*x319)) - x1281;
-    data[701] = x1268*x328 - x1272*x326;
-    data[702] = x1262*x334 + x1265 + x1308 + x1311 + x1312 - x1313 + x1314 - x1315;
-    data[703] = x1262*x373 + x1262*x383 + x1262*x390 + x1270 - x1286 - x1288 - x1289 + x1291 - x1292 + x1294 - x1295 - x1296 + x1298 - x1299;
-    data[704] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_iCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_iCAFcell)*x2*x423 - x1320;
-    data[705] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_iCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_iCAFcell)*x2*x423 - x1321;
-    data[706] = x1320 - x1323;
-    data[707] = x1321 - x1324;
-    data[708] = x1281*x446;
-    data[709] = x1281*x447;
-    data[710] = x1273;
-    data[711] = x1275;
-    data[712] = x1262*x894 + x1262*x896 + x1277 - x1301 - x1302 - x1303 + x1305 - x1306 - x1308 + x1310 - x1312 + x1313 - x1314 + x1315;
-    data[713] = x1262*x454;
-    data[714] = x1325*x465 - x1327*x470 + x1328*x473 + x481*(-x1262*x477 + x1268*x480);
-    data[715] = PARAM(P_vol_iCAFcell)*x1231 + x1325*x493 - x1327*x494 + x1328*x495 + x1330 - x1333;
-    data[716] = -x1330 + x1333;
-    data[717] = x1262*x526 + x1262*x545 + x1334 - x1336 + x1339;
-    data[718] = SPVAR(SP_V_T_iCAF)*PARAM(P_k_iCAF_prolif)*(SPVAR(SP_V_T_iCAF)*x1345*x588 - x1341) - SPVAR(SP_V_T_iCAF)*x1346 - PARAM(P_k_iCAF_death) + PARAM(P_k_iCAF_prolif)*(-SPVAR(SP_V_T_iCAF)*x1341 + 1.0) - x1339 - x1340 - x1348;
-    data[719] = -SPVAR(SP_V_T_myCAF)*x1346 - x1334 + x1336 + x1345*x932 + x1348;
-    data[720] = -SPVAR(SP_V_T_apCAF)*x1346 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1344*x614*x616;
-    data[721] = -SPVAR(SP_V_T_collagen)*(x1268*x853 - x1272*x629) + x1272*x625 + x635*(x1279*x632 - x1304*x620);
-    data[722] = PARAM(P_k_CXCL12_sec_iCAF);
-    data[723] = PARAM(P_k_IL6_sec_iCAF);
-    data[724] = x1323;
-    data[725] = x1324;
-    data[726] = x1271;
-    data[727] = x1274;
-    data[728] = -x1349*x637;
-    data[729] = -x1349*x641;
-    data[730] = x1351;
-    data[731] = PARAM(P_k_out_PDL1)*PARAM(P_vol_iCAFcell)*x2*x657*x660*x661*x80 - x1352*x658 - x1353*x649;
-    data[732] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_iCAFcell)*x2*x660*x661*x671*x80 - x1352*x673 - x1353*x670;
-    data[733] = -x1351;
-    data[734] = x1354;
-    data[735] = -x1352*x681 + x1355*x681;
-    data[736] = -x1352*x687 + x1355*x687;
-    data[737] = -x1354;
-    data[738] = x1268*x695 - x1272*x693;
-    data[739] = -x1356*x711 + x1356*x713;
-    data[740] = -x1360;
-    data[741] = -x1365;
-    data[742] = -x1366 - x1368;
-    data[743] = -x1369 - x1370;
-    data[744] = -x1372;
-    data[745] = x1376;
-    data[746] = -x1378 + x1380;
-    data[747] = x1357*x241 + x1378 - x1380 + x1381 - x1382*x225 + x1383 + x1384 + x1385*x225 - x1386 + x1387 - x1389 + x1390 + x1391 - x1393 + x1394;
-    data[748] = x1396 + x1397 + x1398 - x1400 + x1401;
-    data[749] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_myCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_myCAFcell)*x0*x2*x311*x77 - x1363*x319)) - x1376;
-    data[750] = x1363*x328 - x1367*x326;
-    data[751] = PARAM(P_k_vas_myCAF_sec);
-    data[752] = x1311 + x1357*x334 + x1360 + x1402 + x1403 - x1404 + x1405 - x1406;
-    data[753] = x1357*x373 + x1357*x383 + x1357*x390 + x1365 - x1381 - x1383 - x1384 + x1386 - x1387 + x1389 - x1390 - x1391 + x1393 - x1394;
-    data[754] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_myCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_myCAFcell)*x2*x423 - x1411;
-    data[755] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_myCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_myCAFcell)*x2*x423 - x1412;
-    data[756] = x1411 - x1414;
-    data[757] = x1412 - x1415;
-    data[758] = x1376*x446;
-    data[759] = x1376*x447;
-    data[760] = x1368;
-    data[761] = x1370;
-    data[762] = x1310 + x1357*x894 + x1357*x896 + x1372 - x1396 - x1397 - x1398 + x1400 - x1401 - x1402 - x1403 + x1404 - x1405 + x1406;
-    data[763] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_sec_myCAF) + x1357*x454;
-    data[764] = x1416*x465 - x1418*x470 + x1419*x473 + x481*(-x1357*x477 + x1363*x480);
-    data[765] = PARAM(P_vol_myCAFcell)*x1231 + x1416*x493 - x1418*x494 + x1419*x495 + x1421 - x1424;
-    data[766] = -x1421 + x1424;
-    data[767] = x1357*x526 + x1357*x545 - x1426 + x1428 - x1429 + x1430;
-    data[768] = -SPVAR(SP_V_T_iCAF)*x1433 + x1426 - x1428 + x1429 + x1435*x589 + x1436;
-    data[769] = SPVAR(SP_V_T_myCAF)*PARAM(P_k_myCAF_prolif)*(SPVAR(SP_V_T_myCAF)*x1435*x931 - x1437) - SPVAR(SP_V_T_myCAF)*x1433 - PARAM(P_k_myCAF_death) + PARAM(P_k_myCAF_prolif)*(-SPVAR(SP_V_T_myCAF)*x1437 + 1.0) - x1340 - x1430 - x1436;
-    data[770] = -SPVAR(SP_V_T_apCAF)*x1433 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1434*x614*x616;
-    data[771] = -SPVAR(SP_V_T_collagen)*(x1363*x853 - x1367*x629) + x5*x622*x624*x93 + x621*x634 + x635*(x1374*x632 - x1399*x620);
-    data[772] = x1414;
-    data[773] = x1415;
-    data[774] = x1366;
-    data[775] = x1369;
-    data[776] = -x1438*x637;
-    data[777] = -x1438*x641;
-    data[778] = x1440;
-    data[779] = PARAM(P_k_out_PDL1)*PARAM(P_vol_myCAFcell)*x2*x657*x660*x661*x80 - x1441*x658 - x1442*x649;
-    data[780] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_myCAFcell)*x2*x660*x661*x671*x80 - x1441*x673 - x1442*x670;
-    data[781] = -x1440;
-    data[782] = x1443;
-    data[783] = -x1441*x681 + x1444*x681;
-    data[784] = -x1441*x687 + x1444*x687;
-    data[785] = -x1443;
-    data[786] = x1363*x695 - x1367*x693;
-    data[787] = -x1445*x711 + x1445*x713;
-    data[788] = -x1449;
-    data[789] = -x1454;
-    data[790] = -x1455 - x1457;
-    data[791] = -x1458 - x1459;
-    data[792] = -x1460 + x1461 - x1462 - x1463;
-    data[793] = x1467;
-    data[794] = -x1469 + x1471;
-    data[795] = x1446*x241 + x1469 - x1471 + x1472 - x1473*x225 + x1474 + x1475 + x1476*x225 - x1477 + x1478 - x1480 + x1481 + x1482 - x1484 + x1485;
-    data[796] = x1488;
-    data[797] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_apCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_apCAFcell)*x0*x2*x311*x77 - x1452*x319)) - x1467;
-    data[798] = x1452*x328 - x1456*x326;
-    data[799] = x1446*x334 + x1449 + x1489;
-    data[800] = x1446*x373 + x1446*x383 + x1446*x390 + x1454 - x1472 - x1474 - x1475 + x1477 - x1478 + x1480 - x1481 - x1482 + x1484 - x1485;
-    data[801] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_apCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_apCAFcell)*x2*x423 - x1494;
-    data[802] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_apCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_apCAFcell)*x2*x423 - x1495;
-    data[803] = x1494 - x1497;
-    data[804] = x1495 - x1498;
-    data[805] = x1467*x446;
-    data[806] = x1467*x447;
-    data[807] = x1457;
-    data[808] = x1459;
-    data[809] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*PARAM(P_vol_apCAFcell)*x2*x448*x450*x453 + PARAM(P_k_Th_seed)*PARAM(P_vol_apCAFcell)*x16*x18*x2 + x1460 - x1461 + x1462 + x1463 - x1488 - x1489;
-    data[810] = x1446*x454;
-    data[811] = x1499*x465 - x1501*x470 + x1502*x473 + x481*(-x1446*x477 + x1452*x480);
-    data[812] = PARAM(P_vol_apCAFcell)*x1231 + x1499*x493 - x1501*x494 + x1502*x495 + x1504 - x1507;
-    data[813] = -x1504 + x1507;
-    data[814] = x1446*x526 + x1446*x545 - x1509 + x1511 - x1512 + x1513;
-    data[815] = -SPVAR(SP_V_T_iCAF)*x1516 + x1509 - x1511 + x1512 + x1517*x573*x589 + x1518;
-    data[816] = -SPVAR(SP_V_T_myCAF)*x1516 + PARAM(P_k_myCAF_prolif)*x1517*x573*x609*x610*x612 - x1513 - x1518;
-    data[817] = SPVAR(SP_V_T_apCAF)*PARAM(P_k_apCAF_prolif)*(SPVAR(SP_V_T_apCAF)*x1517*x933 - x1519) - SPVAR(SP_V_T_apCAF)*x1516 - PARAM(P_k_apCAF_death) + PARAM(P_k_apCAF_prolif)*(-SPVAR(SP_V_T_apCAF)*x1519 + 1.0) - x1340;
-    data[818] = -SPVAR(SP_V_T_collagen)*(x1452*x853 - x1456*x629) + x1456*x625 + x635*(x1465*x632 - x1487*x620);
-    data[819] = x1497;
-    data[820] = x1498;
-    data[821] = x1455;
-    data[822] = x1458;
-    data[823] = -x1520*x637;
-    data[824] = -x1520*x641;
-    data[825] = x1522;
-    data[826] = PARAM(P_k_out_PDL1)*PARAM(P_vol_apCAFcell)*x2*x657*x660*x661*x80 - x1523*x658 - x1524*x649;
-    data[827] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_apCAFcell)*x2*x660*x661*x671*x80 - x1523*x673 - x1524*x670;
-    data[828] = -x1522;
-    data[829] = x1525;
-    data[830] = -x1523*x681 + x1526*x681;
-    data[831] = -x1523*x687 + x1526*x687;
-    data[832] = -x1525;
-    data[833] = x1452*x695 - x1456*x693;
-    data[834] = -x1527*x711 + x1527*x713;
-    data[835] = -x1531;
-    data[836] = -x1534;
-    data[837] = -x1535 - x1537;
-    data[838] = -x1538 - x1540;
-    data[839] = -x1541 + x1542 - x1543 - x1544;
-    data[840] = x1552;
-    data[841] = -x1554 + x1556;
-    data[842] = x0*x241 + x1554 - x1556 + x1557 - x1558*x225 + x1559 + x1560 + x1561*x225 - x1562 + x1563 - x1565 + x1566 + x1567 + x1572 - x1573;
-    data[843] = x1576;
-    data[844] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x308*x309*x313*x316*(SPVAR(SP_V_T_collagen)*x311*x317*x77 - x1548*x311 - x1550*x169*x318) - x1552;
-    data[845] = -x0*x325*x943 + x1532*x328;
-    data[846] = x0*x334 + x1531 + x1577;
-    data[847] = x0*x373 + x0*x383 + x0*x390 + x1534 - x1557 - x1559 - x1560 + x1562 - x1563 + x1565 - x1566 - x1567 - x1572 + x1573;
-    data[848] = 0.5*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*x1550*x170*x421*x424*x8 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*x0*x423 - x1582;
-    data[849] = 0.5*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*x1550*x170*x421*x424*x8 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*x0*x423 - x1583;
-    data[850] = x1582 - x1585;
-    data[851] = x1583 - x1586;
-    data[852] = x1552*x446;
-    data[853] = x1552*x447;
-    data[854] = x1537;
-    data[855] = x1540;
-    data[856] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*x0*x448*x450*x453 + PARAM(P_k_Th_seed)*x0*x16*x18 + x1541 - x1542 + x1543 + x1544 - x1576 - x1577;
-    data[857] = x0*x454;
-    data[858] = x1587*x465 - x1589*x470 + x1590*x473 + x481*(-x0*x477 + x1532*x480);
-    data[859] = x0*x489 + x1587*x493 - x1589*x494 + x1590*x495 + x1592 - x1595;
-    data[860] = -x1592 + x1595;
-    data[861] = x0*x526 + x0*x545 - x1597 + x1599 - x1600 + x1602;
-    data[862] = -SPVAR(SP_V_T_iCAF)*x1605 + x1597 - x1599 + x1600 + x1606*x573*x589 + x1607;
-    data[863] = -SPVAR(SP_V_T_myCAF)*x1605 + PARAM(P_k_myCAF_prolif)*x1606*x573*x609*x610*x612 - x1602 - x1607;
-    data[864] = -SPVAR(SP_V_T_apCAF)*x1605 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1606*x614*x616;
-    data[865] = -SPVAR(SP_V_T_Mac_M2)*x1161 - SPVAR(SP_V_T_collagen)*(x1160*x1550*x630 - x1536*x629) + SPVAR(SP_V_T_myCAF)*PARAM(P_k_col_myCAF_sec)*x621*(-x1548*x623 + x1549*x623) + SPVAR(SP_V_T_myCAF)*PARAM(P_k_col_myCAF_sec)*x633*(x1546*x632 - x1575*x620) - PARAM(P_k_col_deg);
-    data[866] = x1585;
-    data[867] = x1586;
-    data[868] = x1535;
-    data[869] = x1538;
-    data[870] = -x1608*x637;
-    data[871] = -x1608*x641;
-    data[872] = x1610;
-    data[873] = PARAM(P_k_out_PDL1)*x0*x657*x660*x661*x80 - x1611*x658 - x1612*x649;
-    data[874] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x0*x660*x661*x671*x80 - x1611*x673 - x1612*x670;
-    data[875] = -x1610;
-    data[876] = x1613;
-    data[877] = -x1611*x681 + x1614*x681;
-    data[878] = -x1611*x687 + x1614*x687;
-    data[879] = -x1613;
-    data[880] = x1532*x695 - x1539*x692;
-    data[881] = -x1615*x711 + x1615*x713;
-    data[882] = -x1617;
-    data[883] = -x1618;
-    data[884] = x1617;
-    data[885] = x1618;
-    data[886] = -PARAM(P_k_CXCL12_deg);
-    data[887] = x481*(x458*x9 - x476*x478);
-    data[888] = -x1619;
-    data[889] = x1619;
-    data[890] = -x1621;
-    data[891] = x1621 + x1622;
-    data[892] = -x1622;
-    data[893] = -PARAM(P_k_IL6_deg);
-    data[894] = x1623;
-    data[895] = -x1623 - x1624;
-    data[896] = x1624;
-    data[897] = -PARAM(P_k_IL1_deg);
-    data[898] = x1626;
-    data[899] = -PARAM(P_k_TLA_release) - x1628;
-    data[900] = x1628;
-    data[901] = PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x697*x701*x705*x709*x9 - PARAM(P_k_CXCL13_ff)*x1629*x701;
-    data[902] = x1626;
-    data[903] = PARAM(P_k_CD137_deact);
-    data[904] = -PARAM(P_k_CD137_deact) - PARAM(P_k_TLA_egress) - PARAM(P_k_TLA_release);
-    data[905] = PARAM(P_k_TLA_egress);
-    data[906] = x1630;
-    data[907] = -x1630;
-    data[908] = -x1625 - x1631;
-    data[909] = x1633;
-    data[910] = x1634;
-    data[911] = -x1633;
-    data[912] = -x1634;
-    data[913] = x1630*x446;
-    data[914] = x1630*x447;
-    data[915] = x1631;
-    data[916] = PARAM(P_q_nCD4_LN_out);
-    data[917] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1649 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1649*x1660*x1662*x1664*x1668*x923 - SPVAR(SP_V_LN_nCD4)*x52/std::pow(x1635, 2) + PARAM(P_k_nCD4_pro)*x49/x1635 - PARAM(P_k_nTreg_death) - PARAM(P_q_nCD4_LN_out) - x1636*x1641 - x1648 - x1669*x1670;
-    data[918] = SPVAR(SP_V_LN_mcDC2)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_mcDC2)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - SPVAR(SP_V_LN_nCD4)*x1671*x1672 - x1649*x1672*x1673;
-    data[919] = PARAM(P_n_CD4_clones)*x1648*x1675;
-    data[920] = -PARAM(P_k_Treg_pro);
-    data[921] = PARAM(P_k_Treg_pro);
-    data[922] = PARAM(P_q_Treg_LN_out);
-    data[923] = -PARAM(P_k_Treg_death) - PARAM(P_q_Treg_LN_out);
-    data[924] = -x1709;
-    data[925] = x1709*x1710 + x1716*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1713 + 0.69314718055994529*x1691);
-    data[926] = -x1722;
-    data[927] = x1722*x1723 + x1727*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1724 + 0.69314718055994529*x1719);
-    data[928] = PARAM(P_q_nCD8_LN_out);
-    data[929] = -SPVAR(SP_V_LN_nCD8)*x56/std::pow(x1728, 2) - PARAM(P_k_nCD8_death) + PARAM(P_k_nCD8_pro)*x53/x1728 - PARAM(P_q_nCD8_LN_out) - x1753;
-    data[930] = x1753*x1754;
-    data[931] = -x1714 - x1759;
-    data[932] = x1710*x1759 + x1715 + x1716*(-0.69314718055994529*x1713 + 0.69314718055994529*x1756 + 0.69314718055994529*x1758);
-    data[933] = -x1762;
-    data[934] = x1723*x1762 + x1727*(-0.69314718055994529*x1724 + 0.69314718055994529*x1760 + 0.69314718055994529*x1761);
-    data[935] = PARAM(P_q_CD8_LN_out);
-    data[936] = -PARAM(P_k_CD8_death) - PARAM(P_q_CD8_LN_out);
-    data[937] = PARAM(P_k_IFNg_Tsec);
-    data[938] = -PARAM(P_k_APC_death) - x1763;
-    data[939] = x1763;
-    data[940] = -PARAM(P_k_APC_death);
-    data[941] = -x1765;
-    data[942] = x1754*x1765;
-    data[943] = -PARAM(P_k_mAPC_death);
-    data[944] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*x1649*x1767 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*x1649*x1660*x1662*x1664*x1668*x1767*x923 - SPVAR(SP_V_LN_nCD4)*PARAM(P_n_sites_APC)*x1641 - SPVAR(SP_V_LN_nCD4)*x1766 - PARAM(P_n_sites_APC)*x1639*x1673;
-    data[945] = SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - x1637*x1649*x1669*x1768 - x1637*x1671*x1768;
-    data[946] = -x1769;
-    data[947] = x1769;
-    data[948] = -PARAM(P_k_mAPC_death) - x1772;
-    data[949] = x1766*x1773;
-    data[950] = x1772;
-    data[951] = x1774;
-    data[952] = -x1774;
-    data[953] = -x1776;
-    data[954] = x1776;
-    data[955] = x1777;
-    data[956] = -x1777;
-    data[957] = -x1780;
-    data[958] = x1710*x1780 + x1716*(0.69314718055994529*PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1779);
-    data[959] = -x1725 - x1782;
-    data[960] = x1723*x1782 + x1726 + x1727*(0.69314718055994529*PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1781);
-    data[961] = PARAM(P_q_Treg_LN_out);
-    data[962] = -SPVAR(SP_V_LN_mcDC1)*x1764*x1783;
-    data[963] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1743*x1745*x1747*x1751*x1783 - x1785;
-    data[964] = x1710*x1785 + x1716*(0.69314718055994529*PARAM(P_N_div_costim)*x1694*x1701*x1703 - 0.69314718055994529*x1784);
-    data[965] = -PARAM(P_k_CD4_death) - PARAM(P_q_Treg_LN_out);
-    data[966] = PARAM(P_k_IFNg_Thsec);
-    data[967] = x992;
-    data[968] = PARAM(P_k_out_PDL1)*x1788*x1796*x85 - PARAM(P_k_out_PDL1)*x1796*x1799 - x1791*x1801;
-    data[969] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1788*x1804*x85 - PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1799*x1804 - x1801*x1803;
-    data[970] = -PARAM(P_k_P0_deg);
-    data[971] = PARAM(P_k_P0_deg);
-    data[972] = -PARAM(P_k_p0_deg) - x1806;
-    data[973] = -x1806;
-    data[974] = x1806;
-    data[975] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*SPVAR(SP_V_e_P1)*PARAM(P_k_T_activation_per_APC)*x1808*x1809 - SPVAR(SP_V_LN_nCD4)*x1642*x1807;
-    data[976] = -SPVAR(SP_V_e_P1)*x1808*x1809*x1810 + x1807*x1810;
-    data[977] = -PARAM(P_k_P1_deg);
-    data[978] = PARAM(P_k_P1_deg);
-    data[979] = -PARAM(P_k_p1_deg) - x1811;
-    data[980] = -x1811;
-    data[981] = x1811;
-    data[982] = -x1812;
-    data[983] = -x1813;
-    data[984] = -PARAM(P_kout) - x1812 - x1813;
-    data[985] = x1812;
-    data[986] = x1813;
-    data[987] = PARAM(P_kout);
-    data[988] = x1814;
-    data[989] = x1814;
-    data[990] = -PARAM(P_kout) - x1814;
-    data[991] = PARAM(P_kout);
-    data[992] = x1815;
-    data[993] = x1815;
-    data[994] = -PARAM(P_kout) - x1815;
-    data[995] = PARAM(P_kout);
-    data[996] = PARAM(P_kin);
-    data[997] = -PARAM(P_kin);
-    data[998] = -x1665*x1668*x1818 + x1818*x1819;
-    data[999] = 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1662*x1664*x1668*x1816*x923 - x1637*x1817*x1819;
-    data[1000] = x1814;
-    data[1001] = -x1814;
-    data[1002] = -x1748*x1751*x1821 + x1822;
-    data[1003] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1732*x1745*x1747*x1751*x1820 - x1754*x1822;
-    data[1004] = x1815;
-    data[1005] = -x1815;
-    data[1006] = x1829;
-    data[1007] = x1834;
-    data[1008] = x1835;
-    data[1009] = x1836;
-    data[1010] = x1838;
-    data[1011] = x1839;
-    data[1012] = x1840;
-    data[1013] = x1841;
-    data[1014] = x1842;
-    data[1015] = x1843;
-    data[1016] = x1844;
-    data[1017] = PARAM(P_koff_PD1_PDL1);
-    data[1018] = -x1844 - x1845;
-    data[1019] = x1829;
-    data[1020] = x1834;
-    data[1021] = x1835;
-    data[1022] = x1836;
-    data[1023] = x1838;
-    data[1024] = x1839;
-    data[1025] = x1840;
-    data[1026] = x1841;
-    data[1027] = x1842;
-    data[1028] = x1843;
-    data[1029] = x1846;
-    data[1030] = PARAM(P_koff_PD1_PDL2);
-    data[1031] = -x1845 - x1846;
-    data[1032] = x1832;
-    data[1033] = -x1832;
-    data[1034] = x1847;
-    data[1035] = x1848;
-    data[1036] = -x1847 - x1848 - x1850 - x1851;
-    data[1037] = -x1847;
-    data[1038] = -x1848;
-    data[1039] = -x1850 - x1852;
-    data[1040] = x1850;
-    data[1041] = x1853;
-    data[1042] = -x1853;
-    data[1043] = -x1845 - x1853 - x1855;
-    data[1044] = x1855;
-    data[1045] = -x1855;
-    data[1046] = x1856;
-    data[1047] = -x1856;
-    data[1048] = -x1845 - x1856;
-    data[1049] = x1857;
-    data[1050] = -x1857;
-    data[1051] = -x1858 - x1859;
-    data[1052] = -PARAM(P_koff_PD1_aPD1) - x1859;
-    data[1053] = x1859;
-    data[1054] = x1861;
-    data[1055] = -x1861;
-    data[1056] = x1862;
-    data[1057] = x1862;
-    data[1058] = x1863;
-    data[1059] = 0;
-    data[1060] = -PARAM(P_koff_CD28_CD80) - x1865;
-    data[1061] = x1865;
-    data[1062] = PARAM(P_koff_CD28_CD80) + x1866;
-    data[1063] = PARAM(P_koff_CD28_CD80);
-    data[1064] = x1867;
-    data[1065] = x1868;
-    data[1066] = x1867;
-    data[1067] = x1869;
-    data[1068] = PARAM(P_koff_CD28_CD86);
-    data[1069] = PARAM(P_koff_CD28_CD86);
-    data[1070] = -PARAM(P_koff_CTLA4_CD80) - x1871 - x1872;
-    data[1071] = x1871;
-    data[1072] = x1872;
-    data[1073] = PARAM(P_koff_CTLA4_CD80) + x1873;
-    data[1074] = PARAM(P_koff_CTLA4_CD80) - x1871;
-    data[1075] = x1874;
-    data[1076] = -x1874 - x1877;
-    data[1077] = x1877;
-    data[1078] = x1878;
-    data[1079] = x1874;
+    data[264] = PARAM(P_k_IL1_sec);
+    data[265] = x442;
+    data[266] = x444;
+    data[267] = x89;
+    data[268] = x100;
+    data[269] = x640;
+    data[270] = x642;
+    data[271] = x646;
+    data[272] = x667;
+    data[273] = x674;
+    data[274] = x675;
+    data[275] = x676;
+    data[276] = x684;
+    data[277] = x688;
+    data[278] = x689;
+    data[279] = x696;
+    data[280] = x714;
+    data[281] = x938;
+    data[282] = x939;
+    data[283] = x940;
+    data[284] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*x941;
+    data[285] = -std::pow(x921, 0.66666666666666663)*x922;
+    data[286] = -x938;
+    data[287] = -x939;
+    data[288] = -x940;
+    data[289] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_MDSC_rec)*PARAM(P_n_vasc)*x11*x13*x459*x468*x935 - x460*x942;
+    data[290] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*PARAM(P_n_vasc)*x11*x13*x468*x491*x935 - x492*x942;
+    data[291] = SPVAR(SP_V_T_C1)*PARAM(P_k_vas_growth)*x323*x9 - x327*x943;
+    data[292] = -PARAM(P_k_vas_deg);
+    data[293] = x719;
+    data[294] = x728;
+    data[295] = x732;
+    data[296] = x735;
+    data[297] = x741;
+    data[298] = x947;
+    data[299] = x874;
+    data[300] = x948 + x951;
+    data[301] = x783;
+    data[302] = -x784 - x946;
+    data[303] = x786;
+    data[304] = -SPVAR(SP_V_C_Cy)*x42 + SPVAR(SP_V_T_Treg)*x332*(SPVAR(SP_V_T_Treg)*x787 - x46) - PARAM(P_k_Treg_death) - x292*x923 + x331*x48 + x795;
+    data[305] = x799 - x948 + x949;
+    data[306] = -x807 - x953;
+    data[307] = -x811 - x954;
+    data[308] = x815 + x953;
+    data[309] = x818 + x954;
+    data[310] = x446*x947;
+    data[311] = x447*x947;
+    data[312] = x731;
+    data[313] = x734;
+    data[314] = x823;
+    data[315] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_Tsec) + x824;
+    data[316] = x829;
+    data[317] = x835;
+    data[318] = x836;
+    data[319] = PARAM(P_k_IL10_sec_Treg);
+    data[320] = x844;
+    data[321] = x850;
+    data[322] = x851;
+    data[323] = x852;
+    data[324] = x854;
+    data[325] = x814;
+    data[326] = x817;
+    data[327] = x729;
+    data[328] = x733;
+    data[329] = x856;
+    data[330] = x857;
+    data[331] = x859;
+    data[332] = x862;
+    data[333] = x863;
+    data[334] = x864;
+    data[335] = x865;
+    data[336] = x867;
+    data[337] = x868;
+    data[338] = x869;
+    data[339] = x870;
+    data[340] = x872;
+    data[341] = x719;
+    data[342] = x728;
+    data[343] = x732;
+    data[344] = x735;
+    data[345] = x741;
+    data[346] = x956;
+    data[347] = x292 + x874;
+    data[348] = x951 + x957;
+    data[349] = x783;
+    data[350] = -x784 - x955;
+    data[351] = x786;
+    data[352] = x796;
+    data[353] = SPVAR(SP_V_ID_P1_GVAX)*SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_vac_pro)*x378*x384*x387*x961 + SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_CD8_T_vac_pro)*x384*x387*x960 + SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_pro)*x378*x961 - SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_death)*(-x372*x760 + x959) + PARAM(P_k_CD8_T_pro)*x960 - PARAM(P_k_CD8_death)*(SPVAR(SP_V_T_CD8)*x959 + 1.0) - x292 + x720 - x721 + x723 + x726 - x755 - x758 - x759 - x762 - x765 - x767 - x775 - x950 - x957 - x958;
+    data[354] = -x807 - x963;
+    data[355] = -x811 - x964;
+    data[356] = x815 + x963;
+    data[357] = x818 + x964;
+    data[358] = x446*x956;
+    data[359] = x447*x956;
+    data[360] = x731;
+    data[361] = x734;
+    data[362] = x823;
+    data[363] = PARAM(P_k_IFNg_Tsec);
+    data[364] = x824;
+    data[365] = x829;
+    data[366] = x835;
+    data[367] = x836;
+    data[368] = x844;
+    data[369] = x850;
+    data[370] = x851;
+    data[371] = x852;
+    data[372] = x854;
+    data[373] = x958;
+    data[374] = x814;
+    data[375] = x817;
+    data[376] = x729;
+    data[377] = x733;
+    data[378] = x856;
+    data[379] = x857;
+    data[380] = x859;
+    data[381] = x862;
+    data[382] = x863;
+    data[383] = x864;
+    data[384] = x865;
+    data[385] = x867;
+    data[386] = x868;
+    data[387] = x869;
+    data[388] = x870;
+    data[389] = x872;
+    data[390] = -PARAM(P_k_APC_death) - x966;
+    data[391] = x966;
+    data[392] = x967;
+    data[393] = x968;
+    data[394] = -PARAM(P_k_APC_death) - x969;
+    data[395] = x969;
+    data[396] = x967;
+    data[397] = x968;
+    data[398] = x971;
+    data[399] = PARAM(P_k_IL12_sec);
+    data[400] = x970;
+    data[401] = x971;
+    data[402] = x970;
+    data[403] = -PARAM(P_k_P0_up)*x972 - PARAM(P_k_xP0_deg);
+    data[404] = PARAM(P_k_P0_up)*x973;
+    data[405] = -x974;
+    data[406] = -PARAM(P_k_P1_up)*x972 - PARAM(P_k_xP1_deg);
+    data[407] = x974;
+    data[408] = PARAM(P_k_P1_up)*x973;
+    data[409] = x976;
+    data[410] = -x976 - x977;
+    data[411] = x977;
+    data[412] = -x979;
+    data[413] = x979;
+    data[414] = -x980;
+    data[415] = x980;
+    data[416] = x981;
+    data[417] = -x985;
+    data[418] = x225*x986 - x225*x987 + x985 + x988;
+    data[419] = -x988;
+    data[420] = -x981 - x989;
+    data[421] = x989;
+    data[422] = PARAM(P_k_CD137_latch_on)*x211*x690*x9 - x694*x984;
+    data[423] = x719;
+    data[424] = x728;
+    data[425] = x732;
+    data[426] = x735;
+    data[427] = x741;
+    data[428] = x748;
+    data[429] = x874;
+    data[430] = x776;
+    data[431] = x990;
+    data[432] = x785;
+    data[433] = x786;
+    data[434] = x796 + x991;
+    data[435] = x799;
+    data[436] = x808;
+    data[437] = x812;
+    data[438] = x816;
+    data[439] = x819;
+    data[440] = x820;
+    data[441] = x821;
+    data[442] = x731;
+    data[443] = x734;
+    data[444] = SPVAR(SP_V_T_Th)*PARAM(P_k_Th_pro_tumor)*x453*(-x451 + x790*x895) - PARAM(P_k_CD4_death) + PARAM(P_k_Th_pro_tumor)/x452 - x822 - x990 - x991;
+    data[445] = PARAM(P_k_IFNg_Thsec);
+    data[446] = x824;
+    data[447] = x829;
+    data[448] = x835;
+    data[449] = x836;
+    data[450] = x844;
+    data[451] = x850;
+    data[452] = x851;
+    data[453] = x852;
+    data[454] = x854;
+    data[455] = x814;
+    data[456] = x817;
+    data[457] = x729;
+    data[458] = x733;
+    data[459] = x856;
+    data[460] = x857;
+    data[461] = x859;
+    data[462] = x862;
+    data[463] = x863;
+    data[464] = x864;
+    data[465] = x865;
+    data[466] = x867;
+    data[467] = x868;
+    data[468] = x869;
+    data[469] = x870;
+    data[470] = x872;
+    data[471] = x992;
+    data[472] = x993;
+    data[473] = -x993;
+    data[474] = PARAM(P_k_out_PDL1)*x651*x657*x9 - x649*x995 - x658*x994;
+    data[475] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x651*x671*x9 - x670*x995 - x671*x997;
+    data[476] = PARAM(P_k_out_PDL1)*x651*x680*x9 - x680*x996;
+    data[477] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x651*x686*x9 - x686*x997;
+    data[478] = x999;
+    data[479] = -x1000;
+    data[480] = x1001;
+    data[481] = -x1003;
+    data[482] = -x1006;
+    data[483] = -x1007;
+    data[484] = x1006;
+    data[485] = x1007;
+    data[486] = x446*x999;
+    data[487] = x447*x999;
+    data[488] = x1000 + x1003;
+    data[489] = -PARAM(P_k_TGFb_deg);
+    data[490] = -x1008;
+    data[491] = x1008;
+    data[492] = x1011 - x1012 + x1014;
+    data[493] = -x1011 + x1012 + x1016;
+    data[494] = -x1014 - x1016;
+    data[495] = x635*(-x302*x632 + x618*x619*x9);
+    data[496] = -PARAM(P_k_MDSC_death) - x292;
+    data[497] = PARAM(P_k_NO_sec);
+    data[498] = PARAM(P_k_ArgI_sec);
+    data[499] = PARAM(P_k_IL10_sec_MDSC);
+    data[500] = x1017;
+    data[501] = -x1017;
+    data[502] = x1020;
+    data[503] = x1021;
+    data[504] = -x1020;
+    data[505] = -x1021;
+    data[506] = x1017*x446;
+    data[507] = x1017*x447;
+    data[508] = -PARAM(P_k_NO_deg);
+    data[509] = x1022;
+    data[510] = -x1022;
+    data[511] = x1023;
+    data[512] = x1025;
+    data[513] = x1026;
+    data[514] = -x1025;
+    data[515] = -x1026;
+    data[516] = x1022*x446;
+    data[517] = x1022*x447;
+    data[518] = -x1023;
+    data[519] = -PARAM(P_k_ArgI_deg);
+    data[520] = PARAM(P_k_MDSC_rec)*x11*x13*x459*x468 - x464*x473;
+    data[521] = -PARAM(P_k_CCL2_deg);
+    data[522] = PARAM(P_k_Mac_rec)*x11*x13*x468*x491 - x461*x493;
+    data[523] = x1031;
+    data[524] = x1037;
+    data[525] = x1041;
+    data[526] = x1044;
+    data[527] = x1049;
+    data[528] = x1055;
+    data[529] = x1060;
+    data[530] = x1078;
+    data[531] = x1081;
+    data[532] = -x1054 - x1082;
+    data[533] = x1083;
+    data[534] = x1086;
+    data[535] = x1087;
+    data[536] = -x1091 - x1095;
+    data[537] = -x1096 - x1098;
+    data[538] = x1091 + x1101;
+    data[539] = x1096 + x1103;
+    data[540] = x1055*x446;
+    data[541] = x1055*x447;
+    data[542] = x1040;
+    data[543] = x1043;
+    data[544] = x1104;
+    data[545] = x1105;
+    data[546] = x1110;
+    data[547] = SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*PARAM(P_n_vasc)*PARAM(P_vol_Mcell)*x2*x468*x491*x65*x66*x9 + SPVAR(SP_V_T_CCL2)*PARAM(P_k_Mac_rec)*x11*x1111*x13*x468 + PARAM(P_k_Mac_rec)*PARAM(P_vol_Mcell)*x11*x13*x2*x463*x466*x491*x77 - x1112 - x1118 - x1119;
+    data[548] = x1118;
+    data[549] = PARAM(P_k_IL12_Msec);
+    data[550] = x1127;
+    data[551] = x1133;
+    data[552] = x1134;
+    data[553] = x1135;
+    data[554] = -SPVAR(SP_V_T_collagen)*x1136 + x1137;
+    data[555] = x1100;
+    data[556] = x1102;
+    data[557] = x1038;
+    data[558] = x1042;
+    data[559] = x1139;
+    data[560] = x1140;
+    data[561] = x1142;
+    data[562] = x1145;
+    data[563] = x1146;
+    data[564] = x1147;
+    data[565] = x1148;
+    data[566] = x1150;
+    data[567] = x1151;
+    data[568] = x1152;
+    data[569] = x1153;
+    data[570] = x1155;
+    data[571] = x1031;
+    data[572] = x1037;
+    data[573] = x1041;
+    data[574] = x1044;
+    data[575] = x1049;
+    data[576] = x1053;
+    data[577] = x1060;
+    data[578] = x1078;
+    data[579] = x1081;
+    data[580] = -x1082;
+    data[581] = x1083;
+    data[582] = PARAM(P_k_vas_Msec);
+    data[583] = x1086;
+    data[584] = x1087;
+    data[585] = -x1095 - x1157;
+    data[586] = -x1098 - x1158;
+    data[587] = x1101 + x1157;
+    data[588] = x1103 + x1158;
+    data[589] = x1053*x446;
+    data[590] = x1053*x447;
+    data[591] = x1040;
+    data[592] = x1043;
+    data[593] = x1104;
+    data[594] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_Msec) + x1105;
+    data[595] = x1110;
+    data[596] = PARAM(P_k_ArgI_sec);
+    data[597] = x1106*x493 + x1109*x495 + x1111*x487 - x1112 + x1159;
+    data[598] = -x1119 - x1159;
+    data[599] = PARAM(P_k_IL10_sec);
+    data[600] = x1127;
+    data[601] = x1133;
+    data[602] = x1134;
+    data[603] = x1135;
+    data[604] = -SPVAR(SP_V_T_collagen)*(x1136 + x1161) + x1137;
+    data[605] = x1100;
+    data[606] = x1102;
+    data[607] = x1038;
+    data[608] = x1042;
+    data[609] = x1139;
+    data[610] = x1140;
+    data[611] = x1142;
+    data[612] = x1145;
+    data[613] = x1146;
+    data[614] = x1147;
+    data[615] = x1148;
+    data[616] = x1150;
+    data[617] = x1151;
+    data[618] = x1152;
+    data[619] = x1153;
+    data[620] = x1155;
+    data[621] = x1164;
+    data[622] = x1165;
+    data[623] = -x1164;
+    data[624] = -x1165;
+    data[625] = -x1166;
+    data[626] = x1166;
+    data[627] = -PARAM(P_k_IL12_deg);
+    data[628] = x1167;
+    data[629] = -x1168;
+    data[630] = -x1167;
+    data[631] = x1168;
+    data[632] = -x1171;
+    data[633] = -x1172;
+    data[634] = x1171;
+    data[635] = x1172;
+    data[636] = x1167*x446;
+    data[637] = x1167*x447;
+    data[638] = -x1173;
+    data[639] = x1173;
+    data[640] = -PARAM(P_k_IL10_deg);
+    data[641] = -x1177;
+    data[642] = -x1182;
+    data[643] = -x1183 - x1185;
+    data[644] = -x1186 - x1187;
+    data[645] = -x1188 + x1189 - x1190 - x1191;
+    data[646] = x1195;
+    data[647] = -x1197 + x1199;
+    data[648] = x1174*x241 + x1197 - x1199 + x1200 - x1201*x225 + x1202 + x1203 + x1204*x225 - x1205 + x1206 - x1208 + x1209 + x1210 - x1212 + x1213;
+    data[649] = x1216;
+    data[650] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x308*x309*x313*x316*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_qPSCcell)*x0*x2*x311*x77 - x1180*x319) - x1195;
+    data[651] = x1180*x328 - x1184*x326;
+    data[652] = x1174*x334 + x1177 + x1217;
+    data[653] = x1174*x373 + x1174*x383 + x1174*x390 + x1182 - x1200 - x1202 - x1203 + x1205 - x1206 + x1208 - x1209 - x1210 + x1212 - x1213;
+    data[654] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_qPSCcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_qPSCcell)*x2*x423 - x1222;
+    data[655] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_qPSCcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_qPSCcell)*x2*x423 - x1223;
+    data[656] = x1222 - x1225;
+    data[657] = x1223 - x1226;
+    data[658] = x1195*x446;
+    data[659] = x1195*x447;
+    data[660] = x1185;
+    data[661] = x1187;
+    data[662] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*PARAM(P_vol_qPSCcell)*x2*x448*x450*x453 + PARAM(P_k_Th_seed)*PARAM(P_vol_qPSCcell)*x16*x18*x2 + x1188 - x1189 + x1190 + x1191 - x1216 - x1217;
+    data[663] = x1174*x454;
+    data[664] = x1227*x465 - x1229*x470 + x1230*x473 + x481*(-x1174*x477 + x1180*x480);
+    data[665] = PARAM(P_vol_qPSCcell)*x1231 + x1227*x493 - x1229*x494 + x1230*x495 + x1233 - x1236;
+    data[666] = -x1233 + x1236;
+    data[667] = PARAM(P_k_CAF_encounter)*PARAM(P_vol_qPSCcell)*x2*x523*x524 + PARAM(P_k_CAF_encounter)*x524*x8*(x6*x93 - x9) - PARAM(P_k_PSC_to_apCAF) - PARAM(P_k_qpsc_death) - x1239 - x1242 - x292;
+    data[668] = -SPVAR(SP_V_T_iCAF)*x1246 + x1242 + x1243 + x1248*x589 + x1249 - x1251 + x1252 - x1253;
+    data[669] = -SPVAR(SP_V_T_myCAF)*x1246 + x1239 - x1243 + x1248*x932 - x1249 + x1251 - x1252 + x1253;
+    data[670] = -SPVAR(SP_V_T_apCAF)*x1246 + PARAM(P_k_PSC_to_apCAF) + x1247*x934;
+    data[671] = -SPVAR(SP_V_T_collagen)*(x1180*x853 - x1184*x629) + x1184*x625 + x635*(x1193*x632 - x1215*x620);
+    data[672] = x1225;
+    data[673] = x1226;
+    data[674] = x1183;
+    data[675] = x1186;
+    data[676] = -x1254*x637;
+    data[677] = -x1254*x641;
+    data[678] = x1256;
+    data[679] = PARAM(P_k_out_PDL1)*PARAM(P_vol_qPSCcell)*x2*x657*x660*x661*x80 - x1257*x658 - x1258*x649;
+    data[680] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_qPSCcell)*x2*x660*x661*x671*x80 - x1257*x673 - x1258*x670;
+    data[681] = -x1256;
+    data[682] = x1259;
+    data[683] = -x1257*x681 + x1260*x681;
+    data[684] = -x1257*x687 + x1260*x687;
+    data[685] = -x1259;
+    data[686] = x1180*x695 - x1184*x693;
+    data[687] = -x1261*x711 + x1261*x713;
+    data[688] = -x1265;
+    data[689] = -x1270;
+    data[690] = -x1271 - x1273;
+    data[691] = -x1274 - x1275;
+    data[692] = -x1277;
+    data[693] = x1281;
+    data[694] = -x1283 + x1285;
+    data[695] = x1262*x241 + x1283 - x1285 + x1286 - x1287*x225 + x1288 + x1289 + x1290*x225 - x1291 + x1292 - x1294 + x1295 + x1296 - x1298 + x1299;
+    data[696] = x1301 + x1302 + x1303 - x1305 + x1306;
+    data[697] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_iCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_iCAFcell)*x0*x2*x311*x77 - x1268*x319)) - x1281;
+    data[698] = x1268*x328 - x1272*x326;
+    data[699] = x1262*x334 + x1265 + x1308 + x1311 + x1312 - x1313 + x1314 - x1315;
+    data[700] = x1262*x373 + x1262*x383 + x1262*x390 + x1270 - x1286 - x1288 - x1289 + x1291 - x1292 + x1294 - x1295 - x1296 + x1298 - x1299;
+    data[701] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_iCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_iCAFcell)*x2*x423 - x1320;
+    data[702] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_iCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_iCAFcell)*x2*x423 - x1321;
+    data[703] = x1320 - x1323;
+    data[704] = x1321 - x1324;
+    data[705] = x1281*x446;
+    data[706] = x1281*x447;
+    data[707] = x1273;
+    data[708] = x1275;
+    data[709] = x1262*x894 + x1262*x896 + x1277 - x1301 - x1302 - x1303 + x1305 - x1306 - x1308 + x1310 - x1312 + x1313 - x1314 + x1315;
+    data[710] = x1262*x454;
+    data[711] = x1325*x465 - x1327*x470 + x1328*x473 + x481*(-x1262*x477 + x1268*x480);
+    data[712] = PARAM(P_vol_iCAFcell)*x1231 + x1325*x493 - x1327*x494 + x1328*x495 + x1330 - x1333;
+    data[713] = -x1330 + x1333;
+    data[714] = x1262*x526 + x1262*x545 + x1334 - x1336 + x1339;
+    data[715] = SPVAR(SP_V_T_iCAF)*PARAM(P_k_iCAF_prolif)*(SPVAR(SP_V_T_iCAF)*x1345*x588 - x1341) - SPVAR(SP_V_T_iCAF)*x1346 - PARAM(P_k_iCAF_death) + PARAM(P_k_iCAF_prolif)*(-SPVAR(SP_V_T_iCAF)*x1341 + 1.0) - x1339 - x1340 - x1348;
+    data[716] = -SPVAR(SP_V_T_myCAF)*x1346 - x1334 + x1336 + x1345*x932 + x1348;
+    data[717] = -SPVAR(SP_V_T_apCAF)*x1346 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1344*x614*x616;
+    data[718] = -SPVAR(SP_V_T_collagen)*(x1268*x853 - x1272*x629) + x1272*x625 + x635*(x1279*x632 - x1304*x620);
+    data[719] = PARAM(P_k_CXCL12_sec_iCAF);
+    data[720] = PARAM(P_k_IL6_sec_iCAF);
+    data[721] = x1323;
+    data[722] = x1324;
+    data[723] = x1271;
+    data[724] = x1274;
+    data[725] = -x1349*x637;
+    data[726] = -x1349*x641;
+    data[727] = x1351;
+    data[728] = PARAM(P_k_out_PDL1)*PARAM(P_vol_iCAFcell)*x2*x657*x660*x661*x80 - x1352*x658 - x1353*x649;
+    data[729] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_iCAFcell)*x2*x660*x661*x671*x80 - x1352*x673 - x1353*x670;
+    data[730] = -x1351;
+    data[731] = x1354;
+    data[732] = -x1352*x681 + x1355*x681;
+    data[733] = -x1352*x687 + x1355*x687;
+    data[734] = -x1354;
+    data[735] = x1268*x695 - x1272*x693;
+    data[736] = -x1356*x711 + x1356*x713;
+    data[737] = -x1360;
+    data[738] = -x1365;
+    data[739] = -x1366 - x1368;
+    data[740] = -x1369 - x1370;
+    data[741] = -x1372;
+    data[742] = x1376;
+    data[743] = -x1378 + x1380;
+    data[744] = x1357*x241 + x1378 - x1380 + x1381 - x1382*x225 + x1383 + x1384 + x1385*x225 - x1386 + x1387 - x1389 + x1390 + x1391 - x1393 + x1394;
+    data[745] = x1396 + x1397 + x1398 - x1400 + x1401;
+    data[746] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_myCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_myCAFcell)*x0*x2*x311*x77 - x1363*x319)) - x1376;
+    data[747] = x1363*x328 - x1367*x326;
+    data[748] = PARAM(P_k_vas_myCAF_sec);
+    data[749] = x1311 + x1357*x334 + x1360 + x1402 + x1403 - x1404 + x1405 - x1406;
+    data[750] = x1357*x373 + x1357*x383 + x1357*x390 + x1365 - x1381 - x1383 - x1384 + x1386 - x1387 + x1389 - x1390 - x1391 + x1393 - x1394;
+    data[751] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_myCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_myCAFcell)*x2*x423 - x1411;
+    data[752] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_myCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_myCAFcell)*x2*x423 - x1412;
+    data[753] = x1411 - x1414;
+    data[754] = x1412 - x1415;
+    data[755] = x1376*x446;
+    data[756] = x1376*x447;
+    data[757] = x1368;
+    data[758] = x1370;
+    data[759] = x1310 + x1357*x894 + x1357*x896 + x1372 - x1396 - x1397 - x1398 + x1400 - x1401 - x1402 - x1403 + x1404 - x1405 + x1406;
+    data[760] = PARAM(P_f_active_TGFb)*PARAM(P_k_TGFb_sec_myCAF) + x1357*x454;
+    data[761] = x1416*x465 - x1418*x470 + x1419*x473 + x481*(-x1357*x477 + x1363*x480);
+    data[762] = PARAM(P_vol_myCAFcell)*x1231 + x1416*x493 - x1418*x494 + x1419*x495 + x1421 - x1424;
+    data[763] = -x1421 + x1424;
+    data[764] = x1357*x526 + x1357*x545 - x1426 + x1428 - x1429 + x1430;
+    data[765] = -SPVAR(SP_V_T_iCAF)*x1433 + x1426 - x1428 + x1429 + x1435*x589 + x1436;
+    data[766] = SPVAR(SP_V_T_myCAF)*PARAM(P_k_myCAF_prolif)*(SPVAR(SP_V_T_myCAF)*x1435*x931 - x1437) - SPVAR(SP_V_T_myCAF)*x1433 - PARAM(P_k_myCAF_death) + PARAM(P_k_myCAF_prolif)*(-SPVAR(SP_V_T_myCAF)*x1437 + 1.0) - x1340 - x1430 - x1436;
+    data[767] = -SPVAR(SP_V_T_apCAF)*x1433 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1434*x614*x616;
+    data[768] = -SPVAR(SP_V_T_collagen)*(x1363*x853 - x1367*x629) + x5*x622*x624*x93 + x621*x634 + x635*(x1374*x632 - x1399*x620);
+    data[769] = x1414;
+    data[770] = x1415;
+    data[771] = x1366;
+    data[772] = x1369;
+    data[773] = -x1438*x637;
+    data[774] = -x1438*x641;
+    data[775] = x1440;
+    data[776] = PARAM(P_k_out_PDL1)*PARAM(P_vol_myCAFcell)*x2*x657*x660*x661*x80 - x1441*x658 - x1442*x649;
+    data[777] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_myCAFcell)*x2*x660*x661*x671*x80 - x1441*x673 - x1442*x670;
+    data[778] = -x1440;
+    data[779] = x1443;
+    data[780] = -x1441*x681 + x1444*x681;
+    data[781] = -x1441*x687 + x1444*x687;
+    data[782] = -x1443;
+    data[783] = x1363*x695 - x1367*x693;
+    data[784] = -x1445*x711 + x1445*x713;
+    data[785] = -x1449;
+    data[786] = -x1454;
+    data[787] = -x1455 - x1457;
+    data[788] = -x1458 - x1459;
+    data[789] = -x1460 + x1461 - x1462 - x1463;
+    data[790] = x1467;
+    data[791] = -x1469 + x1471;
+    data[792] = x1446*x241 + x1469 - x1471 + x1472 - x1473*x225 + x1474 + x1475 + x1476*x225 - x1477 + x1478 - x1480 + x1481 + x1482 - x1484 + x1485;
+    data[793] = x1488;
+    data[794] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x313*x316*(PARAM(P_k_stroma_apCAF)*x1307 + x314*(SPVAR(SP_V_T_collagen)*PARAM(P_vol_apCAFcell)*x0*x2*x311*x77 - x1452*x319)) - x1467;
+    data[795] = x1452*x328 - x1456*x326;
+    data[796] = x1446*x334 + x1449 + x1489;
+    data[797] = x1446*x373 + x1446*x383 + x1446*x390 + x1454 - x1472 - x1474 - x1475 + x1477 - x1478 + x1480 - x1481 - x1482 + x1484 - x1485;
+    data[798] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_apCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_apCAFcell)*x2*x423 - x1494;
+    data[799] = 0.5*SPVAR(SP_V_T_collagen)*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*PARAM(P_vol_apCAFcell)*x0*x170*x2*x421*x424*x9 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_vol_apCAFcell)*x2*x423 - x1495;
+    data[800] = x1494 - x1497;
+    data[801] = x1495 - x1498;
+    data[802] = x1467*x446;
+    data[803] = x1467*x447;
+    data[804] = x1457;
+    data[805] = x1459;
+    data[806] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*PARAM(P_vol_apCAFcell)*x2*x448*x450*x453 + PARAM(P_k_Th_seed)*PARAM(P_vol_apCAFcell)*x16*x18*x2 + x1460 - x1461 + x1462 + x1463 - x1488 - x1489;
+    data[807] = x1446*x454;
+    data[808] = x1499*x465 - x1501*x470 + x1502*x473 + x481*(-x1446*x477 + x1452*x480);
+    data[809] = PARAM(P_vol_apCAFcell)*x1231 + x1499*x493 - x1501*x494 + x1502*x495 + x1504 - x1507;
+    data[810] = -x1504 + x1507;
+    data[811] = x1446*x526 + x1446*x545 - x1509 + x1511 - x1512 + x1513;
+    data[812] = -SPVAR(SP_V_T_iCAF)*x1516 + x1509 - x1511 + x1512 + x1517*x573*x589 + x1518;
+    data[813] = -SPVAR(SP_V_T_myCAF)*x1516 + PARAM(P_k_myCAF_prolif)*x1517*x573*x609*x610*x612 - x1513 - x1518;
+    data[814] = SPVAR(SP_V_T_apCAF)*PARAM(P_k_apCAF_prolif)*(SPVAR(SP_V_T_apCAF)*x1517*x933 - x1519) - SPVAR(SP_V_T_apCAF)*x1516 - PARAM(P_k_apCAF_death) + PARAM(P_k_apCAF_prolif)*(-SPVAR(SP_V_T_apCAF)*x1519 + 1.0) - x1340;
+    data[815] = -SPVAR(SP_V_T_collagen)*(x1452*x853 - x1456*x629) + x1456*x625 + x635*(x1465*x632 - x1487*x620);
+    data[816] = x1497;
+    data[817] = x1498;
+    data[818] = x1455;
+    data[819] = x1458;
+    data[820] = -x1520*x637;
+    data[821] = -x1520*x641;
+    data[822] = x1522;
+    data[823] = PARAM(P_k_out_PDL1)*PARAM(P_vol_apCAFcell)*x2*x657*x660*x661*x80 - x1523*x658 - x1524*x649;
+    data[824] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*PARAM(P_vol_apCAFcell)*x2*x660*x661*x671*x80 - x1523*x673 - x1524*x670;
+    data[825] = -x1522;
+    data[826] = x1525;
+    data[827] = -x1523*x681 + x1526*x681;
+    data[828] = -x1523*x687 + x1526*x687;
+    data[829] = -x1525;
+    data[830] = x1452*x695 - x1456*x693;
+    data[831] = -x1527*x711 + x1527*x713;
+    data[832] = -x1531;
+    data[833] = -x1534;
+    data[834] = -x1535 - x1537;
+    data[835] = -x1538 - x1540;
+    data[836] = -x1541 + x1542 - x1543 - x1544;
+    data[837] = x1552;
+    data[838] = -x1554 + x1556;
+    data[839] = x0*x241 + x1554 - x1556 + x1557 - x1558*x225 + x1559 + x1560 + x1561*x225 - x1562 + x1563 - x1565 + x1566 + x1567 + x1572 - x1573;
+    data[840] = x1576;
+    data[841] = SPVAR(SP_V_T_C1)*PARAM(P_k_C1_growth)*x308*x309*x313*x316*(SPVAR(SP_V_T_collagen)*x311*x317*x77 - x1548*x311 - x1550*x169*x318) - x1552;
+    data[842] = -x0*x325*x943 + x1532*x328;
+    data[843] = x0*x334 + x1531 + x1577;
+    data[844] = x0*x373 + x0*x383 + x0*x390 + x1534 - x1557 - x1559 - x1560 + x1562 - x1563 + x1565 - x1566 - x1567 - x1572 + x1573;
+    data[845] = 0.5*PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*x1550*x170*x421*x424*x8 + PARAM(P_cDC1_recruit_target_T)*PARAM(P_k_APC_death)*x0*x423 - x1582;
+    data[846] = 0.5*PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*PARAM(P_n_pore)*x1550*x170*x421*x424*x8 + PARAM(P_cDC2_recruit_target_T)*PARAM(P_k_APC_death)*x0*x423 - x1583;
+    data[847] = x1582 - x1585;
+    data[848] = x1583 - x1586;
+    data[849] = x1552*x446;
+    data[850] = x1552*x447;
+    data[851] = x1537;
+    data[852] = x1540;
+    data[853] = PARAM(P_k_Th_pro_tumor)*PARAM(P_rho_Th_max)*x0*x448*x450*x453 + PARAM(P_k_Th_seed)*x0*x16*x18 + x1541 - x1542 + x1543 + x1544 - x1576 - x1577;
+    data[854] = x0*x454;
+    data[855] = x1587*x465 - x1589*x470 + x1590*x473 + x481*(-x0*x477 + x1532*x480);
+    data[856] = x0*x489 + x1587*x493 - x1589*x494 + x1590*x495 + x1592 - x1595;
+    data[857] = -x1592 + x1595;
+    data[858] = x0*x526 + x0*x545 - x1597 + x1599 - x1600 + x1602;
+    data[859] = -SPVAR(SP_V_T_iCAF)*x1605 + x1597 - x1599 + x1600 + x1606*x573*x589 + x1607;
+    data[860] = -SPVAR(SP_V_T_myCAF)*x1605 + PARAM(P_k_myCAF_prolif)*x1606*x573*x609*x610*x612 - x1602 - x1607;
+    data[861] = -SPVAR(SP_V_T_apCAF)*x1605 + PARAM(P_f_apCAF_of_total)*PARAM(P_k_apCAF_prolif)*x1606*x614*x616;
+    data[862] = -SPVAR(SP_V_T_Mac_M2)*x1161 - SPVAR(SP_V_T_collagen)*(x1160*x1550*x630 - x1536*x629) + SPVAR(SP_V_T_myCAF)*PARAM(P_k_col_myCAF_sec)*x621*(-x1548*x623 + x1549*x623) + SPVAR(SP_V_T_myCAF)*PARAM(P_k_col_myCAF_sec)*x633*(x1546*x632 - x1575*x620) - PARAM(P_k_col_deg);
+    data[863] = x1585;
+    data[864] = x1586;
+    data[865] = x1535;
+    data[866] = x1538;
+    data[867] = -x1608*x637;
+    data[868] = -x1608*x641;
+    data[869] = x1610;
+    data[870] = PARAM(P_k_out_PDL1)*x0*x657*x660*x661*x80 - x1611*x658 - x1612*x649;
+    data[871] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2C1)*x0*x660*x661*x671*x80 - x1611*x673 - x1612*x670;
+    data[872] = -x1610;
+    data[873] = x1613;
+    data[874] = -x1611*x681 + x1614*x681;
+    data[875] = -x1611*x687 + x1614*x687;
+    data[876] = -x1613;
+    data[877] = x1532*x695 - x1539*x692;
+    data[878] = -x1615*x711 + x1615*x713;
+    data[879] = -x1617;
+    data[880] = -x1618;
+    data[881] = x1617;
+    data[882] = x1618;
+    data[883] = -PARAM(P_k_CXCL12_deg);
+    data[884] = x481*(x458*x9 - x476*x478);
+    data[885] = -x1619;
+    data[886] = x1619;
+    data[887] = -x1621;
+    data[888] = x1621 + x1622;
+    data[889] = -x1622;
+    data[890] = -PARAM(P_k_IL6_deg);
+    data[891] = x1623;
+    data[892] = -x1623 - x1624;
+    data[893] = x1624;
+    data[894] = -PARAM(P_k_IL1_deg);
+    data[895] = x1626;
+    data[896] = -PARAM(P_k_TLA_release) - x1628;
+    data[897] = x1628;
+    data[898] = PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x697*x701*x705*x709*x9 - PARAM(P_k_CXCL13_ff)*x1629*x701;
+    data[899] = x1626;
+    data[900] = PARAM(P_k_CD137_deact);
+    data[901] = -PARAM(P_k_CD137_deact) - PARAM(P_k_TLA_egress) - PARAM(P_k_TLA_release);
+    data[902] = PARAM(P_k_TLA_egress);
+    data[903] = x1630;
+    data[904] = -x1630;
+    data[905] = -x1625 - x1631;
+    data[906] = x1633;
+    data[907] = x1634;
+    data[908] = -x1633;
+    data[909] = -x1634;
+    data[910] = x1630*x446;
+    data[911] = x1630*x447;
+    data[912] = x1631;
+    data[913] = PARAM(P_q_nCD4_LN_out);
+    data[914] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1649 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1649*x1660*x1662*x1664*x1668*x923 - SPVAR(SP_V_LN_nCD4)*x52/std::pow(x1635, 2) + PARAM(P_k_nCD4_pro)*x49/x1635 - PARAM(P_k_nTreg_death) - PARAM(P_q_nCD4_LN_out) - x1636*x1641 - x1648 - x1669*x1670;
+    data[915] = SPVAR(SP_V_LN_mcDC2)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_mcDC2)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - SPVAR(SP_V_LN_nCD4)*x1671*x1672 - x1649*x1672*x1673;
+    data[916] = PARAM(P_n_CD4_clones)*x1648*x1675;
+    data[917] = -PARAM(P_k_Treg_pro);
+    data[918] = PARAM(P_k_Treg_pro);
+    data[919] = PARAM(P_q_Treg_LN_out);
+    data[920] = -PARAM(P_k_Treg_death) - PARAM(P_q_Treg_LN_out);
+    data[921] = -x1709;
+    data[922] = x1709*x1710 + x1716*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1713 + 0.69314718055994529*x1691);
+    data[923] = -x1722;
+    data[924] = x1722*x1723 + x1727*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1724 + 0.69314718055994529*x1719);
+    data[925] = PARAM(P_q_nCD8_LN_out);
+    data[926] = -SPVAR(SP_V_LN_nCD8)*x56/std::pow(x1728, 2) - PARAM(P_k_nCD8_death) + PARAM(P_k_nCD8_pro)*x53/x1728 - PARAM(P_q_nCD8_LN_out) - x1753;
+    data[927] = x1753*x1754;
+    data[928] = -x1714 - x1759;
+    data[929] = x1710*x1759 + x1715 + x1716*(-0.69314718055994529*x1713 + 0.69314718055994529*x1756 + 0.69314718055994529*x1758);
+    data[930] = -x1762;
+    data[931] = x1723*x1762 + x1727*(-0.69314718055994529*x1724 + 0.69314718055994529*x1760 + 0.69314718055994529*x1761);
+    data[932] = PARAM(P_q_CD8_LN_out);
+    data[933] = -PARAM(P_k_CD8_death) - PARAM(P_q_CD8_LN_out);
+    data[934] = PARAM(P_k_IFNg_Tsec);
+    data[935] = -PARAM(P_k_APC_death) - x1763;
+    data[936] = x1763;
+    data[937] = -PARAM(P_k_APC_death);
+    data[938] = -x1765;
+    data[939] = x1754*x1765;
+    data[940] = -PARAM(P_k_mAPC_death);
+    data[941] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*x1649*x1767 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*x1649*x1660*x1662*x1664*x1668*x1767*x923 - SPVAR(SP_V_LN_nCD4)*PARAM(P_n_sites_APC)*x1641 - SPVAR(SP_V_LN_nCD4)*x1766 - PARAM(P_n_sites_APC)*x1639*x1673;
+    data[942] = SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - x1637*x1649*x1669*x1768 - x1637*x1671*x1768;
+    data[943] = -x1769;
+    data[944] = x1769;
+    data[945] = -PARAM(P_k_mAPC_death) - x1772;
+    data[946] = x1766*x1773;
+    data[947] = x1772;
+    data[948] = x1774;
+    data[949] = -x1774;
+    data[950] = -x1776;
+    data[951] = x1776;
+    data[952] = x1777;
+    data[953] = -x1777;
+    data[954] = -x1780;
+    data[955] = x1710*x1780 + x1716*(0.69314718055994529*PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1779);
+    data[956] = -x1725 - x1782;
+    data[957] = x1723*x1782 + x1726 + x1727*(0.69314718055994529*PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1781);
+    data[958] = PARAM(P_q_Treg_LN_out);
+    data[959] = -SPVAR(SP_V_LN_mcDC1)*x1764*x1783;
+    data[960] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1743*x1745*x1747*x1751*x1783 - x1785;
+    data[961] = x1710*x1785 + x1716*(0.69314718055994529*PARAM(P_N_div_costim)*x1694*x1701*x1703 - 0.69314718055994529*x1784);
+    data[962] = -PARAM(P_k_CD4_death) - PARAM(P_q_Treg_LN_out);
+    data[963] = PARAM(P_k_IFNg_Thsec);
+    data[964] = x992;
+    data[965] = PARAM(P_k_out_PDL1)*x1788*x1796*x85 - PARAM(P_k_out_PDL1)*x1796*x1799 - x1791*x1801;
+    data[966] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1788*x1804*x85 - PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1799*x1804 - x1801*x1803;
+    data[967] = -PARAM(P_k_P0_deg);
+    data[968] = PARAM(P_k_P0_deg);
+    data[969] = -PARAM(P_k_p0_deg) - x1806;
+    data[970] = -x1806;
+    data[971] = x1806;
+    data[972] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*SPVAR(SP_V_e_P1)*PARAM(P_k_T_activation_per_APC)*x1808*x1809 - SPVAR(SP_V_LN_nCD4)*x1642*x1807;
+    data[973] = -SPVAR(SP_V_e_P1)*x1808*x1809*x1810 + x1807*x1810;
+    data[974] = -PARAM(P_k_P1_deg);
+    data[975] = PARAM(P_k_P1_deg);
+    data[976] = -PARAM(P_k_p1_deg) - x1811;
+    data[977] = -x1811;
+    data[978] = x1811;
+    data[979] = -x1812;
+    data[980] = -x1813;
+    data[981] = -PARAM(P_kout) - x1812 - x1813;
+    data[982] = x1812;
+    data[983] = x1813;
+    data[984] = PARAM(P_kout);
+    data[985] = x1814;
+    data[986] = x1814;
+    data[987] = -PARAM(P_kout) - x1814;
+    data[988] = PARAM(P_kout);
+    data[989] = x1815;
+    data[990] = x1815;
+    data[991] = -PARAM(P_kout) - x1815;
+    data[992] = PARAM(P_kout);
+    data[993] = PARAM(P_kin);
+    data[994] = -PARAM(P_kin);
+    data[995] = -x1665*x1668*x1818 + x1818*x1819;
+    data[996] = 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1662*x1664*x1668*x1816*x923 - x1637*x1817*x1819;
+    data[997] = x1814;
+    data[998] = -x1814;
+    data[999] = -x1748*x1751*x1821 + x1822;
+    data[1000] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1732*x1745*x1747*x1751*x1820 - x1754*x1822;
+    data[1001] = x1815;
+    data[1002] = -x1815;
+    data[1003] = x1829;
+    data[1004] = x1834;
+    data[1005] = x1835;
+    data[1006] = x1836;
+    data[1007] = x1838;
+    data[1008] = x1839;
+    data[1009] = x1840;
+    data[1010] = x1841;
+    data[1011] = x1842;
+    data[1012] = x1843;
+    data[1013] = x1844;
+    data[1014] = PARAM(P_koff_PD1_PDL1);
+    data[1015] = -x1844 - x1845;
+    data[1016] = x1829;
+    data[1017] = x1834;
+    data[1018] = x1835;
+    data[1019] = x1836;
+    data[1020] = x1838;
+    data[1021] = x1839;
+    data[1022] = x1840;
+    data[1023] = x1841;
+    data[1024] = x1842;
+    data[1025] = x1843;
+    data[1026] = x1846;
+    data[1027] = PARAM(P_koff_PD1_PDL2);
+    data[1028] = -x1845 - x1846;
+    data[1029] = x1832;
+    data[1030] = -x1832;
+    data[1031] = x1847;
+    data[1032] = x1848;
+    data[1033] = -x1847 - x1848 - x1850 - x1851;
+    data[1034] = -x1847;
+    data[1035] = -x1848;
+    data[1036] = -x1850 - x1852;
+    data[1037] = x1850;
+    data[1038] = x1853;
+    data[1039] = -x1853;
+    data[1040] = -x1845 - x1853 - x1855;
+    data[1041] = x1855;
+    data[1042] = -x1855;
+    data[1043] = x1856;
+    data[1044] = -x1856;
+    data[1045] = -x1845 - x1856;
+    data[1046] = x1857;
+    data[1047] = -x1857;
+    data[1048] = -x1858 - x1859;
+    data[1049] = -PARAM(P_koff_PD1_aPD1) - x1859;
+    data[1050] = x1859;
+    data[1051] = x1861;
+    data[1052] = -x1861;
+    data[1053] = x1862;
+    data[1054] = x1862;
+    data[1055] = x1863;
+    data[1056] = 0;
+    data[1057] = -PARAM(P_koff_CD28_CD80) - x1865;
+    data[1058] = x1865;
+    data[1059] = PARAM(P_koff_CD28_CD80) + x1866;
+    data[1060] = PARAM(P_koff_CD28_CD80);
+    data[1061] = x1867;
+    data[1062] = x1868;
+    data[1063] = x1867;
+    data[1064] = x1869;
+    data[1065] = PARAM(P_koff_CD28_CD86);
+    data[1066] = PARAM(P_koff_CD28_CD86);
+    data[1067] = -PARAM(P_koff_CTLA4_CD80) - x1871 - x1872;
+    data[1068] = x1871;
+    data[1069] = x1872;
+    data[1070] = PARAM(P_koff_CTLA4_CD80) + x1873;
+    data[1071] = PARAM(P_koff_CTLA4_CD80) - x1871;
+    data[1072] = x1874;
+    data[1073] = -x1874 - x1877;
+    data[1074] = x1877;
+    data[1075] = x1878;
+    data[1076] = x1874;
+    data[1077] = x1874;
+    data[1078] = -x1874 - x1879;
+    data[1079] = x1879;
     data[1080] = x1874;
-    data[1081] = -x1874 - x1879;
-    data[1082] = x1879;
-    data[1083] = x1874;
-    data[1084] = x1880;
+    data[1081] = x1880;
+    data[1082] = PARAM(P_koff_CTLA4_CD80);
+    data[1083] = PARAM(P_koff_CTLA4_CD80);
+    data[1084] = x1881;
     data[1085] = PARAM(P_koff_CTLA4_CD80);
     data[1086] = PARAM(P_koff_CTLA4_CD80);
-    data[1087] = x1881;
-    data[1088] = PARAM(P_koff_CTLA4_CD80);
-    data[1089] = PARAM(P_koff_CTLA4_CD80);
-    data[1090] = -PARAM(P_koff_CTLA4_CD86) - x1883;
-    data[1091] = x1883;
-    data[1092] = PARAM(P_koff_CTLA4_CD86);
-    data[1093] = PARAM(P_koff_CTLA4_CD86) - x1883;
-    data[1094] = x1884;
-    data[1095] = x1885;
-    data[1096] = x1884;
-    data[1097] = -x1845 - x1886;
-    data[1098] = -PARAM(P_koff_CD80_PDL1) - x1865 - x1872;
-    data[1099] = x1865;
-    data[1100] = x1872;
-    data[1101] = x1866;
-    data[1102] = x1873;
-    data[1103] = PARAM(P_koff_CD80_PDL1);
-    data[1104] = x1887;
-    data[1105] = PARAM(P_koff_CD28_CD80);
-    data[1106] = x1888;
-    data[1107] = PARAM(P_koff_CD28_CD80);
-    data[1108] = x1887;
-    data[1109] = PARAM(P_koff_CTLA4_CD80);
-    data[1110] = x1889;
-    data[1111] = PARAM(P_koff_CTLA4_CD80);
-    data[1112] = -x1890 - x1893;
-    data[1113] = x1890;
-    data[1114] = x1894;
-    data[1115] = -x1895;
-    data[1116] = x1895;
-    data[1117] = -x1890 - x1892 - x1894 - x1895;
-    data[1118] = x1893;
-    data[1119] = -x1894;
-    data[1120] = x1879 - x1896;
-    data[1121] = -x1897;
-    data[1122] = x1896;
-    data[1123] = x1897;
-    data[1124] = x1899;
-    data[1125] = -x1901;
-    data[1126] = x1901;
-    data[1127] = -x1879 - x1896 - x1897 - x1899 - x1901;
-    data[1128] = x1880;
-    data[1129] = -x1899;
-    data[1130] = x1902;
-    data[1131] = -x1878 - x1896;
-    data[1132] = x1896;
-    data[1133] = -x1903;
-    data[1134] = x1903;
-    data[1135] = -x1902;
-    data[1136] = x1878;
-    data[1137] = -PARAM(P_koff_CD80_CD80) - x1877 - x1896 - x1902 - x1903;
-    data[1138] = x1904;
-    data[1139] = -x1905;
-    data[1140] = x1905;
-    data[1141] = 2*x1906;
-    data[1142] = -x1905 - 4*x1906;
-    data[1143] = x1907;
-    data[1144] = -x1908 - x1910;
-    data[1145] = x1908;
-    data[1146] = -x1907;
-    data[1147] = x1910;
-    data[1148] = -x1907 - x1908 - x1909;
-    data[1149] = x1844;
-    data[1150] = PARAM(P_koff_PD1_PDL1);
-    data[1151] = -x1844 - x1911;
-    data[1152] = x1846;
-    data[1153] = PARAM(P_koff_PD1_PDL2);
-    data[1154] = -x1846 - x1911;
-    data[1155] = x1912;
-    data[1156] = x1913;
-    data[1157] = -x1912 - x1913 - x1914 - x1915;
-    data[1158] = -x1912;
-    data[1159] = -x1913;
-    data[1160] = -x1914 + x1915;
-    data[1161] = x1914;
-    data[1162] = x1917;
-    data[1163] = -x1917;
-    data[1164] = -x1911 - x1917 - x1919;
-    data[1165] = x1919;
-    data[1166] = -x1919;
-    data[1167] = x1920;
-    data[1168] = -x1920;
-    data[1169] = -x1911 - x1920;
-    data[1170] = -x1858 - x1921;
-    data[1171] = -PARAM(P_koff_PD1_aPD1) - x1921;
-    data[1172] = x1921;
-    data[1173] = x1862;
-    data[1174] = x1862;
-    data[1175] = x1863;
-    data[1176] = 0;
-    data[1177] = x1929;
-    data[1178] = x1931;
-    data[1179] = x1933;
-    data[1180] = x1934;
-    data[1181] = -PARAM(P_koff_CD28_CD80) - x1936;
-    data[1182] = x1936;
-    data[1183] = PARAM(P_koff_CD28_CD80) + x1937;
-    data[1184] = PARAM(P_koff_CD28_CD80);
-    data[1185] = -x1940;
-    data[1186] = x1710*x1940 + x1716*(1.3862943611198906*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1701*x1703*x1922 - x1927*x1941);
-    data[1187] = -x1942;
-    data[1188] = x1723*x1942 + x1727*(1.3862943611198906*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1701*x1703*x1922 - x1941);
-    data[1189] = x1867;
-    data[1190] = x1868;
-    data[1191] = x1867;
-    data[1192] = x1929;
-    data[1193] = x1931;
-    data[1194] = x1933;
-    data[1195] = x1934;
-    data[1196] = x1869;
-    data[1197] = PARAM(P_koff_CD28_CD86);
-    data[1198] = PARAM(P_koff_CD28_CD86);
-    data[1199] = -PARAM(P_koff_CTLA4_CD80) - x1944 - x1945;
-    data[1200] = x1944;
-    data[1201] = x1945;
-    data[1202] = PARAM(P_koff_CTLA4_CD80) + x1946;
-    data[1203] = PARAM(P_koff_CTLA4_CD80) - x1944;
-    data[1204] = x1874;
-    data[1205] = -x1874 - x1948;
-    data[1206] = x1948;
-    data[1207] = x1949;
-    data[1208] = x1874;
+    data[1087] = -PARAM(P_koff_CTLA4_CD86) - x1883;
+    data[1088] = x1883;
+    data[1089] = PARAM(P_koff_CTLA4_CD86);
+    data[1090] = PARAM(P_koff_CTLA4_CD86) - x1883;
+    data[1091] = x1884;
+    data[1092] = x1885;
+    data[1093] = x1884;
+    data[1094] = -x1845 - x1886;
+    data[1095] = -PARAM(P_koff_CD80_PDL1) - x1865 - x1872;
+    data[1096] = x1865;
+    data[1097] = x1872;
+    data[1098] = x1866;
+    data[1099] = x1873;
+    data[1100] = PARAM(P_koff_CD80_PDL1);
+    data[1101] = x1887;
+    data[1102] = PARAM(P_koff_CD28_CD80);
+    data[1103] = x1888;
+    data[1104] = PARAM(P_koff_CD28_CD80);
+    data[1105] = x1887;
+    data[1106] = PARAM(P_koff_CTLA4_CD80);
+    data[1107] = x1889;
+    data[1108] = PARAM(P_koff_CTLA4_CD80);
+    data[1109] = -x1890 - x1893;
+    data[1110] = x1890;
+    data[1111] = x1894;
+    data[1112] = -x1895;
+    data[1113] = x1895;
+    data[1114] = -x1890 - x1892 - x1894 - x1895;
+    data[1115] = x1893;
+    data[1116] = -x1894;
+    data[1117] = x1879 - x1896;
+    data[1118] = -x1897;
+    data[1119] = x1896;
+    data[1120] = x1897;
+    data[1121] = x1899;
+    data[1122] = -x1901;
+    data[1123] = x1901;
+    data[1124] = -x1879 - x1896 - x1897 - x1899 - x1901;
+    data[1125] = x1880;
+    data[1126] = -x1899;
+    data[1127] = x1902;
+    data[1128] = -x1878 - x1896;
+    data[1129] = x1896;
+    data[1130] = -x1903;
+    data[1131] = x1903;
+    data[1132] = -x1902;
+    data[1133] = x1878;
+    data[1134] = -PARAM(P_koff_CD80_CD80) - x1877 - x1896 - x1902 - x1903;
+    data[1135] = x1904;
+    data[1136] = -x1905;
+    data[1137] = x1905;
+    data[1138] = 2*x1906;
+    data[1139] = -x1905 - 4*x1906;
+    data[1140] = x1907;
+    data[1141] = -x1908 - x1910;
+    data[1142] = x1908;
+    data[1143] = -x1907;
+    data[1144] = x1910;
+    data[1145] = -x1907 - x1908 - x1909;
+    data[1146] = x1844;
+    data[1147] = PARAM(P_koff_PD1_PDL1);
+    data[1148] = -x1844 - x1911;
+    data[1149] = x1846;
+    data[1150] = PARAM(P_koff_PD1_PDL2);
+    data[1151] = -x1846 - x1911;
+    data[1152] = x1912;
+    data[1153] = x1913;
+    data[1154] = -x1912 - x1913 - x1914 - x1915;
+    data[1155] = -x1912;
+    data[1156] = -x1913;
+    data[1157] = -x1914 + x1915;
+    data[1158] = x1914;
+    data[1159] = x1917;
+    data[1160] = -x1917;
+    data[1161] = -x1911 - x1917 - x1919;
+    data[1162] = x1919;
+    data[1163] = -x1919;
+    data[1164] = x1920;
+    data[1165] = -x1920;
+    data[1166] = -x1911 - x1920;
+    data[1167] = -x1858 - x1921;
+    data[1168] = -PARAM(P_koff_PD1_aPD1) - x1921;
+    data[1169] = x1921;
+    data[1170] = x1862;
+    data[1171] = x1862;
+    data[1172] = x1863;
+    data[1173] = 0;
+    data[1174] = x1929;
+    data[1175] = x1931;
+    data[1176] = x1933;
+    data[1177] = x1934;
+    data[1178] = -PARAM(P_koff_CD28_CD80) - x1936;
+    data[1179] = x1936;
+    data[1180] = PARAM(P_koff_CD28_CD80) + x1937;
+    data[1181] = PARAM(P_koff_CD28_CD80);
+    data[1182] = -x1940;
+    data[1183] = x1710*x1940 + x1716*(1.3862943611198906*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1701*x1703*x1922 - x1927*x1941);
+    data[1184] = -x1942;
+    data[1185] = x1723*x1942 + x1727*(1.3862943611198906*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1701*x1703*x1922 - x1941);
+    data[1186] = x1867;
+    data[1187] = x1868;
+    data[1188] = x1867;
+    data[1189] = x1929;
+    data[1190] = x1931;
+    data[1191] = x1933;
+    data[1192] = x1934;
+    data[1193] = x1869;
+    data[1194] = PARAM(P_koff_CD28_CD86);
+    data[1195] = PARAM(P_koff_CD28_CD86);
+    data[1196] = -PARAM(P_koff_CTLA4_CD80) - x1944 - x1945;
+    data[1197] = x1944;
+    data[1198] = x1945;
+    data[1199] = PARAM(P_koff_CTLA4_CD80) + x1946;
+    data[1200] = PARAM(P_koff_CTLA4_CD80) - x1944;
+    data[1201] = x1874;
+    data[1202] = -x1874 - x1948;
+    data[1203] = x1948;
+    data[1204] = x1949;
+    data[1205] = x1874;
+    data[1206] = x1874;
+    data[1207] = -x1874 - x1950;
+    data[1208] = x1950;
     data[1209] = x1874;
-    data[1210] = -x1874 - x1950;
-    data[1211] = x1950;
-    data[1212] = x1874;
-    data[1213] = x1951;
+    data[1210] = x1951;
+    data[1211] = PARAM(P_koff_CTLA4_CD80);
+    data[1212] = PARAM(P_koff_CTLA4_CD80);
+    data[1213] = x1881;
     data[1214] = PARAM(P_koff_CTLA4_CD80);
     data[1215] = PARAM(P_koff_CTLA4_CD80);
-    data[1216] = x1881;
-    data[1217] = PARAM(P_koff_CTLA4_CD80);
-    data[1218] = PARAM(P_koff_CTLA4_CD80);
-    data[1219] = -PARAM(P_koff_CTLA4_CD86) - x1953;
-    data[1220] = x1953;
-    data[1221] = PARAM(P_koff_CTLA4_CD86);
-    data[1222] = PARAM(P_koff_CTLA4_CD86) - x1953;
-    data[1223] = x1884;
-    data[1224] = x1885;
-    data[1225] = x1884;
-    data[1226] = -x1886 - x1911;
-    data[1227] = -PARAM(P_koff_CD80_PDL1) - x1936 - x1945;
-    data[1228] = x1936;
-    data[1229] = x1945;
-    data[1230] = x1937;
-    data[1231] = x1946;
-    data[1232] = PARAM(P_koff_CD80_PDL1);
-    data[1233] = x1929;
-    data[1234] = x1931;
-    data[1235] = x1933;
-    data[1236] = x1934;
-    data[1237] = x1954;
-    data[1238] = PARAM(P_koff_CD28_CD80);
-    data[1239] = x1888;
-    data[1240] = PARAM(P_koff_CD28_CD80);
-    data[1241] = x1954;
-    data[1242] = PARAM(P_koff_CTLA4_CD80);
-    data[1243] = x1889;
-    data[1244] = PARAM(P_koff_CTLA4_CD80);
-    data[1245] = -x1955 - x1958;
-    data[1246] = x1955;
-    data[1247] = x1959;
-    data[1248] = -x1960;
-    data[1249] = x1960;
-    data[1250] = -x1955 - x1957 - x1959 - x1960;
-    data[1251] = x1958;
-    data[1252] = -x1959;
-    data[1253] = x1950 - x1961;
-    data[1254] = -x1962;
-    data[1255] = x1961;
-    data[1256] = x1962;
-    data[1257] = x1964;
-    data[1258] = -x1965;
-    data[1259] = x1965;
-    data[1260] = -x1950 - x1961 - x1962 - x1964 - x1965;
-    data[1261] = x1951;
-    data[1262] = -x1964;
-    data[1263] = x1966;
-    data[1264] = -x1949 - x1961;
-    data[1265] = x1961;
-    data[1266] = -x1967;
-    data[1267] = x1967;
-    data[1268] = -x1966;
-    data[1269] = x1949;
-    data[1270] = -PARAM(P_koff_CD80_CD80) - x1948 - x1961 - x1966 - x1967;
-    data[1271] = x1904;
-    data[1272] = -x1968;
-    data[1273] = x1968;
-    data[1274] = 2*x1969;
-    data[1275] = -x1968 - 4*x1969;
-    data[1276] = x1970;
-    data[1277] = -x1971 - x1973;
-    data[1278] = x1971;
-    data[1279] = -x1970;
-    data[1280] = x1973;
-    data[1281] = -x1970 - x1971 - x1972;
-    data[1282] = x1976;
-    data[1283] = x1976;
-    data[1284] = x1975;
-    data[1285] = x1978;
-    data[1286] = x1978;
-    data[1287] = x1977;
-    data[1288] = x1981;
-    data[1289] = -x1981;
-    data[1290] = x1983;
-    data[1291] = x1984;
-    data[1292] = -x1983;
-    data[1293] = -x1984;
-    data[1294] = x1981*x446;
-    data[1295] = x1981*x447;
-    data[1296] = PARAM(P_koff_CD47_SIRPa);
-    data[1297] = PARAM(P_koff_CD47_SIRPa);
-    data[1298] = -PARAM(P_koff_CD47_SIRPa);
-    data[1299] = 0;
-    data[1300] = 0;
-    data[1301] = x1986;
-    data[1302] = x1987;
-    data[1303] = x1989;
-    data[1304] = x1990;
-    data[1305] = x1991;
-    data[1306] = x1992;
-    data[1307] = x1993;
-    data[1308] = x1994;
-    data[1309] = x1844;
-    data[1310] = PARAM(P_koff_PD1_PDL1);
-    data[1311] = -x1844 - x1995;
-    data[1312] = x1986;
-    data[1313] = x1987;
-    data[1314] = x1989;
-    data[1315] = x1990;
-    data[1316] = x1991;
-    data[1317] = x1992;
-    data[1318] = x1993;
-    data[1319] = x1994;
-    data[1320] = x1846;
-    data[1321] = PARAM(P_koff_PD1_PDL2);
-    data[1322] = -x1846 - x1995;
-    data[1323] = x1996;
-    data[1324] = x1997;
-    data[1325] = -x1851 - x1996 - x1997 - x1998;
-    data[1326] = -x1996;
-    data[1327] = -x1997;
-    data[1328] = -x1852 - x1998;
-    data[1329] = x1998;
-    data[1330] = x2000;
-    data[1331] = -x2000;
-    data[1332] = -x1995 - x2000 - x2002;
-    data[1333] = x2002;
-    data[1334] = -x2002;
-    data[1335] = x2003;
-    data[1336] = -x2003;
-    data[1337] = -x1995 - x2003;
-    data[1338] = -x1858 - x2004;
-    data[1339] = -PARAM(P_koff_PD1_aPD1) - x2004;
-    data[1340] = x2004;
-    data[1341] = x1862;
-    data[1342] = x1862;
-    data[1343] = x1863;
-    data[1344] = -x1886 - x1995;
-    data[1345] = x1886;
-    data[1346] = PARAM(P_koff_CD80_PDL1);
-    data[1347] = -PARAM(P_koff_CD80_CD80);
-    data[1348] = x1904;
-    data[1349] = -x2005;
-    data[1350] = x2005;
-    data[1351] = 2*x2006;
-    data[1352] = -x2005 - 4*x2006;
-    data[1353] = -PARAM(P_k_GVAX_clearance);
-    data[1354] = x2014;
-    data[1355] = -x2014;
-    data[1356] = PARAM(P_V_ID)*PARAM(P_k_GMCSF_prod);
-    data[1357] = PARAM(P_k_GVAX_clearance)*PARAM(P_y_Ag_per_cell) - PARAM(P_sigma_P1_per_mAPC)*x2011 + PARAM(P_sigma_P1_per_mAPC)*x2013;
-    data[1358] = -PARAM(P_k_APC_death_ID) - x2015 - x2020;
-    data[1359] = x2015;
-    data[1360] = -PARAM(P_sigma_P1_per_mAPC)*x2015;
-    data[1361] = x2021;
-    data[1362] = -x2020;
-    data[1363] = -PARAM(P_k_mAPC_death_ID) - x2021;
-    data[1364] = PARAM(P_k_CXCL13_sec)*PARAM(P_k_TLA_form)*x697*x705*x709*x9 - PARAM(P_k_CXCL13_sec)*x1629;
-    data[1365] = PARAM(P_K_APC_ID)*(-SPVAR(SP_V_ID_GMCSF)*PARAM(P_k_APC_recruit_ID)*x2022/std::pow(x2018, 2) + x2019*x384)/x2016;
-    data[1366] = -PARAM(P_k_GMCSF_deg);
-    data[1367] = x2023*x2024 - x2023*x2026;
-    data[1368] = SPVAR(SP_V_LN_nCD8)*PARAM(P_n_CD8_clones)*x1753*x2027;
-    data[1369] = x1637*x1648*x2027;
-    data[1370] = PARAM(P_k_GVAX_present)*x384*x638;
-    data[1371] = -x2029;
-    data[1372] = x2029;
-    data[1373] = SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*PARAM(P_sigma_P1_per_mAPC)*x2009*x2022*x2025 - PARAM(P_k_P1_deg_ID) - PARAM(P_sigma_P1_per_mAPC)*x2028;
-    data[1374] = -x2030;
-    data[1375] = x2030;
-    data[1376] = -PARAM(P_k_CD137_latch_off) - x209*x691;
-    data[1377] = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x2031*x697*x705*x707*x712*x9 - SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*x2031*x706*x711 - PARAM(P_k_TLA_decay) - x707*x710;
+    data[1216] = -PARAM(P_koff_CTLA4_CD86) - x1953;
+    data[1217] = x1953;
+    data[1218] = PARAM(P_koff_CTLA4_CD86);
+    data[1219] = PARAM(P_koff_CTLA4_CD86) - x1953;
+    data[1220] = x1884;
+    data[1221] = x1885;
+    data[1222] = x1884;
+    data[1223] = -x1886 - x1911;
+    data[1224] = -PARAM(P_koff_CD80_PDL1) - x1936 - x1945;
+    data[1225] = x1936;
+    data[1226] = x1945;
+    data[1227] = x1937;
+    data[1228] = x1946;
+    data[1229] = PARAM(P_koff_CD80_PDL1);
+    data[1230] = x1929;
+    data[1231] = x1931;
+    data[1232] = x1933;
+    data[1233] = x1934;
+    data[1234] = x1954;
+    data[1235] = PARAM(P_koff_CD28_CD80);
+    data[1236] = x1888;
+    data[1237] = PARAM(P_koff_CD28_CD80);
+    data[1238] = x1954;
+    data[1239] = PARAM(P_koff_CTLA4_CD80);
+    data[1240] = x1889;
+    data[1241] = PARAM(P_koff_CTLA4_CD80);
+    data[1242] = -x1955 - x1958;
+    data[1243] = x1955;
+    data[1244] = x1959;
+    data[1245] = -x1960;
+    data[1246] = x1960;
+    data[1247] = -x1955 - x1957 - x1959 - x1960;
+    data[1248] = x1958;
+    data[1249] = -x1959;
+    data[1250] = x1950 - x1961;
+    data[1251] = -x1962;
+    data[1252] = x1961;
+    data[1253] = x1962;
+    data[1254] = x1964;
+    data[1255] = -x1965;
+    data[1256] = x1965;
+    data[1257] = -x1950 - x1961 - x1962 - x1964 - x1965;
+    data[1258] = x1951;
+    data[1259] = -x1964;
+    data[1260] = x1966;
+    data[1261] = -x1949 - x1961;
+    data[1262] = x1961;
+    data[1263] = -x1967;
+    data[1264] = x1967;
+    data[1265] = -x1966;
+    data[1266] = x1949;
+    data[1267] = -PARAM(P_koff_CD80_CD80) - x1948 - x1961 - x1966 - x1967;
+    data[1268] = x1904;
+    data[1269] = -x1968;
+    data[1270] = x1968;
+    data[1271] = 2*x1969;
+    data[1272] = -x1968 - 4*x1969;
+    data[1273] = x1970;
+    data[1274] = -x1971 - x1973;
+    data[1275] = x1971;
+    data[1276] = -x1970;
+    data[1277] = x1973;
+    data[1278] = -x1970 - x1971 - x1972;
+    data[1279] = x1976;
+    data[1280] = x1976;
+    data[1281] = x1975;
+    data[1282] = x1978;
+    data[1283] = x1978;
+    data[1284] = x1977;
+    data[1285] = x1981;
+    data[1286] = -x1981;
+    data[1287] = x1983;
+    data[1288] = x1984;
+    data[1289] = -x1983;
+    data[1290] = -x1984;
+    data[1291] = x1981*x446;
+    data[1292] = x1981*x447;
+    data[1293] = PARAM(P_koff_CD47_SIRPa);
+    data[1294] = PARAM(P_koff_CD47_SIRPa);
+    data[1295] = -PARAM(P_koff_CD47_SIRPa);
+    data[1296] = 0;
+    data[1297] = 0;
+    data[1298] = x1986;
+    data[1299] = x1987;
+    data[1300] = x1989;
+    data[1301] = x1990;
+    data[1302] = x1991;
+    data[1303] = x1992;
+    data[1304] = x1993;
+    data[1305] = x1994;
+    data[1306] = x1844;
+    data[1307] = PARAM(P_koff_PD1_PDL1);
+    data[1308] = -x1844 - x1995;
+    data[1309] = x1986;
+    data[1310] = x1987;
+    data[1311] = x1989;
+    data[1312] = x1990;
+    data[1313] = x1991;
+    data[1314] = x1992;
+    data[1315] = x1993;
+    data[1316] = x1994;
+    data[1317] = x1846;
+    data[1318] = PARAM(P_koff_PD1_PDL2);
+    data[1319] = -x1846 - x1995;
+    data[1320] = x1996;
+    data[1321] = x1997;
+    data[1322] = -x1851 - x1996 - x1997 - x1998;
+    data[1323] = -x1996;
+    data[1324] = -x1997;
+    data[1325] = -x1852 - x1998;
+    data[1326] = x1998;
+    data[1327] = x2000;
+    data[1328] = -x2000;
+    data[1329] = -x1995 - x2000 - x2002;
+    data[1330] = x2002;
+    data[1331] = -x2002;
+    data[1332] = x2003;
+    data[1333] = -x2003;
+    data[1334] = -x1995 - x2003;
+    data[1335] = -x1858 - x2004;
+    data[1336] = -PARAM(P_koff_PD1_aPD1) - x2004;
+    data[1337] = x2004;
+    data[1338] = x1862;
+    data[1339] = x1862;
+    data[1340] = x1863;
+    data[1341] = -x1886 - x1995;
+    data[1342] = x1886;
+    data[1343] = PARAM(P_koff_CD80_PDL1);
+    data[1344] = -PARAM(P_koff_CD80_CD80);
+    data[1345] = x1904;
+    data[1346] = -x2005;
+    data[1347] = x2005;
+    data[1348] = 2*x2006;
+    data[1349] = -x2005 - 4*x2006;
+    data[1350] = -PARAM(P_k_GVAX_clearance);
+    data[1351] = x2014;
+    data[1352] = -x2014;
+    data[1353] = PARAM(P_V_ID)*PARAM(P_k_GMCSF_prod);
+    data[1354] = PARAM(P_k_GVAX_clearance)*PARAM(P_y_Ag_per_cell) - PARAM(P_sigma_P1_per_mAPC)*x2011 + PARAM(P_sigma_P1_per_mAPC)*x2013;
+    data[1355] = -PARAM(P_k_APC_death_ID) - x2015 - x2020;
+    data[1356] = x2015;
+    data[1357] = -PARAM(P_sigma_P1_per_mAPC)*x2015;
+    data[1358] = x2021;
+    data[1359] = -x2020;
+    data[1360] = -PARAM(P_k_mAPC_death_ID) - x2021;
+    data[1361] = PARAM(P_k_CXCL13_sec)*PARAM(P_k_TLA_form)*x697*x705*x709*x9 - PARAM(P_k_CXCL13_sec)*x1629;
+    data[1362] = PARAM(P_K_APC_ID)*(-SPVAR(SP_V_ID_GMCSF)*PARAM(P_k_APC_recruit_ID)*x2022/std::pow(x2018, 2) + x2019*x384)/x2016;
+    data[1363] = -PARAM(P_k_GMCSF_deg);
+    data[1364] = x2023*x2024 - x2023*x2026;
+    data[1365] = SPVAR(SP_V_LN_nCD8)*PARAM(P_n_CD8_clones)*x1753*x2027;
+    data[1366] = x1637*x1648*x2027;
+    data[1367] = PARAM(P_k_GVAX_present)*x384*x638;
+    data[1368] = -x2029;
+    data[1369] = x2029;
+    data[1370] = SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*PARAM(P_sigma_P1_per_mAPC)*x2009*x2022*x2025 - PARAM(P_k_P1_deg_ID) - PARAM(P_sigma_P1_per_mAPC)*x2028;
+    data[1371] = -x2030;
+    data[1372] = x2030;
+    data[1373] = -PARAM(P_k_CD137_latch_off) - x209*x691;
+    data[1374] = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x2031*x697*x705*x707*x712*x9 - SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*x2031*x706*x711 - PARAM(P_k_TLA_decay) - x707*x710;
 
     // Boundary-state safety clamp. Analytical Jacobian entries can produce
     // NaN/Inf when a species is exactly zero and its rate law contains a
@@ -7119,7 +7107,7 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     // step controller rejects the step if Newton fails to converge, and
     // once species move off zero on subsequent substeps the entries become
     // finite. This is the same remedy AMICI and libroadrunner use.
-    for (sunindextype k = 0; k < 1378; ++k) {
+    for (sunindextype k = 0; k < 1375; ++k) {
         if (!std::isfinite(data[k])) data[k] = 0.0;
     }
     return 0;

@@ -559,9 +559,7 @@
       <k_CXCL12_sec_iCAF>1e-10</k_CXCL12_sec_iCAF>
       <k_CXCL12_deg>2.0</k_CXCL12_deg>
       <CXCL12_50_Texcl>8.0</CXCL12_50_Texcl>
-      <k_IL6_sec_iCAF>2e-11</k_IL6_sec_iCAF>
-      <k_IL6_sec_C>5e-12</k_IL6_sec_C>
-      <k_IL6_sec_TAM>1e-11</k_IL6_sec_TAM>
+      <k_IL6_sec_iCAF>1.10362194189464e-09</k_IL6_sec_iCAF>
       <k_IL6_deg>16.0</k_IL6_deg>
       <IL6_50_MDSC>0.015</IL6_50_MDSC>
       <IL6_50_M2>0.015</IL6_50_M2>

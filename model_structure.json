@@ -3384,21 +3384,9 @@
     },
     {
       "name": "k_IL6_sec_iCAF",
-      "value": 2E-11,
+      "value": 1.1036219418946422E-9,
       "units": "nanomolarity*liter/(cell*day)",
-      "description": "IL-6 secretion rate by iCAFs"
-    },
-    {
-      "name": "k_IL6_sec_C",
-      "value": 5E-12,
-      "units": "nanomolarity*liter/(cell*day)",
-      "description": "IL-6 secretion rate by PDAC cancer cells"
-    },
-    {
-      "name": "k_IL6_sec_TAM",
-      "value": 1E-11,
-      "units": "nanomolarity*liter/(cell*day)",
-      "description": "IL-6 secretion rate by TAMs (M1+M2 pooled)"
+      "description": "Effective iCAF-scaled IL-6 source rate"
     },
     {
       "name": "k_IL6_deg",
@@ -7336,29 +7324,6 @@
     },
     {
       "name": "Reaction_252",
-      "reactants": [],
-      "products": [
-        "V_T.IL6"
-      ],
-      "rate_law": "k_IL6_sec_C*C_total",
-      "parameters": [
-        "C_total",
-        "k_IL6_sec_C"
-      ]
-    },
-    {
-      "name": "Reaction_253",
-      "reactants": [],
-      "products": [
-        "V_T.IL6"
-      ],
-      "rate_law": "k_IL6_sec_TAM*(V_T.Mac_M1 + V_T.Mac_M2)",
-      "parameters": [
-        "k_IL6_sec_TAM"
-      ]
-    },
-    {
-      "name": "Reaction_254",
       "reactants": [
         "V_T.IL6"
       ],
@@ -7369,7 +7334,7 @@
       ]
     },
     {
-      "name": "Reaction_255",
+      "name": "Reaction_253",
       "reactants": [],
       "products": [
         "V_T.IL1"
@@ -7381,7 +7346,7 @@
       ]
     },
     {
-      "name": "Reaction_256",
+      "name": "Reaction_254",
       "reactants": [
         "V_T.IL1"
       ],
@@ -7392,7 +7357,7 @@
       ]
     },
     {
-      "name": "Reaction_257",
+      "name": "Reaction_255",
       "reactants": [],
       "products": [
         "V_T.VEGF"
@@ -7605,7 +7570,7 @@
       ]
     },
     {
-      "name": "Reaction_275",
+      "name": "Reaction_273",
       "reactants": [],
       "products": [
         "V_T.CD8"
@@ -7620,7 +7585,7 @@
       ]
     },
     {
-      "name": "Reaction_276",
+      "name": "Reaction_274",
       "reactants": [
         "V_T.CD8"
       ],
@@ -7634,7 +7599,7 @@
       ]
     },
     {
-      "name": "Reaction_277",
+      "name": "Reaction_275",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -7647,7 +7612,7 @@
       ]
     },
     {
-      "name": "Reaction_278",
+      "name": "Reaction_276",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -7660,7 +7625,7 @@
       ]
     },
     {
-      "name": "Reaction_279",
+      "name": "Reaction_277",
       "reactants": [
         "V_T.CD8_TLA"
       ],
@@ -7675,7 +7640,7 @@
       ]
     },
     {
-      "name": "Reaction_280",
+      "name": "Reaction_278",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -7688,7 +7653,7 @@
       ]
     },
     {
-      "name": "Reaction_281",
+      "name": "Reaction_279",
       "reactants": [
         "V_T.CD8_TLA_act"
       ],
@@ -7701,7 +7666,7 @@
       ]
     },
     {
-      "name": "Reaction_282",
+      "name": "Reaction_280",
       "reactants": [
         "V_T.CD8_vic"
       ],
@@ -7714,7 +7679,7 @@
       ]
     },
     {
-      "name": "Reaction_283",
+      "name": "Reaction_281",
       "reactants": [
         "V_T.C1"
       ],
@@ -7727,7 +7692,7 @@
       ]
     },
     {
-      "name": "Reaction_284",
+      "name": "Reaction_282",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -7742,7 +7707,7 @@
       ]
     },
     {
-      "name": "Reaction_285",
+      "name": "Reaction_283",
       "reactants": [
         "V_T.CD8_pex"
       ],
@@ -7757,7 +7722,7 @@
       ]
     },
     {
-      "name": "Reaction_286",
+      "name": "Reaction_284",
       "reactants": [],
       "products": [
         "V_T.CD8_pex"

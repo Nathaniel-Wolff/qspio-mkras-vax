@@ -400,18 +400,12 @@ CXCL12_50_Texcl = addparameter(model,'CXCL12_50_Texcl',params.CXCL12_50_Texcl.Va
 CXCL12_50_Texcl.UserData.Source = params.CXCL12_50_Texcl.Notes;
     CXCL12_50_Texcl.UserData.derivedFrom = params.CXCL12_50_Texcl.derivedFrom;
 
-% IL-6 parameters (iCAF, cancer-cell, TAM sources — van Duijneveldt 2020)
-p = addparameter(model,'k_IL6_sec_iCAF',params.k_IL6_sec_iCAF.Value,'ValueUnits',params.k_IL6_sec_iCAF.Units, 'Notes', 'IL-6 secretion rate by iCAFs');
+% Effective IL-6 source. C11 collapsed separately fitted iCAF, cancer, and
+% TAM source rates into one iCAF-scaled coordinate after their source
+% fractions proved nearly invariant across all paper arms.
+p = addparameter(model,'k_IL6_sec_iCAF',params.k_IL6_sec_iCAF.Value,'ValueUnits',params.k_IL6_sec_iCAF.Units, 'Notes', 'Effective iCAF-scaled IL-6 source rate');
 p.UserData.Source = params.k_IL6_sec_iCAF.Notes;
     p.UserData.derivedFrom = params.k_IL6_sec_iCAF.derivedFrom;
-
-p = addparameter(model,'k_IL6_sec_C',params.k_IL6_sec_C.Value,'ValueUnits',params.k_IL6_sec_C.Units, 'Notes', 'IL-6 secretion rate by PDAC cancer cells');
-p.UserData.Source = params.k_IL6_sec_C.Notes;
-    p.UserData.derivedFrom = params.k_IL6_sec_C.derivedFrom;
-
-p = addparameter(model,'k_IL6_sec_TAM',params.k_IL6_sec_TAM.Value,'ValueUnits',params.k_IL6_sec_TAM.Units, 'Notes', 'IL-6 secretion rate by TAMs (M1+M2 pooled)');
-p.UserData.Source = params.k_IL6_sec_TAM.Notes;
-    p.UserData.derivedFrom = params.k_IL6_sec_TAM.derivedFrom;
 
 k_IL6_deg = addparameter(model,'k_IL6_deg',params.k_IL6_deg.Value,'ValueUnits',params.k_IL6_deg.Units, 'Notes', 'IL-6 degradation rate');
 k_IL6_deg.UserData.Source = params.k_IL6_deg.Notes;
@@ -673,26 +667,17 @@ reaction = addreaction(model,'V_T.CXCL12 -> null');
     set(reaction,'ReactionRate','k_CXCL12_deg*V_T.CXCL12*V_T');
     set(reaction,'Notes','CXCL12 degradation in tumor');
 
-%% IL-6 Dynamics (inflammatory/immunosuppressive — iCAF, cancer-cell, TAM sources)
+%% IL-6 Dynamics (one effective iCAF-scaled source)
 
-% IL-6 secretion by iCAFs
+% C11 reduction (2026-08-24): three source reactions with separately fitted
+% per-cell rates were not identifiable from the single bulk IL-6 target. A
+% prior-centre trace found stable iCAF/cancer/TAM source fractions across all
+% arms and through day 365. Their diagnosis total was therefore absorbed into
+% this one iCAF-scaled rate. Cancer- and TAM-derived IL-6 remain acknowledged
+% biology, but are not source-attributed in the calibrated paper model.
 reaction = addreaction(model,'null -> V_T.IL6');
     set(reaction,'ReactionRate','k_IL6_sec_iCAF*V_T.iCAF');
-    set(reaction,'Notes','IL-6 secretion by iCAFs (drives MDSC recruitment and M2 polarization)');
-
-% IL-6 secretion by cancer cells (van Duijneveldt 2020 DOI:10.1042/CS20191211:
-% PDAC cell lines exhibit variable IL-6 expression, consistently higher than
-% normal epithelium and generally lower than CAFs).
-reaction = addreaction(model,'null -> V_T.IL6');
-    set(reaction,'ReactionRate','k_IL6_sec_C*C_total');
-    set(reaction,'Notes','IL-6 secretion by PDAC cancer cells (van Duijneveldt 2020 DOI:10.1042/CS20191211)');
-
-% IL-6 secretion by tumor-associated macrophages, M1+M2 pooled (van Duijneveldt
-% 2020 DOI:10.1042/CS20191211: TAMs identified as IL-6 producers; IL-6-KO
-% myeloid mouse model shows causal contribution to PanIN progression).
-reaction = addreaction(model,'null -> V_T.IL6');
-    set(reaction,'ReactionRate','k_IL6_sec_TAM*(V_T.Mac_M1 + V_T.Mac_M2)');
-    set(reaction,'Notes','IL-6 secretion by TAMs, M1+M2 pooled (van Duijneveldt 2020 DOI:10.1042/CS20191211)');
+    set(reaction,'Notes','Effective iCAF-scaled IL-6 source; absorbs the nominal total from retired iCAF/cancer/TAM source attribution (C11)');
 
 % IL-6 degradation
 reaction = addreaction(model,'V_T.IL6 -> null');
