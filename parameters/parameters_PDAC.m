@@ -616,20 +616,9 @@ params.N_div_base.Value = 2;
 params.N_div_base.Units = 'dimensionless';
 params.N_div_base.Notes = '(Marchingo 2014, PMID: 25430770)';
 % Baseline Number of Activated T Cell Generations for co-stimulation
-params.N_div_costim.Value = 3;
+params.N_div_costim.Value = 1.5105;
 params.N_div_costim.Units = 'dimensionless';
-params.N_div_costim.Notes = '(Marchingo 2014, PMID: 25430770)';
-% Maximal fractional suppression of CD28 costim divisions by PD-1 (Hui 2017 SHP-2 axis).
-% Enters N_aT/N_aTh as (1 - alpha_PD1_costim*H_PD1_APC): PD-1 attenuates CD28 costim by a
-% BOUNDED fraction alpha<1, it does not abolish it. A bare (1-H_PD1_APC) [alpha=1] cut
-% baseline priming ~140x (H_PD1_APC~0.993 at rest) and drove cd8_density 41x below the
-% n=702 observed value; alpha<1 keeps baseline priming functional while anti-PD-1 relieves
-% it. Needs a quantitative Hui-2017 anchor (CD28-vs-TCR dephosphorylation); SBI-exposed
-% weakly-informative until then. See project_costim_wiring_regressed_cd8.
-params.alpha_PD1_costim.Value = 0.5;
-params.alpha_PD1_costim.Units = 'dimensionless';
-params.alpha_PD1_costim.Notes = '(Hui 2017, PMID: 28280247) mechanism basis; magnitude weakly-informative pending anchor';
-params.alpha_PD1_costim.derivedFrom = {};
+params.N_div_costim.Notes = 'Effective basal CD28 costimulation contribution to division destiny. Reanchored from 3 to 1.5105 when the separately fitted APC-side PD-1 multiplier was retired: 3*(1-0.5*0.993)=1.5105 preserves the documented nominal untreated costimulation. Requires updated-sampler refit. Marchingo 2014 PMID: 25430770.';
 % Additional Number of Activated CD8+ T Cell Generations Due to IL2
 params.N_IL2_CD8.Value = 11;
 params.N_IL2_CD8.Units = 'dimensionless';

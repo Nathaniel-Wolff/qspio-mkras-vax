@@ -28,7 +28,7 @@ void ODE_system::initSolver(realtype t){
     check_flag(&flag, "CVodeRootInit", 1);
 }
 
-state_type ODE_system::_class_parameter = state_type(485, 0);
+state_type ODE_system::_class_parameter = state_type(484, 0);
 
 void ODE_system::setup_class_parameters(QSPParam& param){
     //k_cell_clear, index: 0, units: MWDERIVEDUNIT_1__day
@@ -495,511 +495,509 @@ void ODE_system::setup_class_parameters(QSPParam& param){
     _class_parameter[P_N_div_base] = PFILE(QSP_N_div_base) * 1;
     //N_div_costim, index: 231, units: dimensionless
     _class_parameter[P_N_div_costim] = PFILE(QSP_N_div_costim) * 1;
-    //alpha_PD1_costim, index: 232, units: dimensionless
-    _class_parameter[P_alpha_PD1_costim] = PFILE(QSP_alpha_PD1_costim) * 1;
-    //N_IL2_CD8, index: 233, units: dimensionless
+    //N_IL2_CD8, index: 232, units: dimensionless
     _class_parameter[P_N_IL2_CD8] = PFILE(QSP_N_IL2_CD8) * 1;
-    //N_IL2_CD4, index: 234, units: dimensionless
+    //N_IL2_CD4, index: 233, units: dimensionless
     _class_parameter[P_N_IL2_CD4] = PFILE(QSP_N_IL2_CD4) * 1;
-    //w_IL2_help, index: 235, units: dimensionless
+    //w_IL2_help, index: 234, units: dimensionless
     _class_parameter[P_w_IL2_help] = PFILE(QSP_w_IL2_help) * 1;
-    //kappa_IL2_Treg, index: 236, units: dimensionless
+    //kappa_IL2_Treg, index: 235, units: dimensionless
     _class_parameter[P_kappa_IL2_Treg] = PFILE(QSP_kappa_IL2_Treg) * 1;
-    //V_niche, index: 237, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_liter
+    //V_niche, index: 236, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_liter
     _class_parameter[P_V_niche] = PFILE(QSP_V_niche) * 1e-06;
-    //k_IFNg_Tsec, index: 238, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IFNg_Tsec, index: 237, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IFNg_Tsec] = PFILE(QSP_k_IFNg_Tsec) * 6970071747.68519;
-    //k_IFNg_Thsec, index: 239, units: MWDERIVEDUNIT_1__day
+    //k_IFNg_Thsec, index: 238, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IFNg_Thsec] = PFILE(QSP_k_IFNg_Thsec) * 1.15740740740741e-05;
-    //k_IFNg_deg, index: 240, units: MWDERIVEDUNIT_1__day
+    //k_IFNg_deg, index: 239, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IFNg_deg] = PFILE(QSP_k_IFNg_deg) * 1.15740740740741e-05;
-    //IFNg_50_ind, index: 241, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IFNg_50_ind, index: 240, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IFNg_50_ind] = PFILE(QSP_IFNg_50_ind) * 1e-09;
-    //k_TGFb_Tsec, index: 242, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_TGFb_Tsec, index: 241, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_TGFb_Tsec] = PFILE(QSP_k_TGFb_Tsec) * 6970071747.68519;
-    //k_TGFb_deg, index: 243, units: MWDERIVEDUNIT_1__day
+    //k_TGFb_deg, index: 242, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TGFb_deg] = PFILE(QSP_k_TGFb_deg) * 1.15740740740741e-05;
-    //TGFb_baseline, index: 244, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_baseline, index: 243, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_baseline] = PFILE(QSP_TGFb_baseline) * 1e-06;
-    //TGFb_50_Th2Treg, index: 245, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_Th2Treg, index: 244, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_Th2Treg] = PFILE(QSP_TGFb_50_Th2Treg) * 1e-06;
-    //TGFb_50_M2pol, index: 246, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_M2pol, index: 245, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_M2pol] = PFILE(QSP_TGFb_50_M2pol) * 1e-06;
-    //TGFb_50_chemores, index: 247, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_chemores, index: 246, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_chemores] = PFILE(QSP_TGFb_50_chemores) * 1e-06;
-    //TGFb_50_Teff, index: 248, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_Teff, index: 247, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_Teff] = PFILE(QSP_TGFb_50_Teff) * 1e-06;
-    //TGFb_50_Th_exh, index: 249, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_Th_exh, index: 248, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_Th_exh] = PFILE(QSP_TGFb_50_Th_exh) * 1e-06;
-    //f_active_TGFb, index: 250, units: dimensionless
+    //f_active_TGFb, index: 249, units: dimensionless
     _class_parameter[P_f_active_TGFb] = PFILE(QSP_f_active_TGFb) * 1;
-    //IL2_supply, index: 251, units: MWUSERUNIT_cell
+    //IL2_supply, index: 250, units: MWUSERUNIT_cell
     _class_parameter[P_IL2_supply] = PFILE(QSP_IL2_supply) * 1.66053872801495e-24;
-    //IL2_demand, index: 252, units: MWUSERUNIT_cell
+    //IL2_demand, index: 251, units: MWUSERUNIT_cell
     _class_parameter[P_IL2_demand] = PFILE(QSP_IL2_demand) * 1.66053872801495e-24;
-    //IL2_niche, index: 253, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL2_niche, index: 252, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL2_niche] = PFILE(QSP_IL2_niche) * 1e-06;
-    //N_aT, index: 254, units: dimensionless
+    //N_aT, index: 253, units: dimensionless
     _class_parameter[P_N_aT] = PFILE(QSP_N_aT) * 1;
-    //N_aTh, index: 255, units: dimensionless
+    //N_aTh, index: 254, units: dimensionless
     _class_parameter[P_N_aTh] = PFILE(QSP_N_aTh) * 1;
-    //H_TGFb_Th2Treg, index: 256, units: dimensionless
+    //H_TGFb_Th2Treg, index: 255, units: dimensionless
     _class_parameter[P_H_TGFb_Th2Treg] = PFILE(QSP_H_TGFb_Th2Treg) * 1;
-    //H_TGFb_chemores, index: 257, units: dimensionless
+    //H_TGFb_chemores, index: 256, units: dimensionless
     _class_parameter[P_H_TGFb_chemores] = PFILE(QSP_H_TGFb_chemores) * 1;
-    //H_TGFb_Teff, index: 258, units: dimensionless
+    //H_TGFb_Teff, index: 257, units: dimensionless
     _class_parameter[P_H_TGFb_Teff] = PFILE(QSP_H_TGFb_Teff) * 1;
-    //H_TGFb_Th_exh, index: 259, units: dimensionless
+    //H_TGFb_Th_exh, index: 258, units: dimensionless
     _class_parameter[P_H_TGFb_Th_exh] = PFILE(QSP_H_TGFb_Th_exh) * 1;
-    //k_CCL2_sec, index: 260, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_CCL2_sec, index: 259, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_CCL2_sec] = PFILE(QSP_k_CCL2_sec) * 6970071747.68519;
-    //k_CCL2_deg, index: 261, units: MWDERIVEDUNIT_1__hour
+    //k_CCL2_deg, index: 260, units: MWDERIVEDUNIT_1__hour
     _class_parameter[P_k_CCL2_deg] = PFILE(QSP_k_CCL2_deg) * 0.000277777777777778;
-    //CCL2_50, index: 262, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CCL2_50, index: 261, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CCL2_50] = PFILE(QSP_CCL2_50) * 1e-06;
-    //k_MDSC_rec, index: 263, units: MWDERIVEDUNIT_cell__milliliter_day
+    //k_MDSC_rec, index: 262, units: MWDERIVEDUNIT_cell__milliliter_day
     _class_parameter[P_k_MDSC_rec] = PFILE(QSP_k_MDSC_rec) * 1.92191982409137e-23;
-    //k_MDSC_death, index: 264, units: MWDERIVEDUNIT_1__day
+    //k_MDSC_death, index: 263, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_MDSC_death] = PFILE(QSP_k_MDSC_death) * 1.15740740740741e-05;
-    //k_NO_deg, index: 265, units: MWDERIVEDUNIT_1__day
+    //k_NO_deg, index: 264, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_NO_deg] = PFILE(QSP_k_NO_deg) * 1.15740740740741e-05;
-    //k_ArgI_deg, index: 266, units: MWDERIVEDUNIT_1__day
+    //k_ArgI_deg, index: 265, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_ArgI_deg] = PFILE(QSP_k_ArgI_deg) * 1.15740740740741e-05;
-    //k_NO_sec, index: 267, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_NO_sec, index: 266, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_NO_sec] = PFILE(QSP_k_NO_sec) * 6970071747.68519;
-    //k_ArgI_sec, index: 268, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_ArgI_sec, index: 267, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_ArgI_sec] = PFILE(QSP_k_ArgI_sec) * 6970071747.68519;
-    //ArgI_50_Teff, index: 269, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //ArgI_50_Teff, index: 268, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_ArgI_50_Teff] = PFILE(QSP_ArgI_50_Teff) * 1e-06;
-    //NO_50_Teff, index: 270, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //NO_50_Teff, index: 269, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_NO_50_Teff] = PFILE(QSP_NO_50_Teff) * 1e-06;
-    //ArgI_50_Treg, index: 271, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //ArgI_50_Treg, index: 270, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_ArgI_50_Treg] = PFILE(QSP_ArgI_50_Treg) * 1e-06;
-    //H_NO, index: 272, units: dimensionless
+    //H_NO, index: 271, units: dimensionless
     _class_parameter[P_H_NO] = PFILE(QSP_H_NO) * 1;
-    //H_ArgI_Teff, index: 273, units: dimensionless
+    //H_ArgI_Teff, index: 272, units: dimensionless
     _class_parameter[P_H_ArgI_Teff] = PFILE(QSP_H_ArgI_Teff) * 1;
-    //H_ArgI_Treg, index: 274, units: dimensionless
+    //H_ArgI_Treg, index: 273, units: dimensionless
     _class_parameter[P_H_ArgI_Treg] = PFILE(QSP_H_ArgI_Treg) * 1;
-    //H_MDSC, index: 275, units: dimensionless
+    //H_MDSC, index: 274, units: dimensionless
     _class_parameter[P_H_MDSC] = PFILE(QSP_H_MDSC) * 1;
-    //H_IL6_MDSC, index: 276, units: dimensionless
+    //H_IL6_MDSC, index: 275, units: dimensionless
     _class_parameter[P_H_IL6_MDSC] = PFILE(QSP_H_IL6_MDSC) * 1;
-    //Emax_ArgI_Treg, index: 277, units: dimensionless
+    //Emax_ArgI_Treg, index: 276, units: dimensionless
     _class_parameter[P_Emax_ArgI_Treg] = PFILE(QSP_Emax_ArgI_Treg) * 1;
-    //k_Mac_rec, index: 278, units: MWDERIVEDUNIT_cell__milliliter_day
+    //k_Mac_rec, index: 277, units: MWDERIVEDUNIT_cell__milliliter_day
     _class_parameter[P_k_Mac_rec] = PFILE(QSP_k_Mac_rec) * 1.92191982409137e-23;
-    //k_Mac_death, index: 279, units: MWDERIVEDUNIT_1__day
+    //k_Mac_death, index: 278, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Mac_death] = PFILE(QSP_k_Mac_death) * 1.15740740740741e-05;
-    //rho_Mac_max, index: 280, units: MWDERIVEDUNIT_cell__milliliter
+    //rho_Mac_max, index: 279, units: MWDERIVEDUNIT_cell__milliliter
     _class_parameter[P_rho_Mac_max] = PFILE(QSP_rho_Mac_max) * 1.66053872801495e-18;
-    //k_TGFb_Msec, index: 281, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_TGFb_Msec, index: 280, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_TGFb_Msec] = PFILE(QSP_k_TGFb_Msec) * 6970071747.68519;
-    //k_vas_Msec, index: 282, units: MWDERIVEDUNIT_picogram__cell__day
+    //k_vas_Msec, index: 281, units: MWDERIVEDUNIT_picogram__cell__day
     _class_parameter[P_k_vas_Msec] = PFILE(QSP_k_vas_Msec) * 6970.07174768519;
-    //k_IL12_sec, index: 283, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IL12_sec, index: 282, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IL12_sec] = PFILE(QSP_k_IL12_sec) * 6970071747.68519;
-    //k_IL12_Msec, index: 284, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IL12_Msec, index: 283, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IL12_Msec] = PFILE(QSP_k_IL12_Msec) * 6970071747.68519;
-    //k_IL12_deg, index: 285, units: MWDERIVEDUNIT_1__hour
+    //k_IL12_deg, index: 284, units: MWDERIVEDUNIT_1__hour
     _class_parameter[P_k_IL12_deg] = PFILE(QSP_k_IL12_deg) * 0.000277777777777778;
-    //k_IL10_sec, index: 286, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IL10_sec, index: 285, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IL10_sec] = PFILE(QSP_k_IL10_sec) * 6970071747.68519;
-    //k_IL10_sec_Treg, index: 287, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IL10_sec_Treg, index: 286, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IL10_sec_Treg] = PFILE(QSP_k_IL10_sec_Treg) * 6970071747.68519;
-    //k_IL10_sec_MDSC, index: 288, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_IL10_sec_MDSC, index: 287, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_IL10_sec_MDSC] = PFILE(QSP_k_IL10_sec_MDSC) * 6970071747.68519;
-    //k_IL10_deg, index: 289, units: MWDERIVEDUNIT_1__day
+    //k_IL10_deg, index: 288, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IL10_deg] = PFILE(QSP_k_IL10_deg) * 1.15740740740741e-05;
-    //k_M2_pol, index: 290, units: MWDERIVEDUNIT_1__day
+    //k_M2_pol, index: 289, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_M2_pol] = PFILE(QSP_k_M2_pol) * 1.15740740740741e-05;
-    //k_M1_pol, index: 291, units: MWDERIVEDUNIT_1__day
+    //k_M1_pol, index: 290, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_M1_pol] = PFILE(QSP_k_M1_pol) * 1.15740740740741e-05;
-    //IL10_50_M2, index: 292, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IL10_50_M2, index: 291, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IL10_50_M2] = PFILE(QSP_IL10_50_M2) * 1e-09;
-    //IL10_50_APC, index: 293, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IL10_50_APC, index: 292, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IL10_50_APC] = PFILE(QSP_IL10_50_APC) * 1e-09;
-    //IL10_50_Treg, index: 294, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IL10_50_Treg, index: 293, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IL10_50_Treg] = PFILE(QSP_IL10_50_Treg) * 1e-09;
-    //IL12_50, index: 295, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IL12_50, index: 294, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IL12_50] = PFILE(QSP_IL12_50) * 1e-09;
-    //k_IFNg_response, index: 296, units: MWDERIVEDUNIT_1__picomolarity
+    //k_IFNg_response, index: 295, units: MWDERIVEDUNIT_1__picomolarity
     _class_parameter[P_k_IFNg_response] = PFILE(QSP_k_IFNg_response) * 1000000000;
-    //k_M1_phago, index: 297, units: MWDERIVEDUNIT_1__day
+    //k_M1_phago, index: 296, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_M1_phago] = PFILE(QSP_k_M1_phago) * 1.15740740740741e-05;
-    //vol_Mcell, index: 298, units: MWDERIVEDUNIT_micrometer___3__cell
+    //vol_Mcell, index: 297, units: MWDERIVEDUNIT_micrometer___3__cell
     _class_parameter[P_vol_Mcell] = PFILE(QSP_vol_Mcell) * 602214.199;
-    //kon_CD47_SIRPa, index: 299, units: MWDERIVEDUNIT_1__micromolarity_minute_nanometer
+    //kon_CD47_SIRPa, index: 298, units: MWDERIVEDUNIT_1__micromolarity_minute_nanometer
     _class_parameter[P_kon_CD47_SIRPa] = PFILE(QSP_kon_CD47_SIRPa) * 16666666666.6667;
-    //koff_CD47_SIRPa, index: 300, units: MWDERIVEDUNIT_1__minute
+    //koff_CD47_SIRPa, index: 299, units: MWDERIVEDUNIT_1__minute
     _class_parameter[P_koff_CD47_SIRPa] = PFILE(QSP_koff_CD47_SIRPa) * 0.0166666666666667;
-    //SIRPa_50, index: 301, units: MWDERIVEDUNIT_molecule__micrometer___2
+    //SIRPa_50, index: 300, units: MWDERIVEDUNIT_molecule__micrometer___2
     _class_parameter[P_SIRPa_50] = PFILE(QSP_SIRPa_50) * 1.66053872801495e-12;
-    //n_SIRPa, index: 302, units: dimensionless
+    //n_SIRPa, index: 301, units: dimensionless
     _class_parameter[P_n_SIRPa] = PFILE(QSP_n_SIRPa) * 1;
-    //H_Mac_C, index: 303, units: dimensionless
+    //H_Mac_C, index: 302, units: dimensionless
     _class_parameter[P_H_Mac_C] = PFILE(QSP_H_Mac_C) * 1;
-    //H_PD1_M, index: 304, units: dimensionless
+    //H_PD1_M, index: 303, units: dimensionless
     _class_parameter[P_H_PD1_M] = PFILE(QSP_H_PD1_M) * 1;
-    //H_SIRPa, index: 305, units: dimensionless
+    //H_SIRPa, index: 304, units: dimensionless
     _class_parameter[P_H_SIRPa] = PFILE(QSP_H_SIRPa) * 1;
-    //C_CD47, index: 306, units: MWDERIVEDUNIT_molecule__micrometer___2
+    //C_CD47, index: 305, units: MWDERIVEDUNIT_molecule__micrometer___2
     _class_parameter[P_C_CD47] = PFILE(QSP_C_CD47) * 1.66053872801495e-12;
-    //M_PD1_total, index: 307, units: MWBUILTINUNIT_molecule
+    //M_PD1_total, index: 306, units: MWBUILTINUNIT_molecule
     _class_parameter[P_M_PD1_total] = PFILE(QSP_M_PD1_total) * 1.66053872801495e-24;
-    //M_SIRPa, index: 308, units: MWDERIVEDUNIT_molecule__micrometer___2
+    //M_SIRPa, index: 307, units: MWDERIVEDUNIT_molecule__micrometer___2
     _class_parameter[P_M_SIRPa] = PFILE(QSP_M_SIRPa) * 1.66053872801495e-12;
-    //A_Mcell, index: 309, units: MWDERIVEDUNIT_micrometer___2
+    //A_Mcell, index: 308, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_A_Mcell] = PFILE(QSP_A_Mcell) * 1e-12;
-    //IL10_50_phago, index: 310, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
+    //IL10_50_phago, index: 309, units: MWBUILTINPREFIX_pico_MWBUILTINUNIT_molarity
     _class_parameter[P_IL10_50_phago] = PFILE(QSP_IL10_50_phago) * 1e-09;
-    //K_M1_phago, index: 311, units: dimensionless
+    //K_M1_phago, index: 310, units: dimensionless
     _class_parameter[P_K_M1_phago] = PFILE(QSP_K_M1_phago) * 1;
-    //M_total, index: 312, units: MWUSERUNIT_cell
+    //M_total, index: 311, units: MWUSERUNIT_cell
     _class_parameter[P_M_total] = PFILE(QSP_M_total) * 1.66053872801495e-24;
-    //H_IL10_APC, index: 313, units: dimensionless
+    //H_IL10_APC, index: 312, units: dimensionless
     _class_parameter[P_H_IL10_APC] = PFILE(QSP_H_IL10_APC) * 1;
-    //H_IL10_Treg, index: 314, units: dimensionless
+    //H_IL10_Treg, index: 313, units: dimensionless
     _class_parameter[P_H_IL10_Treg] = PFILE(QSP_H_IL10_Treg) * 1;
-    //H_IL10_phago, index: 315, units: dimensionless
+    //H_IL10_phago, index: 314, units: dimensionless
     _class_parameter[P_H_IL10_phago] = PFILE(QSP_H_IL10_phago) * 1;
-    //H_IL12, index: 316, units: dimensionless
+    //H_IL12, index: 315, units: dimensionless
     _class_parameter[P_H_IL12] = PFILE(QSP_H_IL12) * 1;
-    //H_IL6_M2, index: 317, units: dimensionless
+    //H_IL6_M2, index: 316, units: dimensionless
     _class_parameter[P_H_IL6_M2] = PFILE(QSP_H_IL6_M2) * 1;
-    //phi_M2_skew, index: 318, units: dimensionless
+    //phi_M2_skew, index: 317, units: dimensionless
     _class_parameter[P_phi_M2_skew] = PFILE(QSP_phi_M2_skew) * 1;
-    //k_CAF_encounter, index: 319, units: MWDERIVEDUNIT_cell__milliliter_day
+    //k_CAF_encounter, index: 318, units: MWDERIVEDUNIT_cell__milliliter_day
     _class_parameter[P_k_CAF_encounter] = PFILE(QSP_k_CAF_encounter) * 1.92191982409137e-23;
-    //k_CAF_const, index: 320, units: MWDERIVEDUNIT_cell__milliliter
+    //k_CAF_const, index: 319, units: MWDERIVEDUNIT_cell__milliliter
     _class_parameter[P_k_CAF_const] = PFILE(QSP_k_CAF_const) * 1.66053872801495e-18;
-    //k_PSC_to_myCAF, index: 321, units: MWDERIVEDUNIT_1__day
+    //k_PSC_to_myCAF, index: 320, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_PSC_to_myCAF] = PFILE(QSP_k_PSC_to_myCAF) * 1.15740740740741e-05;
-    //k_PSC_to_iCAF, index: 322, units: MWDERIVEDUNIT_1__day
+    //k_PSC_to_iCAF, index: 321, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_PSC_to_iCAF] = PFILE(QSP_k_PSC_to_iCAF) * 1.15740740740741e-05;
-    //k_PSC_to_apCAF, index: 323, units: MWDERIVEDUNIT_1__day
+    //k_PSC_to_apCAF, index: 322, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_PSC_to_apCAF] = PFILE(QSP_k_PSC_to_apCAF) * 1.15740740740741e-05;
-    //k_iCAF_to_myCAF, index: 324, units: MWDERIVEDUNIT_1__day
+    //k_iCAF_to_myCAF, index: 323, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_iCAF_to_myCAF] = PFILE(QSP_k_iCAF_to_myCAF) * 1.15740740740741e-05;
-    //k_myCAF_to_iCAF, index: 325, units: MWDERIVEDUNIT_1__day
+    //k_myCAF_to_iCAF, index: 324, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_myCAF_to_iCAF] = PFILE(QSP_k_myCAF_to_iCAF) * 1.15740740740741e-05;
-    //k_myCAF_prolif, index: 326, units: MWDERIVEDUNIT_1__day
+    //k_myCAF_prolif, index: 325, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_myCAF_prolif] = PFILE(QSP_k_myCAF_prolif) * 1.15740740740741e-05;
-    //k_iCAF_prolif, index: 327, units: MWDERIVEDUNIT_1__day
+    //k_iCAF_prolif, index: 326, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_iCAF_prolif] = PFILE(QSP_k_iCAF_prolif) * 1.15740740740741e-05;
-    //k_apCAF_prolif, index: 328, units: MWDERIVEDUNIT_1__day
+    //k_apCAF_prolif, index: 327, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_apCAF_prolif] = PFILE(QSP_k_apCAF_prolif) * 1.15740740740741e-05;
-    //f_stroma_max, index: 329, units: dimensionless
+    //f_stroma_max, index: 328, units: dimensionless
     _class_parameter[P_f_stroma_max] = PFILE(QSP_f_stroma_max) * 1;
-    //f_apCAF_of_total, index: 330, units: dimensionless
+    //f_apCAF_of_total, index: 329, units: dimensionless
     _class_parameter[P_f_apCAF_of_total] = PFILE(QSP_f_apCAF_of_total) * 1;
-    //f_iCAF_of_non_apCAF, index: 331, units: dimensionless
+    //f_iCAF_of_non_apCAF, index: 330, units: dimensionless
     _class_parameter[P_f_iCAF_of_non_apCAF] = PFILE(QSP_f_iCAF_of_non_apCAF) * 1;
-    //k_col_myCAF_sec, index: 332, units: MWDERIVEDUNIT_milligram__cell_day
+    //k_col_myCAF_sec, index: 331, units: MWDERIVEDUNIT_milligram__cell_day
     _class_parameter[P_k_col_myCAF_sec] = PFILE(QSP_k_col_myCAF_sec) * 6970071747685.19;
-    //f_col_basal, index: 333, units: dimensionless
+    //f_col_basal, index: 332, units: dimensionless
     _class_parameter[P_f_col_basal] = PFILE(QSP_f_col_basal) * 1;
-    //TGFb_50_CAF_act, index: 334, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_CAF_act, index: 333, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_CAF_act] = PFILE(QSP_TGFb_50_CAF_act) * 1e-06;
-    //TGFb_50_col_sec, index: 335, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_col_sec, index: 334, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_col_sec] = PFILE(QSP_TGFb_50_col_sec) * 1e-06;
-    //k_col_deg, index: 336, units: MWDERIVEDUNIT_1__day
+    //k_col_deg, index: 335, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_col_deg] = PFILE(QSP_k_col_deg) * 1.15740740740741e-05;
-    //k_MMP_M2, index: 337, units: MWDERIVEDUNIT_milliliter__cell_day
+    //k_MMP_M2, index: 336, units: MWDERIVEDUNIT_milliliter__cell_day
     _class_parameter[P_k_MMP_M2] = PFILE(QSP_k_MMP_M2) * 6970071747685.19;
-    //phi_cross_50, index: 338, units: dimensionless
+    //phi_cross_50, index: 337, units: dimensionless
     _class_parameter[P_phi_cross_50] = PFILE(QSP_phi_cross_50) * 1;
-    //f_nascent, index: 339, units: dimensionless
+    //f_nascent, index: 338, units: dimensionless
     _class_parameter[P_f_nascent] = PFILE(QSP_f_nascent) * 1;
-    //rho_collagen, index: 340, units: MWDERIVEDUNIT_gram__milliliter
+    //rho_collagen, index: 339, units: MWDERIVEDUNIT_gram__milliliter
     _class_parameter[P_rho_collagen] = PFILE(QSP_rho_collagen) * 1000;
-    //phi_collagen, index: 341, units: dimensionless
+    //phi_collagen, index: 340, units: dimensionless
     _class_parameter[P_phi_collagen] = PFILE(QSP_phi_collagen) * 1;
-    //k_qpsc_death, index: 342, units: MWDERIVEDUNIT_1__day
+    //k_qpsc_death, index: 341, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_qpsc_death] = PFILE(QSP_k_qpsc_death) * 1.15740740740741e-05;
-    //k_iCAF_death, index: 343, units: MWDERIVEDUNIT_1__day
+    //k_iCAF_death, index: 342, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_iCAF_death] = PFILE(QSP_k_iCAF_death) * 1.15740740740741e-05;
-    //k_myCAF_death, index: 344, units: MWDERIVEDUNIT_1__day
+    //k_myCAF_death, index: 343, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_myCAF_death] = PFILE(QSP_k_myCAF_death) * 1.15740740740741e-05;
-    //k_apCAF_death, index: 345, units: MWDERIVEDUNIT_1__day
+    //k_apCAF_death, index: 344, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_apCAF_death] = PFILE(QSP_k_apCAF_death) * 1.15740740740741e-05;
-    //d_pore_ref, index: 346, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
+    //d_pore_ref, index: 345, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
     _class_parameter[P_d_pore_ref] = PFILE(QSP_d_pore_ref) * 1e-06;
-    //phi_col_ref, index: 347, units: dimensionless
+    //phi_col_ref, index: 346, units: dimensionless
     _class_parameter[P_phi_col_ref] = PFILE(QSP_phi_col_ref) * 1;
-    //d_crit_T, index: 348, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
+    //d_crit_T, index: 347, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
     _class_parameter[P_d_crit_T] = PFILE(QSP_d_crit_T) * 1e-06;
-    //d_crit_APC, index: 349, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
+    //d_crit_APC, index: 348, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
     _class_parameter[P_d_crit_APC] = PFILE(QSP_d_crit_APC) * 1e-06;
-    //n_pore, index: 350, units: dimensionless
+    //n_pore, index: 349, units: dimensionless
     _class_parameter[P_n_pore] = PFILE(QSP_n_pore) * 1;
-    //d_pore, index: 351, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
+    //d_pore, index: 350, units: MWBUILTINPREFIX_micro_MWBUILTINUNIT_meter
     _class_parameter[P_d_pore] = PFILE(QSP_d_pore) * 1e-06;
-    //H_pore_T, index: 352, units: dimensionless
+    //H_pore_T, index: 351, units: dimensionless
     _class_parameter[P_H_pore_T] = PFILE(QSP_H_pore_T) * 1;
-    //H_pore_APC, index: 353, units: dimensionless
+    //H_pore_APC, index: 352, units: dimensionless
     _class_parameter[P_H_pore_APC] = PFILE(QSP_H_pore_APC) * 1;
-    //E_ref, index: 354, units: dimensionless
+    //E_ref, index: 353, units: dimensionless
     _class_parameter[P_E_ref] = PFILE(QSP_E_ref) * 1;
-    //n_stiff, index: 355, units: dimensionless
+    //n_stiff, index: 354, units: dimensionless
     _class_parameter[P_n_stiff] = PFILE(QSP_n_stiff) * 1;
-    //E_50_Texh, index: 356, units: dimensionless
+    //E_50_Texh, index: 355, units: dimensionless
     _class_parameter[P_E_50_Texh] = PFILE(QSP_E_50_Texh) * 1;
-    //n_Texh, index: 357, units: dimensionless
+    //n_Texh, index: 356, units: dimensionless
     _class_parameter[P_n_Texh] = PFILE(QSP_n_Texh) * 1;
-    //E_50_fib, index: 358, units: dimensionless
+    //E_50_fib, index: 357, units: dimensionless
     _class_parameter[P_E_50_fib] = PFILE(QSP_E_50_fib) * 1;
-    //n_fib, index: 359, units: dimensionless
+    //n_fib, index: 358, units: dimensionless
     _class_parameter[P_n_fib] = PFILE(QSP_n_fib) * 1;
-    //stiffness, index: 360, units: dimensionless
+    //stiffness, index: 359, units: dimensionless
     _class_parameter[P_stiffness] = PFILE(QSP_stiffness) * 1;
-    //H_stiff_Texh, index: 361, units: dimensionless
+    //H_stiff_Texh, index: 360, units: dimensionless
     _class_parameter[P_H_stiff_Texh] = PFILE(QSP_H_stiff_Texh) * 1;
-    //H_stiff_fib, index: 362, units: dimensionless
+    //H_stiff_fib, index: 361, units: dimensionless
     _class_parameter[P_H_stiff_fib] = PFILE(QSP_H_stiff_fib) * 1;
-    //phi_col_50_Kmax, index: 363, units: dimensionless
+    //phi_col_50_Kmax, index: 362, units: dimensionless
     _class_parameter[P_phi_col_50_Kmax] = PFILE(QSP_phi_col_50_Kmax) * 1;
-    //phi_col_max, index: 364, units: dimensionless
+    //phi_col_max, index: 363, units: dimensionless
     _class_parameter[P_phi_col_max] = PFILE(QSP_phi_col_max) * 1;
-    //K_stiff_niche, index: 365, units: MWUSERUNIT_cell
+    //K_stiff_niche, index: 364, units: MWUSERUNIT_cell
     _class_parameter[P_K_stiff_niche] = PFILE(QSP_K_stiff_niche) * 1.66053872801495e-24;
-    //k_stroma_support, index: 366, units: dimensionless
+    //k_stroma_support, index: 365, units: dimensionless
     _class_parameter[P_k_stroma_support] = PFILE(QSP_k_stroma_support) * 1;
-    //k_stroma_myCAF, index: 367, units: dimensionless
+    //k_stroma_myCAF, index: 366, units: dimensionless
     _class_parameter[P_k_stroma_myCAF] = PFILE(QSP_k_stroma_myCAF) * 1;
-    //k_stroma_iCAF, index: 368, units: dimensionless
+    //k_stroma_iCAF, index: 367, units: dimensionless
     _class_parameter[P_k_stroma_iCAF] = PFILE(QSP_k_stroma_iCAF) * 1;
-    //k_stroma_apCAF, index: 369, units: dimensionless
+    //k_stroma_apCAF, index: 368, units: dimensionless
     _class_parameter[P_k_stroma_apCAF] = PFILE(QSP_k_stroma_apCAF) * 1;
-    //C_cap0, index: 370, units: MWUSERUNIT_cell
+    //C_cap0, index: 369, units: MWUSERUNIT_cell
     _class_parameter[P_C_cap0] = PFILE(QSP_C_cap0) * 1.66053872801495e-24;
-    //vol_qPSCcell, index: 371, units: MWDERIVEDUNIT_micrometer___3__cell
+    //vol_qPSCcell, index: 370, units: MWDERIVEDUNIT_micrometer___3__cell
     _class_parameter[P_vol_qPSCcell] = PFILE(QSP_vol_qPSCcell) * 602214.199;
-    //vol_iCAFcell, index: 372, units: MWDERIVEDUNIT_micrometer___3__cell
+    //vol_iCAFcell, index: 371, units: MWDERIVEDUNIT_micrometer___3__cell
     _class_parameter[P_vol_iCAFcell] = PFILE(QSP_vol_iCAFcell) * 602214.199;
-    //vol_myCAFcell, index: 373, units: MWDERIVEDUNIT_micrometer___3__cell
+    //vol_myCAFcell, index: 372, units: MWDERIVEDUNIT_micrometer___3__cell
     _class_parameter[P_vol_myCAFcell] = PFILE(QSP_vol_myCAFcell) * 602214.199;
-    //vol_apCAFcell, index: 374, units: MWDERIVEDUNIT_micrometer___3__cell
+    //vol_apCAFcell, index: 373, units: MWDERIVEDUNIT_micrometer___3__cell
     _class_parameter[P_vol_apCAFcell] = PFILE(QSP_vol_apCAFcell) * 602214.199;
-    //k_CXCL12_sec_iCAF, index: 375, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_CXCL12_sec_iCAF, index: 374, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_CXCL12_sec_iCAF] = PFILE(QSP_k_CXCL12_sec_iCAF) * 6970071747.68519;
-    //k_CXCL12_deg, index: 376, units: MWDERIVEDUNIT_1__day
+    //k_CXCL12_deg, index: 375, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CXCL12_deg] = PFILE(QSP_k_CXCL12_deg) * 1.15740740740741e-05;
-    //CXCL12_50_Texcl, index: 377, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CXCL12_50_Texcl, index: 376, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CXCL12_50_Texcl] = PFILE(QSP_CXCL12_50_Texcl) * 1e-06;
-    //k_IL6_sec_iCAF, index: 378, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_IL6_sec_iCAF, index: 377, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_IL6_sec_iCAF] = PFILE(QSP_k_IL6_sec_iCAF) * 6970071747.68519;
-    //k_IL6_sec_C, index: 379, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_IL6_sec_C, index: 378, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_IL6_sec_C] = PFILE(QSP_k_IL6_sec_C) * 6970071747.68519;
-    //k_IL6_sec_TAM, index: 380, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_IL6_sec_TAM, index: 379, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_IL6_sec_TAM] = PFILE(QSP_k_IL6_sec_TAM) * 6970071747.68519;
-    //k_IL6_deg, index: 381, units: MWDERIVEDUNIT_1__day
+    //k_IL6_deg, index: 380, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IL6_deg] = PFILE(QSP_k_IL6_deg) * 1.15740740740741e-05;
-    //IL6_50_MDSC, index: 382, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_MDSC, index: 381, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_MDSC] = PFILE(QSP_IL6_50_MDSC) * 1e-06;
-    //IL6_50_M2, index: 383, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_M2, index: 382, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_M2] = PFILE(QSP_IL6_50_M2) * 1e-06;
-    //IL6_50_iCAF, index: 384, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL6_50_iCAF, index: 383, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL6_50_iCAF] = PFILE(QSP_IL6_50_iCAF) * 1e-06;
-    //f_IL6_iCAF, index: 385, units: dimensionless
+    //f_IL6_iCAF, index: 384, units: dimensionless
     _class_parameter[P_f_IL6_iCAF] = PFILE(QSP_f_IL6_iCAF) * 1;
-    //H_IL6_iCAF, index: 386, units: dimensionless
+    //H_IL6_iCAF, index: 385, units: dimensionless
     _class_parameter[P_H_IL6_iCAF] = PFILE(QSP_H_IL6_iCAF) * 1;
-    //k_IL1_sec, index: 387, units: MWDERIVEDUNIT_nanomole__cell_day
+    //k_IL1_sec, index: 386, units: MWDERIVEDUNIT_nanomole__cell_day
     _class_parameter[P_k_IL1_sec] = PFILE(QSP_k_IL1_sec) * 6970071747.68519;
-    //k_IL1_deg, index: 388, units: MWDERIVEDUNIT_1__day
+    //k_IL1_deg, index: 387, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_IL1_deg] = PFILE(QSP_k_IL1_deg) * 1.15740740740741e-05;
-    //IL1_50, index: 389, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //IL1_50, index: 388, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_IL1_50] = PFILE(QSP_IL1_50) * 1e-06;
-    //n_IL1, index: 390, units: dimensionless
+    //n_IL1, index: 389, units: dimensionless
     _class_parameter[P_n_IL1] = PFILE(QSP_n_IL1) * 1;
-    //TGFb_50_IL1R1, index: 391, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //TGFb_50_IL1R1, index: 390, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_TGFb_50_IL1R1] = PFILE(QSP_TGFb_50_IL1R1) * 1e-06;
-    //Emax_IL1R1, index: 392, units: dimensionless
+    //Emax_IL1R1, index: 391, units: dimensionless
     _class_parameter[P_Emax_IL1R1] = PFILE(QSP_Emax_IL1R1) * 1;
-    //IL1_ratio, index: 393, units: dimensionless
+    //IL1_ratio, index: 392, units: dimensionless
     _class_parameter[P_IL1_ratio] = PFILE(QSP_IL1_ratio) * 1;
-    //H_IL1_eff, index: 394, units: dimensionless
+    //H_IL1_eff, index: 393, units: dimensionless
     _class_parameter[P_H_IL1_eff] = PFILE(QSP_H_IL1_eff) * 1;
-    //k_vas_myCAF_sec, index: 395, units: MWDERIVEDUNIT_picogram__cell_day
+    //k_vas_myCAF_sec, index: 394, units: MWDERIVEDUNIT_picogram__cell_day
     _class_parameter[P_k_vas_myCAF_sec] = PFILE(QSP_k_vas_myCAF_sec) * 6970.07174768519;
-    //k_apCAF_iTreg, index: 396, units: MWDERIVEDUNIT_1__day
+    //k_apCAF_iTreg, index: 395, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_apCAF_iTreg] = PFILE(QSP_k_apCAF_iTreg) * 1.15740740740741e-05;
-    //P1_50_apCAF, index: 397, units: MWBUILTINUNIT_molarity
+    //P1_50_apCAF, index: 396, units: MWBUILTINUNIT_molarity
     _class_parameter[P_P1_50_apCAF] = PFILE(QSP_P1_50_apCAF) * 1000;
-    //aPSC_total, index: 398, units: MWUSERUNIT_cell
+    //aPSC_total, index: 397, units: MWUSERUNIT_cell
     _class_parameter[P_aPSC_total] = PFILE(QSP_aPSC_total) * 1.66053872801495e-24;
-    //k_TGFb_sec_myCAF, index: 399, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_TGFb_sec_myCAF, index: 398, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_TGFb_sec_myCAF] = PFILE(QSP_k_TGFb_sec_myCAF) * 6970071747.68519;
-    //k_CXCL12_sec_cancer, index: 400, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
+    //k_CXCL12_sec_cancer, index: 399, units: MWDERIVEDUNIT_nanomolarity_liter__cell_day
     _class_parameter[P_k_CXCL12_sec_cancer] = PFILE(QSP_k_CXCL12_sec_cancer) * 6970071747.68519;
-    //H_apCAF_pMHCII, index: 401, units: dimensionless
+    //H_apCAF_pMHCII, index: 400, units: dimensionless
     _class_parameter[P_H_apCAF_pMHCII] = PFILE(QSP_H_apCAF_pMHCII) * 1;
-    //k_GVAX_clearance, index: 402, units: MWDERIVEDUNIT_1__day
+    //k_GVAX_clearance, index: 401, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_GVAX_clearance] = PFILE(QSP_k_GVAX_clearance) * 1.15740740740741e-05;
-    //V_ID_volume, index: 403, units: MWBUILTINUNIT_liter
+    //V_ID_volume, index: 402, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_ID_volume] = PFILE(QSP_V_ID_volume) * 0.001;
-    //k_GMCSF_prod, index: 404, units: MWDERIVEDUNIT_nanomolarity__cell__day
+    //k_GMCSF_prod, index: 403, units: MWDERIVEDUNIT_nanomolarity__cell__day
     _class_parameter[P_k_GMCSF_prod] = PFILE(QSP_k_GMCSF_prod) * 6970071747685.19;
-    //k_GMCSF_deg, index: 405, units: MWDERIVEDUNIT_1__day
+    //k_GMCSF_deg, index: 404, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_GMCSF_deg] = PFILE(QSP_k_GMCSF_deg) * 1.15740740740741e-05;
-    //k_APC_recruit_ID, index: 406, units: MWDERIVEDUNIT_cell__day
+    //k_APC_recruit_ID, index: 405, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_k_APC_recruit_ID] = PFILE(QSP_k_APC_recruit_ID) * 1.92191982409137e-29;
-    //EC50_GMCSF, index: 407, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //EC50_GMCSF, index: 406, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_EC50_GMCSF] = PFILE(QSP_EC50_GMCSF) * 1e-06;
-    //k_APC_mature_ID, index: 408, units: MWDERIVEDUNIT_1__day
+    //k_APC_mature_ID, index: 407, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_mature_ID] = PFILE(QSP_k_APC_mature_ID) * 1.15740740740741e-05;
-    //k_APC_mig_ID_LN, index: 409, units: MWDERIVEDUNIT_1__day
+    //k_APC_mig_ID_LN, index: 408, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_mig_ID_LN] = PFILE(QSP_k_APC_mig_ID_LN) * 1.15740740740741e-05;
-    //k_APC_death_ID, index: 410, units: MWDERIVEDUNIT_1__day
+    //k_APC_death_ID, index: 409, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_APC_death_ID] = PFILE(QSP_k_APC_death_ID) * 1.15740740740741e-05;
-    //sigma_P1_per_mAPC, index: 411, units: MWDERIVEDUNIT_nanomole__cell
+    //sigma_P1_per_mAPC, index: 410, units: MWDERIVEDUNIT_nanomole__cell
     _class_parameter[P_sigma_P1_per_mAPC] = PFILE(QSP_sigma_P1_per_mAPC) * 602214199000000;
-    //EC50_P1_mature, index: 412, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //EC50_P1_mature, index: 411, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_EC50_P1_mature] = PFILE(QSP_EC50_P1_mature) * 1e-06;
-    //K_APC_ID, index: 413, units: MWUSERUNIT_cell
+    //K_APC_ID, index: 412, units: MWUSERUNIT_cell
     _class_parameter[P_K_APC_ID] = PFILE(QSP_K_APC_ID) * 1.66053872801495e-24;
-    //k_APC_recruit0, index: 414, units: MWDERIVEDUNIT_cell__day
+    //k_APC_recruit0, index: 413, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_k_APC_recruit0] = PFILE(QSP_k_APC_recruit0) * 1.92191982409137e-29;
-    //k_mAPC_death_ID, index: 415, units: MWDERIVEDUNIT_1__day
+    //k_mAPC_death_ID, index: 414, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_mAPC_death_ID] = PFILE(QSP_k_mAPC_death_ID) * 1.15740740740741e-05;
-    //y_Ag_per_cell, index: 416, units: MWDERIVEDUNIT_nanomole__cell
+    //y_Ag_per_cell, index: 415, units: MWDERIVEDUNIT_nanomole__cell
     _class_parameter[P_y_Ag_per_cell] = PFILE(QSP_y_Ag_per_cell) * 602214199000000;
-    //k_P1_deg_ID, index: 417, units: MWDERIVEDUNIT_1__day
+    //k_P1_deg_ID, index: 416, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_P1_deg_ID] = PFILE(QSP_k_P1_deg_ID) * 1.15740740740741e-05;
-    //K_APC_mig, index: 418, units: MWUSERUNIT_cell
+    //K_APC_mig, index: 417, units: MWUSERUNIT_cell
     _class_parameter[P_K_APC_mig] = PFILE(QSP_K_APC_mig) * 1.66053872801495e-24;
-    //k_cDC1_Ag_transfer, index: 419, units: MWDERIVEDUNIT_1__cell_day
+    //k_cDC1_Ag_transfer, index: 418, units: MWDERIVEDUNIT_1__cell_day
     _class_parameter[P_k_cDC1_Ag_transfer] = PFILE(QSP_k_cDC1_Ag_transfer) * 6.97007174768519e+18;
-    //k_GVAX_present, index: 420, units: MWDERIVEDUNIT_1__day__cell
+    //k_GVAX_present, index: 419, units: MWDERIVEDUNIT_1__day__cell
     _class_parameter[P_k_GVAX_present] = PFILE(QSP_k_GVAX_present) * 6.97007174768519e+18;
-    //H_GMCSF_ID, index: 421, units: dimensionless
+    //H_GMCSF_ID, index: 420, units: dimensionless
     _class_parameter[P_H_GMCSF_ID] = PFILE(QSP_H_GMCSF_ID) * 1;
-    //HMGB1_50_ID, index: 422, units: MWDERIVEDUNIT_cell__day
+    //HMGB1_50_ID, index: 421, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_HMGB1_50_ID] = PFILE(QSP_HMGB1_50_ID) * 1.92191982409137e-29;
-    //H_HMGB1_ID, index: 423, units: dimensionless
+    //H_HMGB1_ID, index: 422, units: dimensionless
     _class_parameter[P_H_HMGB1_ID] = PFILE(QSP_H_HMGB1_ID) * 1;
-    //J_mature_ID, index: 424, units: MWDERIVEDUNIT_cell__day
+    //J_mature_ID, index: 423, units: MWDERIVEDUNIT_cell__day
     _class_parameter[P_J_mature_ID] = PFILE(QSP_J_mature_ID) * 1.92191982409137e-29;
-    //f_epitope_spread, index: 425, units: dimensionless
+    //f_epitope_spread, index: 424, units: dimensionless
     _class_parameter[P_f_epitope_spread] = PFILE(QSP_f_epitope_spread) * 1;
-    //H_P1_spread, index: 426, units: dimensionless
+    //H_P1_spread, index: 425, units: dimensionless
     _class_parameter[P_H_P1_spread] = PFILE(QSP_H_P1_spread) * 1;
-    //k_Cy_clear, index: 427, units: MWDERIVEDUNIT_1__day
+    //k_Cy_clear, index: 426, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_clear] = PFILE(QSP_k_Cy_clear) * 1.15740740740741e-05;
-    //k_Cy_Treg_deplete, index: 428, units: MWDERIVEDUNIT_1__day
+    //k_Cy_Treg_deplete, index: 427, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_Treg_deplete] = PFILE(QSP_k_Cy_Treg_deplete) * 1.15740740740741e-05;
-    //Cy_50_Treg, index: 429, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
+    //Cy_50_Treg, index: 428, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
     _class_parameter[P_Cy_50_Treg] = PFILE(QSP_Cy_50_Treg) * 1e-06;
-    //k_Cy_eff_decay, index: 430, units: MWDERIVEDUNIT_1__day
+    //k_Cy_eff_decay, index: 429, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_Cy_eff_decay] = PFILE(QSP_k_Cy_eff_decay) * 1.15740740740741e-05;
-    //Emax_Cy_Treg, index: 431, units: dimensionless
+    //Emax_Cy_Treg, index: 430, units: dimensionless
     _class_parameter[P_Emax_Cy_Treg] = PFILE(QSP_Emax_Cy_Treg) * 1;
-    //k_Cy_on, index: 432, units: MWDERIVEDUNIT_milligram__day
+    //k_Cy_on, index: 431, units: MWDERIVEDUNIT_milligram__day
     _class_parameter[P_k_Cy_on] = PFILE(QSP_k_Cy_on) * 1.15740740740741e-11;
-    //Cy_eff_50, index: 433, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
+    //Cy_eff_50, index: 432, units: MWBUILTINPREFIX_milli_MWBUILTINUNIT_gram
     _class_parameter[P_Cy_eff_50] = PFILE(QSP_Cy_eff_50) * 1e-06;
-    //CD137_50, index: 434, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CD137_50, index: 433, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CD137_50] = PFILE(QSP_CD137_50) * 1e-06;
-    //k_CXCL13_sec, index: 435, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_CXCL13_sec, index: 434, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_CXCL13_sec] = PFILE(QSP_k_CXCL13_sec) * 6970071747.68519;
-    //k_CXCL13_ff, index: 436, units: MWDERIVEDUNIT_nanomole__cell__day
+    //k_CXCL13_ff, index: 435, units: MWDERIVEDUNIT_nanomole__cell__day
     _class_parameter[P_k_CXCL13_ff] = PFILE(QSP_k_CXCL13_ff) * 6970071747.68519;
-    //k_CXCL13_deg, index: 437, units: MWDERIVEDUNIT_1__day
+    //k_CXCL13_deg, index: 436, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CXCL13_deg] = PFILE(QSP_k_CXCL13_deg) * 1.15740740740741e-05;
-    //CXCL13_50_TLA, index: 438, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CXCL13_50_TLA, index: 437, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CXCL13_50_TLA] = PFILE(QSP_CXCL13_50_TLA) * 1e-06;
-    //k_TLA_form, index: 439, units: MWDERIVEDUNIT_1__day
+    //k_TLA_form, index: 438, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_form] = PFILE(QSP_k_TLA_form) * 1.15740740740741e-05;
-    //k_TLA_decay, index: 440, units: MWDERIVEDUNIT_1__day
+    //k_TLA_decay, index: 439, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_decay] = PFILE(QSP_k_TLA_decay) * 1.15740740740741e-05;
-    //k_TLA_seq, index: 441, units: MWDERIVEDUNIT_1__day
+    //k_TLA_seq, index: 440, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_seq] = PFILE(QSP_k_TLA_seq) * 1.15740740740741e-05;
-    //k_TLA_release, index: 442, units: MWDERIVEDUNIT_1__day
+    //k_TLA_release, index: 441, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_release] = PFILE(QSP_k_TLA_release) * 1.15740740740741e-05;
-    //a_TLA, index: 443, units: dimensionless
+    //a_TLA, index: 442, units: dimensionless
     _class_parameter[P_a_TLA] = PFILE(QSP_a_TLA) * 1;
-    //k_CD137_act, index: 444, units: MWDERIVEDUNIT_1__day
+    //k_CD137_act, index: 443, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_act] = PFILE(QSP_k_CD137_act) * 1.15740740740741e-05;
-    //k_CD137_deact, index: 445, units: MWDERIVEDUNIT_1__day
+    //k_CD137_deact, index: 444, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_deact] = PFILE(QSP_k_CD137_deact) * 1.15740740740741e-05;
-    //f_act_base, index: 446, units: dimensionless
+    //f_act_base, index: 445, units: dimensionless
     _class_parameter[P_f_act_base] = PFILE(QSP_f_act_base) * 1;
-    //k_TLA_egress, index: 447, units: MWDERIVEDUNIT_1__day
+    //k_TLA_egress, index: 446, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_TLA_egress] = PFILE(QSP_k_TLA_egress) * 1.15740740740741e-05;
-    //phi_vic_kill, index: 448, units: dimensionless
+    //phi_vic_kill, index: 447, units: dimensionless
     _class_parameter[P_phi_vic_kill] = PFILE(QSP_phi_vic_kill) * 1;
-    //k_vic_decay, index: 449, units: MWDERIVEDUNIT_1__day
+    //k_vic_decay, index: 448, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_vic_decay] = PFILE(QSP_k_vic_decay) * 1.15740740740741e-05;
-    //k_CD137_reinvig, index: 450, units: MWDERIVEDUNIT_1__day
+    //k_CD137_reinvig, index: 449, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_reinvig] = PFILE(QSP_k_CD137_reinvig) * 1.15740740740741e-05;
-    //f_CD137_func, index: 451, units: dimensionless
+    //f_CD137_func, index: 450, units: dimensionless
     _class_parameter[P_f_CD137_func] = PFILE(QSP_f_CD137_func) * 1;
-    //k_CD137_prolif, index: 452, units: MWDERIVEDUNIT_1__day
+    //k_CD137_prolif, index: 451, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_prolif] = PFILE(QSP_k_CD137_prolif) * 1.15740740740741e-05;
-    //k_CD8_T_vac_pro, index: 453, units: MWDERIVEDUNIT_1__day
+    //k_CD8_T_vac_pro, index: 452, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD8_T_vac_pro] = PFILE(QSP_k_CD8_T_vac_pro) * 1.15740740740741e-05;
-    //k_CD137_latch_on, index: 454, units: MWDERIVEDUNIT_1__day
+    //k_CD137_latch_on, index: 453, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_latch_on] = PFILE(QSP_k_CD137_latch_on) * 1.15740740740741e-05;
-    //k_CD137_latch_off, index: 455, units: MWDERIVEDUNIT_1__day
+    //k_CD137_latch_off, index: 454, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_CD137_latch_off] = PFILE(QSP_k_CD137_latch_off) * 1.15740740740741e-05;
-    //H_CD137_T, index: 456, units: dimensionless
+    //H_CD137_T, index: 455, units: dimensionless
     _class_parameter[P_H_CD137_T] = PFILE(QSP_H_CD137_T) * 1;
-    //CXCL13, index: 457, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
+    //CXCL13, index: 456, units: MWBUILTINPREFIX_nano_MWBUILTINUNIT_molarity
     _class_parameter[P_CXCL13] = PFILE(QSP_CXCL13) * 1e-06;
-    //H_CXCL13, index: 458, units: dimensionless
+    //H_CXCL13, index: 457, units: dimensionless
     _class_parameter[P_H_CXCL13] = PFILE(QSP_H_CXCL13) * 1;
-    //CD8_T_tot, index: 459, units: MWUSERUNIT_cell
+    //CD8_T_tot, index: 458, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_T_tot] = PFILE(QSP_CD8_T_tot) * 1.66053872801495e-24;
-    //k_C_vic_eff, index: 460, units: MWDERIVEDUNIT_1__day
+    //k_C_vic_eff, index: 459, units: MWDERIVEDUNIT_1__day
     _class_parameter[P_k_C_vic_eff] = PFILE(QSP_k_C_vic_eff) * 1.15740740740741e-05;
-    //CD8_total_T, index: 461, units: MWUSERUNIT_cell
+    //CD8_total_T, index: 460, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_total_T] = PFILE(QSP_CD8_total_T) * 1.66053872801495e-24;
-    //nucleated_total_T, index: 462, units: MWUSERUNIT_cell
+    //nucleated_total_T, index: 461, units: MWUSERUNIT_cell
     _class_parameter[P_nucleated_total_T] = PFILE(QSP_nucleated_total_T) * 1.66053872801495e-24;
-    //CD8_exh_total_T, index: 463, units: MWUSERUNIT_cell
+    //CD8_exh_total_T, index: 462, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_exh_total_T] = PFILE(QSP_CD8_exh_total_T) * 1.66053872801495e-24;
-    //Th_total_T, index: 464, units: MWUSERUNIT_cell
+    //Th_total_T, index: 463, units: MWUSERUNIT_cell
     _class_parameter[P_Th_total_T] = PFILE(QSP_Th_total_T) * 1.66053872801495e-24;
-    //CD4_total_T, index: 465, units: MWUSERUNIT_cell
+    //CD4_total_T, index: 464, units: MWUSERUNIT_cell
     _class_parameter[P_CD4_total_T] = PFILE(QSP_CD4_total_T) * 1.66053872801495e-24;
-    //Tcell_total_T, index: 466, units: MWUSERUNIT_cell
+    //Tcell_total_T, index: 465, units: MWUSERUNIT_cell
     _class_parameter[P_Tcell_total_T] = PFILE(QSP_Tcell_total_T) * 1.66053872801495e-24;
-    //Mac_total_T, index: 467, units: MWUSERUNIT_cell
+    //Mac_total_T, index: 466, units: MWUSERUNIT_cell
     _class_parameter[P_Mac_total_T] = PFILE(QSP_Mac_total_T) * 1.66053872801495e-24;
-    //DC_total_T, index: 468, units: MWUSERUNIT_cell
+    //DC_total_T, index: 467, units: MWUSERUNIT_cell
     _class_parameter[P_DC_total_T] = PFILE(QSP_DC_total_T) * 1.66053872801495e-24;
-    //mDC_total_T, index: 469, units: MWUSERUNIT_cell
+    //mDC_total_T, index: 468, units: MWUSERUNIT_cell
     _class_parameter[P_mDC_total_T] = PFILE(QSP_mDC_total_T) * 1.66053872801495e-24;
-    //cDC1_lineage_T, index: 470, units: MWUSERUNIT_cell
+    //cDC1_lineage_T, index: 469, units: MWUSERUNIT_cell
     _class_parameter[P_cDC1_lineage_T] = PFILE(QSP_cDC1_lineage_T) * 1.66053872801495e-24;
-    //cDC2_lineage_T, index: 471, units: MWUSERUNIT_cell
+    //cDC2_lineage_T, index: 470, units: MWUSERUNIT_cell
     _class_parameter[P_cDC2_lineage_T] = PFILE(QSP_cDC2_lineage_T) * 1.66053872801495e-24;
-    //immune_total_T, index: 472, units: MWUSERUNIT_cell
+    //immune_total_T, index: 471, units: MWUSERUNIT_cell
     _class_parameter[P_immune_total_T] = PFILE(QSP_immune_total_T) * 1.66053872801495e-24;
-    //CD8_total_C, index: 473, units: MWUSERUNIT_cell
+    //CD8_total_C, index: 472, units: MWUSERUNIT_cell
     _class_parameter[P_CD8_total_C] = PFILE(QSP_CD8_total_C) * 1.66053872801495e-24;
-    //CAF_total_T, index: 474, units: MWUSERUNIT_cell
+    //CAF_total_T, index: 473, units: MWUSERUNIT_cell
     _class_parameter[P_CAF_total_T] = PFILE(QSP_CAF_total_T) * 1.66053872801495e-24;
-    //V_C (compartment), index: 475, units: MWBUILTINUNIT_liter
+    //V_C (compartment), index: 474, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_C] = PFILE(QSP_V_C) * 0.001;
-    //V_P (compartment), index: 476, units: MWBUILTINUNIT_liter
+    //V_P (compartment), index: 475, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_P] = PFILE(QSP_V_P) * 0.001;
-    //V_LN (compartment), index: 477, units: MWDERIVEDUNIT_millimeter___3
+    //V_LN (compartment), index: 476, units: MWDERIVEDUNIT_millimeter___3
     _class_parameter[P_V_LN] = PFILE(QSP_V_LN) * 1e-09;
-    //V_e (compartment), index: 478, units: litre
+    //V_e (compartment), index: 477, units: litre
     _class_parameter[P_V_e] = PFILE(QSP_V_e) * 0.001;
-    //A_e (compartment), index: 479, units: MWDERIVEDUNIT_micrometer___2
+    //A_e (compartment), index: 478, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_A_e] = PFILE(QSP_A_e) * 1e-12;
-    //A_s (compartment), index: 480, units: MWDERIVEDUNIT_micrometer___2
+    //A_s (compartment), index: 479, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_A_s] = PFILE(QSP_A_s) * 1e-12;
-    //syn_CD8_C1 (compartment), index: 481, units: MWDERIVEDUNIT_micrometer___2
+    //syn_CD8_C1 (compartment), index: 480, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_CD8_C1] = PFILE(QSP_syn_CD8_C1) * 1e-12;
-    //syn_CD8_APC (compartment), index: 482, units: MWDERIVEDUNIT_micrometer___2
+    //syn_CD8_APC (compartment), index: 481, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_CD8_APC] = PFILE(QSP_syn_CD8_APC) * 1e-12;
-    //syn_M_C (compartment), index: 483, units: MWDERIVEDUNIT_micrometer___2
+    //syn_M_C (compartment), index: 482, units: MWDERIVEDUNIT_micrometer___2
     _class_parameter[P_syn_M_C] = PFILE(QSP_syn_M_C) * 1e-12;
-    //V_ID (compartment), index: 484, units: MWBUILTINUNIT_liter
+    //V_ID (compartment), index: 483, units: MWBUILTINUNIT_liter
     _class_parameter[P_V_ID] = PFILE(QSP_V_ID) * 0.001;
 }
 
@@ -1692,21 +1690,19 @@ realtype ODE_system::get_assignment_rule_value(const std::string& name) const {
     }
     if (name == "N_aT") {
         realtype AUX_VAR_H_CD28_APC = (std::pow(((_species_var[SP_syn_CD8_APC_CD28_CD80] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_CD28_CD86] / PARAM(P_syn_CD8_APC)) + 2.0 * (_species_var[SP_syn_CD8_APC_CD28_CD80_CD28] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PDL1_CD80_CD28] / PARAM(P_syn_CD8_APC))) / PARAM(P_CD28_CD8X_50), PARAM(P_n_CD28_CD8X))) / ((std::pow(((_species_var[SP_syn_CD8_APC_CD28_CD80] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_CD28_CD86] / PARAM(P_syn_CD8_APC)) + 2.0 * (_species_var[SP_syn_CD8_APC_CD28_CD80_CD28] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PDL1_CD80_CD28] / PARAM(P_syn_CD8_APC))) / PARAM(P_CD28_CD8X_50), PARAM(P_n_CD28_CD8X))) + 1.0);
-        realtype AUX_VAR_H_PD1_APC = (std::pow(((_species_var[SP_syn_CD8_APC_PD1_PDL1] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PD1_PDL2] / PARAM(P_syn_CD8_APC))) / PARAM(P_PD1_50), PARAM(P_n_PD1))) / ((std::pow(((_species_var[SP_syn_CD8_APC_PD1_PDL1] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PD1_PDL2] / PARAM(P_syn_CD8_APC))) / PARAM(P_PD1_50), PARAM(P_n_PD1))) + 1.0);
         realtype AUX_VAR_H_div_help = _species_var[SP_V_LN_Th] / (_species_var[SP_V_LN_Th] + PARAM(P_Th_50_div));
         realtype AUX_VAR_IL2_demand = _species_var[SP_V_LN_aCD8] + PARAM(P_kappa_IL2_Treg) * _species_var[SP_V_LN_Treg];
         realtype AUX_VAR_IL2_supply = PARAM(P_w_IL2_help) * _species_var[SP_V_LN_aTh] + _species_var[SP_V_LN_aCD8];
         realtype AUX_VAR_IL2_niche = PARAM(P_k_IL2_sec) * AUX_VAR_IL2_supply / (PARAM(P_k_IL2_cons) * AUX_VAR_IL2_demand / PARAM(P_IL2_50) + PARAM(P_k_IL2_deg) * PARAM(P_V_niche));
-        realtype AUX_VAR_N_aT = PARAM(P_N_div_base) + (PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * ((1.0 - PARAM(P_alpha_PD1_costim) * AUX_VAR_H_PD1_APC)) * AUX_VAR_H_div_help) + (PARAM(P_N_IL2_CD8) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
+        realtype AUX_VAR_N_aT = PARAM(P_N_div_base) + PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * AUX_VAR_H_div_help + (PARAM(P_N_IL2_CD8) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
         return AUX_VAR_N_aT / 1;
     }
     if (name == "N_aTh") {
         realtype AUX_VAR_H_CD28_APC = (std::pow(((_species_var[SP_syn_CD8_APC_CD28_CD80] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_CD28_CD86] / PARAM(P_syn_CD8_APC)) + 2.0 * (_species_var[SP_syn_CD8_APC_CD28_CD80_CD28] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PDL1_CD80_CD28] / PARAM(P_syn_CD8_APC))) / PARAM(P_CD28_CD8X_50), PARAM(P_n_CD28_CD8X))) / ((std::pow(((_species_var[SP_syn_CD8_APC_CD28_CD80] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_CD28_CD86] / PARAM(P_syn_CD8_APC)) + 2.0 * (_species_var[SP_syn_CD8_APC_CD28_CD80_CD28] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PDL1_CD80_CD28] / PARAM(P_syn_CD8_APC))) / PARAM(P_CD28_CD8X_50), PARAM(P_n_CD28_CD8X))) + 1.0);
-        realtype AUX_VAR_H_PD1_APC = (std::pow(((_species_var[SP_syn_CD8_APC_PD1_PDL1] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PD1_PDL2] / PARAM(P_syn_CD8_APC))) / PARAM(P_PD1_50), PARAM(P_n_PD1))) / ((std::pow(((_species_var[SP_syn_CD8_APC_PD1_PDL1] / PARAM(P_syn_CD8_APC)) + (_species_var[SP_syn_CD8_APC_PD1_PDL2] / PARAM(P_syn_CD8_APC))) / PARAM(P_PD1_50), PARAM(P_n_PD1))) + 1.0);
         realtype AUX_VAR_IL2_demand = _species_var[SP_V_LN_aCD8] + PARAM(P_kappa_IL2_Treg) * _species_var[SP_V_LN_Treg];
         realtype AUX_VAR_IL2_supply = PARAM(P_w_IL2_help) * _species_var[SP_V_LN_aTh] + _species_var[SP_V_LN_aCD8];
         realtype AUX_VAR_IL2_niche = PARAM(P_k_IL2_sec) * AUX_VAR_IL2_supply / (PARAM(P_k_IL2_cons) * AUX_VAR_IL2_demand / PARAM(P_IL2_50) + PARAM(P_k_IL2_deg) * PARAM(P_V_niche));
-        realtype AUX_VAR_N_aTh = PARAM(P_N_div_base) + (PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * ((1.0 - PARAM(P_alpha_PD1_costim) * AUX_VAR_H_PD1_APC))) + (PARAM(P_N_IL2_CD4) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
+        realtype AUX_VAR_N_aTh = PARAM(P_N_div_base) + PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC + (PARAM(P_N_IL2_CD4) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
         return AUX_VAR_N_aTh / 1;
     }
     if (name == "H_TGFb_Th2Treg") {
@@ -2669,9 +2665,9 @@ int ODE_system::f(realtype t, N_Vector y, N_Vector ydot, void *user_data){
 
     realtype AUX_VAR_Mac_total_T = SPVAR(SP_V_T_Mac_M1) + SPVAR(SP_V_T_Mac_M2);
 
-    realtype AUX_VAR_N_aT = PARAM(P_N_div_base) + (PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * ((1.0 - PARAM(P_alpha_PD1_costim) * AUX_VAR_H_PD1_APC)) * AUX_VAR_H_div_help) + (PARAM(P_N_IL2_CD8) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
+    realtype AUX_VAR_N_aT = PARAM(P_N_div_base) + PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * AUX_VAR_H_div_help + (PARAM(P_N_IL2_CD8) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
 
-    realtype AUX_VAR_N_aTh = PARAM(P_N_div_base) + (PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC * ((1.0 - PARAM(P_alpha_PD1_costim) * AUX_VAR_H_PD1_APC))) + (PARAM(P_N_IL2_CD4) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
+    realtype AUX_VAR_N_aTh = PARAM(P_N_div_base) + PARAM(P_N_div_costim) * AUX_VAR_H_CD28_APC + (PARAM(P_N_IL2_CD4) * AUX_VAR_IL2_niche / (PARAM(P_IL2_50) + AUX_VAR_IL2_niche));
 
     realtype AUX_VAR_T_total = 0.0 * PARAM(P_cell) + SPVAR(SP_V_T_Treg) + SPVAR(SP_V_T_CD8) + SPVAR(SP_V_T_Th);
 
@@ -3551,10 +3547,10 @@ const sunindextype ODE_system::_jac_col_ptrs[] = {
     835, 882, 887, 894, 898, 902, 906, 916, 920, 922, 928, 931, 935, 938, 940, 941,
     944, 951, 955, 957, 961, 967, 970, 972, 975, 979, 982, 988, 992, 996, 998, 1002,
     1006, 1019, 1032, 1041, 1046, 1049, 1054, 1059, 1060, 1064, 1067, 1070, 1075, 1080, 1085, 1090,
-    1094, 1097, 1104, 1108, 1112, 1120, 1130, 1139, 1143, 1149, 1156, 1163, 1170, 1175, 1178, 1181,
-    1184, 1185, 1193, 1200, 1207, 1212, 1217, 1222, 1227, 1231, 1234, 1241, 1249, 1253, 1261, 1271,
-    1280, 1284, 1290, 1293, 1296, 1307, 1308, 1309, 1320, 1331, 1338, 1343, 1346, 1349, 1352, 1355,
-    1357, 1361, 1366, 1369, 1373, 1375, 1382, 1385, 1386,
+    1094, 1097, 1104, 1108, 1112, 1120, 1130, 1139, 1143, 1149, 1152, 1155, 1162, 1167, 1170, 1173,
+    1176, 1177, 1185, 1192, 1199, 1204, 1209, 1214, 1219, 1223, 1226, 1233, 1241, 1245, 1253, 1263,
+    1272, 1276, 1282, 1285, 1288, 1299, 1300, 1301, 1312, 1323, 1330, 1335, 1338, 1341, 1344, 1347,
+    1349, 1353, 1358, 1361, 1365, 1367, 1374, 1377, 1378,
 };
 
 const sunindextype ODE_system::_jac_row_indices[] = {
@@ -3629,22 +3625,22 @@ const sunindextype ODE_system::_jac_row_indices[] = {
     101, 102, 95, 96, 101, 104, 95, 96, 104, 83, 97, 98, 99, 100, 101, 103,
     83, 97, 98, 100, 83, 97, 99, 101, 88, 89, 90, 97, 98, 100, 102, 104,
     91, 92, 93, 94, 95, 97, 99, 101, 102, 104, 88, 91, 92, 93, 94, 100,
-    101, 102, 103, 83, 97, 102, 103, 90, 95, 96, 100, 101, 104, 59, 60, 67,
-    68, 105, 107, 108, 59, 60, 67, 68, 106, 107, 109, 105, 106, 107, 108, 109,
-    110, 111, 105, 107, 108, 122, 128, 106, 107, 109, 107, 110, 111, 107, 110, 111,
-    112, 59, 60, 67, 68, 113, 114, 125, 127, 59, 60, 67, 68, 113, 114, 125,
-    59, 60, 67, 68, 115, 125, 129, 116, 117, 118, 126, 127, 116, 117, 119, 126,
-    127, 116, 118, 119, 126, 127, 117, 118, 119, 126, 127, 120, 121, 126, 129, 120,
-    121, 129, 108, 122, 123, 124, 125, 126, 128, 59, 60, 67, 68, 108, 122, 123,
-    125, 108, 122, 124, 126, 113, 114, 115, 122, 123, 125, 127, 129, 116, 117, 118,
-    119, 120, 122, 124, 126, 127, 129, 113, 116, 117, 118, 119, 125, 126, 127, 128,
-    108, 122, 127, 128, 115, 120, 121, 125, 126, 129, 130, 131, 132, 130, 131, 132,
-    16, 20, 25, 26, 27, 28, 29, 30, 130, 131, 132, 133, 134, 16, 20, 25,
-    26, 27, 28, 29, 30, 135, 137, 138, 16, 20, 25, 26, 27, 28, 29, 30,
-    136, 137, 139, 135, 136, 137, 138, 139, 140, 141, 135, 137, 138, 142, 144, 136,
-    137, 139, 137, 140, 141, 137, 140, 141, 138, 142, 144, 143, 144, 138, 142, 143,
-    144, 145, 146, 147, 148, 149, 146, 147, 149, 64, 146, 147, 151, 146, 148, 24,
-    59, 67, 72, 146, 147, 149, 52, 53, 150, 151,
+    101, 102, 103, 83, 97, 102, 103, 90, 95, 96, 100, 101, 104, 105, 107, 108,
+    106, 107, 109, 105, 106, 107, 108, 109, 110, 111, 105, 107, 108, 122, 128, 106,
+    107, 109, 107, 110, 111, 107, 110, 111, 112, 59, 60, 67, 68, 113, 114, 125,
+    127, 59, 60, 67, 68, 113, 114, 125, 59, 60, 67, 68, 115, 125, 129, 116,
+    117, 118, 126, 127, 116, 117, 119, 126, 127, 116, 118, 119, 126, 127, 117, 118,
+    119, 126, 127, 120, 121, 126, 129, 120, 121, 129, 108, 122, 123, 124, 125, 126,
+    128, 59, 60, 67, 68, 108, 122, 123, 125, 108, 122, 124, 126, 113, 114, 115,
+    122, 123, 125, 127, 129, 116, 117, 118, 119, 120, 122, 124, 126, 127, 129, 113,
+    116, 117, 118, 119, 125, 126, 127, 128, 108, 122, 127, 128, 115, 120, 121, 125,
+    126, 129, 130, 131, 132, 130, 131, 132, 16, 20, 25, 26, 27, 28, 29, 30,
+    130, 131, 132, 133, 134, 16, 20, 25, 26, 27, 28, 29, 30, 135, 137, 138,
+    16, 20, 25, 26, 27, 28, 29, 30, 136, 137, 139, 135, 136, 137, 138, 139,
+    140, 141, 135, 137, 138, 142, 144, 136, 137, 139, 137, 140, 141, 137, 140, 141,
+    138, 142, 144, 143, 144, 138, 142, 143, 144, 145, 146, 147, 148, 149, 146, 147,
+    149, 64, 146, 147, 151, 146, 148, 24, 59, 67, 72, 146, 147, 149, 52, 53,
+    150, 151,
 };
 
 int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
@@ -3658,7 +3654,7 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     // Restamp the sparsity pattern every call: cheap, and
     // robust against CVODE reallocating between solves.
     for (sunindextype k = 0; k <= 152; ++k) colptrs[k] = _jac_col_ptrs[k];
-    for (sunindextype k = 0; k < 1386; ++k) rowvals[k] = _jac_row_indices[k];
+    for (sunindextype k = 0; k < 1378; ++k) rowvals[k] = _jac_row_indices[k];
 
     // Common subexpressions extracted by sympy.cse() from the
     // ~1.7 MB naive Jacobian — compresses to ~40 KB of output.
@@ -5374,137 +5370,127 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     realtype x1693 = PARAM(P_Th_50_div) + SPVAR(SP_V_LN_Th);
     realtype x1694 = 1.0/x1693;
     realtype x1695 = 1.0/PARAM(P_syn_CD8_APC);
-    realtype x1696 = SPVAR(SP_syn_CD8_APC_PD1_PDL1)*x1695;
-    realtype x1697 = SPVAR(SP_syn_CD8_APC_PD1_PDL2)*x1695;
-    realtype x1698 = x1696 + x1697;
-    realtype x1699 = x125*x1698;
-    realtype x1700 = std::pow(x1699, PARAM(P_n_PD1));
-    realtype x1701 = x1700 + 1.0;
-    realtype x1702 = PARAM(P_alpha_PD1_costim)*x1700/x1701;
-    realtype x1703 = 1.0 - x1702;
-    realtype x1704 = PARAM(P_N_div_costim)*x1703;
-    realtype x1705 = SPVAR(SP_syn_CD8_APC_CD28_CD80)*x1695;
-    realtype x1706 = SPVAR(SP_syn_CD8_APC_PDL1_CD80_CD28)*x1695;
-    realtype x1707 = 2.0*x1695;
-    realtype x1708 = SPVAR(SP_syn_CD8_APC_CD28_CD80_CD28)*x1707 + SPVAR(SP_syn_CD8_APC_CD28_CD86)*x1695 + x1705 + x1706;
-    realtype x1709 = x1708/PARAM(P_CD28_CD8X_50);
-    realtype x1710 = std::pow(x1709, PARAM(P_n_CD28_CD8X));
-    realtype x1711 = x1710 + 1.0;
-    realtype x1712 = 1.0/x1711;
-    realtype x1713 = x1710*x1712;
-    realtype x1714 = x1704*x1713;
-    realtype x1715 = x1694*x1714;
-    realtype x1716 = SPVAR(SP_V_LN_Th)*x1715;
-    realtype x1717 = PARAM(P_N_IL2_CD8)*x1692 + PARAM(P_N_div_base) + x1716;
-    realtype x1718 = SPVAR(SP_V_LN_aCD8)*PARAM(P_k_CD8_pro)/std::pow(x1717, 2);
-    realtype x1719 = x1718*(PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*PARAM(P_kappa_IL2_Treg)*x1676*x1677*x1680*x1685 - x1691);
-    realtype x1720 = std::pow(2.0, x1717);
-    realtype x1721 = x1677*x1680;
-    realtype x1722 = PARAM(P_k_IL2_sec)*x1678*x1685*x1721;
-    realtype x1723 = PARAM(P_N_IL2_CD8)*x1722;
-    realtype x1724 = PARAM(P_k_CD8_pro)/x1717;
-    realtype x1725 = x1720*x1724;
-    realtype x1726 = SPVAR(SP_V_LN_aCD8)*x1725;
-    realtype x1727 = PARAM(P_N_IL2_CD4)*x1687;
-    realtype x1728 = x1686*x1727;
-    realtype x1729 = x1690*x1728;
-    realtype x1730 = PARAM(P_N_IL2_CD4)*x1692 + PARAM(P_N_div_base) + x1714;
-    realtype x1731 = SPVAR(SP_V_LN_aTh)*PARAM(P_k_CD4_pro)/std::pow(x1730, 2);
-    realtype x1732 = x1731*(PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*PARAM(P_kappa_IL2_Treg)*x1676*x1677*x1680*x1685 - x1729);
-    realtype x1733 = std::pow(2.0, x1730);
-    realtype x1734 = PARAM(P_N_IL2_CD4)*x1722;
-    realtype x1735 = PARAM(P_k_CD4_pro)/x1730;
-    realtype x1736 = x1733*x1735;
-    realtype x1737 = SPVAR(SP_V_LN_aTh)*x1736;
-    realtype x1738 = SPVAR(SP_V_LN_nCD8) + x54;
-    realtype x1739 = 1.0 - PARAM(P_f_help_indep);
-    realtype x1740 = PARAM(P_Th_50_help) + SPVAR(SP_V_LN_Th);
-    realtype x1741 = 1.0/x1740;
-    realtype x1742 = SPVAR(SP_V_LN_Th)*x1739*x1741 + PARAM(P_f_help_indep);
-    realtype x1743 = SPVAR(SP_V_LN_mcDC1)*PARAM(P_k_T_activation_per_APC)*x1742;
-    realtype x1744 = 1.0/PARAM(P_n_CD8_clones);
-    realtype x1745 = x1650*x1744;
-    realtype x1746 = SPVAR(SP_A_s_M1p1)*x1745;
-    realtype x1747 = 1.0/PARAM(P_TCR_p1_tot);
-    realtype x1748 = 4.0*x1747;
-    realtype x1749 = PARAM(P_TCR_p1_tot) + PARAM(P_k_M1p1_TCR_off)/PARAM(P_k_M1p1_TCR_on) + x1746;
-    realtype x1750 = std::pow(x1747*x1749, 2.0);
-    realtype x1751 = -x1746*x1748 + x1750;
-    realtype x1752 = std::sqrt(std::fmax(0.0, x1751));
-    realtype x1753 = -PARAM(P_TCR_p1_tot)*x1752 + x1749;
-    realtype x1754 = PARAM(P_k_M1p1_TCR_p)/(PARAM(P_k_M1p1_TCR_off) + PARAM(P_k_M1p1_TCR_p));
-    realtype x1755 = std::pow(x1754, PARAM(P_N_M1p1_TCR));
-    realtype x1756 = PARAM(P_k_M1p1_TCR_off) + PARAM(P_phi_M1p1_TCR);
-    realtype x1757 = 1.0/x1756;
-    realtype x1758 = 0.5*PARAM(P_k_M1p1_TCR_off)*x1755*x1757;
-    realtype x1759 = x1753*x1758;
-    realtype x1760 = PARAM(P_p1_50) + x1759;
-    realtype x1761 = 1.0/x1760;
-    realtype x1762 = x1759*x1761;
-    realtype x1763 = x1743*x1762;
-    realtype x1764 = PARAM(P_n_CD8_clones)*x1675;
-    realtype x1765 = x1682*x1685;
-    realtype x1766 = PARAM(P_N_IL2_CD8)*x1765;
-    realtype x1767 = x1683*(PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680 - x1682);
-    realtype x1768 = x1688*x1767;
-    realtype x1769 = x1718*(PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680*x1685 - x1766 - x1768);
-    realtype x1770 = PARAM(P_N_IL2_CD4)*x1765;
-    realtype x1771 = x1727*x1767;
-    realtype x1772 = x1731*(PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680*x1685 - x1770 - x1771);
-    realtype x1773 = SPVAR(SP_V_LN_mcDC2)*PARAM(P_k_cDC1_Ag_transfer);
-    realtype x1774 = SPVAR(SP_V_LN_nCD8)*PARAM(P_k_T_activation_per_APC)*x1762;
-    realtype x1775 = x1742*x1774;
-    realtype x1776 = PARAM(P_k_T_activation_per_APC)*x1647;
-    realtype x1777 = std::pow(PARAM(P_n_sites_APC), 2);
-    realtype x1778 = SPVAR(SP_V_LN_mcDC2)*x1777;
-    realtype x1779 = SPVAR(SP_V_LN_cDC1)*PARAM(P_k_cDC1_Ag_transfer);
-    realtype x1780 = 1.0/PARAM(P_K_APC_mig);
-    realtype x1781 = SPVAR(SP_V_LN_mcDC2)*x1780 + 1.0;
-    realtype x1782 = SPVAR(SP_V_ID_mAPC)*PARAM(P_k_APC_mig_ID_LN)*x1780/std::pow(x1781, 2);
-    realtype x1783 = x1637*x1675;
-    realtype x1784 = PARAM(P_q_LN_aPD1)*x86 + x8*x87;
-    realtype x1785 = x643*x86;
-    realtype x1786 = SPVAR(SP_syn_CD8_APC_PD1)*x1785;
-    realtype x1787 = PARAM(P_q_LN_aCD137)*x97 + x8*x98;
-    realtype x1788 = PARAM(P_w_IL2_help)*x1721;
-    realtype x1789 = x1689*x1788;
-    realtype x1790 = x1718*(-PARAM(P_w_IL2_help)*x1766 + x1789);
-    realtype x1791 = x1728*x1788;
-    realtype x1792 = x1731*(-PARAM(P_w_IL2_help)*x1770 + x1791);
-    realtype x1793 = -SPVAR(SP_V_LN_Th)*x1739/std::pow(x1740, 2) + x1739*x1741;
-    realtype x1794 = SPVAR(SP_V_LN_Th)*x1714/std::pow(x1693, 2);
-    realtype x1795 = x1718*(-x1715 + x1794);
-    realtype x1796 = SPVAR(SP_V_LN_IFNg)*x85;
-    realtype x1797 = PARAM(P_IFNg_50_ind) + x1796;
-    realtype x1798 = 1.0/x1797;
-    realtype x1799 = SPVAR(SP_syn_CD8_APC_PDL1)*x1695;
-    realtype x1800 = SPVAR(SP_syn_CD8_APC_PDL1_CD80)*x1695;
-    realtype x1801 = SPVAR(SP_syn_CD8_APC_PDL1_CD80_CTLA4)*x1695 + x1696 + x1706 + x1799 + x1800;
-    realtype x1802 = x1798*x652;
-    realtype x1803 = x1796*x1802 + 1.0;
-    realtype x1804 = PARAM(P_A_APC)/PARAM(P_APC_PDL1_base);
-    realtype x1805 = x1804/x1803;
-    realtype x1806 = -x1801*x1805 + 1.0;
-    realtype x1807 = std::pow(PARAM(P_V_LN), -2);
-    realtype x1808 = std::pow(x1797, -2);
-    realtype x1809 = SPVAR(SP_V_LN_IFNg)*x1807*x1808;
-    realtype x1810 = PARAM(P_k_out_PDL1)*x1796*x1798;
-    realtype x1811 = x1804*x1810*(SPVAR(SP_V_LN_IFNg)*x1807*x1808*x652 - x1802*x85)/std::pow(x1803, 2);
-    realtype x1812 = SPVAR(SP_syn_CD8_APC_PDL2)*x1695;
-    realtype x1813 = x1697 + x1812;
-    realtype x1814 = 1.0 - x1805*x1813/PARAM(P_r_PDL2APC);
-    realtype x1815 = SPVAR(SP_A_e_M1)*x1643;
-    realtype x1816 = PARAM(P_k_P0_on)*x1815;
-    realtype x1817 = x1643*x1646;
-    realtype x1818 = std::pow(PARAM(P_V_e), -2);
-    realtype x1819 = std::pow(x1645, -2);
-    realtype x1820 = x1642*x1783;
-    realtype x1821 = PARAM(P_k_P1_on)*x1815;
-    realtype x1822 = SPVAR(SP_V_e_p0)*PARAM(P_k_P0_on)*x1643;
-    realtype x1823 = SPVAR(SP_V_e_p1)*PARAM(P_k_P1_on)*x1643;
-    realtype x1824 = PARAM(P_k_P0_d1)*PARAM(P_k_P0_on);
-    realtype x1825 = PARAM(P_k_P1_d1)*PARAM(P_k_P1_on);
-    realtype x1826 = -0.5*PARAM(P_TCR_p0_tot)*(-x1652*x1655 + 2.0*x1652*x1657/x1656)*(((x1658 < 0) ? (
+    realtype x1696 = SPVAR(SP_syn_CD8_APC_CD28_CD80)*x1695;
+    realtype x1697 = SPVAR(SP_syn_CD8_APC_PDL1_CD80_CD28)*x1695;
+    realtype x1698 = 2.0*x1695;
+    realtype x1699 = SPVAR(SP_syn_CD8_APC_CD28_CD80_CD28)*x1698 + SPVAR(SP_syn_CD8_APC_CD28_CD86)*x1695 + x1696 + x1697;
+    realtype x1700 = x1699/PARAM(P_CD28_CD8X_50);
+    realtype x1701 = std::pow(x1700, PARAM(P_n_CD28_CD8X));
+    realtype x1702 = x1701 + 1.0;
+    realtype x1703 = 1.0/x1702;
+    realtype x1704 = PARAM(P_N_div_costim)*x1701*x1703;
+    realtype x1705 = x1694*x1704;
+    realtype x1706 = SPVAR(SP_V_LN_Th)*x1705;
+    realtype x1707 = PARAM(P_N_IL2_CD8)*x1692 + PARAM(P_N_div_base) + x1706;
+    realtype x1708 = SPVAR(SP_V_LN_aCD8)*PARAM(P_k_CD8_pro)/std::pow(x1707, 2);
+    realtype x1709 = x1708*(PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*PARAM(P_kappa_IL2_Treg)*x1676*x1677*x1680*x1685 - x1691);
+    realtype x1710 = std::pow(2.0, x1707);
+    realtype x1711 = x1677*x1680;
+    realtype x1712 = PARAM(P_k_IL2_sec)*x1678*x1685*x1711;
+    realtype x1713 = PARAM(P_N_IL2_CD8)*x1712;
+    realtype x1714 = PARAM(P_k_CD8_pro)/x1707;
+    realtype x1715 = x1710*x1714;
+    realtype x1716 = SPVAR(SP_V_LN_aCD8)*x1715;
+    realtype x1717 = PARAM(P_N_IL2_CD4)*x1687;
+    realtype x1718 = x1686*x1717;
+    realtype x1719 = x1690*x1718;
+    realtype x1720 = PARAM(P_N_IL2_CD4)*x1692 + PARAM(P_N_div_base) + x1704;
+    realtype x1721 = SPVAR(SP_V_LN_aTh)*PARAM(P_k_CD4_pro)/std::pow(x1720, 2);
+    realtype x1722 = x1721*(PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*PARAM(P_kappa_IL2_Treg)*x1676*x1677*x1680*x1685 - x1719);
+    realtype x1723 = std::pow(2.0, x1720);
+    realtype x1724 = PARAM(P_N_IL2_CD4)*x1712;
+    realtype x1725 = PARAM(P_k_CD4_pro)/x1720;
+    realtype x1726 = x1723*x1725;
+    realtype x1727 = SPVAR(SP_V_LN_aTh)*x1726;
+    realtype x1728 = SPVAR(SP_V_LN_nCD8) + x54;
+    realtype x1729 = 1.0 - PARAM(P_f_help_indep);
+    realtype x1730 = PARAM(P_Th_50_help) + SPVAR(SP_V_LN_Th);
+    realtype x1731 = 1.0/x1730;
+    realtype x1732 = SPVAR(SP_V_LN_Th)*x1729*x1731 + PARAM(P_f_help_indep);
+    realtype x1733 = SPVAR(SP_V_LN_mcDC1)*PARAM(P_k_T_activation_per_APC)*x1732;
+    realtype x1734 = 1.0/PARAM(P_n_CD8_clones);
+    realtype x1735 = x1650*x1734;
+    realtype x1736 = SPVAR(SP_A_s_M1p1)*x1735;
+    realtype x1737 = 1.0/PARAM(P_TCR_p1_tot);
+    realtype x1738 = 4.0*x1737;
+    realtype x1739 = PARAM(P_TCR_p1_tot) + PARAM(P_k_M1p1_TCR_off)/PARAM(P_k_M1p1_TCR_on) + x1736;
+    realtype x1740 = std::pow(x1737*x1739, 2.0);
+    realtype x1741 = -x1736*x1738 + x1740;
+    realtype x1742 = std::sqrt(std::fmax(0.0, x1741));
+    realtype x1743 = -PARAM(P_TCR_p1_tot)*x1742 + x1739;
+    realtype x1744 = PARAM(P_k_M1p1_TCR_p)/(PARAM(P_k_M1p1_TCR_off) + PARAM(P_k_M1p1_TCR_p));
+    realtype x1745 = std::pow(x1744, PARAM(P_N_M1p1_TCR));
+    realtype x1746 = PARAM(P_k_M1p1_TCR_off) + PARAM(P_phi_M1p1_TCR);
+    realtype x1747 = 1.0/x1746;
+    realtype x1748 = 0.5*PARAM(P_k_M1p1_TCR_off)*x1745*x1747;
+    realtype x1749 = x1743*x1748;
+    realtype x1750 = PARAM(P_p1_50) + x1749;
+    realtype x1751 = 1.0/x1750;
+    realtype x1752 = x1749*x1751;
+    realtype x1753 = x1733*x1752;
+    realtype x1754 = PARAM(P_n_CD8_clones)*x1675;
+    realtype x1755 = x1682*x1685;
+    realtype x1756 = PARAM(P_N_IL2_CD8)*x1755;
+    realtype x1757 = x1683*(PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680 - x1682);
+    realtype x1758 = x1688*x1757;
+    realtype x1759 = x1708*(PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680*x1685 - x1756 - x1758);
+    realtype x1760 = PARAM(P_N_IL2_CD4)*x1755;
+    realtype x1761 = x1717*x1757;
+    realtype x1762 = x1721*(PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_cons)*PARAM(P_k_IL2_sec)*x1676*x1677*x1680*x1685 - x1760 - x1761);
+    realtype x1763 = SPVAR(SP_V_LN_mcDC2)*PARAM(P_k_cDC1_Ag_transfer);
+    realtype x1764 = SPVAR(SP_V_LN_nCD8)*PARAM(P_k_T_activation_per_APC)*x1752;
+    realtype x1765 = x1732*x1764;
+    realtype x1766 = PARAM(P_k_T_activation_per_APC)*x1647;
+    realtype x1767 = std::pow(PARAM(P_n_sites_APC), 2);
+    realtype x1768 = SPVAR(SP_V_LN_mcDC2)*x1767;
+    realtype x1769 = SPVAR(SP_V_LN_cDC1)*PARAM(P_k_cDC1_Ag_transfer);
+    realtype x1770 = 1.0/PARAM(P_K_APC_mig);
+    realtype x1771 = SPVAR(SP_V_LN_mcDC2)*x1770 + 1.0;
+    realtype x1772 = SPVAR(SP_V_ID_mAPC)*PARAM(P_k_APC_mig_ID_LN)*x1770/std::pow(x1771, 2);
+    realtype x1773 = x1637*x1675;
+    realtype x1774 = PARAM(P_q_LN_aPD1)*x86 + x8*x87;
+    realtype x1775 = x643*x86;
+    realtype x1776 = SPVAR(SP_syn_CD8_APC_PD1)*x1775;
+    realtype x1777 = PARAM(P_q_LN_aCD137)*x97 + x8*x98;
+    realtype x1778 = PARAM(P_w_IL2_help)*x1711;
+    realtype x1779 = x1689*x1778;
+    realtype x1780 = x1708*(-PARAM(P_w_IL2_help)*x1756 + x1779);
+    realtype x1781 = x1718*x1778;
+    realtype x1782 = x1721*(-PARAM(P_w_IL2_help)*x1760 + x1781);
+    realtype x1783 = -SPVAR(SP_V_LN_Th)*x1729/std::pow(x1730, 2) + x1729*x1731;
+    realtype x1784 = SPVAR(SP_V_LN_Th)*x1704/std::pow(x1693, 2);
+    realtype x1785 = x1708*(-x1705 + x1784);
+    realtype x1786 = SPVAR(SP_V_LN_IFNg)*x85;
+    realtype x1787 = PARAM(P_IFNg_50_ind) + x1786;
+    realtype x1788 = 1.0/x1787;
+    realtype x1789 = SPVAR(SP_syn_CD8_APC_PDL1)*x1695;
+    realtype x1790 = SPVAR(SP_syn_CD8_APC_PDL1_CD80)*x1695;
+    realtype x1791 = SPVAR(SP_syn_CD8_APC_PD1_PDL1)*x1695 + SPVAR(SP_syn_CD8_APC_PDL1_CD80_CTLA4)*x1695 + x1697 + x1789 + x1790;
+    realtype x1792 = x1788*x652;
+    realtype x1793 = x1786*x1792 + 1.0;
+    realtype x1794 = PARAM(P_A_APC)/PARAM(P_APC_PDL1_base);
+    realtype x1795 = x1794/x1793;
+    realtype x1796 = -x1791*x1795 + 1.0;
+    realtype x1797 = std::pow(PARAM(P_V_LN), -2);
+    realtype x1798 = std::pow(x1787, -2);
+    realtype x1799 = SPVAR(SP_V_LN_IFNg)*x1797*x1798;
+    realtype x1800 = PARAM(P_k_out_PDL1)*x1786*x1788;
+    realtype x1801 = x1794*x1800*(SPVAR(SP_V_LN_IFNg)*x1797*x1798*x652 - x1792*x85)/std::pow(x1793, 2);
+    realtype x1802 = SPVAR(SP_syn_CD8_APC_PDL2)*x1695;
+    realtype x1803 = SPVAR(SP_syn_CD8_APC_PD1_PDL2)*x1695 + x1802;
+    realtype x1804 = 1.0 - x1795*x1803/PARAM(P_r_PDL2APC);
+    realtype x1805 = SPVAR(SP_A_e_M1)*x1643;
+    realtype x1806 = PARAM(P_k_P0_on)*x1805;
+    realtype x1807 = x1643*x1646;
+    realtype x1808 = std::pow(PARAM(P_V_e), -2);
+    realtype x1809 = std::pow(x1645, -2);
+    realtype x1810 = x1642*x1773;
+    realtype x1811 = PARAM(P_k_P1_on)*x1805;
+    realtype x1812 = SPVAR(SP_V_e_p0)*PARAM(P_k_P0_on)*x1643;
+    realtype x1813 = SPVAR(SP_V_e_p1)*PARAM(P_k_P1_on)*x1643;
+    realtype x1814 = PARAM(P_k_P0_d1)*PARAM(P_k_P0_on);
+    realtype x1815 = PARAM(P_k_P1_d1)*PARAM(P_k_P1_on);
+    realtype x1816 = -0.5*PARAM(P_TCR_p0_tot)*(-x1652*x1655 + 2.0*x1652*x1657/x1656)*(((x1658 < 0) ? (
    0
 )
 : ((x1658 == 0) ? (
@@ -5513,236 +5499,229 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
 : (
    1
 ))))/x1659 + x1650*x1651;
-    realtype x1827 = PARAM(P_k_Treg_act)*x1670*x1826*x923;
-    realtype x1828 = SPVAR(SP_V_LN_nCD4)*x1827;
-    realtype x1829 = 0.25*std::pow(PARAM(P_k_M1p0_TCR_off), 2)*x1660*std::pow(x1661, 2*PARAM(P_N_M1p0_TCR))/(std::pow(x1663, 2)*std::pow(x1667, 2));
-    realtype x1830 = -0.5*PARAM(P_TCR_p1_tot)*(-x1745*x1748 + 2.0*x1745*x1750/x1749)*(((x1751 < 0) ? (
+    realtype x1817 = PARAM(P_k_Treg_act)*x1670*x1816*x923;
+    realtype x1818 = SPVAR(SP_V_LN_nCD4)*x1817;
+    realtype x1819 = 0.25*std::pow(PARAM(P_k_M1p0_TCR_off), 2)*x1660*std::pow(x1661, 2*PARAM(P_N_M1p0_TCR))/(std::pow(x1663, 2)*std::pow(x1667, 2));
+    realtype x1820 = -0.5*PARAM(P_TCR_p1_tot)*(-x1735*x1738 + 2.0*x1735*x1740/x1739)*(((x1741 < 0) ? (
    0
 )
-: ((x1751 == 0) ? (
+: ((x1741 == 0) ? (
    1.0/2.0
 )
 : (
    1
-))))/x1752 + x1650*x1744;
-    realtype x1831 = SPVAR(SP_V_LN_nCD8)*x1743*x1830;
-    realtype x1832 = 0.25*std::pow(PARAM(P_k_M1p1_TCR_off), 2)*x1753*std::pow(x1754, 2*PARAM(P_N_M1p1_TCR))*x1831/(std::pow(x1756, 2)*std::pow(x1760, 2));
-    realtype x1833 = PARAM(P_n_PD1)*x126/x129;
-    realtype x1834 = x133*x1833;
-    realtype x1835 = 2*PARAM(P_n_PD1);
-    realtype x1836 = std::pow(x130, x1835)*x1833/std::pow(x132, 2);
-    realtype x1837 = SPVAR(SP_V_T_C1)*(-x1834 + x1836);
-    realtype x1838 = x1837*x9;
-    realtype x1839 = x124*x1838 + x1838*x190;
-    realtype x1840 = SPVAR(SP_V_T_CD8_pex)*x126;
-    realtype x1841 = PARAM(P_k_reinvig)*x877/std::pow(x879, 2);
-    realtype x1842 = x1840*x1841;
-    realtype x1843 = x272*x915;
-    realtype x1844 = x1834*x1843 - x1836*x1843 + x1837*x244*x913 + x1842;
-    realtype x1845 = -x1839;
-    realtype x1846 = -x1844;
-    realtype x1847 = x1018*(-x1839*x414 - x1845*x418);
-    realtype x1848 = x1847*x396;
-    realtype x1849 = x1847*x435;
-    realtype x1850 = -x1848;
-    realtype x1851 = -x1849;
-    realtype x1852 = x1839*x446;
-    realtype x1853 = x1839*x447;
-    realtype x1854 = -PARAM(P_koff_PD1_PDL1);
-    realtype x1855 = PARAM(P_k_in_PDL1) + x126*x656*x664;
-    realtype x1856 = -PARAM(P_koff_PD1_PDL2);
-    realtype x1857 = PARAM(P_kon_PD1_PDL1)*x647;
-    realtype x1858 = PARAM(P_kon_PD1_PDL2)*x669;
-    realtype x1859 = PARAM(P_Chi_PD1_aPD1)*PARAM(P_kon_PD1_aPD1);
-    realtype x1860 = x1859*x875;
-    realtype x1861 = SPVAR(SP_V_T_aPD1)*x978;
-    realtype x1862 = -x1861;
-    realtype x1863 = PARAM(P_kon_PD1_PDL1)*x878;
-    realtype x1864 = SPVAR(SP_syn_CD8_C1_CD80m)*x126;
-    realtype x1865 = PARAM(P_kon_CD80_PDL1)*x1864;
-    realtype x1866 = PARAM(P_kon_PD1_PDL2)*x878;
-    realtype x1867 = -x1840*x880 + x1842;
-    realtype x1868 = -PARAM(P_koff_PD1_aPD1);
-    realtype x1869 = x1859*x878;
-    realtype x1870 = SPVAR(SP_V_T_CD8_pex)*x876;
-    realtype x1871 = x1841*x1870 - x1870*x880;
-    realtype x1872 = 2.0*PARAM(P_koff_PD1_aPD1);
+))))/x1742 + x1650*x1734;
+    realtype x1821 = SPVAR(SP_V_LN_nCD8)*x1733*x1820;
+    realtype x1822 = 0.25*std::pow(PARAM(P_k_M1p1_TCR_off), 2)*x1743*std::pow(x1744, 2*PARAM(P_N_M1p1_TCR))*x1821/(std::pow(x1746, 2)*std::pow(x1750, 2));
+    realtype x1823 = PARAM(P_n_PD1)*x126/x129;
+    realtype x1824 = x133*x1823;
+    realtype x1825 = 2*PARAM(P_n_PD1);
+    realtype x1826 = std::pow(x130, x1825)*x1823/std::pow(x132, 2);
+    realtype x1827 = SPVAR(SP_V_T_C1)*(-x1824 + x1826);
+    realtype x1828 = x1827*x9;
+    realtype x1829 = x124*x1828 + x1828*x190;
+    realtype x1830 = SPVAR(SP_V_T_CD8_pex)*x126;
+    realtype x1831 = PARAM(P_k_reinvig)*x877/std::pow(x879, 2);
+    realtype x1832 = x1830*x1831;
+    realtype x1833 = x272*x915;
+    realtype x1834 = x1824*x1833 - x1826*x1833 + x1827*x244*x913 + x1832;
+    realtype x1835 = -x1829;
+    realtype x1836 = -x1834;
+    realtype x1837 = x1018*(-x1829*x414 - x1835*x418);
+    realtype x1838 = x1837*x396;
+    realtype x1839 = x1837*x435;
+    realtype x1840 = -x1838;
+    realtype x1841 = -x1839;
+    realtype x1842 = x1829*x446;
+    realtype x1843 = x1829*x447;
+    realtype x1844 = -PARAM(P_koff_PD1_PDL1);
+    realtype x1845 = PARAM(P_k_in_PDL1) + x126*x656*x664;
+    realtype x1846 = -PARAM(P_koff_PD1_PDL2);
+    realtype x1847 = PARAM(P_kon_PD1_PDL1)*x647;
+    realtype x1848 = PARAM(P_kon_PD1_PDL2)*x669;
+    realtype x1849 = PARAM(P_Chi_PD1_aPD1)*PARAM(P_kon_PD1_aPD1);
+    realtype x1850 = x1849*x875;
+    realtype x1851 = SPVAR(SP_V_T_aPD1)*x978;
+    realtype x1852 = -x1851;
+    realtype x1853 = PARAM(P_kon_PD1_PDL1)*x878;
+    realtype x1854 = SPVAR(SP_syn_CD8_C1_CD80m)*x126;
+    realtype x1855 = PARAM(P_kon_CD80_PDL1)*x1854;
+    realtype x1856 = PARAM(P_kon_PD1_PDL2)*x878;
+    realtype x1857 = -x1830*x880 + x1832;
+    realtype x1858 = -PARAM(P_koff_PD1_aPD1);
+    realtype x1859 = x1849*x878;
+    realtype x1860 = SPVAR(SP_V_T_CD8_pex)*x876;
+    realtype x1861 = x1831*x1860 - x1860*x880;
+    realtype x1862 = 2.0*PARAM(P_koff_PD1_aPD1);
+    realtype x1863 = -x1862;
+    realtype x1864 = PARAM(P_kon_CD28_CD80)*x126;
+    realtype x1865 = SPVAR(SP_syn_CD8_C1_CD28)*x1864;
+    realtype x1866 = -x1865;
+    realtype x1867 = 2.0*PARAM(P_koff_CD28_CD80);
+    realtype x1868 = -x1867;
+    realtype x1869 = -PARAM(P_koff_CD28_CD86);
+    realtype x1870 = PARAM(P_kon_CTLA4_CD80)*x876;
+    realtype x1871 = SPVAR(SP_syn_CD8_C1_CD80)*x1870;
+    realtype x1872 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1870;
     realtype x1873 = -x1872;
-    realtype x1874 = PARAM(P_kon_CD28_CD80)*x126;
-    realtype x1875 = SPVAR(SP_syn_CD8_C1_CD28)*x1874;
-    realtype x1876 = -x1875;
-    realtype x1877 = 2.0*PARAM(P_koff_CD28_CD80);
+    realtype x1874 = 2.0*PARAM(P_koff_CTLA4_CD80);
+    realtype x1875 = 4.0*PARAM(P_kon_CTLA4_CD80);
+    realtype x1876 = x126*x1875;
+    realtype x1877 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1876;
     realtype x1878 = -x1877;
-    realtype x1879 = -PARAM(P_koff_CD28_CD86);
-    realtype x1880 = PARAM(P_kon_CTLA4_CD80)*x876;
-    realtype x1881 = SPVAR(SP_syn_CD8_C1_CD80)*x1880;
-    realtype x1882 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1880;
-    realtype x1883 = -x1882;
-    realtype x1884 = 2.0*PARAM(P_koff_CTLA4_CD80);
-    realtype x1885 = 4.0*PARAM(P_kon_CTLA4_CD80);
-    realtype x1886 = x126*x1885;
-    realtype x1887 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1886;
-    realtype x1888 = -x1887;
-    realtype x1889 = SPVAR(SP_syn_CD8_C1_CD80)*x1886;
-    realtype x1890 = -x1889;
-    realtype x1891 = -2*PARAM(P_koff_CTLA4_CD80);
-    realtype x1892 = SPVAR(SP_syn_CD8_C1_CD86)*x126;
-    realtype x1893 = PARAM(P_kon_CTLA4_CD86)*x1892;
-    realtype x1894 = 2.0*PARAM(P_koff_CTLA4_CD86);
-    realtype x1895 = -x1894;
-    realtype x1896 = -PARAM(P_koff_CD80_PDL1);
-    realtype x1897 = -x1855;
-    realtype x1898 = -PARAM(P_koff_CD28_CD80);
-    realtype x1899 = -PARAM(P_koff_CTLA4_CD80);
-    realtype x1900 = SPVAR(SP_syn_CD8_C1_CD28_CD80)*x1874;
-    realtype x1901 = PARAM(P_kon_CD28_CD80)*x876;
-    realtype x1902 = SPVAR(SP_syn_CD8_C1_CD80)*x1901;
-    realtype x1903 = -x1902;
-    realtype x1904 = PARAM(P_kon_CD28_CD86)*x1892;
-    realtype x1905 = PARAM(P_kon_CD28_CD80)*x648;
-    realtype x1906 = SPVAR(SP_syn_CD8_C1_CD80_CTLA4)*x1880;
-    realtype x1907 = SPVAR(SP_syn_CD8_C1_CD80_CTLA4_CD80)*x1886;
-    realtype x1908 = PARAM(P_kon_CTLA4_CD86)*x876;
-    realtype x1909 = SPVAR(SP_syn_CD8_C1_CD86)*x1908;
-    realtype x1910 = 2.0*PARAM(P_kon_CTLA4_CD80);
-    realtype x1911 = x1910*x648;
-    realtype x1912 = SPVAR(SP_syn_CD8_C1_CD28)*x1901;
-    realtype x1913 = SPVAR(SP_syn_CD8_C1_CTLA4_CD80_CTLA4)*x1886;
-    realtype x1914 = 2*PARAM(P_koff_CD80_CD80);
-    realtype x1915 = PARAM(P_kon_CD80_PDL1)*x647;
-    realtype x1916 = PARAM(P_kon_CD80_CD80)*x1864;
-    realtype x1917 = PARAM(P_kon_CD28_CD86)*SPVAR(SP_syn_CD8_C1_CD28)*x126;
-    realtype x1918 = PARAM(P_kon_CTLA4_CD86)*SPVAR(SP_syn_CD8_C1_CD86_CTLA4)*x126;
-    realtype x1919 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1908;
-    realtype x1920 = -x1919;
-    realtype x1921 = PARAM(P_n_PD1)*x1695/x1698;
-    realtype x1922 = PARAM(P_N_div_costim)*x1713*(PARAM(P_alpha_PD1_costim)*std::pow(x1699, x1835)*x1921/std::pow(x1701, 2) - x1702*x1921);
-    realtype x1923 = SPVAR(SP_V_LN_Th)*x1694;
-    realtype x1924 = x1922*x1923;
-    realtype x1925 = x1718*x1924;
-    realtype x1926 = -x1720*x1925 + 0.69314718055994529*x1726*x1924;
-    realtype x1927 = x1731*x1922;
-    realtype x1928 = -x1733*x1927 + 0.69314718055994529*x1737*x1922;
-    realtype x1929 = PARAM(P_k_in_PDL1) + x1695*x1805*x1810;
-    realtype x1930 = PARAM(P_kon_PD1_PDL1)*x1799;
-    realtype x1931 = PARAM(P_kon_PD1_PDL2)*x1812;
-    realtype x1932 = SPVAR(SP_syn_CD8_APC_PD1_aPD1)*x1695*x1859;
-    realtype x1933 = SPVAR(SP_V_LN_aPD1)*x1785;
-    realtype x1934 = SPVAR(SP_syn_CD8_APC_PD1)*x1695;
-    realtype x1935 = PARAM(P_kon_PD1_PDL1)*x1934;
-    realtype x1936 = SPVAR(SP_syn_CD8_APC_CD80m)*x1695;
-    realtype x1937 = PARAM(P_kon_CD80_PDL1)*x1936;
-    realtype x1938 = PARAM(P_kon_PD1_PDL2)*x1934;
-    realtype x1939 = x1859*x1934;
-    realtype x1940 = 1.0/x1708;
-    realtype x1941 = PARAM(P_n_CD28_CD8X)*x1940;
-    realtype x1942 = x1695*x1941;
-    realtype x1943 = x1704*std::pow(x1709, 2*PARAM(P_n_CD28_CD8X))/std::pow(x1711, 2);
-    realtype x1944 = x1942*x1943;
-    realtype x1945 = x1718*(-x1716*x1942 + x1923*x1944);
+    realtype x1879 = SPVAR(SP_syn_CD8_C1_CD80)*x1876;
+    realtype x1880 = -x1879;
+    realtype x1881 = -2*PARAM(P_koff_CTLA4_CD80);
+    realtype x1882 = SPVAR(SP_syn_CD8_C1_CD86)*x126;
+    realtype x1883 = PARAM(P_kon_CTLA4_CD86)*x1882;
+    realtype x1884 = 2.0*PARAM(P_koff_CTLA4_CD86);
+    realtype x1885 = -x1884;
+    realtype x1886 = -PARAM(P_koff_CD80_PDL1);
+    realtype x1887 = -x1845;
+    realtype x1888 = -PARAM(P_koff_CD28_CD80);
+    realtype x1889 = -PARAM(P_koff_CTLA4_CD80);
+    realtype x1890 = SPVAR(SP_syn_CD8_C1_CD28_CD80)*x1864;
+    realtype x1891 = PARAM(P_kon_CD28_CD80)*x876;
+    realtype x1892 = SPVAR(SP_syn_CD8_C1_CD80)*x1891;
+    realtype x1893 = -x1892;
+    realtype x1894 = PARAM(P_kon_CD28_CD86)*x1882;
+    realtype x1895 = PARAM(P_kon_CD28_CD80)*x648;
+    realtype x1896 = SPVAR(SP_syn_CD8_C1_CD80_CTLA4)*x1870;
+    realtype x1897 = SPVAR(SP_syn_CD8_C1_CD80_CTLA4_CD80)*x1876;
+    realtype x1898 = PARAM(P_kon_CTLA4_CD86)*x876;
+    realtype x1899 = SPVAR(SP_syn_CD8_C1_CD86)*x1898;
+    realtype x1900 = 2.0*PARAM(P_kon_CTLA4_CD80);
+    realtype x1901 = x1900*x648;
+    realtype x1902 = SPVAR(SP_syn_CD8_C1_CD28)*x1891;
+    realtype x1903 = SPVAR(SP_syn_CD8_C1_CTLA4_CD80_CTLA4)*x1876;
+    realtype x1904 = 2*PARAM(P_koff_CD80_CD80);
+    realtype x1905 = PARAM(P_kon_CD80_PDL1)*x647;
+    realtype x1906 = PARAM(P_kon_CD80_CD80)*x1854;
+    realtype x1907 = PARAM(P_kon_CD28_CD86)*SPVAR(SP_syn_CD8_C1_CD28)*x126;
+    realtype x1908 = PARAM(P_kon_CTLA4_CD86)*SPVAR(SP_syn_CD8_C1_CD86_CTLA4)*x126;
+    realtype x1909 = SPVAR(SP_syn_CD8_C1_CTLA4)*x1898;
+    realtype x1910 = -x1909;
+    realtype x1911 = PARAM(P_k_in_PDL1) + x1695*x1795*x1800;
+    realtype x1912 = PARAM(P_kon_PD1_PDL1)*x1789;
+    realtype x1913 = PARAM(P_kon_PD1_PDL2)*x1802;
+    realtype x1914 = SPVAR(SP_syn_CD8_APC_PD1_aPD1)*x1695*x1849;
+    realtype x1915 = SPVAR(SP_V_LN_aPD1)*x1775;
+    realtype x1916 = SPVAR(SP_syn_CD8_APC_PD1)*x1695;
+    realtype x1917 = PARAM(P_kon_PD1_PDL1)*x1916;
+    realtype x1918 = SPVAR(SP_syn_CD8_APC_CD80m)*x1695;
+    realtype x1919 = PARAM(P_kon_CD80_PDL1)*x1918;
+    realtype x1920 = PARAM(P_kon_PD1_PDL2)*x1916;
+    realtype x1921 = x1849*x1916;
+    realtype x1922 = 1.0/x1699;
+    realtype x1923 = PARAM(P_n_CD28_CD8X)*x1922;
+    realtype x1924 = x1695*x1923;
+    realtype x1925 = PARAM(P_N_div_costim)*std::pow(x1700, 2*PARAM(P_n_CD28_CD8X))/std::pow(x1702, 2);
+    realtype x1926 = x1924*x1925;
+    realtype x1927 = SPVAR(SP_V_LN_Th)*x1694;
+    realtype x1928 = x1708*(-x1706*x1924 + x1926*x1927);
+    realtype x1929 = -x1928;
+    realtype x1930 = 0.69314718055994529*x1926;
+    realtype x1931 = x1710*x1928 + x1716*(0.69314718055994529*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1701*x1703*x1922 - x1927*x1930);
+    realtype x1932 = x1721*(-x1704*x1924 + x1926);
+    realtype x1933 = -x1932;
+    realtype x1934 = x1723*x1932 + x1727*(0.69314718055994529*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1701*x1703*x1922 - x1930);
+    realtype x1935 = SPVAR(SP_syn_CD8_APC_CD28)*x1695;
+    realtype x1936 = PARAM(P_kon_CD28_CD80)*x1935;
+    realtype x1937 = -x1936;
+    realtype x1938 = x1698*x1923;
+    realtype x1939 = x1925*x1938;
+    realtype x1940 = x1708*(-x1706*x1938 + x1927*x1939);
+    realtype x1941 = 1.3862943611198906*x1926;
+    realtype x1942 = x1721*(-x1704*x1938 + x1939);
+    realtype x1943 = PARAM(P_kon_CTLA4_CD80)*x1698;
+    realtype x1944 = SPVAR(SP_syn_CD8_APC_CD80)*x1943;
+    realtype x1945 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1943;
     realtype x1946 = -x1945;
-    realtype x1947 = 0.69314718055994529*x1944;
-    realtype x1948 = x1720*x1945 + x1726*(0.69314718055994529*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1703*x1710*x1712*x1940 - x1923*x1947);
-    realtype x1949 = x1731*(-x1714*x1942 + x1944);
-    realtype x1950 = -x1949;
-    realtype x1951 = x1733*x1949 + x1737*(0.69314718055994529*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1703*x1710*x1712*x1940 - x1947);
-    realtype x1952 = SPVAR(SP_syn_CD8_APC_CD28)*x1695;
-    realtype x1953 = PARAM(P_kon_CD28_CD80)*x1952;
-    realtype x1954 = -x1953;
-    realtype x1955 = x1707*x1941;
-    realtype x1956 = x1943*x1955;
-    realtype x1957 = x1718*(-x1716*x1955 + x1923*x1956);
-    realtype x1958 = 1.3862943611198906*x1944;
-    realtype x1959 = x1731*(-x1714*x1955 + x1956);
-    realtype x1960 = PARAM(P_kon_CTLA4_CD80)*x1707;
-    realtype x1961 = SPVAR(SP_syn_CD8_APC_CD80)*x1960;
-    realtype x1962 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1960;
-    realtype x1963 = -x1962;
-    realtype x1964 = x1695*x1885;
-    realtype x1965 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1964;
-    realtype x1966 = -x1965;
-    realtype x1967 = SPVAR(SP_syn_CD8_APC_CD80)*x1964;
-    realtype x1968 = -x1967;
-    realtype x1969 = SPVAR(SP_syn_CD8_APC_CD86)*x1695;
-    realtype x1970 = PARAM(P_kon_CTLA4_CD86)*x1969;
-    realtype x1971 = -x1929;
-    realtype x1972 = PARAM(P_kon_CD28_CD80)*x1705;
-    realtype x1973 = PARAM(P_kon_CD28_CD80)*x1707;
-    realtype x1974 = SPVAR(SP_syn_CD8_APC_CD80)*x1973;
-    realtype x1975 = -x1974;
-    realtype x1976 = PARAM(P_kon_CD28_CD86)*x1969;
-    realtype x1977 = PARAM(P_kon_CD28_CD80)*x1800;
-    realtype x1978 = SPVAR(SP_syn_CD8_APC_CD80_CTLA4)*x1960;
-    realtype x1979 = SPVAR(SP_syn_CD8_APC_CD80_CTLA4_CD80)*x1964;
-    realtype x1980 = PARAM(P_kon_CTLA4_CD86)*x1707;
-    realtype x1981 = SPVAR(SP_syn_CD8_APC_CD86)*x1980;
-    realtype x1982 = x1800*x1910;
-    realtype x1983 = SPVAR(SP_syn_CD8_APC_CD28)*x1973;
-    realtype x1984 = SPVAR(SP_syn_CD8_APC_CTLA4_CD80_CTLA4)*x1964;
-    realtype x1985 = PARAM(P_kon_CD80_PDL1)*x1799;
-    realtype x1986 = PARAM(P_kon_CD80_CD80)*x1936;
-    realtype x1987 = PARAM(P_kon_CD28_CD86)*x1952;
-    realtype x1988 = PARAM(P_kon_CTLA4_CD86)*SPVAR(SP_syn_CD8_APC_CD86_CTLA4)*x1695;
-    realtype x1989 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1980;
-    realtype x1990 = -x1989;
-    realtype x1991 = PARAM(P_kon_CD47_SIRPa)*x146;
-    realtype x1992 = SPVAR(SP_syn_M_C_SIRPa)*x1991;
-    realtype x1993 = -x1992;
-    realtype x1994 = SPVAR(SP_syn_M_C_CD47)*x1991;
-    realtype x1995 = -x1994;
-    realtype x1996 = PARAM(P_n_SIRPa)/SPVAR(SP_syn_M_C_CD47_SIRPa);
-    realtype x1997 = SPVAR(SP_V_T_C1)*SPVAR(SP_V_T_Mac_M1)*PARAM(P_k_M1_phago)*x145*x406;
-    realtype x1998 = x154*x1997*(std::pow(x155, 2*PARAM(P_n_SIRPa))*x1996/std::pow(x157, 2) - x158*x1996);
-    realtype x1999 = x1018*(-x1998*x414 + x1998*x418);
-    realtype x2000 = x1999*x396;
-    realtype x2001 = x1999*x435;
-    realtype x2002 = PARAM(P_n_PD1)*x146/x149;
-    realtype x2003 = x159*x1997*(std::pow(x150, x1835)*x2002/std::pow(x152, 2) - x153*x2002);
-    realtype x2004 = -x2003;
-    realtype x2005 = x1018*(-x2003*x414 + x2003*x418);
-    realtype x2006 = x2005*x396;
-    realtype x2007 = x2005*x435;
-    realtype x2008 = -x2006;
-    realtype x2009 = -x2007;
-    realtype x2010 = x2003*x446;
-    realtype x2011 = x2003*x447;
-    realtype x2012 = PARAM(P_k_in_PDL1)*x146 + x664*x678/std::pow(PARAM(P_syn_M_C), 2);
-    realtype x2013 = PARAM(P_kon_PD1_PDL1)*x677;
-    realtype x2014 = PARAM(P_kon_PD1_PDL2)*x685;
-    realtype x2015 = SPVAR(SP_syn_M_C_PD1_aPD1)*x146*x1859;
-    realtype x2016 = SPVAR(SP_syn_M_C_PD1)*x146;
-    realtype x2017 = PARAM(P_kon_PD1_PDL1)*x2016;
-    realtype x2018 = SPVAR(SP_syn_M_C_CD80m)*x146;
-    realtype x2019 = PARAM(P_kon_CD80_PDL1)*x2018;
-    realtype x2020 = PARAM(P_kon_PD1_PDL2)*x2016;
-    realtype x2021 = x1859*x2016;
-    realtype x2022 = PARAM(P_kon_CD80_PDL1)*x677;
-    realtype x2023 = PARAM(P_kon_CD80_CD80)*x2018;
-    realtype x2024 = SPVAR(SP_V_ID_GVAX_cells)*PARAM(P_k_GVAX_clearance);
-    realtype x2025 = PARAM(P_HMGB1_50_ID) + x2024;
-    realtype x2026 = 1.0/x2025;
-    realtype x2027 = PARAM(P_k_APC_mature_ID)*x2026*x388;
-    realtype x2028 = SPVAR(SP_V_ID_APC)*PARAM(P_k_GVAX_clearance)*x2027;
-    realtype x2029 = SPVAR(SP_V_ID_APC)*PARAM(P_k_APC_mature_ID);
-    realtype x2030 = SPVAR(SP_V_ID_GVAX_cells)*std::pow(PARAM(P_k_GVAX_clearance), 2)*x2029*x388/std::pow(x2025, 2);
-    realtype x2031 = -x2028 + x2030;
-    realtype x2032 = x2024*x2027;
-    realtype x2033 = PARAM(P_K_APC_ID) + SPVAR(SP_V_ID_APC) + SPVAR(SP_V_ID_mAPC);
-    realtype x2034 = SPVAR(SP_V_ID_GMCSF)*x384;
-    realtype x2035 = PARAM(P_EC50_GMCSF) + x2034;
-    realtype x2036 = PARAM(P_k_APC_recruit_ID)/x2035;
-    realtype x2037 = PARAM(P_K_APC_ID)*(PARAM(P_k_APC_recruit0) + x2034*x2036)/std::pow(x2033, 2);
-    realtype x2038 = PARAM(P_k_APC_mig_ID_LN)/x1781;
-    realtype x2039 = std::pow(PARAM(P_V_ID), -2);
-    realtype x2040 = SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_vac_pro)*x960;
-    realtype x2041 = x384*x387;
-    realtype x2042 = std::pow(x386, -2);
-    realtype x2043 = SPVAR(SP_V_ID_P1_GVAX)*x2039*x2042;
-    realtype x2044 = -PARAM(P_f_epitope_spread)*x2043 + x1674*x384;
-    realtype x2045 = x2024*x2026*x2029*x2041;
-    realtype x2046 = -SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*x2026*x2039*x2042 + x2045;
-    realtype x2047 = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CD137_act)*x1627;
-    realtype x2048 = std::pow(x700, -2);
+    realtype x1947 = x1695*x1875;
+    realtype x1948 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1947;
+    realtype x1949 = -x1948;
+    realtype x1950 = SPVAR(SP_syn_CD8_APC_CD80)*x1947;
+    realtype x1951 = -x1950;
+    realtype x1952 = SPVAR(SP_syn_CD8_APC_CD86)*x1695;
+    realtype x1953 = PARAM(P_kon_CTLA4_CD86)*x1952;
+    realtype x1954 = -x1911;
+    realtype x1955 = PARAM(P_kon_CD28_CD80)*x1696;
+    realtype x1956 = PARAM(P_kon_CD28_CD80)*x1698;
+    realtype x1957 = SPVAR(SP_syn_CD8_APC_CD80)*x1956;
+    realtype x1958 = -x1957;
+    realtype x1959 = PARAM(P_kon_CD28_CD86)*x1952;
+    realtype x1960 = PARAM(P_kon_CD28_CD80)*x1790;
+    realtype x1961 = SPVAR(SP_syn_CD8_APC_CD80_CTLA4)*x1943;
+    realtype x1962 = SPVAR(SP_syn_CD8_APC_CD80_CTLA4_CD80)*x1947;
+    realtype x1963 = PARAM(P_kon_CTLA4_CD86)*x1698;
+    realtype x1964 = SPVAR(SP_syn_CD8_APC_CD86)*x1963;
+    realtype x1965 = x1790*x1900;
+    realtype x1966 = SPVAR(SP_syn_CD8_APC_CD28)*x1956;
+    realtype x1967 = SPVAR(SP_syn_CD8_APC_CTLA4_CD80_CTLA4)*x1947;
+    realtype x1968 = PARAM(P_kon_CD80_PDL1)*x1789;
+    realtype x1969 = PARAM(P_kon_CD80_CD80)*x1918;
+    realtype x1970 = PARAM(P_kon_CD28_CD86)*x1935;
+    realtype x1971 = PARAM(P_kon_CTLA4_CD86)*SPVAR(SP_syn_CD8_APC_CD86_CTLA4)*x1695;
+    realtype x1972 = SPVAR(SP_syn_CD8_APC_CTLA4)*x1963;
+    realtype x1973 = -x1972;
+    realtype x1974 = PARAM(P_kon_CD47_SIRPa)*x146;
+    realtype x1975 = SPVAR(SP_syn_M_C_SIRPa)*x1974;
+    realtype x1976 = -x1975;
+    realtype x1977 = SPVAR(SP_syn_M_C_CD47)*x1974;
+    realtype x1978 = -x1977;
+    realtype x1979 = PARAM(P_n_SIRPa)/SPVAR(SP_syn_M_C_CD47_SIRPa);
+    realtype x1980 = SPVAR(SP_V_T_C1)*SPVAR(SP_V_T_Mac_M1)*PARAM(P_k_M1_phago)*x145*x406;
+    realtype x1981 = x154*x1980*(std::pow(x155, 2*PARAM(P_n_SIRPa))*x1979/std::pow(x157, 2) - x158*x1979);
+    realtype x1982 = x1018*(-x1981*x414 + x1981*x418);
+    realtype x1983 = x1982*x396;
+    realtype x1984 = x1982*x435;
+    realtype x1985 = PARAM(P_n_PD1)*x146/x149;
+    realtype x1986 = x159*x1980*(std::pow(x150, x1825)*x1985/std::pow(x152, 2) - x153*x1985);
+    realtype x1987 = -x1986;
+    realtype x1988 = x1018*(-x1986*x414 + x1986*x418);
+    realtype x1989 = x1988*x396;
+    realtype x1990 = x1988*x435;
+    realtype x1991 = -x1989;
+    realtype x1992 = -x1990;
+    realtype x1993 = x1986*x446;
+    realtype x1994 = x1986*x447;
+    realtype x1995 = PARAM(P_k_in_PDL1)*x146 + x664*x678/std::pow(PARAM(P_syn_M_C), 2);
+    realtype x1996 = PARAM(P_kon_PD1_PDL1)*x677;
+    realtype x1997 = PARAM(P_kon_PD1_PDL2)*x685;
+    realtype x1998 = SPVAR(SP_syn_M_C_PD1_aPD1)*x146*x1849;
+    realtype x1999 = SPVAR(SP_syn_M_C_PD1)*x146;
+    realtype x2000 = PARAM(P_kon_PD1_PDL1)*x1999;
+    realtype x2001 = SPVAR(SP_syn_M_C_CD80m)*x146;
+    realtype x2002 = PARAM(P_kon_CD80_PDL1)*x2001;
+    realtype x2003 = PARAM(P_kon_PD1_PDL2)*x1999;
+    realtype x2004 = x1849*x1999;
+    realtype x2005 = PARAM(P_kon_CD80_PDL1)*x677;
+    realtype x2006 = PARAM(P_kon_CD80_CD80)*x2001;
+    realtype x2007 = SPVAR(SP_V_ID_GVAX_cells)*PARAM(P_k_GVAX_clearance);
+    realtype x2008 = PARAM(P_HMGB1_50_ID) + x2007;
+    realtype x2009 = 1.0/x2008;
+    realtype x2010 = PARAM(P_k_APC_mature_ID)*x2009*x388;
+    realtype x2011 = SPVAR(SP_V_ID_APC)*PARAM(P_k_GVAX_clearance)*x2010;
+    realtype x2012 = SPVAR(SP_V_ID_APC)*PARAM(P_k_APC_mature_ID);
+    realtype x2013 = SPVAR(SP_V_ID_GVAX_cells)*std::pow(PARAM(P_k_GVAX_clearance), 2)*x2012*x388/std::pow(x2008, 2);
+    realtype x2014 = -x2011 + x2013;
+    realtype x2015 = x2007*x2010;
+    realtype x2016 = PARAM(P_K_APC_ID) + SPVAR(SP_V_ID_APC) + SPVAR(SP_V_ID_mAPC);
+    realtype x2017 = SPVAR(SP_V_ID_GMCSF)*x384;
+    realtype x2018 = PARAM(P_EC50_GMCSF) + x2017;
+    realtype x2019 = PARAM(P_k_APC_recruit_ID)/x2018;
+    realtype x2020 = PARAM(P_K_APC_ID)*(PARAM(P_k_APC_recruit0) + x2017*x2019)/std::pow(x2016, 2);
+    realtype x2021 = PARAM(P_k_APC_mig_ID_LN)/x1771;
+    realtype x2022 = std::pow(PARAM(P_V_ID), -2);
+    realtype x2023 = SPVAR(SP_V_T_CD8)*PARAM(P_k_CD8_T_vac_pro)*x960;
+    realtype x2024 = x384*x387;
+    realtype x2025 = std::pow(x386, -2);
+    realtype x2026 = SPVAR(SP_V_ID_P1_GVAX)*x2022*x2025;
+    realtype x2027 = -PARAM(P_f_epitope_spread)*x2026 + x1674*x384;
+    realtype x2028 = x2007*x2009*x2012*x2024;
+    realtype x2029 = -SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*x2009*x2022*x2025 + x2028;
+    realtype x2030 = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CD137_act)*x1627;
+    realtype x2031 = std::pow(x700, -2);
 
     // Jacobian values (CSC order, matches _jac_row_indices / _jac_col_ptrs):
     data[0] = -PARAM(P_k_nTreg_death) - PARAM(P_q_nCD4_LN_in) - PARAM(P_q_nCD4_P_in);
@@ -6677,468 +6656,460 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     data[921] = PARAM(P_k_Treg_pro);
     data[922] = PARAM(P_q_Treg_LN_out);
     data[923] = -PARAM(P_k_Treg_death) - PARAM(P_q_Treg_LN_out);
-    data[924] = -x1719;
-    data[925] = x1719*x1720 + x1726*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1723 + 0.69314718055994529*x1691);
-    data[926] = -x1732;
-    data[927] = x1732*x1733 + x1737*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1734 + 0.69314718055994529*x1729);
+    data[924] = -x1709;
+    data[925] = x1709*x1710 + x1716*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1713 + 0.69314718055994529*x1691);
+    data[926] = -x1722;
+    data[927] = x1722*x1723 + x1727*(-0.69314718055994529*PARAM(P_kappa_IL2_Treg)*x1724 + 0.69314718055994529*x1719);
     data[928] = PARAM(P_q_nCD8_LN_out);
-    data[929] = -SPVAR(SP_V_LN_nCD8)*x56/std::pow(x1738, 2) - PARAM(P_k_nCD8_death) + PARAM(P_k_nCD8_pro)*x53/x1738 - PARAM(P_q_nCD8_LN_out) - x1763;
-    data[930] = x1763*x1764;
-    data[931] = -x1724 - x1769;
-    data[932] = x1720*x1769 + x1725 + x1726*(-0.69314718055994529*x1723 + 0.69314718055994529*x1766 + 0.69314718055994529*x1768);
-    data[933] = -x1772;
-    data[934] = x1733*x1772 + x1737*(-0.69314718055994529*x1734 + 0.69314718055994529*x1770 + 0.69314718055994529*x1771);
+    data[929] = -SPVAR(SP_V_LN_nCD8)*x56/std::pow(x1728, 2) - PARAM(P_k_nCD8_death) + PARAM(P_k_nCD8_pro)*x53/x1728 - PARAM(P_q_nCD8_LN_out) - x1753;
+    data[930] = x1753*x1754;
+    data[931] = -x1714 - x1759;
+    data[932] = x1710*x1759 + x1715 + x1716*(-0.69314718055994529*x1713 + 0.69314718055994529*x1756 + 0.69314718055994529*x1758);
+    data[933] = -x1762;
+    data[934] = x1723*x1762 + x1727*(-0.69314718055994529*x1724 + 0.69314718055994529*x1760 + 0.69314718055994529*x1761);
     data[935] = PARAM(P_q_CD8_LN_out);
     data[936] = -PARAM(P_k_CD8_death) - PARAM(P_q_CD8_LN_out);
     data[937] = PARAM(P_k_IFNg_Tsec);
-    data[938] = -PARAM(P_k_APC_death) - x1773;
-    data[939] = x1773;
+    data[938] = -PARAM(P_k_APC_death) - x1763;
+    data[939] = x1763;
     data[940] = -PARAM(P_k_APC_death);
-    data[941] = -x1775;
-    data[942] = x1764*x1775;
+    data[941] = -x1765;
+    data[942] = x1754*x1765;
     data[943] = -PARAM(P_k_mAPC_death);
-    data[944] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*x1649*x1777 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*x1649*x1660*x1662*x1664*x1668*x1777*x923 - SPVAR(SP_V_LN_nCD4)*PARAM(P_n_sites_APC)*x1641 - SPVAR(SP_V_LN_nCD4)*x1776 - PARAM(P_n_sites_APC)*x1639*x1673;
-    data[945] = SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - x1637*x1649*x1669*x1778 - x1637*x1671*x1778;
-    data[946] = -x1779;
-    data[947] = x1779;
-    data[948] = -PARAM(P_k_mAPC_death) - x1782;
-    data[949] = x1776*x1783;
-    data[950] = x1782;
-    data[951] = x1784;
-    data[952] = -x1784;
-    data[953] = -x1786;
-    data[954] = x1786;
-    data[955] = x1787;
-    data[956] = -x1787;
-    data[957] = -x1790;
-    data[958] = x1720*x1790 + x1726*(0.69314718055994529*PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1789);
-    data[959] = -x1735 - x1792;
-    data[960] = x1733*x1792 + x1736 + x1737*(0.69314718055994529*PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1791);
+    data[944] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*x1649*x1767 + 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*x1649*x1660*x1662*x1664*x1668*x1767*x923 - SPVAR(SP_V_LN_nCD4)*PARAM(P_n_sites_APC)*x1641 - SPVAR(SP_V_LN_nCD4)*x1766 - PARAM(P_n_sites_APC)*x1639*x1673;
+    data[945] = SPVAR(SP_V_LN_nCD4)*PARAM(P_f_nTreg)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639 + 0.5*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1660*x1662*x1664*x1668*x923 - x1637*x1649*x1669*x1768 - x1637*x1671*x1768;
+    data[946] = -x1769;
+    data[947] = x1769;
+    data[948] = -PARAM(P_k_mAPC_death) - x1772;
+    data[949] = x1766*x1773;
+    data[950] = x1772;
+    data[951] = x1774;
+    data[952] = -x1774;
+    data[953] = -x1776;
+    data[954] = x1776;
+    data[955] = x1777;
+    data[956] = -x1777;
+    data[957] = -x1780;
+    data[958] = x1710*x1780 + x1716*(0.69314718055994529*PARAM(P_N_IL2_CD8)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1779);
+    data[959] = -x1725 - x1782;
+    data[960] = x1723*x1782 + x1726 + x1727*(0.69314718055994529*PARAM(P_N_IL2_CD4)*PARAM(P_k_IL2_sec)*PARAM(P_w_IL2_help)*x1681*x1685 - 0.69314718055994529*x1781);
     data[961] = PARAM(P_q_Treg_LN_out);
-    data[962] = -SPVAR(SP_V_LN_mcDC1)*x1774*x1793;
-    data[963] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1753*x1755*x1757*x1761*x1793 - x1795;
-    data[964] = x1720*x1795 + x1726*(0.69314718055994529*PARAM(P_N_div_costim)*x1694*x1703*x1710*x1712 - 0.69314718055994529*x1794);
+    data[962] = -SPVAR(SP_V_LN_mcDC1)*x1764*x1783;
+    data[963] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1743*x1745*x1747*x1751*x1783 - x1785;
+    data[964] = x1710*x1785 + x1716*(0.69314718055994529*PARAM(P_N_div_costim)*x1694*x1701*x1703 - 0.69314718055994529*x1784);
     data[965] = -PARAM(P_k_CD4_death) - PARAM(P_q_Treg_LN_out);
     data[966] = PARAM(P_k_IFNg_Thsec);
     data[967] = x992;
-    data[968] = PARAM(P_k_out_PDL1)*x1798*x1806*x85 - PARAM(P_k_out_PDL1)*x1806*x1809 - x1801*x1811;
-    data[969] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1798*x1814*x85 - PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1809*x1814 - x1811*x1813;
+    data[968] = PARAM(P_k_out_PDL1)*x1788*x1796*x85 - PARAM(P_k_out_PDL1)*x1796*x1799 - x1791*x1801;
+    data[969] = PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1788*x1804*x85 - PARAM(P_k_out_PDL1)*PARAM(P_r_PDL2APC)*x1799*x1804 - x1801*x1803;
     data[970] = -PARAM(P_k_P0_deg);
     data[971] = PARAM(P_k_P0_deg);
-    data[972] = -PARAM(P_k_p0_deg) - x1816;
-    data[973] = -x1816;
-    data[974] = x1816;
-    data[975] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*SPVAR(SP_V_e_P1)*PARAM(P_k_T_activation_per_APC)*x1818*x1819 - SPVAR(SP_V_LN_nCD4)*x1642*x1817;
-    data[976] = -SPVAR(SP_V_e_P1)*x1818*x1819*x1820 + x1817*x1820;
+    data[972] = -PARAM(P_k_p0_deg) - x1806;
+    data[973] = -x1806;
+    data[974] = x1806;
+    data[975] = SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*SPVAR(SP_V_e_P1)*PARAM(P_k_T_activation_per_APC)*x1808*x1809 - SPVAR(SP_V_LN_nCD4)*x1642*x1807;
+    data[976] = -SPVAR(SP_V_e_P1)*x1808*x1809*x1810 + x1807*x1810;
     data[977] = -PARAM(P_k_P1_deg);
     data[978] = PARAM(P_k_P1_deg);
-    data[979] = -PARAM(P_k_p1_deg) - x1821;
-    data[980] = -x1821;
-    data[981] = x1821;
-    data[982] = -x1822;
-    data[983] = -x1823;
-    data[984] = -PARAM(P_kout) - x1822 - x1823;
-    data[985] = x1822;
-    data[986] = x1823;
+    data[979] = -PARAM(P_k_p1_deg) - x1811;
+    data[980] = -x1811;
+    data[981] = x1811;
+    data[982] = -x1812;
+    data[983] = -x1813;
+    data[984] = -PARAM(P_kout) - x1812 - x1813;
+    data[985] = x1812;
+    data[986] = x1813;
     data[987] = PARAM(P_kout);
-    data[988] = x1824;
-    data[989] = x1824;
-    data[990] = -PARAM(P_kout) - x1824;
+    data[988] = x1814;
+    data[989] = x1814;
+    data[990] = -PARAM(P_kout) - x1814;
     data[991] = PARAM(P_kout);
-    data[992] = x1825;
-    data[993] = x1825;
-    data[994] = -PARAM(P_kout) - x1825;
+    data[992] = x1815;
+    data[993] = x1815;
+    data[994] = -PARAM(P_kout) - x1815;
     data[995] = PARAM(P_kout);
     data[996] = PARAM(P_kin);
     data[997] = -PARAM(P_kin);
-    data[998] = -x1665*x1668*x1828 + x1828*x1829;
-    data[999] = 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1662*x1664*x1668*x1826*x923 - x1637*x1827*x1829;
-    data[1000] = x1824;
-    data[1001] = -x1824;
-    data[1002] = -x1758*x1761*x1831 + x1832;
-    data[1003] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1742*x1755*x1757*x1761*x1830 - x1764*x1832;
-    data[1004] = x1825;
-    data[1005] = -x1825;
-    data[1006] = x1839;
-    data[1007] = x1844;
-    data[1008] = x1845;
-    data[1009] = x1846;
-    data[1010] = x1848;
-    data[1011] = x1849;
-    data[1012] = x1850;
-    data[1013] = x1851;
-    data[1014] = x1852;
-    data[1015] = x1853;
-    data[1016] = x1854;
+    data[998] = -x1665*x1668*x1818 + x1818*x1819;
+    data[999] = 0.5*SPVAR(SP_V_LN_mcDC2)*SPVAR(SP_V_LN_nCD4)*PARAM(P_k_M1p0_TCR_off)*PARAM(P_k_Treg_act)*PARAM(P_n_CD4_clones)*PARAM(P_n_sites_APC)*x1639*x1662*x1664*x1668*x1816*x923 - x1637*x1817*x1819;
+    data[1000] = x1814;
+    data[1001] = -x1814;
+    data[1002] = -x1748*x1751*x1821 + x1822;
+    data[1003] = 0.5*SPVAR(SP_V_LN_mcDC1)*SPVAR(SP_V_LN_nCD8)*PARAM(P_k_M1p1_TCR_off)*PARAM(P_k_T_activation_per_APC)*PARAM(P_n_CD8_clones)*x1675*x1732*x1745*x1747*x1751*x1820 - x1754*x1822;
+    data[1004] = x1815;
+    data[1005] = -x1815;
+    data[1006] = x1829;
+    data[1007] = x1834;
+    data[1008] = x1835;
+    data[1009] = x1836;
+    data[1010] = x1838;
+    data[1011] = x1839;
+    data[1012] = x1840;
+    data[1013] = x1841;
+    data[1014] = x1842;
+    data[1015] = x1843;
+    data[1016] = x1844;
     data[1017] = PARAM(P_koff_PD1_PDL1);
-    data[1018] = -x1854 - x1855;
-    data[1019] = x1839;
-    data[1020] = x1844;
-    data[1021] = x1845;
-    data[1022] = x1846;
-    data[1023] = x1848;
-    data[1024] = x1849;
-    data[1025] = x1850;
-    data[1026] = x1851;
-    data[1027] = x1852;
-    data[1028] = x1853;
-    data[1029] = x1856;
+    data[1018] = -x1844 - x1845;
+    data[1019] = x1829;
+    data[1020] = x1834;
+    data[1021] = x1835;
+    data[1022] = x1836;
+    data[1023] = x1838;
+    data[1024] = x1839;
+    data[1025] = x1840;
+    data[1026] = x1841;
+    data[1027] = x1842;
+    data[1028] = x1843;
+    data[1029] = x1846;
     data[1030] = PARAM(P_koff_PD1_PDL2);
-    data[1031] = -x1855 - x1856;
-    data[1032] = x1842;
-    data[1033] = -x1842;
-    data[1034] = x1857;
-    data[1035] = x1858;
-    data[1036] = -x1857 - x1858 - x1860 - x1861;
-    data[1037] = -x1857;
-    data[1038] = -x1858;
-    data[1039] = -x1860 - x1862;
-    data[1040] = x1860;
-    data[1041] = x1863;
-    data[1042] = -x1863;
-    data[1043] = -x1855 - x1863 - x1865;
-    data[1044] = x1865;
-    data[1045] = -x1865;
-    data[1046] = x1866;
-    data[1047] = -x1866;
-    data[1048] = -x1855 - x1866;
-    data[1049] = x1867;
-    data[1050] = -x1867;
-    data[1051] = -x1868 - x1869;
-    data[1052] = -PARAM(P_koff_PD1_aPD1) - x1869;
-    data[1053] = x1869;
-    data[1054] = x1871;
-    data[1055] = -x1871;
-    data[1056] = x1872;
-    data[1057] = x1872;
-    data[1058] = x1873;
+    data[1031] = -x1845 - x1846;
+    data[1032] = x1832;
+    data[1033] = -x1832;
+    data[1034] = x1847;
+    data[1035] = x1848;
+    data[1036] = -x1847 - x1848 - x1850 - x1851;
+    data[1037] = -x1847;
+    data[1038] = -x1848;
+    data[1039] = -x1850 - x1852;
+    data[1040] = x1850;
+    data[1041] = x1853;
+    data[1042] = -x1853;
+    data[1043] = -x1845 - x1853 - x1855;
+    data[1044] = x1855;
+    data[1045] = -x1855;
+    data[1046] = x1856;
+    data[1047] = -x1856;
+    data[1048] = -x1845 - x1856;
+    data[1049] = x1857;
+    data[1050] = -x1857;
+    data[1051] = -x1858 - x1859;
+    data[1052] = -PARAM(P_koff_PD1_aPD1) - x1859;
+    data[1053] = x1859;
+    data[1054] = x1861;
+    data[1055] = -x1861;
+    data[1056] = x1862;
+    data[1057] = x1862;
+    data[1058] = x1863;
     data[1059] = 0;
-    data[1060] = -PARAM(P_koff_CD28_CD80) - x1875;
-    data[1061] = x1875;
-    data[1062] = PARAM(P_koff_CD28_CD80) + x1876;
+    data[1060] = -PARAM(P_koff_CD28_CD80) - x1865;
+    data[1061] = x1865;
+    data[1062] = PARAM(P_koff_CD28_CD80) + x1866;
     data[1063] = PARAM(P_koff_CD28_CD80);
-    data[1064] = x1877;
-    data[1065] = x1878;
-    data[1066] = x1877;
-    data[1067] = x1879;
+    data[1064] = x1867;
+    data[1065] = x1868;
+    data[1066] = x1867;
+    data[1067] = x1869;
     data[1068] = PARAM(P_koff_CD28_CD86);
     data[1069] = PARAM(P_koff_CD28_CD86);
-    data[1070] = -PARAM(P_koff_CTLA4_CD80) - x1881 - x1882;
-    data[1071] = x1881;
-    data[1072] = x1882;
-    data[1073] = PARAM(P_koff_CTLA4_CD80) + x1883;
-    data[1074] = PARAM(P_koff_CTLA4_CD80) - x1881;
-    data[1075] = x1884;
-    data[1076] = -x1884 - x1887;
-    data[1077] = x1887;
-    data[1078] = x1888;
-    data[1079] = x1884;
-    data[1080] = x1884;
-    data[1081] = -x1884 - x1889;
-    data[1082] = x1889;
-    data[1083] = x1884;
-    data[1084] = x1890;
+    data[1070] = -PARAM(P_koff_CTLA4_CD80) - x1871 - x1872;
+    data[1071] = x1871;
+    data[1072] = x1872;
+    data[1073] = PARAM(P_koff_CTLA4_CD80) + x1873;
+    data[1074] = PARAM(P_koff_CTLA4_CD80) - x1871;
+    data[1075] = x1874;
+    data[1076] = -x1874 - x1877;
+    data[1077] = x1877;
+    data[1078] = x1878;
+    data[1079] = x1874;
+    data[1080] = x1874;
+    data[1081] = -x1874 - x1879;
+    data[1082] = x1879;
+    data[1083] = x1874;
+    data[1084] = x1880;
     data[1085] = PARAM(P_koff_CTLA4_CD80);
     data[1086] = PARAM(P_koff_CTLA4_CD80);
-    data[1087] = x1891;
+    data[1087] = x1881;
     data[1088] = PARAM(P_koff_CTLA4_CD80);
     data[1089] = PARAM(P_koff_CTLA4_CD80);
-    data[1090] = -PARAM(P_koff_CTLA4_CD86) - x1893;
-    data[1091] = x1893;
+    data[1090] = -PARAM(P_koff_CTLA4_CD86) - x1883;
+    data[1091] = x1883;
     data[1092] = PARAM(P_koff_CTLA4_CD86);
-    data[1093] = PARAM(P_koff_CTLA4_CD86) - x1893;
-    data[1094] = x1894;
-    data[1095] = x1895;
-    data[1096] = x1894;
-    data[1097] = -x1855 - x1896;
-    data[1098] = -PARAM(P_koff_CD80_PDL1) - x1875 - x1882;
-    data[1099] = x1875;
-    data[1100] = x1882;
-    data[1101] = x1876;
-    data[1102] = x1883;
+    data[1093] = PARAM(P_koff_CTLA4_CD86) - x1883;
+    data[1094] = x1884;
+    data[1095] = x1885;
+    data[1096] = x1884;
+    data[1097] = -x1845 - x1886;
+    data[1098] = -PARAM(P_koff_CD80_PDL1) - x1865 - x1872;
+    data[1099] = x1865;
+    data[1100] = x1872;
+    data[1101] = x1866;
+    data[1102] = x1873;
     data[1103] = PARAM(P_koff_CD80_PDL1);
-    data[1104] = x1897;
+    data[1104] = x1887;
     data[1105] = PARAM(P_koff_CD28_CD80);
-    data[1106] = x1898;
+    data[1106] = x1888;
     data[1107] = PARAM(P_koff_CD28_CD80);
-    data[1108] = x1897;
+    data[1108] = x1887;
     data[1109] = PARAM(P_koff_CTLA4_CD80);
-    data[1110] = x1899;
+    data[1110] = x1889;
     data[1111] = PARAM(P_koff_CTLA4_CD80);
-    data[1112] = -x1900 - x1903;
-    data[1113] = x1900;
-    data[1114] = x1904;
-    data[1115] = -x1905;
-    data[1116] = x1905;
-    data[1117] = -x1900 - x1902 - x1904 - x1905;
-    data[1118] = x1903;
-    data[1119] = -x1904;
-    data[1120] = x1889 - x1906;
-    data[1121] = -x1907;
-    data[1122] = x1906;
-    data[1123] = x1907;
-    data[1124] = x1909;
-    data[1125] = -x1911;
-    data[1126] = x1911;
-    data[1127] = -x1889 - x1906 - x1907 - x1909 - x1911;
-    data[1128] = x1890;
-    data[1129] = -x1909;
-    data[1130] = x1912;
-    data[1131] = -x1888 - x1906;
-    data[1132] = x1906;
-    data[1133] = -x1913;
-    data[1134] = x1913;
-    data[1135] = -x1912;
-    data[1136] = x1888;
-    data[1137] = -PARAM(P_koff_CD80_CD80) - x1887 - x1906 - x1912 - x1913;
-    data[1138] = x1914;
-    data[1139] = -x1915;
-    data[1140] = x1915;
-    data[1141] = 2*x1916;
-    data[1142] = -x1915 - 4*x1916;
-    data[1143] = x1917;
-    data[1144] = -x1918 - x1920;
-    data[1145] = x1918;
-    data[1146] = -x1917;
-    data[1147] = x1920;
-    data[1148] = -x1917 - x1918 - x1919;
-    data[1149] = x1925;
-    data[1150] = x1926;
-    data[1151] = x1927;
-    data[1152] = x1928;
-    data[1153] = x1854;
-    data[1154] = PARAM(P_koff_PD1_PDL1);
-    data[1155] = -x1854 - x1929;
-    data[1156] = x1925;
-    data[1157] = x1926;
-    data[1158] = x1927;
-    data[1159] = x1928;
-    data[1160] = x1856;
-    data[1161] = PARAM(P_koff_PD1_PDL2);
-    data[1162] = -x1856 - x1929;
-    data[1163] = x1930;
-    data[1164] = x1931;
-    data[1165] = -x1930 - x1931 - x1932 - x1933;
-    data[1166] = -x1930;
-    data[1167] = -x1931;
-    data[1168] = -x1932 + x1933;
-    data[1169] = x1932;
-    data[1170] = x1935;
-    data[1171] = -x1935;
-    data[1172] = -x1929 - x1935 - x1937;
-    data[1173] = x1937;
-    data[1174] = -x1937;
-    data[1175] = x1938;
-    data[1176] = -x1938;
-    data[1177] = -x1929 - x1938;
-    data[1178] = -x1868 - x1939;
-    data[1179] = -PARAM(P_koff_PD1_aPD1) - x1939;
-    data[1180] = x1939;
-    data[1181] = x1872;
-    data[1182] = x1872;
-    data[1183] = x1873;
-    data[1184] = 0;
-    data[1185] = x1946;
-    data[1186] = x1948;
-    data[1187] = x1950;
-    data[1188] = x1951;
-    data[1189] = -PARAM(P_koff_CD28_CD80) - x1953;
-    data[1190] = x1953;
-    data[1191] = PARAM(P_koff_CD28_CD80) + x1954;
-    data[1192] = PARAM(P_koff_CD28_CD80);
-    data[1193] = -x1957;
-    data[1194] = x1720*x1957 + x1726*(1.3862943611198906*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1703*x1710*x1712*x1940 - x1923*x1958);
-    data[1195] = -x1959;
-    data[1196] = x1733*x1959 + x1737*(1.3862943611198906*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1703*x1710*x1712*x1940 - x1958);
-    data[1197] = x1877;
-    data[1198] = x1878;
-    data[1199] = x1877;
-    data[1200] = x1946;
-    data[1201] = x1948;
-    data[1202] = x1950;
-    data[1203] = x1951;
-    data[1204] = x1879;
-    data[1205] = PARAM(P_koff_CD28_CD86);
-    data[1206] = PARAM(P_koff_CD28_CD86);
-    data[1207] = -PARAM(P_koff_CTLA4_CD80) - x1961 - x1962;
-    data[1208] = x1961;
-    data[1209] = x1962;
-    data[1210] = PARAM(P_koff_CTLA4_CD80) + x1963;
-    data[1211] = PARAM(P_koff_CTLA4_CD80) - x1961;
-    data[1212] = x1884;
-    data[1213] = -x1884 - x1965;
-    data[1214] = x1965;
-    data[1215] = x1966;
-    data[1216] = x1884;
-    data[1217] = x1884;
-    data[1218] = -x1884 - x1967;
-    data[1219] = x1967;
-    data[1220] = x1884;
-    data[1221] = x1968;
-    data[1222] = PARAM(P_koff_CTLA4_CD80);
-    data[1223] = PARAM(P_koff_CTLA4_CD80);
-    data[1224] = x1891;
-    data[1225] = PARAM(P_koff_CTLA4_CD80);
-    data[1226] = PARAM(P_koff_CTLA4_CD80);
-    data[1227] = -PARAM(P_koff_CTLA4_CD86) - x1970;
-    data[1228] = x1970;
-    data[1229] = PARAM(P_koff_CTLA4_CD86);
-    data[1230] = PARAM(P_koff_CTLA4_CD86) - x1970;
-    data[1231] = x1894;
-    data[1232] = x1895;
-    data[1233] = x1894;
-    data[1234] = -x1896 - x1929;
-    data[1235] = -PARAM(P_koff_CD80_PDL1) - x1953 - x1962;
-    data[1236] = x1953;
-    data[1237] = x1962;
-    data[1238] = x1954;
-    data[1239] = x1963;
-    data[1240] = PARAM(P_koff_CD80_PDL1);
-    data[1241] = x1946;
-    data[1242] = x1948;
-    data[1243] = x1950;
-    data[1244] = x1951;
-    data[1245] = x1971;
-    data[1246] = PARAM(P_koff_CD28_CD80);
-    data[1247] = x1898;
-    data[1248] = PARAM(P_koff_CD28_CD80);
-    data[1249] = x1971;
-    data[1250] = PARAM(P_koff_CTLA4_CD80);
-    data[1251] = x1899;
-    data[1252] = PARAM(P_koff_CTLA4_CD80);
-    data[1253] = -x1972 - x1975;
-    data[1254] = x1972;
-    data[1255] = x1976;
-    data[1256] = -x1977;
-    data[1257] = x1977;
-    data[1258] = -x1972 - x1974 - x1976 - x1977;
-    data[1259] = x1975;
-    data[1260] = -x1976;
-    data[1261] = x1967 - x1978;
-    data[1262] = -x1979;
-    data[1263] = x1978;
-    data[1264] = x1979;
-    data[1265] = x1981;
-    data[1266] = -x1982;
-    data[1267] = x1982;
-    data[1268] = -x1967 - x1978 - x1979 - x1981 - x1982;
-    data[1269] = x1968;
-    data[1270] = -x1981;
-    data[1271] = x1983;
-    data[1272] = -x1966 - x1978;
-    data[1273] = x1978;
-    data[1274] = -x1984;
-    data[1275] = x1984;
-    data[1276] = -x1983;
-    data[1277] = x1966;
-    data[1278] = -PARAM(P_koff_CD80_CD80) - x1965 - x1978 - x1983 - x1984;
-    data[1279] = x1914;
-    data[1280] = -x1985;
-    data[1281] = x1985;
-    data[1282] = 2*x1986;
-    data[1283] = -x1985 - 4*x1986;
-    data[1284] = x1987;
-    data[1285] = -x1988 - x1990;
-    data[1286] = x1988;
-    data[1287] = -x1987;
-    data[1288] = x1990;
-    data[1289] = -x1987 - x1988 - x1989;
-    data[1290] = x1993;
-    data[1291] = x1993;
-    data[1292] = x1992;
-    data[1293] = x1995;
-    data[1294] = x1995;
-    data[1295] = x1994;
-    data[1296] = x1998;
-    data[1297] = -x1998;
-    data[1298] = x2000;
-    data[1299] = x2001;
-    data[1300] = -x2000;
-    data[1301] = -x2001;
-    data[1302] = x1998*x446;
-    data[1303] = x1998*x447;
-    data[1304] = PARAM(P_koff_CD47_SIRPa);
-    data[1305] = PARAM(P_koff_CD47_SIRPa);
-    data[1306] = -PARAM(P_koff_CD47_SIRPa);
-    data[1307] = 0;
-    data[1308] = 0;
-    data[1309] = x2003;
-    data[1310] = x2004;
-    data[1311] = x2006;
-    data[1312] = x2007;
-    data[1313] = x2008;
-    data[1314] = x2009;
-    data[1315] = x2010;
-    data[1316] = x2011;
-    data[1317] = x1854;
-    data[1318] = PARAM(P_koff_PD1_PDL1);
-    data[1319] = -x1854 - x2012;
-    data[1320] = x2003;
-    data[1321] = x2004;
-    data[1322] = x2006;
-    data[1323] = x2007;
-    data[1324] = x2008;
-    data[1325] = x2009;
-    data[1326] = x2010;
-    data[1327] = x2011;
-    data[1328] = x1856;
-    data[1329] = PARAM(P_koff_PD1_PDL2);
-    data[1330] = -x1856 - x2012;
-    data[1331] = x2013;
-    data[1332] = x2014;
-    data[1333] = -x1861 - x2013 - x2014 - x2015;
-    data[1334] = -x2013;
-    data[1335] = -x2014;
-    data[1336] = -x1862 - x2015;
-    data[1337] = x2015;
-    data[1338] = x2017;
-    data[1339] = -x2017;
-    data[1340] = -x2012 - x2017 - x2019;
-    data[1341] = x2019;
-    data[1342] = -x2019;
-    data[1343] = x2020;
-    data[1344] = -x2020;
-    data[1345] = -x2012 - x2020;
-    data[1346] = -x1868 - x2021;
-    data[1347] = -PARAM(P_koff_PD1_aPD1) - x2021;
-    data[1348] = x2021;
-    data[1349] = x1872;
-    data[1350] = x1872;
-    data[1351] = x1873;
-    data[1352] = -x1896 - x2012;
-    data[1353] = x1896;
-    data[1354] = PARAM(P_koff_CD80_PDL1);
-    data[1355] = -PARAM(P_koff_CD80_CD80);
-    data[1356] = x1914;
-    data[1357] = -x2022;
-    data[1358] = x2022;
-    data[1359] = 2*x2023;
-    data[1360] = -x2022 - 4*x2023;
-    data[1361] = -PARAM(P_k_GVAX_clearance);
-    data[1362] = x2031;
-    data[1363] = -x2031;
-    data[1364] = PARAM(P_V_ID)*PARAM(P_k_GMCSF_prod);
-    data[1365] = PARAM(P_k_GVAX_clearance)*PARAM(P_y_Ag_per_cell) - PARAM(P_sigma_P1_per_mAPC)*x2028 + PARAM(P_sigma_P1_per_mAPC)*x2030;
-    data[1366] = -PARAM(P_k_APC_death_ID) - x2032 - x2037;
-    data[1367] = x2032;
-    data[1368] = -PARAM(P_sigma_P1_per_mAPC)*x2032;
-    data[1369] = x2038;
-    data[1370] = -x2037;
-    data[1371] = -PARAM(P_k_mAPC_death_ID) - x2038;
-    data[1372] = PARAM(P_k_CXCL13_sec)*PARAM(P_k_TLA_form)*x697*x705*x709*x9 - PARAM(P_k_CXCL13_sec)*x1629;
-    data[1373] = PARAM(P_K_APC_ID)*(-SPVAR(SP_V_ID_GMCSF)*PARAM(P_k_APC_recruit_ID)*x2039/std::pow(x2035, 2) + x2036*x384)/x2033;
-    data[1374] = -PARAM(P_k_GMCSF_deg);
-    data[1375] = x2040*x2041 - x2040*x2043;
-    data[1376] = SPVAR(SP_V_LN_nCD8)*PARAM(P_n_CD8_clones)*x1763*x2044;
-    data[1377] = x1637*x1648*x2044;
-    data[1378] = PARAM(P_k_GVAX_present)*x384*x638;
-    data[1379] = -x2046;
-    data[1380] = x2046;
-    data[1381] = SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*PARAM(P_sigma_P1_per_mAPC)*x2026*x2039*x2042 - PARAM(P_k_P1_deg_ID) - PARAM(P_sigma_P1_per_mAPC)*x2045;
-    data[1382] = -x2047;
-    data[1383] = x2047;
-    data[1384] = -PARAM(P_k_CD137_latch_off) - x209*x691;
-    data[1385] = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x2048*x697*x705*x707*x712*x9 - SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*x2048*x706*x711 - PARAM(P_k_TLA_decay) - x707*x710;
+    data[1112] = -x1890 - x1893;
+    data[1113] = x1890;
+    data[1114] = x1894;
+    data[1115] = -x1895;
+    data[1116] = x1895;
+    data[1117] = -x1890 - x1892 - x1894 - x1895;
+    data[1118] = x1893;
+    data[1119] = -x1894;
+    data[1120] = x1879 - x1896;
+    data[1121] = -x1897;
+    data[1122] = x1896;
+    data[1123] = x1897;
+    data[1124] = x1899;
+    data[1125] = -x1901;
+    data[1126] = x1901;
+    data[1127] = -x1879 - x1896 - x1897 - x1899 - x1901;
+    data[1128] = x1880;
+    data[1129] = -x1899;
+    data[1130] = x1902;
+    data[1131] = -x1878 - x1896;
+    data[1132] = x1896;
+    data[1133] = -x1903;
+    data[1134] = x1903;
+    data[1135] = -x1902;
+    data[1136] = x1878;
+    data[1137] = -PARAM(P_koff_CD80_CD80) - x1877 - x1896 - x1902 - x1903;
+    data[1138] = x1904;
+    data[1139] = -x1905;
+    data[1140] = x1905;
+    data[1141] = 2*x1906;
+    data[1142] = -x1905 - 4*x1906;
+    data[1143] = x1907;
+    data[1144] = -x1908 - x1910;
+    data[1145] = x1908;
+    data[1146] = -x1907;
+    data[1147] = x1910;
+    data[1148] = -x1907 - x1908 - x1909;
+    data[1149] = x1844;
+    data[1150] = PARAM(P_koff_PD1_PDL1);
+    data[1151] = -x1844 - x1911;
+    data[1152] = x1846;
+    data[1153] = PARAM(P_koff_PD1_PDL2);
+    data[1154] = -x1846 - x1911;
+    data[1155] = x1912;
+    data[1156] = x1913;
+    data[1157] = -x1912 - x1913 - x1914 - x1915;
+    data[1158] = -x1912;
+    data[1159] = -x1913;
+    data[1160] = -x1914 + x1915;
+    data[1161] = x1914;
+    data[1162] = x1917;
+    data[1163] = -x1917;
+    data[1164] = -x1911 - x1917 - x1919;
+    data[1165] = x1919;
+    data[1166] = -x1919;
+    data[1167] = x1920;
+    data[1168] = -x1920;
+    data[1169] = -x1911 - x1920;
+    data[1170] = -x1858 - x1921;
+    data[1171] = -PARAM(P_koff_PD1_aPD1) - x1921;
+    data[1172] = x1921;
+    data[1173] = x1862;
+    data[1174] = x1862;
+    data[1175] = x1863;
+    data[1176] = 0;
+    data[1177] = x1929;
+    data[1178] = x1931;
+    data[1179] = x1933;
+    data[1180] = x1934;
+    data[1181] = -PARAM(P_koff_CD28_CD80) - x1936;
+    data[1182] = x1936;
+    data[1183] = PARAM(P_koff_CD28_CD80) + x1937;
+    data[1184] = PARAM(P_koff_CD28_CD80);
+    data[1185] = -x1940;
+    data[1186] = x1710*x1940 + x1716*(1.3862943611198906*PARAM(P_N_div_costim)*SPVAR(SP_V_LN_Th)*PARAM(P_n_CD28_CD8X)*x1694*x1695*x1701*x1703*x1922 - x1927*x1941);
+    data[1187] = -x1942;
+    data[1188] = x1723*x1942 + x1727*(1.3862943611198906*PARAM(P_N_div_costim)*PARAM(P_n_CD28_CD8X)*x1695*x1701*x1703*x1922 - x1941);
+    data[1189] = x1867;
+    data[1190] = x1868;
+    data[1191] = x1867;
+    data[1192] = x1929;
+    data[1193] = x1931;
+    data[1194] = x1933;
+    data[1195] = x1934;
+    data[1196] = x1869;
+    data[1197] = PARAM(P_koff_CD28_CD86);
+    data[1198] = PARAM(P_koff_CD28_CD86);
+    data[1199] = -PARAM(P_koff_CTLA4_CD80) - x1944 - x1945;
+    data[1200] = x1944;
+    data[1201] = x1945;
+    data[1202] = PARAM(P_koff_CTLA4_CD80) + x1946;
+    data[1203] = PARAM(P_koff_CTLA4_CD80) - x1944;
+    data[1204] = x1874;
+    data[1205] = -x1874 - x1948;
+    data[1206] = x1948;
+    data[1207] = x1949;
+    data[1208] = x1874;
+    data[1209] = x1874;
+    data[1210] = -x1874 - x1950;
+    data[1211] = x1950;
+    data[1212] = x1874;
+    data[1213] = x1951;
+    data[1214] = PARAM(P_koff_CTLA4_CD80);
+    data[1215] = PARAM(P_koff_CTLA4_CD80);
+    data[1216] = x1881;
+    data[1217] = PARAM(P_koff_CTLA4_CD80);
+    data[1218] = PARAM(P_koff_CTLA4_CD80);
+    data[1219] = -PARAM(P_koff_CTLA4_CD86) - x1953;
+    data[1220] = x1953;
+    data[1221] = PARAM(P_koff_CTLA4_CD86);
+    data[1222] = PARAM(P_koff_CTLA4_CD86) - x1953;
+    data[1223] = x1884;
+    data[1224] = x1885;
+    data[1225] = x1884;
+    data[1226] = -x1886 - x1911;
+    data[1227] = -PARAM(P_koff_CD80_PDL1) - x1936 - x1945;
+    data[1228] = x1936;
+    data[1229] = x1945;
+    data[1230] = x1937;
+    data[1231] = x1946;
+    data[1232] = PARAM(P_koff_CD80_PDL1);
+    data[1233] = x1929;
+    data[1234] = x1931;
+    data[1235] = x1933;
+    data[1236] = x1934;
+    data[1237] = x1954;
+    data[1238] = PARAM(P_koff_CD28_CD80);
+    data[1239] = x1888;
+    data[1240] = PARAM(P_koff_CD28_CD80);
+    data[1241] = x1954;
+    data[1242] = PARAM(P_koff_CTLA4_CD80);
+    data[1243] = x1889;
+    data[1244] = PARAM(P_koff_CTLA4_CD80);
+    data[1245] = -x1955 - x1958;
+    data[1246] = x1955;
+    data[1247] = x1959;
+    data[1248] = -x1960;
+    data[1249] = x1960;
+    data[1250] = -x1955 - x1957 - x1959 - x1960;
+    data[1251] = x1958;
+    data[1252] = -x1959;
+    data[1253] = x1950 - x1961;
+    data[1254] = -x1962;
+    data[1255] = x1961;
+    data[1256] = x1962;
+    data[1257] = x1964;
+    data[1258] = -x1965;
+    data[1259] = x1965;
+    data[1260] = -x1950 - x1961 - x1962 - x1964 - x1965;
+    data[1261] = x1951;
+    data[1262] = -x1964;
+    data[1263] = x1966;
+    data[1264] = -x1949 - x1961;
+    data[1265] = x1961;
+    data[1266] = -x1967;
+    data[1267] = x1967;
+    data[1268] = -x1966;
+    data[1269] = x1949;
+    data[1270] = -PARAM(P_koff_CD80_CD80) - x1948 - x1961 - x1966 - x1967;
+    data[1271] = x1904;
+    data[1272] = -x1968;
+    data[1273] = x1968;
+    data[1274] = 2*x1969;
+    data[1275] = -x1968 - 4*x1969;
+    data[1276] = x1970;
+    data[1277] = -x1971 - x1973;
+    data[1278] = x1971;
+    data[1279] = -x1970;
+    data[1280] = x1973;
+    data[1281] = -x1970 - x1971 - x1972;
+    data[1282] = x1976;
+    data[1283] = x1976;
+    data[1284] = x1975;
+    data[1285] = x1978;
+    data[1286] = x1978;
+    data[1287] = x1977;
+    data[1288] = x1981;
+    data[1289] = -x1981;
+    data[1290] = x1983;
+    data[1291] = x1984;
+    data[1292] = -x1983;
+    data[1293] = -x1984;
+    data[1294] = x1981*x446;
+    data[1295] = x1981*x447;
+    data[1296] = PARAM(P_koff_CD47_SIRPa);
+    data[1297] = PARAM(P_koff_CD47_SIRPa);
+    data[1298] = -PARAM(P_koff_CD47_SIRPa);
+    data[1299] = 0;
+    data[1300] = 0;
+    data[1301] = x1986;
+    data[1302] = x1987;
+    data[1303] = x1989;
+    data[1304] = x1990;
+    data[1305] = x1991;
+    data[1306] = x1992;
+    data[1307] = x1993;
+    data[1308] = x1994;
+    data[1309] = x1844;
+    data[1310] = PARAM(P_koff_PD1_PDL1);
+    data[1311] = -x1844 - x1995;
+    data[1312] = x1986;
+    data[1313] = x1987;
+    data[1314] = x1989;
+    data[1315] = x1990;
+    data[1316] = x1991;
+    data[1317] = x1992;
+    data[1318] = x1993;
+    data[1319] = x1994;
+    data[1320] = x1846;
+    data[1321] = PARAM(P_koff_PD1_PDL2);
+    data[1322] = -x1846 - x1995;
+    data[1323] = x1996;
+    data[1324] = x1997;
+    data[1325] = -x1851 - x1996 - x1997 - x1998;
+    data[1326] = -x1996;
+    data[1327] = -x1997;
+    data[1328] = -x1852 - x1998;
+    data[1329] = x1998;
+    data[1330] = x2000;
+    data[1331] = -x2000;
+    data[1332] = -x1995 - x2000 - x2002;
+    data[1333] = x2002;
+    data[1334] = -x2002;
+    data[1335] = x2003;
+    data[1336] = -x2003;
+    data[1337] = -x1995 - x2003;
+    data[1338] = -x1858 - x2004;
+    data[1339] = -PARAM(P_koff_PD1_aPD1) - x2004;
+    data[1340] = x2004;
+    data[1341] = x1862;
+    data[1342] = x1862;
+    data[1343] = x1863;
+    data[1344] = -x1886 - x1995;
+    data[1345] = x1886;
+    data[1346] = PARAM(P_koff_CD80_PDL1);
+    data[1347] = -PARAM(P_koff_CD80_CD80);
+    data[1348] = x1904;
+    data[1349] = -x2005;
+    data[1350] = x2005;
+    data[1351] = 2*x2006;
+    data[1352] = -x2005 - 4*x2006;
+    data[1353] = -PARAM(P_k_GVAX_clearance);
+    data[1354] = x2014;
+    data[1355] = -x2014;
+    data[1356] = PARAM(P_V_ID)*PARAM(P_k_GMCSF_prod);
+    data[1357] = PARAM(P_k_GVAX_clearance)*PARAM(P_y_Ag_per_cell) - PARAM(P_sigma_P1_per_mAPC)*x2011 + PARAM(P_sigma_P1_per_mAPC)*x2013;
+    data[1358] = -PARAM(P_k_APC_death_ID) - x2015 - x2020;
+    data[1359] = x2015;
+    data[1360] = -PARAM(P_sigma_P1_per_mAPC)*x2015;
+    data[1361] = x2021;
+    data[1362] = -x2020;
+    data[1363] = -PARAM(P_k_mAPC_death_ID) - x2021;
+    data[1364] = PARAM(P_k_CXCL13_sec)*PARAM(P_k_TLA_form)*x697*x705*x709*x9 - PARAM(P_k_CXCL13_sec)*x1629;
+    data[1365] = PARAM(P_K_APC_ID)*(-SPVAR(SP_V_ID_GMCSF)*PARAM(P_k_APC_recruit_ID)*x2022/std::pow(x2018, 2) + x2019*x384)/x2016;
+    data[1366] = -PARAM(P_k_GMCSF_deg);
+    data[1367] = x2023*x2024 - x2023*x2026;
+    data[1368] = SPVAR(SP_V_LN_nCD8)*PARAM(P_n_CD8_clones)*x1753*x2027;
+    data[1369] = x1637*x1648*x2027;
+    data[1370] = PARAM(P_k_GVAX_present)*x384*x638;
+    data[1371] = -x2029;
+    data[1372] = x2029;
+    data[1373] = SPVAR(SP_V_ID_APC)*SPVAR(SP_V_ID_GVAX_cells)*SPVAR(SP_V_ID_P1_GVAX)*PARAM(P_k_APC_mature_ID)*PARAM(P_k_GVAX_clearance)*PARAM(P_sigma_P1_per_mAPC)*x2009*x2022*x2025 - PARAM(P_k_P1_deg_ID) - PARAM(P_sigma_P1_per_mAPC)*x2028;
+    data[1374] = -x2030;
+    data[1375] = x2030;
+    data[1376] = -PARAM(P_k_CD137_latch_off) - x209*x691;
+    data[1377] = SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*PARAM(P_k_TLA_form)*x2031*x697*x705*x707*x712*x9 - SPVAR(SP_V_T_CD8_TLA)*PARAM(P_k_CXCL13_ff)*x2031*x706*x711 - PARAM(P_k_TLA_decay) - x707*x710;
 
     // Boundary-state safety clamp. Analytical Jacobian entries can produce
     // NaN/Inf when a species is exactly zero and its rate law contains a
@@ -7148,7 +7119,7 @@ int ODE_system::jac(realtype t, N_Vector y, N_Vector fy,
     // step controller rejects the step if Newton fails to converge, and
     // once species move off zero on subsequent substeps the entries become
     // finite. This is the same remedy AMICI and libroadrunner use.
-    for (sunindextype k = 0; k < 1386; ++k) {
+    for (sunindextype k = 0; k < 1378; ++k) {
         if (!std::isfinite(data[k])) data[k] = 0.0;
     }
     return 0;

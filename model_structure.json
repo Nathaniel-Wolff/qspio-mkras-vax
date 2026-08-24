@@ -2508,15 +2508,9 @@
     },
     {
       "name": "N_div_costim",
-      "value": 3,
+      "value": 1.5105,
       "units": "dimensionless",
       "description": "number of activated T cell generations by co-stimulatory signaling only "
-    },
-    {
-      "name": "alpha_PD1_costim",
-      "value": 0.5,
-      "units": "dimensionless",
-      "description": "maximal fractional suppression of CD28 costim divisions by PD-1 (Hui 2017 SHP-2 axis); 0<alpha<1"
     },
     {
       "name": "N_IL2_CD8",

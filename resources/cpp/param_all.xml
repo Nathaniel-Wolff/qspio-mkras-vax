@@ -413,8 +413,7 @@
       <k_IL2_cons>5e-11</k_IL2_cons>
       <IL2_50>0.32</IL2_50>
       <N_div_base>2.0</N_div_base>
-      <N_div_costim>3.0</N_div_costim>
-      <alpha_PD1_costim>0.5</alpha_PD1_costim>
+      <N_div_costim>1.5105</N_div_costim>
       <N_IL2_CD8>11.0</N_IL2_CD8>
       <N_IL2_CD4>8.5</N_IL2_CD4>
       <w_IL2_help>5.0</w_IL2_help>
