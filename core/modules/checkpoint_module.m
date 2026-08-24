@@ -306,7 +306,7 @@ end
 % -- the same sign convention the internalization reaction already uses.
 % The IFNg Hill is kept on the RATE as well as the ceiling. Dropping it from the rate
 % (an earlier attempt) makes baseline synthesis ~19x faster, stiffens the system, and
-% breaks MATLAB<->C++ parity in the near-zero TLA nucleation-seed regime. Keeping it
+% breaks MATLAB<->C++ parity in the near-zero inflammatory-signal regime. Keeping it
 % leaves the rate magnitude untouched -- the fix rides entirely in the ceiling.
 R = addreaction(model,['null -> ',comp.Name,'.PDL1']);
     set (R, 'ReactionRate', ['k_out_PDL1*',IFNg_src,'/(',IFNg_src,'+IFNg_50_ind)*(1-',...

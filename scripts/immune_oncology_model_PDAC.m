@@ -73,12 +73,7 @@ antigen   = create_antigen({'C1'},[5.4e-13],'antigenID',1);
 model = antigen_module(model,'1',params_out,antigen);
 % PK Modules
 params_aPD1    = pk_parameters('nivolumab');
-params_aCD137  = pk_parameters('urelumab');   % anti-CD137/4-1BB agonist (Heumann Arm C)
 model = pk_module(model,'aPD1',params_aPD1);
-% Urelumab PK: 4-compartment drug species V_{C,P,T,LN}.aCD137. Always added
-% (=0 when undosed) so the TLA-local H_CD137_T CD8-activation Hill in tla_module
-% (reads V_T.aCD137) is well-defined for every scenario.
-model = pk_module(model,'aCD137',params_aCD137);
 % Checkpoint Modules
 model = checkpoint_module(model,params_out,'CD8','C1');
 %model = checkpoint_module(model,params_out,'CD8','C2');
@@ -93,12 +88,6 @@ model = macrophage_module(model,params_out,{'C1'});
 model = fibroblast_module_enhanced(model,params_out);
 
 model = gvax_module(model, params_out, 'add_cyclophosphamide', true);
-
-% Tertiary lymphoid aggregate (TLA) niche + urelumab/CD137 mechanism.
-% After gvax_module (needs V_ID.mAPC), Teff_module (V_T.CD8, k_CD8_death) and
-% pk_module('aCD137') (V_T.aCD137). All TLA pools are GVAX-seeded -> zero in the
-% baseline / non-vaccinated arms, so the calibrated A/B fit is untouched.
-model = tla_module(model, params_out);
 
 % Aggregate observables (derived totals for cal-target denominators).
 % Must run after all species-adding modules so nucleated_total_T can

@@ -269,25 +269,23 @@ params.rho_CD8_max.Units = 'cell/milliliter';
 params.rho_CD8_max.Notes = 'Max CD8 density in tumor (carrying cap). Re-centered 1e7 -> 5e6 on 2026-06-18 (v26) toward the live cd8_density_baseline_pooled target (61.8 cells/mm^2 via the model 11um Abercrombie projection -> ~5.6e6 cell/mL). Free placeholder (NOT submodel-anchored); once the v24 CD8 seed floored the cold-tumor collapse, the realized cd8_density was dominated by the filled branch at rho_CD8_max*V_T (~291/mm^2 at the old posterior 2.65e7 -> 2.7x over the pooled 62). Lowering the cap is an unambiguous multi-target win: cd8_density, cd8_pct (was 1.4x over post-seed) and cd8exh_pct (4x over) ALL want less CD8, and the shrunk nucleated_total LIFTS cd4_pct (Th absolute is correct but its fraction was diluted). Same placeholder-re-center as rho_Treg_max v23; the seed floor prevents re-collapse. sigma 1.5 keeps the densest tumors reachable.';
 params.rho_CD8_max.derivedFrom = {};
 % Vaccine-driven in-situ (intratumoral) CD8 proliferation increment (2026-07-18).
-% GVAX establishes intratumoral tertiary lymphoid aggregates (TLAs) with Ki-67+
-% proliferating CD8 inside them (Lutz 2014, Cancer Immunol Res 2:616 -- the same
-% Zheng group as the cd8_fc data). Vaccine-primed, antigen-experienced CD8 undergo
+% Vaccine-primed, antigen-experienced CD8 undergo
 % antigen-driven in-situ proliferation on tumoral antigen re-encounter -- the
 % treatment-DIFFERENTIAL half of tumor CD8 expansion that the constitutive
 % k_CD8_T_pro (vaccine-blind, Blessin-anchored, pins the baseline cd8_density)
 % cannot supply. Added as a SEPARATE saturating source on bulk V_T.CD8 in
-% tla_module, gated by the GVAX antigen Hill H_P1_spread (=0 at diagnosis and in
+% gvax_module, gated by the GVAX antigen Hill H_P1_spread (=0 at diagnosis and in
 % no-vaccine arms), which decouples cd8_fc from the baseline density. Anchored as
 % a FRACTION of the constitutive rate: k_CD8_T_vac_pro = f*k_CD8_T_pro, f~0.6, the
 % vaccine-differential increment bounded by intrinsic in-situ proliferation
 % capacity. (The earlier 0.5/day PLACEHOLDER was ~6x the Blessin-anchored
 % constitutive k_CD8_T_pro=0.079/day -- backwards, and the source of the ~20-29x
-% cd8gzmb_fc over-expansion.) Lutz 2014 shows vaccine-induced TLA proliferation
+% cd8gzmb_fc over-expansion.) Lutz 2014 shows vaccine-induced proliferation
 % only QUALITATIVELY (Ki-67 IHC, Fig 1D; no CD8-resolved fraction), so no direct
 % Ki-67->rate anchor exists. See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.
 params.k_CD8_T_vac_pro.Value = 0.05;
 params.k_CD8_T_vac_pro.Units = '1/day';
-params.k_CD8_T_vac_pro.Notes = 'GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in CD8_T_tot density. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.';
+params.k_CD8_T_vac_pro.Notes = 'GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in V_T.CD8 density. Retained in gvax_module after the C13 TLA/urelumab cut. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.';
 params.k_CD8_T_vac_pro.derivedFrom = {'k_CD8_T_pro'};
 % Density set-point for a quadratic CD8 crowding-death term (V3 stabilizer, 2026-07-17).
 % The homeostatic death is now k_CD8_death*CD8*(1 + CD8/(rho_CD8_crowd*V_T)) -- a
@@ -627,163 +625,6 @@ params.N_IL2_CD8.Notes = '(Marchingo 2014, PMID: 25430770)';
 params.N_IL2_CD4.Value = 8.5;
 params.N_IL2_CD4.Units = 'dimensionless';
 params.N_IL2_CD4.Notes = '(Marchingo 2014, PMID: 25430770)';
-% --- CD137 / 4-1BB agonist (urelumab) + tertiary lymphoid aggregate (TLA) ----
-% Consumed by tla_module.m (assembled after gvax_module). Heumann 2023
-% (Nat Commun 14:3650, NCT02451982 Arm C) reports the urelumab effect not as a
-% bulk CD8 expansion but as an activation-STATE conversion of CD8 inside
-% vaccine-induced intratumoral TLAs: the CD137+ fraction of within-TLA CD8 goes
-% from ~10% (Arm A, GVAX) / ~0% (Arm B, GVAX+nivo) to ~75% (Arm C, +urelumab,
-% Fig 5b), while general TLA CD8 NUMBER is flat (Suppl Fig 9) and the bulk
-% cytotoxic fraction is unchanged (Fig 5c). So urelumab no longer touches LN
-% division destiny (the retired N_div_CD137 term below); its entire effect is a
-% TLA-local conversion V_T.CD8_TLA -> V_T.CD8_TLA_act gated by H_CD137_T, a Hill
-% on the TUMOR urelumab concentration V_T.aCD137.
-%
-% N_div_CD137 is RETIRED (was: extra LN division-destiny generations at
-% saturating CD137; the 30k fit showed it was unidentified and the wrong shape
-% — the data shows flat bulk CD8). Removed from N_aT/N_aTh in
-% cytokine_tcell_module and from pdac_priors.csv. Its "extra generations"
-% meaning is replaced by the TLA conversion-rate + max-activated-fraction params
-% below.
-%
-% CD137_50 SURVIVES — re-tasked as the EC50 of the TLA-local conversion Hill
-% H_CD137_T = V_T.aCD137/(V_T.aCD137 + CD137_50) (was the LN division-destiny
-% Hill). The Leitner 4-1BB-agonism EC50 anchor still applies as an affinity.
-params.CD137_50.Value = 0.3;
-params.CD137_50.Units = 'nanomolarity';
-params.CD137_50.Notes = 'Half-maximal TUMOR urelumab concentration for CD137/4-1BB engagement of the TLA-local CD8 activation-state conversion (H_CD137_T). ESTIMATED ~1 nM from 8 mg flat-dose PK; affinity-anchorable to the Leitner 4-1BB system. Used in tla_module.';
-params.CD137_50.derivedFrom = {'estimated'};
-%
-% --- TLA niche dynamics (CXCL13 organizer -> aggregate -> CD8 residence) ------
-% CXCL13 is the nucleating chemokine for lymphoid neogenesis (recruits CXCR5+
-% B/Tfh, builds the follicle). In this GVAX system it is sourced from the
-% vaccine depot's matured DCs (V_ID.mAPC, zero unless GVAX is dosed -> TLAs are
-% vaccine-specific, consistent with Lutz 2014 33/39 vaccinated vs 0/54 not),
-% with a light positive feedback from TLA-resident CD8 that makes aggregate
-% presence switch-like (the binary prevalence: Li 2022 0/19 -> 19/19 by d14).
-% All ESTIMATED defaults; lit-anchorable kinetics (k_CXCL13_deg, k_CXCL13_sec,
-% k_CD137_act, k_TLA_decay) flagged for submodel extraction; the EC50/scale
-% (CXCL13_50_TLA) is a Bin-B scale-center (feature/binb-structural-ec50s).
-params.k_CXCL13_sec.Value = 1e-6;   % nanomole/cell/day, per depot mature DC
-params.k_CXCL13_sec.Units = 'nanomole/cell/day';
-params.k_CXCL13_sec.Notes = 'CXCL13 secretion per GVAX-depot matured DC (V_ID.mAPC). ESTIMATED; lit-anchorable to in vitro DC CXCL13 production. Used in tla_module.';
-params.k_CXCL13_sec.derivedFrom = {'estimated'};
-params.k_CXCL13_ff.Value = 1e-7;    % nanomole/cell/day, per resident CD8
-params.k_CXCL13_ff.Units = 'nanomole/cell/day';
-params.k_CXCL13_ff.Notes = 'CXCL13 feed-forward from TLA-resident CD8 (sustains the aggregate after depot clearance; makes prevalence switch-like). ESTIMATED. Used in tla_module.';
-params.k_CXCL13_ff.derivedFrom = {'estimated'};
-params.k_CXCL13_deg.Value = 10;     % 1/day, chemokine fast turnover
-params.k_CXCL13_deg.Units = '1/day';
-params.k_CXCL13_deg.Notes = 'CXCL13 first-order degradation/clearance. ESTIMATED; lit-anchorable to chemokine half-life. Used in tla_module.';
-params.k_CXCL13_deg.derivedFrom = {'estimated'};
-params.CXCL13_50_TLA.Value = 2e-4;  % nanomolarity
-params.CXCL13_50_TLA.Units = 'nanomolarity';
-params.CXCL13_50_TLA.Notes = 'Half-maximal CXCL13 for TLA niche formation. PHENOMENOLOGICAL threshold on the model-internal CXCL13 signal (~500x below real biochemical CXCL13 because the FDC-like organizer cell is not modeled). The Cosgrove2020 B-cell-chemotaxis submodel anchor was demoted (wrong quantity, wrong scale; see submodel_targets/excluded/README.md and notes/model/tla_cxcl13_urelumab_investigation.md). CSV-only wide prior; SBI fits it against within-TLA CD8 targets. Used in tla_module.';
-params.CXCL13_50_TLA.derivedFrom = {'estimated'};
-params.k_TLA_form.Value = 0.5;      % 1/day
-params.k_TLA_form.Units = '1/day';
-params.k_TLA_form.Notes = 'TLA niche formation rate (logistic toward a CXCL13-set ceiling, dimensionless niche fraction capped at 1). ESTIMATED; pinned by TLA prevalence/timing (Li/Lutz). Used in tla_module.';
-params.k_TLA_form.derivedFrom = {'estimated'};
-params.k_TLA_decay.Value = 0.05;    % 1/day, slow TLS regression
-params.k_TLA_decay.Units = '1/day';
-params.k_TLA_decay.Notes = 'TLA niche dissolution/regression rate. ESTIMATED; lit-anchorable to TLS turnover. Used in tla_module.';
-params.k_TLA_decay.derivedFrom = {'estimated'};
-% --- CD8 residence + CD137 activation-state conversion inside the TLA ---------
-% Residence: a fraction of intratumoral CD8 relocates into the aggregate in
-% proportion to niche size (reversible; relabels existing cells, no new
-% proliferation — decision 4). Conversion: V_T.CD8_TLA -> V_T.CD8_TLA_act driven
-% by the durable exposure LATCH L_CD137 (2026-07-19; NOT instantaneous H_CD137_T —
-% urelumab is a single day-7 dose that washes out well before the d21 readout, so
-% instantaneous gating decayed the CD137+ fraction to ~0.41 vs Heumann's ~0.83).
-% A small urelumab-independent baseline (f_act_base) keeps no-urelumab arms low;
-% Arm C is driven toward the saturating asymptote
-% k_CD137_act/(k_CD137_act+k_CD137_deact+k_TLA_egress+k_TLA_release) = 0.847 (the
-% +k_TLA_release activated-pool loss was previously omitted from this comment).
-params.k_TLA_seq.Value = 0.5;       % 1/day, CD8 sequestration into the niche
-params.k_TLA_seq.Units = '1/day';
-params.k_TLA_seq.Notes = 'Rate of intratumoral CD8 sequestration into the TLA niche (scaled by the TLA area fraction a_TLA, NOT the 0-1 niche-formation dial TLA). ESTIMATED; identified by the LA/non-LA CD8 density-ratio submodel target via the product k_TLA_seq*a_TLA. Used in tla_module.';
-params.k_TLA_seq.derivedFrom = {'estimated'};
-params.k_TLA_release.Value = 0.1;   % 1/day, CD8 return to bulk
-params.k_TLA_release.Units = '1/day';
-params.k_TLA_release.Notes = 'Rate of within-TLA CD8 return to the bulk intratumoral pool. ESTIMATED. Used in tla_module.';
-params.k_TLA_release.derivedFrom = {'estimated'};
-params.a_TLA.Value = 0.0055;        % dimensionless, intratumoral TLA area fraction (Hiraoka 2015)
-params.a_TLA.Units = 'dimensionless';
-params.a_TLA.Notes = ['TLA area fraction of the tumor (Hiraoka 2015: intratumoral TLO area 0.1-1%% of tumor for grade 3, midpoint 0.55%%). Scales CD8 sequestration into the niche so the count partition CD8_TLA/CD8 = k_TLA_seq*a_TLA/(k_TLA_release+k_CD8_death) matches the tla_seq_release_partition submodel target, which uses this same Hiraoka value. FIXED constant, NOT varied in SBI: only the product k_TLA_seq*a_TLA is identifiable from the LA/non-LA density ratio, so a_TLA is pinned from data and k_TLA_seq carries the inference. Replaces the prior use of the 0-1 niche-formation dial TLA (~0.82 at QSS) in the sequestration term, which over-sequestered CD8 ~150x and drained the non-LA bulk pool (Li 2022 cd8_pct_nonLA). Used in tla_module.'];
-params.a_TLA.derivedFrom = {'Hiraoka2015'};
-params.k_CD137_act.Value = 1.0;     % 1/day, conversion at saturating urelumab
-params.k_CD137_act.Units = '1/day';
-params.k_CD137_act.Notes = 'Max rate of CD8_TLA -> CD8_TLA_act conversion (CD137+ activation state) at saturating urelumab. ESTIMATED; lit-anchorable to in vitro 4-1BB-agonism activation timecourse (Leitner). Used in tla_module.';
-params.k_CD137_act.derivedFrom = {'estimated'};
-params.k_CD137_deact.Value = 0.05;  % 1/day, slow reversion (durable CD137+)
-params.k_CD137_deact.Units = '1/day';
-params.k_CD137_deact.Notes = 'Rate of CD8_TLA_act -> CD8_TLA reversion (loss of CD137+ activation state). Durable CD137+ (slow reversion) so the within-TLA activated fraction stays high through d21; with k_CD137_act sets the activated-fraction asymptote (Heumann Arm C). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_deact.derivedFrom = {'estimated'};
-params.f_act_base.Value = 0.0015;   % dimensionless, urelumab-independent floor (lowered from 0.01: realized no-urelumab CD137+ ran ~4.6% vs Heumann Arm B ~0.6% intent)
-params.f_act_base.Units = 'dimensionless';
-params.f_act_base.Notes = 'Urelumab-independent baseline of the CD137 conversion drive, sets the no-urelumab within-TLA CD137+ fraction (low, between Heumann Arm A ~1.5% and Arm B ~0.6%). Lowered under the new durable-CD137+ regime (slow k_CD137_deact) so the no-urelumab arms stay low. ESTIMATED, free; wide prior; pinned by Arm A/B targets. Used in tla_module.';
-params.f_act_base.derivedFrom = {'estimated'};
-params.k_TLA_egress.Value = 0.03;   % 1/day, activated egress to vicinity
-params.k_TLA_egress.Units = '1/day';
-params.k_TLA_egress.Notes = 'Rate of activated within-TLA CD8 (CD8_TLA_act) egress to the neoplastic vicinity (the 2-4% CD137+ subset outside TLA, Fig 5d) as the durable effector pool CD8_vic. ESTIMATED; pinned by the vicinity target. Used in tla_module.';
-params.k_TLA_egress.derivedFrom = {'estimated'};
-% Integrated-exposure latch for durable CD137/4-1BB activation (2026-07-19).
-% See tla_module. Urelumab is a single day-7 dose that washes out (aCD137 t1/2
-% ~5.5 d) well before the d21 readout, so instantaneous-occupancy gating (H_CD137_T)
-% decayed the within-TLA CD137+ fraction to ~0.41 vs Heumann Arm C ~0.83. L_CD137
-% charges from H_CD137_T during the drug window and decays slowly, so the activated
-% state persists (and fresh niche CD8 keep getting activated rather than diluting
-% the fraction). Both params are zero-effect without urelumab.
-params.k_CD137_latch_on.Value = 1.0;    % 1/day, exposure -> commitment (latch charge)
-params.k_CD137_latch_on.Units = '1/day';
-params.k_CD137_latch_on.Notes = 'Rate at which urelumab exposure (H_CD137_T) commits the TLA to the durable CD137+ activation program (latch charge, L_CD137). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_latch_on.derivedFrom = {};
-params.k_CD137_latch_off.Value = 0.015; % 1/day, slow latch decay (~weeks memory)
-params.k_CD137_latch_off.Units = '1/day';
-params.k_CD137_latch_off.Notes = 'Decay rate of the CD137 activation latch (L_CD137) — the durability of the 4-1BB-induced activation program after urelumab washout (~0.015/day, t1/2 ~6 weeks). Sets how long the within-TLA CD137+ fraction persists post single-dose urelumab (Heumann Arm C d21, 14 d after the dose). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_latch_off.derivedFrom = {};
-params.phi_vic_kill.Value = 2.0;    % dimensionless, per-cell killing quality multiplier of egressed vicinity effectors
-params.phi_vic_kill.Units = 'dimensionless';
-params.phi_vic_kill.Notes = ['Per-cell tumor-killing quality multiplier for the egressed vicinity effector pool CD8_vic relative to bulk V_T.CD8 (4-1BB/CD137-agonism upgrades effector QUALITY, not quantity; Heumann 2023 reports flat bulk GZMB density but a survival-associated CD8+CD137+GZMB+ activated-cytotoxic subset that egresses to the neoplastic vicinity, Fig 5d). >1 means vicinity effectors kill better per cell. ESTIMATED, free; wide prior; constrained by the urelumab DFS/OS and Fig-5d vicinity targets. Urelumab-gated downstream (CD8_vic~0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module.'];
-params.phi_vic_kill.derivedFrom = {'estimated'};
-params.k_vic_decay.Value = 0.005;   % 1/day, slow (half-life ~139 d): effector-memory durability of the vicinity pool
-params.k_vic_decay.Units = '1/day';
-params.k_vic_decay.Notes = ['Turnover of the egressed vicinity effector pool CD8_vic back to bulk V_T.CD8. SLOW (half-life ~139 d at 0.005/day) = effector-memory-like durability: the urelumab vicinity pool is seeded during the brief neoadjuvant urelumab window (single dose, aCD137 clears in weeks) and must PERSIST for months so that, as the vaccine/nivo-driven bulk CD8 contracts post-treatment, the durable throttle-bypassing vicinity pool sustains tumor/recurrence control over the long horizon (the DFS/OS benefit). ESTIMATED, free; wide prior; long-horizon DFS/OS targets pull it. Used in tla_module.'];
-params.k_vic_decay.derivedFrom = {'estimated'};
-params.k_CD137_reinvig.Value = 1.42; % 1/day, TOTAL urelumab/4-1BB-driven Tpex differentiation rate (fate-split downstream by f_CD137_func). ANCHORED 2026-07-16 to Pichler2023 Fig3M-P sorted-Tpex transfer (death-free closed form; 7-day exposure-averaged EFFECTIVE rate, 3H3 dosed d0/d4 -- not verified maximal); composed posterior median ~0.97/day. Correlated with k_CD137_prolif -- only the net (kp-kr) is structure-robust.
-params.k_CD137_reinvig.Units = '1/day';
-params.k_CD137_reinvig.Notes = ['Max TOTAL urelumab/4-1BB (CD137-agonist)-driven differentiation rate of progenitor-exhausted (Tpex) CD8 out of the reservoir, at full tumor urelumab occupancy (H_CD137_T). The 4-1BB COSTIMULATION drive on the CD8_pex reservoir, parallel to the anti-PD-1 k_reinvig arm. NOTE (2026-07-15): this is NO LONGER a pure reflux to functional effectors — CD137 agonism drives Tpex proliferation AND terminal differentiation (Pichler 2023, Immunity: TCR-independent CD137 signaling promotes exhausted-CD8 proliferation and terminal differentiation), so the CD137-driven exit flux is fate-split in tla_module (fraction f_CD137_func to functional CD8, remainder to terminal CD8_exh). Captures the synergy with aPD-1 (Muth 2023, Zotero 39X6WHRF: aCD137 + aPD-1 increased IFNg in EOMES+ exhausted TILs). Anchorable from CD137-induced Tpex proliferation/expansion kinetics (the confound that made an isolated reflux fraction unmeasurable). Prior framing as "the dominant urelumab antitumor lever" was falsified by a Heumann-arm trace (moves bulk CD8 <0.5% over 21 days; urelumab antitumor effect rides on the vicinity/quality arm). Urelumab-gated (H_CD137_T=0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module.'];
-params.k_CD137_reinvig.derivedFrom = {'cd137_tpex_dynamics'};
-
-% Functional fraction of the CD137-driven Tpex differentiation flux (fate split).
-% CD137/4-1BB agonism sends Tpex toward proliferation + terminal differentiation
-% (Pichler 2023), NOT cleanly back to resting functional effectors. f_CD137_func
-% is the fraction of the CD137-driven Tpex exit (k_CD137_reinvig*CD8_pex*H_CD137_T)
-% that becomes functional (transitory-effector) CD8; (1-f_CD137_func) becomes
-% terminal CD8_exh. Default skewed terminal (0.35) per Pichler's terminal-dominant
-% direction; ANCHORABLE from the functional:terminal ratio in head-to-head 4-1BB
-% Tpex assays (Kim 2020 HCC / Pichler 2023 / Muth 2023) — a data-constrained
-% fraction, not a free knob. Dimensionless, 0-1. derivedFrom={} (submodel-anchor
-% queued). Used in tla_module reactions 14a/14b.
-params.f_CD137_func.Value = 0.24; % ANCHORED 2026-07-16: Pichler2023 Fig3P Tpex-donor fate donut, E/(E+T)=Tmem/(Tmem+TermTex)=0.24 (terminal-skewed); mild UPPER bound (differential TermTex death would lower it). Was 0.35 placeholder.
-params.f_CD137_func.Units = 'dimensionless';
-params.f_CD137_func.Notes = 'Functional (transitory-effector) fraction of the CD137/4-1BB-driven Tpex differentiation flux; (1-f_CD137_func) is the terminal-CD8_exh fraction (Pichler 2023 terminal-dominant skew). Anchorable from the functional:terminal ratio in head-to-head 4-1BB Tpex assays. Used in tla_module (fate-split of reaction 14).';
-params.f_CD137_func.derivedFrom = {'cd137_tpex_dynamics'};
-
-% CD137/4-1BB-driven Tpex proliferation (self-renewal) rate. 4-1BB agonism expands
-% the progenitor-exhausted pool (Pichler 2023; Li 2023 Ki67), so the model grows
-% CD8_pex under urelumab rather than only re-partitioning its exit flux. GENERATIVE
-% (null -> CD8_pex) but H_CD137_T-gated -> identically zero at baseline / Arms A/B
-% (so the 2026-06-17 inflow-sourced reservoir reformulation is preserved there) and
-% niche-capped by rho_pex_max (shared with the exhaustion inflow) so it saturates at
-% the Jansen 2019 ceiling. Default 0.1/day (modest, avoids self-igniting to the cap
-% within the ~2-week neoadjuvant urelumab window); ANCHORABLE from CD137-induced
-% Tpex Ki67 / fold-expansion kinetics (Li 2023). Dimensionless-gated 1/day.
-% derivedFrom={} (submodel-anchor queued). Used in tla_module reaction 14c.
-params.k_CD137_prolif.Value = 1.55; % ANCHORED 2026-07-16 to Pichler2023 Fig3M-P sorted-Tpex transfer (death-free closed form; 7-day exposure-averaged EFFECTIVE rate, 3H3 dosed d0/d4 -- not verified maximal); composed posterior median ~1.15/day. Was 0.1 placeholder. Ki67 (Fig3B-D, a different assay) implies lower ~0.1-0.5/day — the wide prior spans this tension. Individual kp/kr are endpoint-equivalent/model-imposed; net (kp-kr)~0.14 is the robust quantity.
-params.k_CD137_prolif.Units = '1/day';
-params.k_CD137_prolif.Notes = 'Max CD137/4-1BB-driven Tpex (CD8_pex) proliferation/self-renewal rate at full urelumab occupancy (H_CD137_T); generative null->CD8_pex, H_CD137_T-gated (zero at baseline/Arms A/B), niche-capped by rho_pex_max. Anchorable from CD137-induced Tpex Ki67/fold-expansion (Li 2023). Used in tla_module.';
-params.k_CD137_prolif.derivedFrom = {'cd137_tpex_dynamics'};
 % ---------------------------------------------------------------------------
 % Local IL-2 niche params (quasi-steady-state supply/demand reformulation).
 % IL-2 is no longer a bulk dynamic species. The bulk V_LN.IL2 pool was

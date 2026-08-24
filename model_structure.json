@@ -36,13 +36,6 @@
       "description": "Concentration of aPD1 in central compartment"
     },
     {
-      "name": "V_C.aCD137",
-      "compartment": "V_C",
-      "base_name": "aCD137",
-      "units": "nanomolarity",
-      "description": "Concentration of aCD137 in central compartment"
-    },
-    {
       "name": "V_C.Th",
       "compartment": "V_C",
       "base_name": "Th",
@@ -97,13 +90,6 @@
       "base_name": "aPD1",
       "units": "nanomolarity",
       "description": "Concentration of aPD1 in peripheral compartment"
-    },
-    {
-      "name": "V_P.aCD137",
-      "compartment": "V_P",
-      "base_name": "aCD137",
-      "units": "nanomolarity",
-      "description": "Concentration of aCD137 in peripheral compartment"
     },
     {
       "name": "V_P.Th",
@@ -223,13 +209,6 @@
       "base_name": "aPD1",
       "units": "nanomolarity",
       "description": "Concentration of aPD1 in tumour compartment"
-    },
-    {
-      "name": "V_T.aCD137",
-      "compartment": "V_T",
-      "base_name": "aCD137",
-      "units": "nanomolarity",
-      "description": "Concentration of aCD137 in tumour compartment"
     },
     {
       "name": "V_T.Th",
@@ -365,27 +344,6 @@
       "description": "Interleukin-1alpha in tumor compartment. Tumor-derived; drives iCAF formation via NF-kB/LIF/JAK-STAT3. TGFb antagonizes signaling by downregulating IL-1R1."
     },
     {
-      "name": "V_T.CD8_TLA",
-      "compartment": "V_T",
-      "base_name": "CD8_TLA",
-      "units": "cell",
-      "description": "Resting (CD137-) CD8 resident within the TLA"
-    },
-    {
-      "name": "V_T.CD8_TLA_act",
-      "compartment": "V_T",
-      "base_name": "CD8_TLA_act",
-      "units": "cell",
-      "description": "CD137+ activated CD8 within the TLA (Heumann within-TLA CD8+CD137+ observable)"
-    },
-    {
-      "name": "V_T.CD8_vic",
-      "compartment": "V_T",
-      "base_name": "CD8_vic",
-      "units": "cell",
-      "description": "Egressed activated effector CD8 in the neoplastic vicinity outside the TLA (Heumann Fig 5d 2-4% subset); higher per-cell killing quality (phi_vic_kill) and effector-memory-like durability (k_vic_decay) — the urelumab antitumor/survival effector pool"
-    },
-    {
       "name": "V_LN.nCD4",
       "compartment": "V_LN",
       "base_name": "nCD4",
@@ -461,13 +419,6 @@
       "base_name": "aPD1",
       "units": "nanomolarity",
       "description": "Concentration of aPD1 in lymph node compartment"
-    },
-    {
-      "name": "V_LN.aCD137",
-      "compartment": "V_LN",
-      "base_name": "aCD137",
-      "units": "nanomolarity",
-      "description": "Concentration of aCD137 in lymph node compartment"
     },
     {
       "name": "V_LN.aTh",
@@ -2063,60 +2014,6 @@
       "description": "Volume fraction of interstitial space available to aPD1 in TDLN compartment"
     },
     {
-      "name": "q_P_aCD137",
-      "value": 8.8E-6,
-      "units": "liter/second",
-      "description": "Capillary filtration rate of aCD137 between central and peripheral compartment"
-    },
-    {
-      "name": "q_T_aCD137",
-      "value": 8.52E-5,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aCD137 between central and tumor compartment"
-    },
-    {
-      "name": "q_LN_aCD137",
-      "value": 3.25E-6,
-      "units": "milliliter/second",
-      "description": "Capillary filtration rate of aCD137 between central and TDLN compartment"
-    },
-    {
-      "name": "q_LD_aCD137",
-      "value": 0.0015,
-      "units": "1/minute",
-      "description": "Rate of lymphatic drainage of aCD137 from TDLN to central compartment"
-    },
-    {
-      "name": "k_cl_aCD137",
-      "value": 1.7,
-      "units": "liter/day",
-      "description": "Clearance rate of aCD137 from central compartment"
-    },
-    {
-      "name": "gamma_C_aCD137",
-      "value": 0.61,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCD137 in central compartment"
-    },
-    {
-      "name": "gamma_P_aCD137",
-      "value": 0.0452,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCD137 in peripheral compartment"
-    },
-    {
-      "name": "gamma_T_aCD137",
-      "value": 0.522,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCD137 in tumor compartment"
-    },
-    {
-      "name": "gamma_LN_aCD137",
-      "value": 0.2,
-      "units": "dimensionless",
-      "description": "Volume fraction of interstitial space available to aCD137 in TDLN compartment"
-    },
-    {
       "name": "kon_PD1_PDL1",
       "value": 0.06,
       "units": "1/(micromolarity*nanometer*second)",
@@ -3665,6 +3562,12 @@
       "description": "Vaccine-antigen Hill gating epitope-spreading clonal recruitment (Path A); 0 at diagnosis"
     },
     {
+      "name": "k_CD8_T_vac_pro",
+      "value": 0.05,
+      "units": "1/day",
+      "description": "GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in V_T.CD8 density. Retained in gvax_module after the C13 TLA/urelumab cut. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md."
+    },
+    {
       "name": "k_Cy_clear",
       "value": 2.5,
       "units": "1/day",
@@ -3707,184 +3610,10 @@
       "description": "Half-saturation of the Cy effect compartment on tumor-Treg proliferation (structural; weakly identifiable, fixed)"
     },
     {
-      "name": "CD137_50",
-      "value": 0.3,
-      "units": "nanomolarity",
-      "description": "Half-maximal TUMOR urelumab concentration for CD137/4-1BB engagement of the TLA-local CD8 activation-state conversion (H_CD137_T). ESTIMATED ~1 nM from 8 mg flat-dose PK; affinity-anchorable to the Leitner 4-1BB system. Used in tla_module."
-    },
-    {
-      "name": "k_CXCL13_sec",
-      "value": 1E-6,
-      "units": "nanomole/cell/day",
-      "description": "CXCL13 secretion per GVAX-depot matured DC (V_ID.mAPC). ESTIMATED; lit-anchorable to in vitro DC CXCL13 production. Used in tla_module."
-    },
-    {
-      "name": "k_CXCL13_ff",
-      "value": 1E-7,
-      "units": "nanomole/cell/day",
-      "description": "CXCL13 feed-forward from TLA-resident CD8 (sustains the aggregate after depot clearance; makes prevalence switch-like). ESTIMATED. Used in tla_module."
-    },
-    {
-      "name": "k_CXCL13_deg",
-      "value": 10,
-      "units": "1/day",
-      "description": "CXCL13 first-order degradation/clearance. ESTIMATED; lit-anchorable to chemokine half-life. Used in tla_module."
-    },
-    {
-      "name": "CXCL13_50_TLA",
-      "value": 0.0002,
-      "units": "nanomolarity",
-      "description": "Half-maximal CXCL13 for TLA niche formation. PHENOMENOLOGICAL threshold on the model-internal CXCL13 signal (~500x below real biochemical CXCL13 because the FDC-like organizer cell is not modeled). The Cosgrove2020 B-cell-chemotaxis submodel anchor was demoted (wrong quantity, wrong scale; see submodel_targets/excluded/README.md and notes/model/tla_cxcl13_urelumab_investigation.md). CSV-only wide prior; SBI fits it against within-TLA CD8 targets. Used in tla_module."
-    },
-    {
-      "name": "k_TLA_form",
-      "value": 0.5,
-      "units": "1/day",
-      "description": "TLA niche formation rate (logistic toward a CXCL13-set ceiling, dimensionless niche fraction capped at 1). ESTIMATED; pinned by TLA prevalence/timing (Li/Lutz). Used in tla_module."
-    },
-    {
-      "name": "k_TLA_decay",
-      "value": 0.05,
-      "units": "1/day",
-      "description": "TLA niche dissolution/regression rate. ESTIMATED; lit-anchorable to TLS turnover. Used in tla_module."
-    },
-    {
-      "name": "k_TLA_seq",
-      "value": 0.5,
-      "units": "1/day",
-      "description": "Rate of intratumoral CD8 sequestration into the TLA niche (scaled by the TLA area fraction a_TLA, NOT the 0-1 niche-formation dial TLA). ESTIMATED; identified by the LA/non-LA CD8 density-ratio submodel target via the product k_TLA_seq*a_TLA. Used in tla_module."
-    },
-    {
-      "name": "k_TLA_release",
-      "value": 0.1,
-      "units": "1/day",
-      "description": "Rate of within-TLA CD8 return to the bulk intratumoral pool. ESTIMATED. Used in tla_module."
-    },
-    {
-      "name": "a_TLA",
-      "value": 0.0055,
-      "units": "dimensionless",
-      "description": "TLA area fraction of the tumor (Hiraoka 2015: intratumoral TLO area 0.1-1%% of tumor for grade 3, midpoint 0.55%%). Scales CD8 sequestration into the niche so the count partition CD8_TLA/CD8 = k_TLA_seq*a_TLA/(k_TLA_release+k_CD8_death) matches the tla_seq_release_partition submodel target, which uses this same Hiraoka value. FIXED constant, NOT varied in SBI: only the product k_TLA_seq*a_TLA is identifiable from the LA/non-LA density ratio, so a_TLA is pinned from data and k_TLA_seq carries the inference. Replaces the prior use of the 0-1 niche-formation dial TLA (~0.82 at QSS) in the sequestration term, which over-sequestered CD8 ~150x and drained the non-LA bulk pool (Li 2022 cd8_pct_nonLA). Used in tla_module."
-    },
-    {
-      "name": "k_CD137_act",
-      "value": 1,
-      "units": "1/day",
-      "description": "Max rate of CD8_TLA -> CD8_TLA_act conversion (CD137+ activation state) at saturating urelumab. ESTIMATED; lit-anchorable to in vitro 4-1BB-agonism activation timecourse (Leitner). Used in tla_module."
-    },
-    {
-      "name": "k_CD137_deact",
-      "value": 0.05,
-      "units": "1/day",
-      "description": "Rate of CD8_TLA_act -> CD8_TLA reversion (loss of CD137+ activation state). Durable CD137+ (slow reversion) so the within-TLA activated fraction stays high through d21; with k_CD137_act sets the activated-fraction asymptote (Heumann Arm C). ESTIMATED, free; wide prior. Used in tla_module."
-    },
-    {
-      "name": "f_act_base",
-      "value": 0.0015,
-      "units": "dimensionless",
-      "description": "Urelumab-independent baseline of the CD137 conversion drive, sets the no-urelumab within-TLA CD137+ fraction (low, between Heumann Arm A ~1.5% and Arm B ~0.6%). Lowered under the new durable-CD137+ regime (slow k_CD137_deact) so the no-urelumab arms stay low. ESTIMATED, free; wide prior; pinned by Arm A/B targets. Used in tla_module."
-    },
-    {
-      "name": "k_TLA_egress",
-      "value": 0.03,
-      "units": "1/day",
-      "description": "Rate of activated within-TLA CD8 (CD8_TLA_act) egress to the neoplastic vicinity (the 2-4% CD137+ subset outside TLA, Fig 5d) as the durable effector pool CD8_vic. ESTIMATED; pinned by the vicinity target. Used in tla_module."
-    },
-    {
-      "name": "phi_vic_kill",
-      "value": 2,
-      "units": "dimensionless",
-      "description": "Per-cell tumor-killing quality multiplier for the egressed vicinity effector pool CD8_vic relative to bulk V_T.CD8 (4-1BB/CD137-agonism upgrades effector QUALITY, not quantity; Heumann 2023 reports flat bulk GZMB density but a survival-associated CD8+CD137+GZMB+ activated-cytotoxic subset that egresses to the neoplastic vicinity, Fig 5d). >1 means vicinity effectors kill better per cell. ESTIMATED, free; wide prior; constrained by the urelumab DFS/OS and Fig-5d vicinity targets. Urelumab-gated downstream (CD8_vic~0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module."
-    },
-    {
-      "name": "k_vic_decay",
-      "value": 0.005,
-      "units": "1/day",
-      "description": "Turnover of the egressed vicinity effector pool CD8_vic back to bulk V_T.CD8. SLOW (half-life ~139 d at 0.005/day) = effector-memory-like durability: the urelumab vicinity pool is seeded during the brief neoadjuvant urelumab window (single dose, aCD137 clears in weeks) and must PERSIST for months so that, as the vaccine/nivo-driven bulk CD8 contracts post-treatment, the durable throttle-bypassing vicinity pool sustains tumor/recurrence control over the long horizon (the DFS/OS benefit). ESTIMATED, free; wide prior; long-horizon DFS/OS targets pull it. Used in tla_module."
-    },
-    {
-      "name": "k_CD137_reinvig",
-      "value": 1.42,
-      "units": "1/day",
-      "description": "Max TOTAL urelumab/4-1BB (CD137-agonist)-driven differentiation rate of progenitor-exhausted (Tpex) CD8 out of the reservoir, at full tumor urelumab occupancy (H_CD137_T). The 4-1BB COSTIMULATION drive on the CD8_pex reservoir, parallel to the anti-PD-1 k_reinvig arm. NOTE (2026-07-15): this is NO LONGER a pure reflux to functional effectors — CD137 agonism drives Tpex proliferation AND terminal differentiation (Pichler 2023, Immunity: TCR-independent CD137 signaling promotes exhausted-CD8 proliferation and terminal differentiation), so the CD137-driven exit flux is fate-split in tla_module (fraction f_CD137_func to functional CD8, remainder to terminal CD8_exh). Captures the synergy with aPD-1 (Muth 2023, Zotero 39X6WHRF: aCD137 + aPD-1 increased IFNg in EOMES+ exhausted TILs). Anchorable from CD137-induced Tpex proliferation/expansion kinetics (the confound that made an isolated reflux fraction unmeasurable). Prior framing as \"the dominant urelumab antitumor lever\" was falsified by a Heumann-arm trace (moves bulk CD8 <0.5% over 21 days; urelumab antitumor effect rides on the vicinity/quality arm). Urelumab-gated (H_CD137_T=0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module."
-    },
-    {
-      "name": "f_CD137_func",
-      "value": 0.24,
-      "units": "dimensionless",
-      "description": "Functional (transitory-effector) fraction of the CD137/4-1BB-driven Tpex differentiation flux; (1-f_CD137_func) is the terminal-CD8_exh fraction (Pichler 2023 terminal-dominant skew). Anchorable from the functional:terminal ratio in head-to-head 4-1BB Tpex assays. Used in tla_module (fate-split of reaction 14)."
-    },
-    {
-      "name": "k_CD137_prolif",
-      "value": 1.55,
-      "units": "1/day",
-      "description": "Max CD137/4-1BB-driven Tpex (CD8_pex) proliferation/self-renewal rate at full urelumab occupancy (H_CD137_T); generative null->CD8_pex, H_CD137_T-gated (zero at baseline/Arms A/B), niche-capped by rho_pex_max. Anchorable from CD137-induced Tpex Ki67/fold-expansion (Li 2023). Used in tla_module."
-    },
-    {
-      "name": "k_CD8_T_vac_pro",
-      "value": 0.05,
-      "units": "1/day",
-      "description": "GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in CD8_T_tot density. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md."
-    },
-    {
-      "name": "k_CD137_latch_on",
-      "value": 1,
-      "units": "1/day",
-      "description": "Rate at which urelumab exposure (H_CD137_T) commits the TLA to the durable CD137+ activation program (latch charge, L_CD137). ESTIMATED, free; wide prior. Used in tla_module."
-    },
-    {
-      "name": "k_CD137_latch_off",
-      "value": 0.015,
-      "units": "1/day",
-      "description": "Decay rate of the CD137 activation latch (L_CD137) — the durability of the 4-1BB-induced activation program after urelumab washout (~0.015/day, t1/2 ~6 weeks). Sets how long the within-TLA CD137+ fraction persists post single-dose urelumab (Heumann Arm C d21, 14 d after the dose). ESTIMATED, free; wide prior. Used in tla_module."
-    },
-    {
-      "name": "H_CD137_T",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill of tumor urelumab (V_T.aCD137) gating TLA CD8 CD137-activation"
-    },
-    {
-      "name": "L_CD137",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Integrated-exposure latch for durable CD137/4-1BB activation: charges from H_CD137_T during the urelumab window, decays slowly (k_CD137_latch_off) — drives the TLA CD8 activation-state conversion (reaction 8) so the CD137+ fraction persists to d21 after single-dose urelumab washes out"
-    },
-    {
-      "name": "CXCL13",
-      "value": 0,
-      "units": "nanomolarity",
-      "description": "CXCL13 organizer chemokine (quasi-steady; GVAX-depot source + TLA-resident-CD8 feed-forward)"
-    },
-    {
-      "name": "H_CXCL13",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "Hill of CXCL13 driving TLA niche formation"
-    },
-    {
-      "name": "TLA",
-      "value": 0,
-      "units": "dimensionless",
-      "description": "TLA niche fraction (0-1); intratumoral tertiary lymphoid aggregate presence/size"
-    },
-    {
-      "name": "CD8_T_tot",
-      "value": 0,
-      "units": "cell",
-      "description": "Total intratumoral CD8 (bulk + within-TLA resting + within-TLA activated + egressed vicinity effector); carrying-capacity denominator"
-    },
-    {
-      "name": "k_C_vic_eff",
-      "value": 0,
-      "units": "1/day",
-      "description": "Effective vicinity-effector (CD8_vic) tumor-killing rate; throttle-bypassing (no pore exclusion / Treg) with phi_vic_kill quality multiplier"
-    },
-    {
       "name": "CD8_total_T",
       "value": 0,
       "units": "cell",
-      "description": "Total CD8 T cells in V_T (effector + terminal-exhausted + progenitor-exhausted + egressed vicinity effector). Aggregate alias for total-CD8 observables."
+      "description": "Total CD8 T cells in V_T (effector + terminal-exhausted + progenitor-exhausted). Aggregate alias for total-CD8 observables."
     },
     {
       "name": "nucleated_total_T",
@@ -3896,7 +3625,7 @@
       "name": "CD8_exh_total_T",
       "value": 0,
       "units": "cell",
-      "description": "Exhausted CD8 T cells in V_T (terminal + progenitor-exhausted). Excludes the egressed vicinity effector CD8_vic."
+      "description": "Exhausted CD8 T cells in V_T (terminal + progenitor-exhausted)."
     },
     {
       "name": "Th_total_T",
@@ -4609,12 +4338,11 @@
       "products": [
         "V_T.CD8"
       ],
-      "rate_law": "k_CD8_T_pro*V_T.CD8/(1 + CD8_T_tot/(rho_CD8_max*V_T + cell))",
+      "rate_law": "k_CD8_T_pro*V_T.CD8/(1 + V_T.CD8/(rho_CD8_max*V_T + cell))",
       "parameters": [
         "cell",
         "k_CD8_T_pro",
-        "rho_CD8_max",
-        "CD8_T_tot"
+        "rho_CD8_max"
       ]
     },
     {
@@ -5400,90 +5128,6 @@
     },
     {
       "name": "Reaction_112",
-      "reactants": [
-        "V_C.aCD137"
-      ],
-      "products": [
-        "V_P.aCD137"
-      ],
-      "rate_law": "q_P_aCD137*(V_C.aCD137/gamma_C_aCD137-V_P.aCD137/gamma_P_aCD137)",
-      "parameters": [
-        "q_P_aCD137",
-        "gamma_C_aCD137",
-        "gamma_P_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_113",
-      "reactants": [
-        "V_C.aCD137"
-      ],
-      "products": [
-        "V_T.aCD137"
-      ],
-      "rate_law": "q_T_aCD137*(V_C.aCD137/gamma_C_aCD137-V_T.aCD137/gamma_T_aCD137)",
-      "parameters": [
-        "q_T_aCD137",
-        "gamma_C_aCD137",
-        "gamma_T_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_114",
-      "reactants": [
-        "V_C.aCD137"
-      ],
-      "products": [
-        "V_LN.aCD137"
-      ],
-      "rate_law": "q_LN_aCD137*(V_C.aCD137/gamma_C_aCD137-V_LN.aCD137/gamma_LN_aCD137)",
-      "parameters": [
-        "q_LN_aCD137",
-        "gamma_C_aCD137",
-        "gamma_LN_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_115",
-      "reactants": [
-        "V_T.aCD137"
-      ],
-      "products": [
-        "V_LN.aCD137"
-      ],
-      "rate_law": "q_LD_aCD137*V_T*V_T.aCD137/gamma_T_aCD137",
-      "parameters": [
-        "q_LD_aCD137",
-        "gamma_T_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_116",
-      "reactants": [
-        "V_LN.aCD137"
-      ],
-      "products": [
-        "V_C.aCD137"
-      ],
-      "rate_law": "q_LD_aCD137*V_T*V_LN.aCD137/gamma_LN_aCD137",
-      "parameters": [
-        "q_LD_aCD137",
-        "gamma_LN_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_117",
-      "reactants": [
-        "V_C.aCD137"
-      ],
-      "products": [],
-      "rate_law": "k_cl_aCD137*V_C.aCD137",
-      "parameters": [
-        "k_cl_aCD137"
-      ]
-    },
-    {
-      "name": "Reaction_118",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL1"
@@ -5499,7 +5143,7 @@
       ]
     },
     {
-      "name": "Reaction_119",
+      "name": "Reaction_113",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL2"
@@ -5516,7 +5160,7 @@
       ]
     },
     {
-      "name": "Reaction_120",
+      "name": "Reaction_114",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL1"
@@ -5530,7 +5174,7 @@
       ]
     },
     {
-      "name": "Reaction_121",
+      "name": "Reaction_115",
       "reactants": [],
       "products": [
         "syn_CD8_C1.PDL2"
@@ -5545,7 +5189,7 @@
       ]
     },
     {
-      "name": "Reaction_122",
+      "name": "Reaction_116",
       "reactants": [
         "syn_CD8_C1.PD1",
         "syn_CD8_C1.PDL1"
@@ -5560,7 +5204,7 @@
       ]
     },
     {
-      "name": "Reaction_123",
+      "name": "Reaction_117",
       "reactants": [
         "syn_CD8_C1.PD1",
         "syn_CD8_C1.PDL2"
@@ -5575,7 +5219,7 @@
       ]
     },
     {
-      "name": "Reaction_124",
+      "name": "Reaction_118",
       "reactants": [
         "syn_CD8_C1.PD1"
       ],
@@ -5590,7 +5234,7 @@
       ]
     },
     {
-      "name": "Reaction_125",
+      "name": "Reaction_119",
       "reactants": [
         "syn_CD8_C1.PD1_aPD1",
         "syn_CD8_C1.PD1"
@@ -5606,7 +5250,7 @@
       ]
     },
     {
-      "name": "Reaction_126",
+      "name": "Reaction_120",
       "reactants": [
         "syn_CD8_C1.CD28",
         "syn_CD8_C1.CD80"
@@ -5621,7 +5265,7 @@
       ]
     },
     {
-      "name": "Reaction_127",
+      "name": "Reaction_121",
       "reactants": [
         "syn_CD8_C1.CD28_CD80",
         "syn_CD8_C1.CD28"
@@ -5636,7 +5280,7 @@
       ]
     },
     {
-      "name": "Reaction_128",
+      "name": "Reaction_122",
       "reactants": [
         "syn_CD8_C1.CD28",
         "syn_CD8_C1.CD86"
@@ -5651,7 +5295,7 @@
       ]
     },
     {
-      "name": "Reaction_129",
+      "name": "Reaction_123",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80"
@@ -5666,7 +5310,7 @@
       ]
     },
     {
-      "name": "Reaction_130",
+      "name": "Reaction_124",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80_CTLA4"
@@ -5681,7 +5325,7 @@
       ]
     },
     {
-      "name": "Reaction_131",
+      "name": "Reaction_125",
       "reactants": [
         "syn_CD8_C1.CD80",
         "syn_CD8_C1.CTLA4_CD80_CTLA4"
@@ -5696,7 +5340,7 @@
       ]
     },
     {
-      "name": "Reaction_132",
+      "name": "Reaction_126",
       "reactants": [
         "syn_CD8_C1.CD80_CTLA4",
         "syn_CD8_C1.CD80"
@@ -5711,7 +5355,7 @@
       ]
     },
     {
-      "name": "Reaction_133",
+      "name": "Reaction_127",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD80_CTLA4_CD80"
@@ -5726,7 +5370,7 @@
       ]
     },
     {
-      "name": "Reaction_134",
+      "name": "Reaction_128",
       "reactants": [
         "syn_CD8_C1.CTLA4",
         "syn_CD8_C1.CD86"
@@ -5741,7 +5385,7 @@
       ]
     },
     {
-      "name": "Reaction_135",
+      "name": "Reaction_129",
       "reactants": [
         "syn_CD8_C1.CD86_CTLA4",
         "syn_CD8_C1.CD86"
@@ -5756,7 +5400,7 @@
       ]
     },
     {
-      "name": "Reaction_136",
+      "name": "Reaction_130",
       "reactants": [
         "syn_CD8_C1.CD80m",
         "syn_CD8_C1.CD80m"
@@ -5771,7 +5415,7 @@
       ]
     },
     {
-      "name": "Reaction_137",
+      "name": "Reaction_131",
       "reactants": [
         "syn_CD8_C1.CD80m",
         "syn_CD8_C1.PDL1"
@@ -5786,7 +5430,7 @@
       ]
     },
     {
-      "name": "Reaction_138",
+      "name": "Reaction_132",
       "reactants": [
         "syn_CD8_C1.PDL1_CD80",
         "syn_CD8_C1.CD28"
@@ -5801,7 +5445,7 @@
       ]
     },
     {
-      "name": "Reaction_139",
+      "name": "Reaction_133",
       "reactants": [
         "syn_CD8_C1.PDL1_CD80",
         "syn_CD8_C1.CTLA4"
@@ -5816,7 +5460,7 @@
       ]
     },
     {
-      "name": "Reaction_140",
+      "name": "Reaction_134",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL1"
@@ -5832,7 +5476,7 @@
       ]
     },
     {
-      "name": "Reaction_141",
+      "name": "Reaction_135",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL2"
@@ -5849,7 +5493,7 @@
       ]
     },
     {
-      "name": "Reaction_142",
+      "name": "Reaction_136",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL1"
@@ -5863,7 +5507,7 @@
       ]
     },
     {
-      "name": "Reaction_143",
+      "name": "Reaction_137",
       "reactants": [],
       "products": [
         "syn_CD8_APC.PDL2"
@@ -5878,7 +5522,7 @@
       ]
     },
     {
-      "name": "Reaction_144",
+      "name": "Reaction_138",
       "reactants": [
         "syn_CD8_APC.PD1",
         "syn_CD8_APC.PDL1"
@@ -5893,7 +5537,7 @@
       ]
     },
     {
-      "name": "Reaction_145",
+      "name": "Reaction_139",
       "reactants": [
         "syn_CD8_APC.PD1",
         "syn_CD8_APC.PDL2"
@@ -5908,7 +5552,7 @@
       ]
     },
     {
-      "name": "Reaction_146",
+      "name": "Reaction_140",
       "reactants": [
         "syn_CD8_APC.PD1"
       ],
@@ -5923,7 +5567,7 @@
       ]
     },
     {
-      "name": "Reaction_147",
+      "name": "Reaction_141",
       "reactants": [
         "syn_CD8_APC.PD1_aPD1",
         "syn_CD8_APC.PD1"
@@ -5939,7 +5583,7 @@
       ]
     },
     {
-      "name": "Reaction_148",
+      "name": "Reaction_142",
       "reactants": [
         "syn_CD8_APC.CD28",
         "syn_CD8_APC.CD80"
@@ -5954,7 +5598,7 @@
       ]
     },
     {
-      "name": "Reaction_149",
+      "name": "Reaction_143",
       "reactants": [
         "syn_CD8_APC.CD28_CD80",
         "syn_CD8_APC.CD28"
@@ -5969,7 +5613,7 @@
       ]
     },
     {
-      "name": "Reaction_150",
+      "name": "Reaction_144",
       "reactants": [
         "syn_CD8_APC.CD28",
         "syn_CD8_APC.CD86"
@@ -5984,7 +5628,7 @@
       ]
     },
     {
-      "name": "Reaction_151",
+      "name": "Reaction_145",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80"
@@ -5999,7 +5643,7 @@
       ]
     },
     {
-      "name": "Reaction_152",
+      "name": "Reaction_146",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80_CTLA4"
@@ -6014,7 +5658,7 @@
       ]
     },
     {
-      "name": "Reaction_153",
+      "name": "Reaction_147",
       "reactants": [
         "syn_CD8_APC.CD80",
         "syn_CD8_APC.CTLA4_CD80_CTLA4"
@@ -6029,7 +5673,7 @@
       ]
     },
     {
-      "name": "Reaction_154",
+      "name": "Reaction_148",
       "reactants": [
         "syn_CD8_APC.CD80_CTLA4",
         "syn_CD8_APC.CD80"
@@ -6044,7 +5688,7 @@
       ]
     },
     {
-      "name": "Reaction_155",
+      "name": "Reaction_149",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD80_CTLA4_CD80"
@@ -6059,7 +5703,7 @@
       ]
     },
     {
-      "name": "Reaction_156",
+      "name": "Reaction_150",
       "reactants": [
         "syn_CD8_APC.CTLA4",
         "syn_CD8_APC.CD86"
@@ -6074,7 +5718,7 @@
       ]
     },
     {
-      "name": "Reaction_157",
+      "name": "Reaction_151",
       "reactants": [
         "syn_CD8_APC.CD86_CTLA4",
         "syn_CD8_APC.CD86"
@@ -6089,7 +5733,7 @@
       ]
     },
     {
-      "name": "Reaction_158",
+      "name": "Reaction_152",
       "reactants": [
         "syn_CD8_APC.CD80m",
         "syn_CD8_APC.CD80m"
@@ -6104,7 +5748,7 @@
       ]
     },
     {
-      "name": "Reaction_159",
+      "name": "Reaction_153",
       "reactants": [
         "syn_CD8_APC.CD80m",
         "syn_CD8_APC.PDL1"
@@ -6119,7 +5763,7 @@
       ]
     },
     {
-      "name": "Reaction_160",
+      "name": "Reaction_154",
       "reactants": [
         "syn_CD8_APC.PDL1_CD80",
         "syn_CD8_APC.CD28"
@@ -6134,7 +5778,7 @@
       ]
     },
     {
-      "name": "Reaction_161",
+      "name": "Reaction_155",
       "reactants": [
         "syn_CD8_APC.PDL1_CD80",
         "syn_CD8_APC.CTLA4"
@@ -6149,7 +5793,7 @@
       ]
     },
     {
-      "name": "Reaction_162",
+      "name": "Reaction_156",
       "reactants": [
         "V_LN.nCD4"
       ],
@@ -6161,7 +5805,7 @@
       ]
     },
     {
-      "name": "Reaction_163",
+      "name": "Reaction_157",
       "reactants": [],
       "products": [
         "V_LN.aTh"
@@ -6176,7 +5820,7 @@
       ]
     },
     {
-      "name": "Reaction_164",
+      "name": "Reaction_158",
       "reactants": [
         "V_LN.aTh"
       ],
@@ -6188,7 +5832,7 @@
       ]
     },
     {
-      "name": "Reaction_165",
+      "name": "Reaction_159",
       "reactants": [],
       "products": [
         "V_LN.Th"
@@ -6200,7 +5844,7 @@
       ]
     },
     {
-      "name": "Reaction_166",
+      "name": "Reaction_160",
       "reactants": [
         "V_T.Th"
       ],
@@ -6220,7 +5864,7 @@
       ]
     },
     {
-      "name": "Reaction_167",
+      "name": "Reaction_161",
       "reactants": [
         "V_C.Th"
       ],
@@ -6231,7 +5875,7 @@
       ]
     },
     {
-      "name": "Reaction_168",
+      "name": "Reaction_162",
       "reactants": [
         "V_P.Th"
       ],
@@ -6242,7 +5886,7 @@
       ]
     },
     {
-      "name": "Reaction_169",
+      "name": "Reaction_163",
       "reactants": [
         "V_LN.Th"
       ],
@@ -6253,7 +5897,7 @@
       ]
     },
     {
-      "name": "Reaction_170",
+      "name": "Reaction_164",
       "reactants": [
         "V_T.Th"
       ],
@@ -6270,7 +5914,7 @@
       ]
     },
     {
-      "name": "Reaction_171",
+      "name": "Reaction_165",
       "reactants": [
         "V_T.Th"
       ],
@@ -6286,7 +5930,7 @@
       ]
     },
     {
-      "name": "Reaction_172",
+      "name": "Reaction_166",
       "reactants": [
         "V_T.Th"
       ],
@@ -6303,7 +5947,7 @@
       ]
     },
     {
-      "name": "Reaction_173",
+      "name": "Reaction_167",
       "reactants": [
         "V_T.Th_exh"
       ],
@@ -6316,7 +5960,7 @@
       ]
     },
     {
-      "name": "Reaction_174",
+      "name": "Reaction_168",
       "reactants": [
         "V_C.Th"
       ],
@@ -6329,7 +5973,7 @@
       ]
     },
     {
-      "name": "Reaction_175",
+      "name": "Reaction_169",
       "reactants": [
         "V_P.Th"
       ],
@@ -6342,7 +5986,7 @@
       ]
     },
     {
-      "name": "Reaction_176",
+      "name": "Reaction_170",
       "reactants": [
         "V_C.Th"
       ],
@@ -6359,7 +6003,7 @@
       ]
     },
     {
-      "name": "Reaction_177",
+      "name": "Reaction_171",
       "reactants": [
         "V_LN.Th"
       ],
@@ -6372,7 +6016,7 @@
       ]
     },
     {
-      "name": "Reaction_178",
+      "name": "Reaction_172",
       "reactants": [],
       "products": [
         "V_T.Th"
@@ -6385,7 +6029,7 @@
       ]
     },
     {
-      "name": "Reaction_179",
+      "name": "Reaction_173",
       "reactants": [
         "V_T.Th"
       ],
@@ -6396,7 +6040,7 @@
       ]
     },
     {
-      "name": "Reaction_180",
+      "name": "Reaction_174",
       "reactants": [],
       "products": [
         "V_T.Th"
@@ -6409,7 +6053,7 @@
       ]
     },
     {
-      "name": "Reaction_181",
+      "name": "Reaction_175",
       "reactants": [],
       "products": [
         "V_T.IFNg"
@@ -6420,7 +6064,7 @@
       ]
     },
     {
-      "name": "Reaction_182",
+      "name": "Reaction_176",
       "reactants": [],
       "products": [
         "V_T.IFNg"
@@ -6431,7 +6075,7 @@
       ]
     },
     {
-      "name": "Reaction_183",
+      "name": "Reaction_177",
       "reactants": [],
       "products": [
         "V_LN.IFNg"
@@ -6442,7 +6086,7 @@
       ]
     },
     {
-      "name": "Reaction_184",
+      "name": "Reaction_178",
       "reactants": [],
       "products": [
         "V_LN.IFNg"
@@ -6453,7 +6097,7 @@
       ]
     },
     {
-      "name": "Reaction_185",
+      "name": "Reaction_179",
       "reactants": [
         "V_T.IFNg"
       ],
@@ -6464,7 +6108,7 @@
       ]
     },
     {
-      "name": "Reaction_186",
+      "name": "Reaction_180",
       "reactants": [
         "V_LN.IFNg"
       ],
@@ -6475,7 +6119,7 @@
       ]
     },
     {
-      "name": "Reaction_187",
+      "name": "Reaction_181",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -6488,7 +6132,7 @@
       ]
     },
     {
-      "name": "Reaction_188",
+      "name": "Reaction_182",
       "reactants": [
         "V_T.TGFb"
       ],
@@ -6499,7 +6143,7 @@
       ]
     },
     {
-      "name": "Reaction_189",
+      "name": "Reaction_183",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -6511,7 +6155,7 @@
       ]
     },
     {
-      "name": "Reaction_190",
+      "name": "Reaction_184",
       "reactants": [],
       "products": [
         "V_T.CCL2"
@@ -6523,7 +6167,7 @@
       ]
     },
     {
-      "name": "Reaction_191",
+      "name": "Reaction_185",
       "reactants": [
         "V_T.CCL2"
       ],
@@ -6534,7 +6178,7 @@
       ]
     },
     {
-      "name": "Reaction_192",
+      "name": "Reaction_186",
       "reactants": [],
       "products": [
         "V_T.MDSC"
@@ -6548,7 +6192,7 @@
       ]
     },
     {
-      "name": "Reaction_193",
+      "name": "Reaction_187",
       "reactants": [
         "V_T.MDSC"
       ],
@@ -6559,7 +6203,7 @@
       ]
     },
     {
-      "name": "Reaction_194",
+      "name": "Reaction_188",
       "reactants": [
         "V_T.MDSC"
       ],
@@ -6572,7 +6216,7 @@
       ]
     },
     {
-      "name": "Reaction_195",
+      "name": "Reaction_189",
       "reactants": [
         "V_T.NO"
       ],
@@ -6583,7 +6227,7 @@
       ]
     },
     {
-      "name": "Reaction_196",
+      "name": "Reaction_190",
       "reactants": [
         "V_T.ArgI"
       ],
@@ -6594,7 +6238,7 @@
       ]
     },
     {
-      "name": "Reaction_197",
+      "name": "Reaction_191",
       "reactants": [],
       "products": [
         "V_T.NO"
@@ -6605,7 +6249,7 @@
       ]
     },
     {
-      "name": "Reaction_198",
+      "name": "Reaction_192",
       "reactants": [],
       "products": [
         "V_T.ArgI"
@@ -6616,7 +6260,7 @@
       ]
     },
     {
-      "name": "Reaction_199",
+      "name": "Reaction_193",
       "reactants": [],
       "products": [
         "V_T.VEGF"
@@ -6627,7 +6271,7 @@
       ]
     },
     {
-      "name": "Reaction_200",
+      "name": "Reaction_194",
       "reactants": [],
       "products": [
         "V_T.Mac_M1"
@@ -6642,7 +6286,7 @@
       ]
     },
     {
-      "name": "Reaction_201",
+      "name": "Reaction_195",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -6655,7 +6299,7 @@
       ]
     },
     {
-      "name": "Reaction_202",
+      "name": "Reaction_196",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -6668,7 +6312,7 @@
       ]
     },
     {
-      "name": "Reaction_203",
+      "name": "Reaction_197",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -6679,7 +6323,7 @@
       ]
     },
     {
-      "name": "Reaction_204",
+      "name": "Reaction_198",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -6690,7 +6334,7 @@
       ]
     },
     {
-      "name": "Reaction_205",
+      "name": "Reaction_199",
       "reactants": [],
       "products": [
         "V_T.IL12"
@@ -6701,7 +6345,7 @@
       ]
     },
     {
-      "name": "Reaction_206",
+      "name": "Reaction_200",
       "reactants": [],
       "products": [
         "V_T.IL12"
@@ -6712,7 +6356,7 @@
       ]
     },
     {
-      "name": "Reaction_207",
+      "name": "Reaction_201",
       "reactants": [
         "V_T.IL12"
       ],
@@ -6723,7 +6367,7 @@
       ]
     },
     {
-      "name": "Reaction_208",
+      "name": "Reaction_202",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -6735,7 +6379,7 @@
       ]
     },
     {
-      "name": "Reaction_209",
+      "name": "Reaction_203",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -6746,7 +6390,7 @@
       ]
     },
     {
-      "name": "Reaction_210",
+      "name": "Reaction_204",
       "reactants": [],
       "products": [
         "V_T.ArgI"
@@ -6757,7 +6401,7 @@
       ]
     },
     {
-      "name": "Reaction_211",
+      "name": "Reaction_205",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -6768,7 +6412,7 @@
       ]
     },
     {
-      "name": "Reaction_212",
+      "name": "Reaction_206",
       "reactants": [],
       "products": [
         "V_T.IL10"
@@ -6779,7 +6423,7 @@
       ]
     },
     {
-      "name": "Reaction_213",
+      "name": "Reaction_207",
       "reactants": [
         "V_T.IL10"
       ],
@@ -6790,7 +6434,7 @@
       ]
     },
     {
-      "name": "Reaction_214",
+      "name": "Reaction_208",
       "reactants": [
         "V_T.Mac_M1"
       ],
@@ -6804,7 +6448,7 @@
       ]
     },
     {
-      "name": "Reaction_215",
+      "name": "Reaction_209",
       "reactants": [
         "V_T.Mac_M2"
       ],
@@ -6819,7 +6463,7 @@
       ]
     },
     {
-      "name": "Reaction_216",
+      "name": "Reaction_210",
       "reactants": [],
       "products": [
         "syn_M_C.PDL1"
@@ -6834,7 +6478,7 @@
       ]
     },
     {
-      "name": "Reaction_217",
+      "name": "Reaction_211",
       "reactants": [],
       "products": [
         "syn_M_C.PDL2"
@@ -6850,7 +6494,7 @@
       ]
     },
     {
-      "name": "Reaction_218",
+      "name": "Reaction_212",
       "reactants": [],
       "products": [
         "syn_M_C.PDL1"
@@ -6863,7 +6507,7 @@
       ]
     },
     {
-      "name": "Reaction_219",
+      "name": "Reaction_213",
       "reactants": [],
       "products": [
         "syn_M_C.PDL2"
@@ -6877,7 +6521,7 @@
       ]
     },
     {
-      "name": "Reaction_220",
+      "name": "Reaction_214",
       "reactants": [
         "syn_M_C.CD47",
         "syn_M_C.SIRPa"
@@ -6892,7 +6536,7 @@
       ]
     },
     {
-      "name": "Reaction_221",
+      "name": "Reaction_215",
       "reactants": [
         "syn_M_C.PD1",
         "syn_M_C.PDL1"
@@ -6907,7 +6551,7 @@
       ]
     },
     {
-      "name": "Reaction_222",
+      "name": "Reaction_216",
       "reactants": [
         "syn_M_C.PD1",
         "syn_M_C.PDL2"
@@ -6922,7 +6566,7 @@
       ]
     },
     {
-      "name": "Reaction_223",
+      "name": "Reaction_217",
       "reactants": [
         "syn_M_C.PD1"
       ],
@@ -6937,7 +6581,7 @@
       ]
     },
     {
-      "name": "Reaction_224",
+      "name": "Reaction_218",
       "reactants": [
         "syn_M_C.PD1_aPD1",
         "syn_M_C.PD1"
@@ -6953,7 +6597,7 @@
       ]
     },
     {
-      "name": "Reaction_225",
+      "name": "Reaction_219",
       "reactants": [
         "syn_M_C.CD80m",
         "syn_M_C.CD80m"
@@ -6968,7 +6612,7 @@
       ]
     },
     {
-      "name": "Reaction_226",
+      "name": "Reaction_220",
       "reactants": [
         "syn_M_C.CD80m",
         "syn_M_C.PDL1"
@@ -6983,7 +6627,7 @@
       ]
     },
     {
-      "name": "Reaction_227",
+      "name": "Reaction_221",
       "reactants": [
         "V_T.C1"
       ],
@@ -7001,7 +6645,7 @@
       ]
     },
     {
-      "name": "Reaction_228",
+      "name": "Reaction_222",
       "reactants": [],
       "products": [
         "V_T.TGFb"
@@ -7013,7 +6657,7 @@
       ]
     },
     {
-      "name": "Reaction_229",
+      "name": "Reaction_223",
       "reactants": [],
       "products": [
         "V_T.qPSC"
@@ -7025,7 +6669,7 @@
       ]
     },
     {
-      "name": "Reaction_230",
+      "name": "Reaction_224",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -7039,7 +6683,7 @@
       ]
     },
     {
-      "name": "Reaction_231",
+      "name": "Reaction_225",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -7055,7 +6699,7 @@
       ]
     },
     {
-      "name": "Reaction_232",
+      "name": "Reaction_226",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -7068,7 +6712,7 @@
       ]
     },
     {
-      "name": "Reaction_233",
+      "name": "Reaction_227",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -7082,7 +6726,7 @@
       ]
     },
     {
-      "name": "Reaction_234",
+      "name": "Reaction_228",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -7098,7 +6742,7 @@
       ]
     },
     {
-      "name": "Reaction_235",
+      "name": "Reaction_229",
       "reactants": [],
       "products": [
         "V_T.myCAF"
@@ -7116,7 +6760,7 @@
       ]
     },
     {
-      "name": "Reaction_236",
+      "name": "Reaction_230",
       "reactants": [],
       "products": [
         "V_T.iCAF"
@@ -7134,7 +6778,7 @@
       ]
     },
     {
-      "name": "Reaction_237",
+      "name": "Reaction_231",
       "reactants": [],
       "products": [
         "V_T.apCAF"
@@ -7151,7 +6795,7 @@
       ]
     },
     {
-      "name": "Reaction_238",
+      "name": "Reaction_232",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -7164,7 +6808,7 @@
       ]
     },
     {
-      "name": "Reaction_239",
+      "name": "Reaction_233",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -7178,7 +6822,7 @@
       ]
     },
     {
-      "name": "Reaction_240",
+      "name": "Reaction_234",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -7192,7 +6836,7 @@
       ]
     },
     {
-      "name": "Reaction_241",
+      "name": "Reaction_235",
       "reactants": [
         "V_T.apCAF"
       ],
@@ -7206,7 +6850,7 @@
       ]
     },
     {
-      "name": "Reaction_242",
+      "name": "Reaction_236",
       "reactants": [
         "V_T.qPSC"
       ],
@@ -7217,7 +6861,7 @@
       ]
     },
     {
-      "name": "Reaction_243",
+      "name": "Reaction_237",
       "reactants": [
         "V_T.iCAF"
       ],
@@ -7228,7 +6872,7 @@
       ]
     },
     {
-      "name": "Reaction_244",
+      "name": "Reaction_238",
       "reactants": [
         "V_T.myCAF"
       ],
@@ -7239,7 +6883,7 @@
       ]
     },
     {
-      "name": "Reaction_245",
+      "name": "Reaction_239",
       "reactants": [
         "V_T.apCAF"
       ],
@@ -7250,7 +6894,7 @@
       ]
     },
     {
-      "name": "Reaction_246",
+      "name": "Reaction_240",
       "reactants": [],
       "products": [
         "V_T.collagen"
@@ -7265,7 +6909,7 @@
       ]
     },
     {
-      "name": "Reaction_247",
+      "name": "Reaction_241",
       "reactants": [
         "V_T.collagen"
       ],
@@ -7278,7 +6922,7 @@
       ]
     },
     {
-      "name": "Reaction_248",
+      "name": "Reaction_242",
       "reactants": [],
       "products": [
         "V_T.CXCL12"
@@ -7289,7 +6933,7 @@
       ]
     },
     {
-      "name": "Reaction_249",
+      "name": "Reaction_243",
       "reactants": [],
       "products": [
         "V_T.CXCL12"
@@ -7301,7 +6945,7 @@
       ]
     },
     {
-      "name": "Reaction_250",
+      "name": "Reaction_244",
       "reactants": [
         "V_T.CXCL12"
       ],
@@ -7312,7 +6956,7 @@
       ]
     },
     {
-      "name": "Reaction_251",
+      "name": "Reaction_245",
       "reactants": [],
       "products": [
         "V_T.IL6"
@@ -7323,7 +6967,7 @@
       ]
     },
     {
-      "name": "Reaction_252",
+      "name": "Reaction_246",
       "reactants": [
         "V_T.IL6"
       ],
@@ -7334,7 +6978,7 @@
       ]
     },
     {
-      "name": "Reaction_253",
+      "name": "Reaction_247",
       "reactants": [],
       "products": [
         "V_T.IL1"
@@ -7346,7 +6990,7 @@
       ]
     },
     {
-      "name": "Reaction_254",
+      "name": "Reaction_248",
       "reactants": [
         "V_T.IL1"
       ],
@@ -7357,7 +7001,7 @@
       ]
     },
     {
-      "name": "Reaction_255",
+      "name": "Reaction_249",
       "reactants": [],
       "products": [
         "V_T.VEGF"
@@ -7365,6 +7009,20 @@
       "rate_law": "k_vas_myCAF_sec*V_T.myCAF",
       "parameters": [
         "k_vas_myCAF_sec"
+      ]
+    },
+    {
+      "name": "GVAX_CD8_tumor_proliferation",
+      "reactants": [],
+      "products": [
+        "V_T.CD8"
+      ],
+      "rate_law": "k_CD8_T_vac_pro*V_T.CD8*H_P1_spread/(1 + V_T.CD8/(rho_CD8_max*V_T + cell))",
+      "parameters": [
+        "cell",
+        "rho_CD8_max",
+        "H_P1_spread",
+        "k_CD8_T_vac_pro"
       ]
     },
     {
@@ -7567,172 +7225,6 @@
       "parameters": [
         "k_Cy_Treg_deplete",
         "Cy_50_Treg"
-      ]
-    },
-    {
-      "name": "Reaction_273",
-      "reactants": [],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_CD8_T_vac_pro*V_T.CD8*H_P1_spread/(1 + CD8_T_tot/(rho_CD8_max*V_T + cell))",
-      "parameters": [
-        "cell",
-        "rho_CD8_max",
-        "H_P1_spread",
-        "k_CD8_T_vac_pro",
-        "CD8_T_tot"
-      ]
-    },
-    {
-      "name": "Reaction_274",
-      "reactants": [
-        "V_T.CD8"
-      ],
-      "products": [
-        "V_T.CD8_TLA"
-      ],
-      "rate_law": "k_TLA_seq*a_TLA*V_T.CD8",
-      "parameters": [
-        "k_TLA_seq",
-        "a_TLA"
-      ]
-    },
-    {
-      "name": "Reaction_275",
-      "reactants": [
-        "V_T.CD8_TLA"
-      ],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_TLA_release*V_T.CD8_TLA",
-      "parameters": [
-        "k_TLA_release"
-      ]
-    },
-    {
-      "name": "Reaction_276",
-      "reactants": [
-        "V_T.CD8_TLA_act"
-      ],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_TLA_release*V_T.CD8_TLA_act",
-      "parameters": [
-        "k_TLA_release"
-      ]
-    },
-    {
-      "name": "Reaction_277",
-      "reactants": [
-        "V_T.CD8_TLA"
-      ],
-      "products": [
-        "V_T.CD8_TLA_act"
-      ],
-      "rate_law": "k_CD137_act*(f_act_base + (1 - f_act_base)*L_CD137)*V_T.CD8_TLA",
-      "parameters": [
-        "k_CD137_act",
-        "f_act_base",
-        "L_CD137"
-      ]
-    },
-    {
-      "name": "Reaction_278",
-      "reactants": [
-        "V_T.CD8_TLA_act"
-      ],
-      "products": [
-        "V_T.CD8_TLA"
-      ],
-      "rate_law": "k_CD137_deact*V_T.CD8_TLA_act",
-      "parameters": [
-        "k_CD137_deact"
-      ]
-    },
-    {
-      "name": "Reaction_279",
-      "reactants": [
-        "V_T.CD8_TLA_act"
-      ],
-      "products": [
-        "V_T.CD8_vic"
-      ],
-      "rate_law": "k_TLA_egress*V_T.CD8_TLA_act",
-      "parameters": [
-        "k_TLA_egress"
-      ]
-    },
-    {
-      "name": "Reaction_280",
-      "reactants": [
-        "V_T.CD8_vic"
-      ],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_vic_decay*V_T.CD8_vic",
-      "parameters": [
-        "k_vic_decay"
-      ]
-    },
-    {
-      "name": "Reaction_281",
-      "reactants": [
-        "V_T.C1"
-      ],
-      "products": [
-        "V_T.C_x"
-      ],
-      "rate_law": "k_C_vic_eff*V_T.C1",
-      "parameters": [
-        "k_C_vic_eff"
-      ]
-    },
-    {
-      "name": "Reaction_282",
-      "reactants": [
-        "V_T.CD8_pex"
-      ],
-      "products": [
-        "V_T.CD8"
-      ],
-      "rate_law": "k_CD137_reinvig*V_T.CD8_pex*H_CD137_T*f_CD137_func",
-      "parameters": [
-        "k_CD137_reinvig",
-        "f_CD137_func",
-        "H_CD137_T"
-      ]
-    },
-    {
-      "name": "Reaction_283",
-      "reactants": [
-        "V_T.CD8_pex"
-      ],
-      "products": [
-        "V_T.CD8_exh"
-      ],
-      "rate_law": "k_CD137_reinvig*V_T.CD8_pex*H_CD137_T*(1 - f_CD137_func)",
-      "parameters": [
-        "k_CD137_reinvig",
-        "f_CD137_func",
-        "H_CD137_T"
-      ]
-    },
-    {
-      "name": "Reaction_284",
-      "reactants": [],
-      "products": [
-        "V_T.CD8_pex"
-      ],
-      "rate_law": "k_CD137_prolif*V_T.CD8_pex*H_CD137_T*(1 - V_T.CD8_pex/(rho_pex_max*V_T + cell))",
-      "parameters": [
-        "cell",
-        "rho_pex_max",
-        "k_CD137_prolif",
-        "H_CD137_T"
       ]
     }
   ]

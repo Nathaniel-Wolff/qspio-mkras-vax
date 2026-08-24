@@ -254,14 +254,6 @@ if ~is_baseline && isfield(scenario, 'dosing') && isfield(scenario.dosing, 'drug
                     dosing_args = [dosing_args, 'Cy_dose', dosing_cfg.Cy_dose, ...
                                    'Cy_schedule', [sched_start, sched_int, sched_repeat]]; %#ok<AGROW>
                 end
-            case 'URELUMAB'
-                if isfield(dosing_cfg, 'urelumab_dose')
-                    % YAML carries urelumab_dose in mg/kg already (8 mg / 70 kg);
-                    % schedule_dosing multiplies by patient_weight, so pass as-is.
-                    [sched_start, sched_int, sched_repeat] = parse_schedule(dosing_cfg.urelumab_schedule);
-                    dosing_args = [dosing_args, 'urelumab_dose', dosing_cfg.urelumab_dose, ...
-                                   'urelumab_schedule', [sched_start, sched_int, sched_repeat]]; %#ok<AGROW>
-                end
         end
     end
 

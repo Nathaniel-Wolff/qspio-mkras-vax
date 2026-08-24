@@ -17,6 +17,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+import yaml
 
 from qsp_codegen.parity import (
     compare,
@@ -35,6 +36,21 @@ MATLAB_MODEL_SCRIPT = "immune_oncology_model_PDAC"
 STOP_TIME_DAYS = float(os.environ.get("PARITY_STOP_TIME", "365"))
 RTOL = 0.05
 ATOL = 1e-6
+
+
+def dose_discontinuities(path: Path, stop_days: float) -> list[float]:
+    """Return bolus boundaries so parity never interpolates across a dose."""
+    dosing = (yaml.safe_load(path.read_text()) or {}).get("dosing", {})
+    times = set()
+    for name, schedule in dosing.items():
+        if not name.endswith("_schedule") or not isinstance(schedule, list):
+            continue
+        start, interval, repeats = map(float, schedule)
+        for i in range(max(1, int(repeats) + 1)):
+            time = start + i * interval
+            if 0 <= time <= stop_days:
+                times.add(time)
+    return sorted(times)
 
 # Dosed scenario with evolve_to_diagnosis on both sides (stop_time from YAML).
 SCENARIO_YAML = REPO_ROOT / "scenarios/gvax_nivo_neoadjuvant_zheng2022.yaml"
@@ -182,5 +198,8 @@ def test_sbi_scenario_parity(
         matlab_binary=matlab_binary,
     )
 
-    passed, report = compare(str(matlab_csv), str(cpp_csv), rtol=RTOL, atol=ATOL)
+    passed, report = compare(
+        str(matlab_csv), str(cpp_csv), rtol=RTOL, atol=ATOL,
+        discontinuity_times=dose_discontinuities(scenario_yaml, stop_days),
+    )
     assert passed, f"Scenario parity FAILED ({scenario_yaml.name}):\n{report}"

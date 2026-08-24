@@ -29,16 +29,12 @@ function model = aggregate_observables_module(model)
 % functional effectors (V_T.CD8) + terminal exhausted (V_T.CD8_exh) + progenitor-
 % exhausted (V_T.CD8_pex). Single source of truth for "total CD8": every
 % total-CD8 observable references this, so future CD8-subpool changes touch only
-% this rule, not each calibration target. (Bulk-tumor pools incl. the egressed
-% neoplastic-vicinity effector V_T.CD8_vic, which is OUTSIDE the TLA and so counts
-% as non-LA bulk; the TLA-sequestered CD8_TLA / CD8_TLA_act are a separate
-% "within-TLA" compartment and are excluded. CD8_vic ~ 0 without urelumab, so
-% Arms A/B and no-treatment totals are unchanged.)
+% this rule, not each calibration target.
 addparameter(model, 'CD8_total_T', 0, ...
     'ValueUnits', 'cell', 'ConstantValue', false, ...
     'Notes', ['Total CD8 T cells in V_T (effector + terminal-exhausted + ' ...
-              'progenitor-exhausted + egressed vicinity effector). Aggregate alias for total-CD8 observables.']);
-addrule(model, 'CD8_total_T = V_T.CD8 + V_T.CD8_exh + V_T.CD8_pex + V_T.CD8_vic', ...
+              'progenitor-exhausted). Aggregate alias for total-CD8 observables.']);
+addrule(model, 'CD8_total_T = V_T.CD8 + V_T.CD8_exh + V_T.CD8_pex', ...
     'repeatedAssignment');
 
 % nucleated_total_T: all nucleated cells in V_T
@@ -65,16 +61,9 @@ addrule(model, ['nucleated_total_T = ' ...
 % CD8_exh_total_T: the PD-1+ exhausted CD8 pools -- terminal (CD8_exh) and
 % progenitor (CD8_pex, the PD-1+TCF1+ Tpex reservoir). What an exhausted-fraction
 % readout reports.
-% Excludes V_T.CD8_vic, which is an egressed ACTIVATED effector rather than an
-% exhausted cell. The observables this serves were written as
-% CD8_total_T - V_T.CD8, which did include it; CD8_vic is fed only by TLA egress
-% (tla_module reaction 10) and that pathway is urelumab-gated, so on the three
-% arms with an exhaustion readout -- baseline, GVAX, GVAX+nivo -- the two
-% definitions agree numerically.
 addparameter(model, 'CD8_exh_total_T', 0, ...
     'ValueUnits', 'cell', 'ConstantValue', false, ...
-    'Notes', ['Exhausted CD8 T cells in V_T (terminal + progenitor-exhausted). ' ...
-              'Excludes the egressed vicinity effector CD8_vic.']);
+    'Notes', 'Exhausted CD8 T cells in V_T (terminal + progenitor-exhausted).');
 addrule(model, 'CD8_exh_total_T = V_T.CD8_exh + V_T.CD8_pex', ...
     'repeatedAssignment');
 

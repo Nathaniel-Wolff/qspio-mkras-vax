@@ -7,7 +7,7 @@ exported to SBML and C++.
 The model captures PDAC tumour dynamics, immune cell populations (CD8/CD4 T cells,
 Tregs, macrophages, cDC1/cDC2, MDSCs), fibroblast and ECM biology (iCAF/myCAF/
 apCAF, collagen), and pharmacokinetics for immunotherapy combinations — GVAX,
-nivolumab and urelumab, including the vaccine-induced tertiary lymphoid aggregate.
+nivolumab, with a deliberately compact mechanism set for the retained indications.
 
 ## What is here, and what is not
 
@@ -53,7 +53,7 @@ make test-fast            # the model's own tests
 
 ```
 core/                    # the QSPIO framework, PDAC-specialised
-  modules/               # SimBiology modules (GVAX, fibroblast, macrophage, APC, TLA/urelumab, ...)
+  modules/               # SimBiology modules (GVAX, fibroblast, macrophage, APC, ...)
   model_compilation/     # model assembly
   visualization/         # the D2 schematic source and its ELK renderer
   postprocessing/        # howManyClones and simulation_config, the two still called

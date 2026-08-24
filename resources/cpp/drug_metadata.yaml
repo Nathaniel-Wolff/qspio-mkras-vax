@@ -24,13 +24,6 @@ drugs:
     targets:
       - {species: V_C.aPD1, fraction: 1.0}
 
-  urelumab:               # anti-CD137/4-1BB agonist IgG4 (Heumann Arm C)
-    mw: 1.46e8            # mg/mole (~146 kDa)
-    units: mole
-    dose_basis: per_weight  # 8 mg flat expressed as 8/70 = 0.1143 mg/kg in scenarios
-    targets:
-      - {species: V_C.aCD137, fraction: 1.0}
-
   pembrolizumab:
     mw: 1.49e8
     units: mole

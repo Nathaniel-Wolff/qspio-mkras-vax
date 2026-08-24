@@ -8,7 +8,7 @@
 %                     - drugName_schedule [start,interval,repeat]
 %                     - patientWeight (kg)
 %
-%       valid drugName values: nivolumab, urelumab, pembrolizumab, GVAX, Cy
+%       valid drugName values: nivolumab, pembrolizumab, GVAX, Cy
 %
 % Outputs: dosing -- SimBiology model object with new antigen module
 
@@ -31,11 +31,6 @@ addParameter(in,'pembrolizumab_schedule',[0,21,30]);
 % Nivolumab
 addParameter(in,'nivolumab_dose',20); % 20 mg/kg every four weeks
 addParameter(in,'nivolumab_schedule',[0,28,30]);
-% Urelumab (anti-CD137/4-1BB agonist; Heumann Arm C). Trial dose is 8 mg flat
-% IV; expressed per-kg (8/70 = 0.1143 mg/kg) to reuse the mAb mg/kg→mole path,
-% matching how the flat nivolumab dose is encoded in the neoadjuvant scenarios.
-addParameter(in,'urelumab_dose',0.1143); % 8 mg flat / 70 kg
-addParameter(in,'urelumab_schedule',[0,28,30]);
 % GVAX
 addParameter(in,'GVAX_dose',5e8); % 5e8 cells per vaccination (typical clinical dose)
 addParameter(in,'GVAX_schedule',[14,21,6]); % Prime at day 14, boost every 21 days, 6 total doses
@@ -58,9 +53,6 @@ schedule_pembro = in.Results.pembrolizumab_schedule;
 % Nivolumab
 dose_nivo = in.Results.nivolumab_dose;
 schedule_nivo = in.Results.nivolumab_schedule;
-% Urelumab
-dose_urelumab = in.Results.urelumab_dose;
-schedule_urelumab = in.Results.urelumab_schedule;
 % GVAX
 dose_GVAX = in.Results.GVAX_dose;
 schedule_GVAX = in.Results.GVAX_schedule;
@@ -99,15 +91,6 @@ doseObj_nivo.TimeUnits = 'day';
 doseObj_nivo.RepeatCount = schedule_nivo(3);
 doseObj_nivo.Active = true;
 
-% Urelumab (anti-CD137/4-1BB agonist IgG4)
-MW_urelumab = 1.46E8; % milligrams per mole (~146 kDa)
-doseObj_urelumab = sbiodose('urelumab','Amount',patient_weight*dose_urelumab/MW_urelumab,'AmountUnits','mole','TargetName','V_C.aCD137');
-doseObj_urelumab.StartTime = schedule_urelumab(1);
-doseObj_urelumab.Interval = schedule_urelumab(2);
-doseObj_urelumab.TimeUnits = 'day';
-doseObj_urelumab.RepeatCount = schedule_urelumab(3);
-doseObj_urelumab.Active = true;
-
 % GVAX
 doseObj_GVAX = sbiodose('GVAX','Amount',dose_GVAX,'AmountUnits','cell','TargetName','V_ID.GVAX_cells');
 doseObj_GVAX.StartTime = schedule_GVAX(1);
@@ -133,8 +116,6 @@ for i = 1:N
     switch drugName{i}
         case 'nivolumab'
             dose_schedule(i) = doseObj_nivo;
-        case 'urelumab'
-            dose_schedule(i) = doseObj_urelumab;
         case 'pembrolizumab'
             dose_schedule(i) = doseObj_pembro;
         case 'GVAX'

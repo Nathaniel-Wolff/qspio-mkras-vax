@@ -92,10 +92,7 @@ p = addparameter(model, 'kappa_IL2_Treg', params.kappa_IL2_Treg.Value, 'ValueUni
     p.UserData.derivedFrom = params.kappa_IL2_Treg.derivedFrom;
 p = addparameter(model, 'V_niche', params.V_niche.Value, 'ValueUnits', params.V_niche.Units, 'Notes', 'aggregate priming-niche volume for the local IL-2 QSS (<< V_LN)');
     p.UserData.derivedFrom = params.V_niche.derivedFrom;
-% CD137 / 4-1BB agonist (urelumab): division-destiny costim RETIRED. The
-% N_div_CD137*H_CD137 term and CD137_50 moved to tla_module.m — urelumab's
-% effect is now a TLA-local CD8 activation-state conversion, not LN division
-% destiny (Heumann 2023 shows flat bulk CD8). See parameters_PDAC.m CD137 block.
+% C13 excludes the urelumab/CD137 arm; division destiny contains no CD137 term.
 
 %% Parameters — IFNg
 p = addparameter(model, 'k_IFNg_Tsec', params.k_IFNg_Tsec.Value, 'ValueUnits', params.k_IFNg_Tsec.Units, 'Notes', 'rate of IFNg secretion per CD8 T cell in tumor ');
@@ -184,7 +181,7 @@ addrule(model, 'IL2_niche = k_IL2_sec*IL2_supply/(k_IL2_cons*IL2_demand/IL2_50 +
 % Division destiny integrates additive costim signals (Marchingo 2014): TCR
 % baseline + CD28 + IL-2. The IL-2 contribution is a Hill of the local niche
 % concentration IL2_niche against the sensed-concentration EC50 IL2_50 (de Jong
-% 1998). The 4-1BB/urelumab term was RETIRED (TLA-local, tla_module).
+% 1998). C13 excludes the 4-1BB/urelumab arm.
 %
 % CD8 costim term is licensed by CD4 help (*H_div_help): productive CD28-costim
 % that programs division destiny requires CD40L licensing of the cross-presenting

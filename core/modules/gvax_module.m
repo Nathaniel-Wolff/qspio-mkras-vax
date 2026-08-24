@@ -300,6 +300,27 @@ else
     end
 end
 
+%% ---- Vaccine-driven intratumoral CD8 proliferation ----
+% Retained from the retired TLA/urelumab module in C13. This is a bulk GVAX
+% response, not a TLA state: vaccine antigen gates an incremental saturating
+% source on the existing tumor CD8 pool. It is identically zero without GVAX.
+V_T = sbioselect(model,'Name','V_T','Type','compartment');
+k_CD8_T_vac_pro = sbioselect(model,'Type','parameter','Name','k_CD8_T_vac_pro');
+if isempty(k_CD8_T_vac_pro)
+    k_CD8_T_vac_pro = addparameter(model,'k_CD8_T_vac_pro', ...
+        params.k_CD8_T_vac_pro.Value,'ValueUnits',params.k_CD8_T_vac_pro.Units);
+end
+set(k_CD8_T_vac_pro,'Notes',params.k_CD8_T_vac_pro.Notes);
+k_CD8_T_vac_pro.UserData.Source = params.k_CD8_T_vac_pro.Notes;
+k_CD8_T_vac_pro.UserData.derivedFrom = params.k_CD8_T_vac_pro.derivedFrom;
+
+vacProRxn = addreaction(model,'null -> V_T.CD8');
+set(vacProRxn,'Name','GVAX_CD8_tumor_proliferation');
+set(vacProRxn,'ReactionRate', ...
+    'k_CD8_T_vac_pro*V_T.CD8*H_P1_spread/(1 + V_T.CD8/(rho_CD8_max*V_T + cell))');
+set(vacProRxn,'Notes', ...
+    'GVAX-antigen-gated bulk intratumoral CD8 proliferation; retained in C13 without a TLA state model.');
+
 %% ---- Injection site GVAX cell dynamics ----
 % GVAX cell clearance at injection site
 clearanceRxn = sbioselect(model, 'Type', 'reaction', 'Name', 'GVAX_clearance_ID');
@@ -560,4 +581,3 @@ if add_cy
 end
 
 end
-
