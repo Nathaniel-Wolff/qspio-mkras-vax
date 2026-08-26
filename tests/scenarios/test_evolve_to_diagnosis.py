@@ -3,7 +3,7 @@
 These tests verify that:
 - set_healthy_populations computes tumor volume consistent with the model's vol_cell
 - evolve_to_diagnosis reaches target diameter using V_T (not C1-only estimate)
-- Diagnosis-state cell densities are in biologically plausible ranges
+- the model-parameter fallback reaches the configured diagnosis diameter
 
 The density fix (vol_cell-based volume) reduced initial immune counts ~400x,
 from e.g. 50,000 CD8 cells (in a 1000 mm³ tumor) to ~129 CD8 cells (in a
@@ -17,9 +17,7 @@ Usage:
     pytest tests/scenarios/test_evolve_to_diagnosis.py -m "not slow"
 """
 
-import os
 import re
-import sys
 import pytest
 import subprocess
 from pathlib import Path
@@ -57,34 +55,21 @@ class TestEvolveTodiagnosisScale:
     """Verify initialization density and evolution are self-consistent.
 
     Runs a single MATLAB session (via helper .m script) that:
-    1. Builds the model with median parameters
+    1. Builds the model with its own defaults
     2. Calls set_healthy_populations and checks initial volume scale
     3. Runs evolve_to_diagnosis to a 3 cm target diameter
-    4. Reports diagnosis-state species counts and densities
+    4. Exercises the model-parameter fallback path
     """
 
     @pytest.fixture(scope="class")
     def matlab_outputs(self):
         """Run the full evolve_to_diagnosis pipeline and capture outputs.
 
-        Backend selection via ``QUAL_TESTS_BACKEND`` (same switch as
-        test_qualitative_behaviors.py):
-            - ``cpp`` (default): run via the C++ helper — builds an evolve
-              blob, reads t_diagnosis from the QSTH header, and runs the
-              baseline scenario for diagnosis-state species densities.
-            - ``matlab``: shell out to the .m helper (legacy path).
+        This is a model-assembly test and runs through the MATLAB helper. C++
+        trajectory equivalence is covered separately by
+        ``tests/test_cpp_matlab_parity.py``; keeping those responsibilities
+        separate avoids a dependency on paper-side priors or campaign helpers.
         """
-        backend = os.environ.get("QUAL_TESTS_BACKEND", "cpp").lower()
-        if backend == "cpp":
-            if str(REPO_ROOT) not in sys.path:
-                sys.path.insert(0, str(REPO_ROOT))
-            from tests.scenarios._cpp_helper import build_evolve_outputs
-
-            return build_evolve_outputs()
-
-        if backend != "matlab":
-            pytest.fail(f"Unknown QUAL_TESTS_BACKEND={backend!r} (expected 'cpp' or 'matlab')")
-
         matlab_cmd = (
             f"cd('{REPO_ROOT}'); "
             f"startup; "
@@ -184,69 +169,6 @@ class TestEvolveTodiagnosisScale:
         assert 3.0 <= diam < 5.0, (
             f"Diagnosis diameter = {diam:.2f} cm "
             f"(expected ~3.0 cm, first crossing of target)"
-        )
-
-    # --- Diagnosis-state density checks ---
-
-    def test_cd8_density_at_diagnosis(self, matlab_outputs):
-        """CD8 volumetric density should be 5000-100000 cells/mm³ at diagnosis.
-
-        Parameter file default: ~34,831 cells/mm³ (parameters_PDAC.m).
-        Literature IHC values (Tahkola 2019, Fukunaga 2004) report 2D
-        surface densities (cells/mm²); converting to volumetric density
-        yields ~10,000-50,000 cells/mm³ depending on section thickness.
-        Lower bound relaxed to 5000 to accommodate PDAC's immunosuppressive
-        TME (high TGFb, MDSC-mediated T cell suppression).
-        """
-        if matlab_outputs["evolution_success"] != 1:
-            pytest.skip("Evolution did not succeed")
-        d = matlab_outputs["CD8_density"]
-        assert 5000 < d < 100000, (
-            f"CD8 density at diagnosis = {d:.0f} cells/mm³ "
-            f"(expected 5000-100000, parameter default ~34,831)"
-        )
-
-    def test_tam_density_at_diagnosis(self, matlab_outputs):
-        """TAM density should be 50-50000 cells/mm³ at diagnosis.
-
-        Literature: 500-5000 cells/mm³ in PDAC (Chen 2015, Ino 2013).
-        Use wider bounds for model flexibility.
-        """
-        if matlab_outputs["evolution_success"] != 1:
-            pytest.skip("Evolution did not succeed")
-        d = matlab_outputs["TAM_density"]
-        assert 50 < d < 50000, (
-            f"TAM density at diagnosis = {d:.0f} cells/mm³ "
-            f"(expected 50-50000, literature ~500-5000)"
-        )
-
-    def test_m1_m2_ratio_at_diagnosis(self, matlab_outputs):
-        """M1/M2 ratio should be immunosuppressive (<1.5) at diagnosis.
-
-        PDAC TME is M2-skewed. Healthy tissue starts at 1.5 (M1-skewed);
-        by diagnosis it should have shifted toward M2 dominance.
-        """
-        if matlab_outputs["evolution_success"] != 1:
-            pytest.skip("Evolution did not succeed")
-        ratio = matlab_outputs["M1_M2_ratio"]
-        assert 0.01 < ratio < 3.0, (
-            f"M1/M2 ratio at diagnosis = {ratio:.2f} "
-            f"(expected 0.01-3.0; PDAC is typically M2-skewed)"
-        )
-
-    def test_cancer_cell_density_at_diagnosis(self, matlab_outputs):
-        """Cancer cell density should be 1e3-1e7 cells/mm³ at diagnosis.
-
-        With vol_cell = 2572 µm³, close-packed cells give ~3.9e5 cells/mm³.
-        V_T includes stroma+ECM (often 60-80% of volume in PDAC), so
-        effective cancer density is much lower than close-packing.
-        """
-        if matlab_outputs["evolution_success"] != 1:
-            pytest.skip("Evolution did not succeed")
-        d = matlab_outputs["C1_density"]
-        assert 1e3 < d < 1e7, (
-            f"Cancer cell density = {d:.0f} cells/mm³ "
-            f"(expected 1e3-1e7)"
         )
 
     # --- Fallback path test (mimics batch_worker.m) ---

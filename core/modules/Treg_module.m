@@ -74,8 +74,9 @@ p.UserData.Source = params.rho_Treg_max.Notes;
 % pinned at ~0) showed the data prefers the apCAF-driven additional Treg
 % carrying capacity off — D²_post/D²_prior improved 0.91 → 0.85, treg_density
 % reachability rose, cd4_helper dropped out of LIKELY_MISSPECIFIED. The
-% direct Th→Treg conversion via k_apCAF_Treg (in fibroblast_module_enhanced)
-% remains and provides the small biologically-supported apCAF→Treg coupling.
+% antigen-specific induced-Treg contribution via k_apCAF_iTreg (appended to
+% the existing Th→Treg flux in fibroblast_module_enhanced) remains as the
+% biologically supported apCAF→Treg coupling.
 % CD8_50_Tcap (formerly registered here for the Th inflammation Hill) was
 % RETIRED 2026-06-22 with that Hill — see Th_module route-2 fix.
 p = addparameter(model,'q_Treg_P_in',params.q_CD4_P_in.Value,'ValueUnits',params.q_CD4_P_in.Units, 'Notes', 'rate of Treg transport into the peripheral compartment ');
@@ -232,7 +233,7 @@ reaction = addreaction(model,'V_T.Treg -> null');
 reaction = addreaction(model,'null -> V_T.Treg');
     set(reaction,'ReactionRate',...
         'k_Treg_pro_tumor*V_T.Treg/(1 + V_T.Treg/(rho_Treg_max*V_T + cell))');
-    set(reaction,'Notes','Tumor-local Treg renewal, SATURATING in density (rho_Treg_max*V_T is the half-saturation density, NOT a hard ceiling). Reformulated 2026-07-13 from the unclamped logistic, which -- with the tumoral death removed on 2026-06-17 -- was forced permanently negative and ran as a quadratic sink (see the death reaction above and notes/model/tcell_carrying_capacity_inversion.md). This form is monotone in k_Treg_pro_tumor and in influx at every density, so the Cy throttle that gvax_module appends here (*(1 - Emax_Cy_Treg*...)) now correctly REMOVES Tregs instead of adding them. The pool is bounded by k_Treg_death (restored above), not by the cap. k_Treg_pro_tumor keeps its Ki67 submodel anchor. Mechanism-specific losses remain explicit: Cy depletion (gvax_module) and post-eradication clearance (below). The apCAF-driven additive cap (rho_Treg_apCAF_extra*H_apCAF) was retired 2026-05-01; direct Th→Treg conversion via apCAF (k_apCAF_Treg, fibroblast_module_enhanced) remains the residual apCAF→Treg coupling.');
+    set(reaction,'Notes','Tumor-local Treg renewal, SATURATING in density (rho_Treg_max*V_T is the half-saturation density, NOT a hard ceiling). Reformulated 2026-07-13 from the unclamped logistic, which -- with the tumoral death removed on 2026-06-17 -- was forced permanently negative and ran as a quadratic sink (see the death reaction above and notes/model/tcell_carrying_capacity_inversion.md). This form is monotone in k_Treg_pro_tumor and in influx at every density, so the Cy throttle that gvax_module appends here (*(1 - Emax_Cy_Treg*...)) now correctly REMOVES Tregs instead of adding them. The pool is bounded by k_Treg_death (restored above), not by the cap. k_Treg_pro_tumor keeps its Ki67 submodel anchor. Mechanism-specific losses remain explicit: Cy depletion (gvax_module) and post-eradication clearance (below). The apCAF-driven additive cap (rho_Treg_apCAF_extra*H_apCAF) was retired 2026-05-01; an antigen-specific induced-Treg contribution (k_apCAF_iTreg, fibroblast_module_enhanced) remains the residual apCAF→Treg coupling.');
 
 % T cell transport
 % Central & Peripheral

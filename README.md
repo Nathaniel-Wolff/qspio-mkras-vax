@@ -5,9 +5,9 @@ A quantitative systems pharmacology (QSP) model of pancreatic ductal adenocarcin
 exported to SBML and C++.
 
 The model captures PDAC tumour dynamics, immune cell populations (CD8/CD4 T cells,
-Tregs, macrophages, cDC1/cDC2, MDSCs, NK), fibroblast and ECM biology (iCAF/myCAF/
+Tregs, macrophages, cDC1/cDC2, MDSCs), fibroblast and ECM biology (iCAF/myCAF/
 apCAF, collagen), and pharmacokinetics for immunotherapy combinations — GVAX,
-nivolumab and urelumab, including the vaccine-induced tertiary lymphoid aggregate.
+nivolumab, with a deliberately compact mechanism set for the retained indications.
 
 ## What is here, and what is not
 
@@ -53,7 +53,7 @@ make test-fast            # the model's own tests
 
 ```
 core/                    # the QSPIO framework, PDAC-specialised
-  modules/               # SimBiology modules (GVAX, fibroblast, macrophage, APC, TLA/urelumab, ...)
+  modules/               # SimBiology modules (GVAX, fibroblast, macrophage, APC, ...)
   model_compilation/     # model assembly
   visualization/         # the D2 schematic source and its ELK renderer
   postprocessing/        # howManyClones and simulation_config, the two still called
@@ -66,7 +66,7 @@ cpp/                     # generated C++ simulator (qsp/ode) and its CMake build
 resources/cpp/           # param_all.xml, the parameter file the simulator reads
 parameters/              # parameters_PDAC.m, posterior medians
 scenarios/               # treatment scenario YAMLs
-tests/                   # MATLAB<->C++ parity, evolve-to-diagnosis, qualitative behaviours
+tests/                   # model assembly/evolve-to-diagnosis and MATLAB<->C++ parity
 model_structure.json     # exported structure (parameters, species, rules)
 PDAC_model.sbml          # SBML export of the compiled model
 ```

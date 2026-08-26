@@ -214,24 +214,19 @@ params.VEGF_conc_initial.Notes = 'Baseline VEGF concentration (varied). From ang
 params.n_clones_tum.Value = 120;
 params.n_clones_tum.Units = 'dimensionless';
 params.n_clones_tum.Notes = '(Morisaki 2021 PMID: 34193879; Narang 2019, PMID: 30832597)';
-% Vaccine-driven epitope spreading (Path A): max fold-broadening of the
-% tumor-specific CD8 repertoire under saturating GVAX antigen. GVAX (whole-cell,
+% Vaccine-driven epitope spreading (Path A): effective fold-broadening of the
+% tumor-specific T-cell repertoire under saturating GVAX antigen. GVAX (whole-cell,
 % GM-CSF) cross-primes new specificities (Thomas 2004 J Exp Med PMID 15289501:
 % mesothelin-specific CD8 induced by a vaccine that does not define that antigen).
-% Epitope-spreading intensities: scale n_CD8_clones / n_CD4_clones in the
+% One shared intensity scales n_CD8_clones / n_CD4_clones in the
 % naive->aCD8 / naive->aTh commitment reactions via the vaccine-antigen Hill
-% H_P1_spread (=0 at diagnosis). SEPARATE for CD8 and CD4: CD8 broadening runs
-% through the rate-limiting, cDC1-restricted cross-presentation pathway and is
-% downstream of CD4 help, whereas CD4 broadening uses the promiscuous MHC-II
-% default pathway -- so f_..._CD4 >= f_..._CD8. Both estimated, SBI-calibrated.
-params.f_epitope_spread_CD8.Value = 4;
-params.f_epitope_spread_CD8.Units = 'dimensionless';
-params.f_epitope_spread_CD8.Notes = 'Max fold-broadening of the tumor-specific CD8 repertoire under saturating GVAX antigen (cross-presentation-limited epitope spreading; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated).';
-params.f_epitope_spread_CD8.derivedFrom = {};
-params.f_epitope_spread_CD4.Value = 6;
-params.f_epitope_spread_CD4.Units = 'dimensionless';
-params.f_epitope_spread_CD4.Notes = 'Max fold-broadening of the tumor-specific CD4 helper repertoire under saturating GVAX antigen (MHC-II default-pathway epitope spreading, broader than CD8; GM-CSF preferentially recruits cDC2/moDCs; qualitatively anchored to Thomas 2004 PMID 15289501; estimated, SBI-calibrated).';
-params.f_epitope_spread_CD4.derivedFrom = {};
+% H_P1_spread (=0 at diagnosis). A shared parameter retains vaccine-driven
+% broadening without asserting an independently identifiable CD4:CD8 asymmetry.
+% Its initial value is the geometric mean of the retired medians 4 and 6; refit.
+params.f_epitope_spread.Value = 4.898979485566356;
+params.f_epitope_spread.Units = 'dimensionless';
+params.f_epitope_spread.Notes = 'Shared effective fold-broadening of tumor-specific CD4 and CD8 repertoires under saturating GVAX antigen (qualitatively anchored to Thomas 2004 PMID 15289501; geometric-mean initial value; estimated and requires reduced-model refit).';
+params.f_epitope_spread.derivedFrom = {};
 % Self-antigen-specific T cell clone number
 params.n_clones_slf.Value = 100;
 params.n_clones_slf.Units = 'dimensionless';
@@ -274,25 +269,23 @@ params.rho_CD8_max.Units = 'cell/milliliter';
 params.rho_CD8_max.Notes = 'Max CD8 density in tumor (carrying cap). Re-centered 1e7 -> 5e6 on 2026-06-18 (v26) toward the live cd8_density_baseline_pooled target (61.8 cells/mm^2 via the model 11um Abercrombie projection -> ~5.6e6 cell/mL). Free placeholder (NOT submodel-anchored); once the v24 CD8 seed floored the cold-tumor collapse, the realized cd8_density was dominated by the filled branch at rho_CD8_max*V_T (~291/mm^2 at the old posterior 2.65e7 -> 2.7x over the pooled 62). Lowering the cap is an unambiguous multi-target win: cd8_density, cd8_pct (was 1.4x over post-seed) and cd8exh_pct (4x over) ALL want less CD8, and the shrunk nucleated_total LIFTS cd4_pct (Th absolute is correct but its fraction was diluted). Same placeholder-re-center as rho_Treg_max v23; the seed floor prevents re-collapse. sigma 1.5 keeps the densest tumors reachable.';
 params.rho_CD8_max.derivedFrom = {};
 % Vaccine-driven in-situ (intratumoral) CD8 proliferation increment (2026-07-18).
-% GVAX establishes intratumoral tertiary lymphoid aggregates (TLAs) with Ki-67+
-% proliferating CD8 inside them (Lutz 2014, Cancer Immunol Res 2:616 -- the same
-% Zheng group as the cd8_fc data). Vaccine-primed, antigen-experienced CD8 undergo
+% Vaccine-primed, antigen-experienced CD8 undergo
 % antigen-driven in-situ proliferation on tumoral antigen re-encounter -- the
 % treatment-DIFFERENTIAL half of tumor CD8 expansion that the constitutive
 % k_CD8_T_pro (vaccine-blind, Blessin-anchored, pins the baseline cd8_density)
 % cannot supply. Added as a SEPARATE saturating source on bulk V_T.CD8 in
-% tla_module, gated by the GVAX antigen Hill H_P1_spread (=0 at diagnosis and in
+% gvax_module, gated by the GVAX antigen Hill H_P1_spread (=0 at diagnosis and in
 % no-vaccine arms), which decouples cd8_fc from the baseline density. Anchored as
 % a FRACTION of the constitutive rate: k_CD8_T_vac_pro = f*k_CD8_T_pro, f~0.6, the
 % vaccine-differential increment bounded by intrinsic in-situ proliferation
 % capacity. (The earlier 0.5/day PLACEHOLDER was ~6x the Blessin-anchored
 % constitutive k_CD8_T_pro=0.079/day -- backwards, and the source of the ~20-29x
-% cd8gzmb_fc over-expansion.) Lutz 2014 shows vaccine-induced TLA proliferation
+% cd8gzmb_fc over-expansion.) Lutz 2014 shows vaccine-induced proliferation
 % only QUALITATIVELY (Ki-67 IHC, Fig 1D; no CD8-resolved fraction), so no direct
 % Ki-67->rate anchor exists. See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.
 params.k_CD8_T_vac_pro.Value = 0.05;
 params.k_CD8_T_vac_pro.Units = '1/day';
-params.k_CD8_T_vac_pro.Notes = 'GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in CD8_T_tot density. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.';
+params.k_CD8_T_vac_pro.Notes = 'GVAX-vaccine-gated in-situ tumor CD8 proliferation increment (Path C). Anchored to f*k_CD8_T_pro (f~0.6): the vaccine-differential increment is a bounded fraction of the Blessin-anchored constitutive in-situ rate (k_CD8_T_pro=0.079/day). H_P1_spread-gated (zero without vaccine), saturating in V_T.CD8 density. Retained in gvax_module after the C13 TLA/urelumab cut. Prior sigma 0.7 (was 1.5 placeholder). See notes/calibration/vpop_thexh_cd8vac_anchoring_2026-07-23.md.';
 params.k_CD8_T_vac_pro.derivedFrom = {'k_CD8_T_pro'};
 % Density set-point for a quadratic CD8 crowding-death term (V3 stabilizer, 2026-07-17).
 % The homeostatic death is now k_CD8_death*CD8*(1 + CD8/(rho_CD8_crowd*V_T)) -- a
@@ -320,7 +313,7 @@ params.rho_CD8_crowd.derivedFrom = {};
 % CD8 homing flux to stop ~1/3 of virtual patients collapsing to an unphysical ~0 CD8
 % (cd8_density q05 = 3e-5 /mm^2 vs real immune-cold PDAC 5-30 /mm^2). It was a band-aid on a
 % supply bug, and 7c0366d fixed the supply chain properly (k_T_activation_per_APC bound to
-% Bousso + residence re-anchor + CXCR3 revival + CXCL9 anchor; cd8_density 0.005 -> 21 /mm^2),
+% Bousso + residence re-anchor; cd8_density 0.005 -> 21 /mm^2),
 % which retired the need for the seed. Its reaction was commented out then, but the parameter
 % was left registered at Value = 0 and never entered pdac_priors.csv -- so it was carried into
 % the SBML/C++ as a dead constant with no consumers. Now removed from parameters, Teff_module,
@@ -621,20 +614,9 @@ params.N_div_base.Value = 2;
 params.N_div_base.Units = 'dimensionless';
 params.N_div_base.Notes = '(Marchingo 2014, PMID: 25430770)';
 % Baseline Number of Activated T Cell Generations for co-stimulation
-params.N_div_costim.Value = 3;
+params.N_div_costim.Value = 1.5105;
 params.N_div_costim.Units = 'dimensionless';
-params.N_div_costim.Notes = '(Marchingo 2014, PMID: 25430770)';
-% Maximal fractional suppression of CD28 costim divisions by PD-1 (Hui 2017 SHP-2 axis).
-% Enters N_aT/N_aTh as (1 - alpha_PD1_costim*H_PD1_APC): PD-1 attenuates CD28 costim by a
-% BOUNDED fraction alpha<1, it does not abolish it. A bare (1-H_PD1_APC) [alpha=1] cut
-% baseline priming ~140x (H_PD1_APC~0.993 at rest) and drove cd8_density 41x below the
-% n=702 observed value; alpha<1 keeps baseline priming functional while anti-PD-1 relieves
-% it. Needs a quantitative Hui-2017 anchor (CD28-vs-TCR dephosphorylation); SBI-exposed
-% weakly-informative until then. See project_costim_wiring_regressed_cd8.
-params.alpha_PD1_costim.Value = 0.5;
-params.alpha_PD1_costim.Units = 'dimensionless';
-params.alpha_PD1_costim.Notes = '(Hui 2017, PMID: 28280247) mechanism basis; magnitude weakly-informative pending anchor';
-params.alpha_PD1_costim.derivedFrom = {};
+params.N_div_costim.Notes = 'Effective basal CD28 costimulation contribution to division destiny. Reanchored from 3 to 1.5105 when the separately fitted APC-side PD-1 multiplier was retired: 3*(1-0.5*0.993)=1.5105 preserves the documented nominal untreated costimulation. Requires updated-sampler refit. Marchingo 2014 PMID: 25430770.';
 % Additional Number of Activated CD8+ T Cell Generations Due to IL2
 params.N_IL2_CD8.Value = 11;
 params.N_IL2_CD8.Units = 'dimensionless';
@@ -643,163 +625,6 @@ params.N_IL2_CD8.Notes = '(Marchingo 2014, PMID: 25430770)';
 params.N_IL2_CD4.Value = 8.5;
 params.N_IL2_CD4.Units = 'dimensionless';
 params.N_IL2_CD4.Notes = '(Marchingo 2014, PMID: 25430770)';
-% --- CD137 / 4-1BB agonist (urelumab) + tertiary lymphoid aggregate (TLA) ----
-% Consumed by tla_module.m (assembled after gvax_module). Heumann 2023
-% (Nat Commun 14:3650, NCT02451982 Arm C) reports the urelumab effect not as a
-% bulk CD8 expansion but as an activation-STATE conversion of CD8 inside
-% vaccine-induced intratumoral TLAs: the CD137+ fraction of within-TLA CD8 goes
-% from ~10% (Arm A, GVAX) / ~0% (Arm B, GVAX+nivo) to ~75% (Arm C, +urelumab,
-% Fig 5b), while general TLA CD8 NUMBER is flat (Suppl Fig 9) and the bulk
-% cytotoxic fraction is unchanged (Fig 5c). So urelumab no longer touches LN
-% division destiny (the retired N_div_CD137 term below); its entire effect is a
-% TLA-local conversion V_T.CD8_TLA -> V_T.CD8_TLA_act gated by H_CD137_T, a Hill
-% on the TUMOR urelumab concentration V_T.aCD137.
-%
-% N_div_CD137 is RETIRED (was: extra LN division-destiny generations at
-% saturating CD137; the 30k fit showed it was unidentified and the wrong shape
-% — the data shows flat bulk CD8). Removed from N_aT/N_aTh in
-% cytokine_tcell_module and from pdac_priors.csv. Its "extra generations"
-% meaning is replaced by the TLA conversion-rate + max-activated-fraction params
-% below.
-%
-% CD137_50 SURVIVES — re-tasked as the EC50 of the TLA-local conversion Hill
-% H_CD137_T = V_T.aCD137/(V_T.aCD137 + CD137_50) (was the LN division-destiny
-% Hill). The Leitner 4-1BB-agonism EC50 anchor still applies as an affinity.
-params.CD137_50.Value = 0.3;
-params.CD137_50.Units = 'nanomolarity';
-params.CD137_50.Notes = 'Half-maximal TUMOR urelumab concentration for CD137/4-1BB engagement of the TLA-local CD8 activation-state conversion (H_CD137_T). ESTIMATED ~1 nM from 8 mg flat-dose PK; affinity-anchorable to the Leitner 4-1BB system. Used in tla_module.';
-params.CD137_50.derivedFrom = {'estimated'};
-%
-% --- TLA niche dynamics (CXCL13 organizer -> aggregate -> CD8 residence) ------
-% CXCL13 is the nucleating chemokine for lymphoid neogenesis (recruits CXCR5+
-% B/Tfh, builds the follicle). In this GVAX system it is sourced from the
-% vaccine depot's matured DCs (V_ID.mAPC, zero unless GVAX is dosed -> TLAs are
-% vaccine-specific, consistent with Lutz 2014 33/39 vaccinated vs 0/54 not),
-% with a light positive feedback from TLA-resident CD8 that makes aggregate
-% presence switch-like (the binary prevalence: Li 2022 0/19 -> 19/19 by d14).
-% All ESTIMATED defaults; lit-anchorable kinetics (k_CXCL13_deg, k_CXCL13_sec,
-% k_CD137_act, k_TLA_decay) flagged for submodel extraction; the EC50/scale
-% (CXCL13_50_TLA) is a Bin-B scale-center (feature/binb-structural-ec50s).
-params.k_CXCL13_sec.Value = 1e-6;   % nanomole/cell/day, per depot mature DC
-params.k_CXCL13_sec.Units = 'nanomole/cell/day';
-params.k_CXCL13_sec.Notes = 'CXCL13 secretion per GVAX-depot matured DC (V_ID.mAPC). ESTIMATED; lit-anchorable to in vitro DC CXCL13 production. Used in tla_module.';
-params.k_CXCL13_sec.derivedFrom = {'estimated'};
-params.k_CXCL13_ff.Value = 1e-7;    % nanomole/cell/day, per resident CD8
-params.k_CXCL13_ff.Units = 'nanomole/cell/day';
-params.k_CXCL13_ff.Notes = 'CXCL13 feed-forward from TLA-resident CD8 (sustains the aggregate after depot clearance; makes prevalence switch-like). ESTIMATED. Used in tla_module.';
-params.k_CXCL13_ff.derivedFrom = {'estimated'};
-params.k_CXCL13_deg.Value = 10;     % 1/day, chemokine fast turnover
-params.k_CXCL13_deg.Units = '1/day';
-params.k_CXCL13_deg.Notes = 'CXCL13 first-order degradation/clearance. ESTIMATED; lit-anchorable to chemokine half-life. Used in tla_module.';
-params.k_CXCL13_deg.derivedFrom = {'estimated'};
-params.CXCL13_50_TLA.Value = 2e-4;  % nanomolarity
-params.CXCL13_50_TLA.Units = 'nanomolarity';
-params.CXCL13_50_TLA.Notes = 'Half-maximal CXCL13 for TLA niche formation. PHENOMENOLOGICAL threshold on the model-internal CXCL13 signal (~500x below real biochemical CXCL13 because the FDC-like organizer cell is not modeled). The Cosgrove2020 B-cell-chemotaxis submodel anchor was demoted (wrong quantity, wrong scale; see submodel_targets/excluded/README.md and notes/model/tla_cxcl13_urelumab_investigation.md). CSV-only wide prior; SBI fits it against within-TLA CD8 targets. Used in tla_module.';
-params.CXCL13_50_TLA.derivedFrom = {'estimated'};
-params.k_TLA_form.Value = 0.5;      % 1/day
-params.k_TLA_form.Units = '1/day';
-params.k_TLA_form.Notes = 'TLA niche formation rate (logistic toward a CXCL13-set ceiling, dimensionless niche fraction capped at 1). ESTIMATED; pinned by TLA prevalence/timing (Li/Lutz). Used in tla_module.';
-params.k_TLA_form.derivedFrom = {'estimated'};
-params.k_TLA_decay.Value = 0.05;    % 1/day, slow TLS regression
-params.k_TLA_decay.Units = '1/day';
-params.k_TLA_decay.Notes = 'TLA niche dissolution/regression rate. ESTIMATED; lit-anchorable to TLS turnover. Used in tla_module.';
-params.k_TLA_decay.derivedFrom = {'estimated'};
-% --- CD8 residence + CD137 activation-state conversion inside the TLA ---------
-% Residence: a fraction of intratumoral CD8 relocates into the aggregate in
-% proportion to niche size (reversible; relabels existing cells, no new
-% proliferation — decision 4). Conversion: V_T.CD8_TLA -> V_T.CD8_TLA_act driven
-% by the durable exposure LATCH L_CD137 (2026-07-19; NOT instantaneous H_CD137_T —
-% urelumab is a single day-7 dose that washes out well before the d21 readout, so
-% instantaneous gating decayed the CD137+ fraction to ~0.41 vs Heumann's ~0.83).
-% A small urelumab-independent baseline (f_act_base) keeps no-urelumab arms low;
-% Arm C is driven toward the saturating asymptote
-% k_CD137_act/(k_CD137_act+k_CD137_deact+k_TLA_egress+k_TLA_release) = 0.847 (the
-% +k_TLA_release activated-pool loss was previously omitted from this comment).
-params.k_TLA_seq.Value = 0.5;       % 1/day, CD8 sequestration into the niche
-params.k_TLA_seq.Units = '1/day';
-params.k_TLA_seq.Notes = 'Rate of intratumoral CD8 sequestration into the TLA niche (scaled by the TLA area fraction a_TLA, NOT the 0-1 niche-formation dial TLA). ESTIMATED; identified by the LA/non-LA CD8 density-ratio submodel target via the product k_TLA_seq*a_TLA. Used in tla_module.';
-params.k_TLA_seq.derivedFrom = {'estimated'};
-params.k_TLA_release.Value = 0.1;   % 1/day, CD8 return to bulk
-params.k_TLA_release.Units = '1/day';
-params.k_TLA_release.Notes = 'Rate of within-TLA CD8 return to the bulk intratumoral pool. ESTIMATED. Used in tla_module.';
-params.k_TLA_release.derivedFrom = {'estimated'};
-params.a_TLA.Value = 0.0055;        % dimensionless, intratumoral TLA area fraction (Hiraoka 2015)
-params.a_TLA.Units = 'dimensionless';
-params.a_TLA.Notes = ['TLA area fraction of the tumor (Hiraoka 2015: intratumoral TLO area 0.1-1%% of tumor for grade 3, midpoint 0.55%%). Scales CD8 sequestration into the niche so the count partition CD8_TLA/CD8 = k_TLA_seq*a_TLA/(k_TLA_release+k_CD8_death) matches the tla_seq_release_partition submodel target, which uses this same Hiraoka value. FIXED constant, NOT varied in SBI: only the product k_TLA_seq*a_TLA is identifiable from the LA/non-LA density ratio, so a_TLA is pinned from data and k_TLA_seq carries the inference. Replaces the prior use of the 0-1 niche-formation dial TLA (~0.82 at QSS) in the sequestration term, which over-sequestered CD8 ~150x and drained the non-LA bulk pool (Li 2022 cd8_pct_nonLA). Used in tla_module.'];
-params.a_TLA.derivedFrom = {'Hiraoka2015'};
-params.k_CD137_act.Value = 1.0;     % 1/day, conversion at saturating urelumab
-params.k_CD137_act.Units = '1/day';
-params.k_CD137_act.Notes = 'Max rate of CD8_TLA -> CD8_TLA_act conversion (CD137+ activation state) at saturating urelumab. ESTIMATED; lit-anchorable to in vitro 4-1BB-agonism activation timecourse (Leitner). Used in tla_module.';
-params.k_CD137_act.derivedFrom = {'estimated'};
-params.k_CD137_deact.Value = 0.05;  % 1/day, slow reversion (durable CD137+)
-params.k_CD137_deact.Units = '1/day';
-params.k_CD137_deact.Notes = 'Rate of CD8_TLA_act -> CD8_TLA reversion (loss of CD137+ activation state). Durable CD137+ (slow reversion) so the within-TLA activated fraction stays high through d21; with k_CD137_act sets the activated-fraction asymptote (Heumann Arm C). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_deact.derivedFrom = {'estimated'};
-params.f_act_base.Value = 0.0015;   % dimensionless, urelumab-independent floor (lowered from 0.01: realized no-urelumab CD137+ ran ~4.6% vs Heumann Arm B ~0.6% intent)
-params.f_act_base.Units = 'dimensionless';
-params.f_act_base.Notes = 'Urelumab-independent baseline of the CD137 conversion drive, sets the no-urelumab within-TLA CD137+ fraction (low, between Heumann Arm A ~1.5% and Arm B ~0.6%). Lowered under the new durable-CD137+ regime (slow k_CD137_deact) so the no-urelumab arms stay low. ESTIMATED, free; wide prior; pinned by Arm A/B targets. Used in tla_module.';
-params.f_act_base.derivedFrom = {'estimated'};
-params.k_TLA_egress.Value = 0.03;   % 1/day, activated egress to vicinity
-params.k_TLA_egress.Units = '1/day';
-params.k_TLA_egress.Notes = 'Rate of activated within-TLA CD8 (CD8_TLA_act) egress to the neoplastic vicinity (the 2-4% CD137+ subset outside TLA, Fig 5d) as the durable effector pool CD8_vic. ESTIMATED; pinned by the vicinity target. Used in tla_module.';
-params.k_TLA_egress.derivedFrom = {'estimated'};
-% Integrated-exposure latch for durable CD137/4-1BB activation (2026-07-19).
-% See tla_module. Urelumab is a single day-7 dose that washes out (aCD137 t1/2
-% ~5.5 d) well before the d21 readout, so instantaneous-occupancy gating (H_CD137_T)
-% decayed the within-TLA CD137+ fraction to ~0.41 vs Heumann Arm C ~0.83. L_CD137
-% charges from H_CD137_T during the drug window and decays slowly, so the activated
-% state persists (and fresh niche CD8 keep getting activated rather than diluting
-% the fraction). Both params are zero-effect without urelumab.
-params.k_CD137_latch_on.Value = 1.0;    % 1/day, exposure -> commitment (latch charge)
-params.k_CD137_latch_on.Units = '1/day';
-params.k_CD137_latch_on.Notes = 'Rate at which urelumab exposure (H_CD137_T) commits the TLA to the durable CD137+ activation program (latch charge, L_CD137). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_latch_on.derivedFrom = {};
-params.k_CD137_latch_off.Value = 0.015; % 1/day, slow latch decay (~weeks memory)
-params.k_CD137_latch_off.Units = '1/day';
-params.k_CD137_latch_off.Notes = 'Decay rate of the CD137 activation latch (L_CD137) — the durability of the 4-1BB-induced activation program after urelumab washout (~0.015/day, t1/2 ~6 weeks). Sets how long the within-TLA CD137+ fraction persists post single-dose urelumab (Heumann Arm C d21, 14 d after the dose). ESTIMATED, free; wide prior. Used in tla_module.';
-params.k_CD137_latch_off.derivedFrom = {};
-params.phi_vic_kill.Value = 2.0;    % dimensionless, per-cell killing quality multiplier of egressed vicinity effectors
-params.phi_vic_kill.Units = 'dimensionless';
-params.phi_vic_kill.Notes = ['Per-cell tumor-killing quality multiplier for the egressed vicinity effector pool CD8_vic relative to bulk V_T.CD8 (4-1BB/CD137-agonism upgrades effector QUALITY, not quantity; Heumann 2023 reports flat bulk GZMB density but a survival-associated CD8+CD137+GZMB+ activated-cytotoxic subset that egresses to the neoplastic vicinity, Fig 5d). >1 means vicinity effectors kill better per cell. ESTIMATED, free; wide prior; constrained by the urelumab DFS/OS and Fig-5d vicinity targets. Urelumab-gated downstream (CD8_vic~0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module.'];
-params.phi_vic_kill.derivedFrom = {'estimated'};
-params.k_vic_decay.Value = 0.005;   % 1/day, slow (half-life ~139 d): effector-memory durability of the vicinity pool
-params.k_vic_decay.Units = '1/day';
-params.k_vic_decay.Notes = ['Turnover of the egressed vicinity effector pool CD8_vic back to bulk V_T.CD8. SLOW (half-life ~139 d at 0.005/day) = effector-memory-like durability: the urelumab vicinity pool is seeded during the brief neoadjuvant urelumab window (single dose, aCD137 clears in weeks) and must PERSIST for months so that, as the vaccine/nivo-driven bulk CD8 contracts post-treatment, the durable throttle-bypassing vicinity pool sustains tumor/recurrence control over the long horizon (the DFS/OS benefit). ESTIMATED, free; wide prior; long-horizon DFS/OS targets pull it. Used in tla_module.'];
-params.k_vic_decay.derivedFrom = {'estimated'};
-params.k_CD137_reinvig.Value = 1.42; % 1/day, TOTAL urelumab/4-1BB-driven Tpex differentiation rate (fate-split downstream by f_CD137_func). ANCHORED 2026-07-16 to Pichler2023 Fig3M-P sorted-Tpex transfer (death-free closed form; 7-day exposure-averaged EFFECTIVE rate, 3H3 dosed d0/d4 -- not verified maximal); composed posterior median ~0.97/day. Correlated with k_CD137_prolif -- only the net (kp-kr) is structure-robust.
-params.k_CD137_reinvig.Units = '1/day';
-params.k_CD137_reinvig.Notes = ['Max TOTAL urelumab/4-1BB (CD137-agonist)-driven differentiation rate of progenitor-exhausted (Tpex) CD8 out of the reservoir, at full tumor urelumab occupancy (H_CD137_T). The 4-1BB COSTIMULATION drive on the CD8_pex reservoir, parallel to the anti-PD-1 k_reinvig arm. NOTE (2026-07-15): this is NO LONGER a pure reflux to functional effectors — CD137 agonism drives Tpex proliferation AND terminal differentiation (Pichler 2023, Immunity: TCR-independent CD137 signaling promotes exhausted-CD8 proliferation and terminal differentiation), so the CD137-driven exit flux is fate-split in tla_module (fraction f_CD137_func to functional CD8, remainder to terminal CD8_exh). Captures the synergy with aPD-1 (Muth 2023, Zotero 39X6WHRF: aCD137 + aPD-1 increased IFNg in EOMES+ exhausted TILs). Anchorable from CD137-induced Tpex proliferation/expansion kinetics (the confound that made an isolated reflux fraction unmeasurable). Prior framing as "the dominant urelumab antitumor lever" was falsified by a Heumann-arm trace (moves bulk CD8 <0.5% over 21 days; urelumab antitumor effect rides on the vicinity/quality arm). Urelumab-gated (H_CD137_T=0 without urelumab), so Arms A/B and no-treatment are untouched. Used in tla_module.'];
-params.k_CD137_reinvig.derivedFrom = {'cd137_tpex_dynamics'};
-
-% Functional fraction of the CD137-driven Tpex differentiation flux (fate split).
-% CD137/4-1BB agonism sends Tpex toward proliferation + terminal differentiation
-% (Pichler 2023), NOT cleanly back to resting functional effectors. f_CD137_func
-% is the fraction of the CD137-driven Tpex exit (k_CD137_reinvig*CD8_pex*H_CD137_T)
-% that becomes functional (transitory-effector) CD8; (1-f_CD137_func) becomes
-% terminal CD8_exh. Default skewed terminal (0.35) per Pichler's terminal-dominant
-% direction; ANCHORABLE from the functional:terminal ratio in head-to-head 4-1BB
-% Tpex assays (Kim 2020 HCC / Pichler 2023 / Muth 2023) — a data-constrained
-% fraction, not a free knob. Dimensionless, 0-1. derivedFrom={} (submodel-anchor
-% queued). Used in tla_module reactions 14a/14b.
-params.f_CD137_func.Value = 0.24; % ANCHORED 2026-07-16: Pichler2023 Fig3P Tpex-donor fate donut, E/(E+T)=Tmem/(Tmem+TermTex)=0.24 (terminal-skewed); mild UPPER bound (differential TermTex death would lower it). Was 0.35 placeholder.
-params.f_CD137_func.Units = 'dimensionless';
-params.f_CD137_func.Notes = 'Functional (transitory-effector) fraction of the CD137/4-1BB-driven Tpex differentiation flux; (1-f_CD137_func) is the terminal-CD8_exh fraction (Pichler 2023 terminal-dominant skew). Anchorable from the functional:terminal ratio in head-to-head 4-1BB Tpex assays. Used in tla_module (fate-split of reaction 14).';
-params.f_CD137_func.derivedFrom = {'cd137_tpex_dynamics'};
-
-% CD137/4-1BB-driven Tpex proliferation (self-renewal) rate. 4-1BB agonism expands
-% the progenitor-exhausted pool (Pichler 2023; Li 2023 Ki67), so the model grows
-% CD8_pex under urelumab rather than only re-partitioning its exit flux. GENERATIVE
-% (null -> CD8_pex) but H_CD137_T-gated -> identically zero at baseline / Arms A/B
-% (so the 2026-06-17 inflow-sourced reservoir reformulation is preserved there) and
-% niche-capped by rho_pex_max (shared with the exhaustion inflow) so it saturates at
-% the Jansen 2019 ceiling. Default 0.1/day (modest, avoids self-igniting to the cap
-% within the ~2-week neoadjuvant urelumab window); ANCHORABLE from CD137-induced
-% Tpex Ki67 / fold-expansion kinetics (Li 2023). Dimensionless-gated 1/day.
-% derivedFrom={} (submodel-anchor queued). Used in tla_module reaction 14c.
-params.k_CD137_prolif.Value = 1.55; % ANCHORED 2026-07-16 to Pichler2023 Fig3M-P sorted-Tpex transfer (death-free closed form; 7-day exposure-averaged EFFECTIVE rate, 3H3 dosed d0/d4 -- not verified maximal); composed posterior median ~1.15/day. Was 0.1 placeholder. Ki67 (Fig3B-D, a different assay) implies lower ~0.1-0.5/day — the wide prior spans this tension. Individual kp/kr are endpoint-equivalent/model-imposed; net (kp-kr)~0.14 is the robust quantity.
-params.k_CD137_prolif.Units = '1/day';
-params.k_CD137_prolif.Notes = 'Max CD137/4-1BB-driven Tpex (CD8_pex) proliferation/self-renewal rate at full urelumab occupancy (H_CD137_T); generative null->CD8_pex, H_CD137_T-gated (zero at baseline/Arms A/B), niche-capped by rho_pex_max. Anchorable from CD137-induced Tpex Ki67/fold-expansion (Li 2023). Used in tla_module.';
-params.k_CD137_prolif.derivedFrom = {'cd137_tpex_dynamics'};
 % ---------------------------------------------------------------------------
 % Local IL-2 niche params (quasi-steady-state supply/demand reformulation).
 % IL-2 is no longer a bulk dynamic species. The bulk V_LN.IL2 pool was
@@ -1322,25 +1147,6 @@ params.Chi_PD1_aPD1.Units = '';
 params.Chi_PD1_aPD1.Notes = '(estimated based on Wang 2014, PMID: 24872026)';
 params.Chi_PD1_aPD1.Factors = ["Chi_PD1_aPD1_3D","d_syn","N_avg"];
 params.Chi_PD1_aPD1.Equation = 'p(1)/(p(2)*p(3))';
-% PDL1-aPDL1 kd
-params.kd_PDL1_aPDL1.Value = 0.4;
-params.kd_PDL1_aPDL1.Units = 'nanomolarity';
-params.kd_PDL1_aPDL1.Notes = '(Wang 2014, PMID: 24872026)';
-% PDL1-aPDL1 kon
-params.kon_PDL1_aPDL1.Value = 4.3e5;
-params.kon_PDL1_aPDL1.Units = '1/(molarity*second)';
-params.kon_PDL1_aPDL1.Notes = '(Wang 2014, PMID: 24872026)';
-% PDL1-aPDL1 Chi (antibody cross-arm binding strength)
-params.Chi_PDL1_aPDL1_3D.Value = 100;
-params.Chi_PDL1_aPDL1_3D.Units = 'dimensionless';
-params.Chi_PDL1_aPDL1_3D.Notes = '(estimated)';
-% PDL1-aPDL1 Chi for 2D
-params.Chi_PDL1_aPDL1.Value = [];
-params.Chi_PDL1_aPDL1.Units = '';
-params.Chi_PDL1_aPDL1.Notes = '(Wang 2014, PMID: 24872026)';
-params.Chi_PDL1_aPDL1.Factors = ["Chi_PDL1_aPDL1_3D","d_syn","N_avg"];
-params.Chi_PDL1_aPDL1.Equation = 'p(1)/(p(2)*p(3))';
-
 % PD1-PDL1 koff
 params.koff_PD1_PDL1.Value = [];
 params.koff_PD1_PDL1.Units = '1/second';
@@ -1359,13 +1165,6 @@ params.koff_PD1_aPD1.Units = '1/second';
 params.koff_PD1_aPD1.Notes = ['calculated based on the measured kd and kon ' params.kd_PD1_aPD1.Notes];
 params.koff_PD1_aPD1.Factors = ["kon_PD1_aPD1","kd_PD1_aPD1"];
 params.koff_PD1_aPD1.Equation = 'p(1)*p(2)';
-% PDL1-aPDL1 koff
-params.koff_PDL1_aPDL1.Value = [];
-params.koff_PDL1_aPDL1.Units = '1/second';
-params.koff_PDL1_aPDL1.Notes = ['calculated based on the measured kd and kon ' params.kd_PDL1_aPDL1.Notes];
-params.koff_PDL1_aPDL1.Factors = ["kon_PDL1_aPDL1","kd_PDL1_aPDL1"];
-params.koff_PDL1_aPDL1.Equation = 'p(1)*p(2)';
-
 % PD1 Expression on T Cells
 params.T8_PD1.Value = 3.1e3*20*.45;
 params.T8_PD1.Units = 'molecule';
@@ -1536,25 +1335,6 @@ params.kon_CD80_CD80.Units = '';
 params.kon_CD80_CD80.Notes = '(Ikemizu 2000, PMID: 10661405)';
 params.kon_CD80_CD80.Factors = ["kon_CD80_CD80_3D","d_syn"];
 params.kon_CD80_CD80.Equation = 'p(1)/p(2)';
-% CTLA4-aCTLA4 kd
-params.kd_CTLA4_aCTLA4.Value = 18.2;
-params.kd_CTLA4_aCTLA4.Units = 'nanomolarity';
-params.kd_CTLA4_aCTLA4.Notes = '(Wang 2014, PMID: 24872026)';
-% CTLA4-aCTLA4 kon
-params.kon_CTLA4_aCTLA4.Value = 3.83e5;
-params.kon_CTLA4_aCTLA4.Units = '1/(molarity*second)';
-params.kon_CTLA4_aCTLA4.Notes = '(Wang 2014, PMID: 24872026)';
-% CTLA4-aCTLA4 Chi (antibody cross-arm binding strength)
-params.Chi_CTLA4_aCTLA4_3D.Value = 100;
-params.Chi_CTLA4_aCTLA4_3D.Units = 'dimensionless';
-params.Chi_CTLA4_aCTLA4_3D.Notes = '(estimated)';
-% CTLA4-aCTLA4 Chi for 2D
-params.Chi_CTLA4_aCTLA4.Value = [];
-params.Chi_CTLA4_aCTLA4.Units = '';
-params.Chi_CTLA4_aCTLA4.Notes = '(estimated)';
-params.Chi_CTLA4_aCTLA4.Factors = ["Chi_CTLA4_aCTLA4_3D","d_syn","N_avg"];
-params.Chi_CTLA4_aCTLA4.Equation = 'p(1)/(p(2)*p(3))';
-
 % CD28-CD80 koff
 params.koff_CD28_CD80.Value = [];
 params.koff_CD28_CD80.Units = '1/second';
@@ -1591,13 +1371,6 @@ params.koff_CD80_CD80.Units = '1/second';
 params.koff_CD80_CD80.Notes = ['calculated based on the measured kd and kon ' params.kd_CD80_CD80.Notes];
 params.koff_CD80_CD80.Factors = ["kon_CD80_CD80_3D","kd_CD80_CD80"];
 params.koff_CD80_CD80.Equation = 'p(1)*p(2)';
-% CTLA4-aCTLA4 koff
-params.koff_CTLA4_aCTLA4.Value = [];
-params.koff_CTLA4_aCTLA4.Units = '1/second';
-params.koff_CTLA4_aCTLA4.Notes = ['calculated based on the measured kd and kon ' params.kd_CTLA4_aCTLA4.Notes];
-params.koff_CTLA4_aCTLA4.Factors = ["kon_CTLA4_aCTLA4","kd_CTLA4_aCTLA4"];
-params.koff_CTLA4_aCTLA4.Equation = 'p(1)*p(2)';
-
 % CD28 Expression on T Cells
 params.T8_CD28.Value = 9200*20;
 params.T8_CD28.Units = 'molecule';
@@ -1672,11 +1445,6 @@ params.k_MDSC_rec.Notes = '(Tomiyama, T.2022; https://doi.org/10.3892/ol.2022.13
 params.k_MDSC_death.Value = 0.07;
 params.k_MDSC_death.Units = '1/day';
 params.k_MDSC_death.Notes = '(Lai 2018, PMID: 29735668)';
-% half-maximal entinostat concentration for anti-proliferative effect on tumor cells
-params.IC50_inostat_C.Value = 3.74e-7;
-params.IC50_inostat_C.Units = 'molarity';
-params.IC50_inostat_C.Notes = '(Bouchain 2002, PMID: 12593661; Lee 2001, PMID: 11221885)';
-
 % rate of CCL2 degradtion
 params.k_CCL2_deg.Value = 0.06;
 params.k_CCL2_deg.Units = '1/hour';
@@ -1701,19 +1469,6 @@ params.k_NO_sec.Notes = '(Serafini 2008, PMID: 18593947)';
 params.k_ArgI_sec.Value = 1.1e-10;
 params.k_ArgI_sec.Units = 'nanomole/cell/day';
 params.k_ArgI_sec.Notes = '(Rodriguez PC, PMID: 19201693)';
-% half-maximal entinostat concentration for NO inhibition
-params.IC50_inostat_NO.Value = 0.56; % <1 nM
-params.IC50_inostat_NO.Units = 'nanomolarity';
-params.IC50_inostat_NO.Notes = '(Choo 2010, PMID: 20421217)';
-% half-maximal entinostat concentration for CCL2 inhibition
-params.IC50_inostat_CCL2.Value = 1.2; % <2 nM
-params.IC50_inostat_CCL2.Units = 'nanomolarity';
-params.IC50_inostat_CCL2.Notes = '(Choo 2013, PMID: 24241152)';
-% half-maximal entinostat concentration for Arg I inhibition
-params.IC50_inostat_ArgI.Value = 500;
-params.IC50_inostat_ArgI.Units = 'nanomolarity';
-params.IC50_inostat_ArgI.Notes = '(Orillian 2017, PMID: 28698201)';
-
 % rate of ArgI/NO-induced T cell death Park 2018, PMID: 29491381
 % half-maximal ArgI concentration for CTL inhibition
 params.ArgI_50_Teff.Value = 50;
@@ -1757,7 +1512,7 @@ params.k_TGFb_deg.Notes = '(Robertson-Tessi 2012, PMID: 22051568)';
 % Context-specific TGFb EC50s (mid-tier #13). The generic TGFb_50 (Robertson-
 % Tessi 2012) was shared across three distinct TGFb programs — Th->Treg
 % differentiation, M1->M2 polarization, chemoresistance — while the rest of the
-% TGFb-50 family is already per-context (TGFb_50_Teff/APC/NK/CAF_act/col_sec/
+% TGFb-50 family is already per-context (TGFb_50_Teff/APC/CAF_act/col_sec/
 % IL1R1/Th_exh). Split into three independently-calibratable EC50s, each
 % defaulting to the Robertson-Tessi 0.07 nM value (zero behaviour change at
 % default).
@@ -1834,7 +1589,7 @@ params.TGFb_baseline.Notes = '(Ivanović 2003, PMID: 12751375; Manuyakorn 2008, 
 % (Yang 2013/Liyanage 2002), k_TGFb_Msec (Matsuo 2000) and TGFb_baseline
 % (Ivanović 2003 etc.) all measure total TGFb (acid-activated or ELISA on
 % tissue lysate). The EC50 family (TGFb_50, TGFb_50_Teff, TGFb_50_APC,
-% TGFb_50_NK, TGFb_50_CAF_act, TGFb_50_col_sec, TGFb_50_IL1R1) is calibrated
+% TGFb_50_CAF_act, TGFb_50_col_sec, TGFb_50_IL1R1) is calibrated
 % against bioactive recombinant TGFb (Robertson-Tessi 2012). f_active_TGFb
 % scales total secretion into the bioactive pool represented by V_T.TGFb.
 % In vivo latent-to-active fractions vary: Annes 2004 reports basal ~0.1-1%
@@ -1867,62 +1622,6 @@ params.k_IFNg_deg.Notes = '(Hofstra 1998, PMID: 9806748)';
 params.IFNg_50_ind.Value = 2.96;
 params.IFNg_50_ind.Units = 'picomolarity';
 params.IFNg_50_ind.Notes = '(Shin 2017, PMID: 27903500)';
-
-%% Paclitaxel Module Parameters
-% Max clearance rate from central compartment
-params.Vmcl.Value = 8070;
-params.Vmcl.Units = 'microgram/hour';
-params.Vmcl.Notes = '(Chen 2014, PMID: 24719309)';
-% Half-max conc. of clearance rate from central compartment
-params.Kcl.Value = 40.2;
-params.Kcl.Units = 'microgram/liter';
-params.Kcl.Notes = '(Chen 2014, PMID: 24719309)';
-% Transport rate b/t central and P compartment
-params.Q2.Value = 41.6;
-params.Q2.Units = 'liter/hour';
-params.Q2.Notes = '(Chen 2014, PMID: 24719309)';
-% Max clearance rate from central compartment
-params.Vmt.Value = 325000;
-params.Vmt.Units = 'microgram/hour';
-params.Vmt.Notes = '(Chen 2014, PMID: 24719309)';
-% Half-max conc. of clearance rate from central compartment
-params.Kt.Value = 4260;
-params.Kt.Units = 'microgram/liter';
-params.Kt.Notes = '(Chen 2014, PMID: 24719309)';
-% Body surface area
-params.BSA.Value = 1.9;
-params.BSA.Units = 'meter^2';
-params.BSA.Notes = '(Chen 2014, PMID: 24719309)';
-
-%% Paclitaxel PD Parameters
-% Tumour to plasma concentration ratio of nab-paclitaxel
-params.r_nabp.Value = 1.5;
-params.r_nabp.Units = 'dimensionless';
-params.r_nabp.Notes = '(Yang 2007, PMID: 17828616; Rajeshkumar 2016, PMID: 27441498)';
-% Cancer cell killing rate by nab-paclitaxel
-params.k_C_nabp.Value = 0.06;
-params.k_C_nabp.Units = '1/hour';
-params.k_C_nabp.Notes = '(Choi 2012, PMID: 23023313; Volk 2008, PMID: 18516298; Kozłowska 2018, PMID: 29769198)';
-% Half-maximal nab-paclitaxel concentration for cancer cell killing
-params.IC50_nabp.Value = 92;
-params.IC50_nabp.Units = 'nanomolarity';
-params.IC50_nabp.Notes = '(Yang 2013, PMID: 23180760)';
-% Molecular weight of nab-paclitaxel
-params.MW_nabp.Value = 853.9;
-params.MW_nabp.Units = 'gram/mole';
-params.MW_nabp.Notes = '(calculated)';
-% Limited tumor penetration of nab-paclitaxel
-params.Kc_nabp.Value = 8e7;
-params.Kc_nabp.Units = 'cell';
-params.Kc_nabp.Notes = '(estimated based on Kyle 2007, PMID: 17473214)';
-% Rate of chemo-resistance development to nab-paclitaxel
-params.k_C_resist_nab.Value = 1e-4;
-params.k_C_resist_nab.Units = '1/day';
-params.k_C_resist_nab.Notes = '(estimated)';
-% Number of folds increase of nab-paclitaxel IC50 in resistant cancer clones
-params.r_resist.Value = 100;
-params.r_resist.Units = 'dimensionless';
-params.r_resist.Notes = '(Nemcova-Furstova 2016, PMID: 27664577)';
 
 %% vascular module
 % Initial Tumor Capacity
@@ -1964,14 +1663,6 @@ params.vas_inhib_vol_scale.Value = 2.57e-6;
 params.vas_inhib_vol_scale.Units = 'dimensionless';
 params.vas_inhib_vol_scale.Notes = 'Per-cell tumor-volume scaling (cancer cell volume in mm^3 ~ 4/3*pi*(D_cell/2)^3*1e-9) for the Hahnfeldt 1999 V^(2/3) endogenous vascular-inhibition surface term (PMID 10519381).';
 params.vas_inhib_vol_scale.derivedFrom = {};
-% Secretion rate of angiogenic factors induced by nab-paclitaxel
-params.k_vas_nabp.Value = 2.8e-4;
-params.k_vas_nabp.Units = 'picogram/cell/day';
-params.k_vas_nabp.Notes = '(Volk 2008, PMID: 18516298)';
-% Half-maximal conc. of nab-paclitaxel on angiogenic factor induction
-params.IC50_nabp_vas.Value = 5.2;
-params.IC50_nabp_vas.Units = 'nanomolarity';
-params.IC50_nabp_vas.Notes = '(Volk 2008, PMID: 18516298)';
 % Secretion rate of angiogenic factors by cancer cells
 params.k_vas_Csec.Value = 0.1;
 params.k_vas_Csec.Units = 'picogram/cell/day';
@@ -1984,25 +1675,6 @@ params.k_vas_deg.Notes = '(Finley 2011, PMID: 22104283)';
 params.VEGF_50.Value = 2.41e3; 
 params.VEGF_50.Units = 'picogram/milliliter';
 params.VEGF_50.Notes = '(Xiang 2014, https://doi.org/10.1158/1078-0432.CCR-13-2620)';
-% Inhibition rate of maximal tumor capacity by nab-paclitaxel
-params.k_K_nabp.Value = 17.8;
-params.k_K_nabp.Units = '1/hour/molarity';
-params.k_K_nabp.Notes = '(Mollard 2017, PMID: 28416742)';
-
-
-%% Properties for CTLA4-mediated Treg depletion (ADCC)
-% CTLA4-Ipi Concentration for Half-Maximal Treg death
-params.Treg_CTLA4_50.Value = 1000;
-params.Treg_CTLA4_50.Units = 'molecule';
-params.Treg_CTLA4_50.Notes = '(estimated)';
-% Hill Coefficient for CTLA4-Ipi
-params.n_Treg_CTLA4.Value = 2;
-params.n_Treg_CTLA4.Units = 'dimensionless';
-params.n_Treg_CTLA4.Notes = '(estimated)';
-% CTLA4 Expression on Tregs
-params.Treg_CTLA4_tot.Value = 5000;
-params.Treg_CTLA4_tot.Units = 'molecule';
-params.Treg_CTLA4_tot.Notes = '(Jansson 2005, PMID: 16034096)';
 % Ipi ADCC (antibody-dependent cellular cytotoxicity) rate of Treg
 params.k_CTLA4_ADCC.Value = 0.1;
 params.k_CTLA4_ADCC.Units = '1/day';
@@ -2212,170 +1884,6 @@ params.vol_Mcell.Factors = ["D_Mcell", "cell"];
 params.vol_Mcell.Equation = '4/3*pi*(p(1)/2)^3/p(2)';
 
 
-%% NK Module Parameters
-% Reactivated 2026-05-13 after NK_module.m was disassembled. Values are
-% initial estimates anchored to biological order-of-magnitude; submodel
-% target extractions are pending (high-priority anchors: IL10_50_NK,
-% TGFb_50_NK, IL12_50_NK EC50s; k_NK_kill / K_NK_C pair; XCL1_50_cDC1).
-
-% NK recruitment rate to tumor (PDAC TME is NK-poor: ~10x lower than Mac_rec)
-params.k_NK_rec.Value = 4.5e4;
-params.k_NK_rec.Units = 'cell/(milliliter*day)';
-params.k_NK_rec.Notes = 'Initial estimate; PDAC TME is NK-poor at diagnosis (NK density ~5-15 cells/mm^2 vs M2 ~120), ~10x lower than k_Mac_rec. Pending submodel extraction.';
-params.k_NK_rec.derivedFrom = {};
-
-% NK death/turnover rate in tumor (NK half-life ~10 d, faster than Mac)
-params.k_NK_death.Value = 0.07;
-params.k_NK_death.Units = '1/day';
-params.k_NK_death.Notes = 'Initial estimate; NK tumor half-life ~10 d. Pending submodel extraction.';
-params.k_NK_death.derivedFrom = {};
-
-% NK killing rate of cancer cells (antigen-independent cytotoxicity)
-% In vivo sustained NK killing is much lower than peak in vitro lytic units;
-% calibrated so net early-tumor kill rate stays below growth rate (otherwise
-% evolve-to-diagnosis fails to establish tumor).
-params.k_NK_kill.Value = 0.05;
-params.k_NK_kill.Units = '1/day';
-params.k_NK_kill.Notes = 'Initial estimate; sustained in vivo NK cytotoxicity (10x lower than peak in vitro lytic units). Pending submodel from chromium-release E:T assays.';
-params.k_NK_kill.derivedFrom = {};
-
-% NK-cancer association coefficient (saturation term in kill reaction)
-% Higher K_NK_C => more NK needed per cancer cell to half-saturate killing.
-params.K_NK_C.Value = 10.0;
-params.K_NK_C.Units = 'dimensionless';
-params.K_NK_C.Notes = 'Initial estimate; NK:target saturation needs ~10x NK per cancer cell for half-max killing. Paired with k_NK_kill.';
-params.K_NK_C.derivedFrom = {};
-
-% IFNg secretion rate per NK cell (suppressed by TGFb, enhanced by IL-12)
-params.k_IFNg_NK_sec.Value = 1.0e-12;
-params.k_IFNg_NK_sec.Units = 'nanomole/cell/day';
-params.k_IFNg_NK_sec.Notes = 'Initial estimate; per-NK IFNg secretion under IL-12 stim, OOM of CD8 IFNg secretion. Pending extraction.';
-params.k_IFNg_NK_sec.derivedFrom = {};
-
-% IL-10 EC50 for NK suppression (canonical NK inhibitory pathway)
-params.IL10_50_NK.Value = 0.05;
-params.IL10_50_NK.Units = 'nanomolarity';
-params.IL10_50_NK.Notes = 'Initial estimate; IL-10 EC50 for NK function inhibition. Pending submodel.';
-params.IL10_50_NK.derivedFrom = {};
-
-% TGFb EC50 for NK suppression
-params.TGFb_50_NK.Value = 0.5;
-params.TGFb_50_NK.Units = 'nanomolarity';
-params.TGFb_50_NK.Notes = 'Initial estimate; TGFb EC50 for NK function inhibition. Pending submodel.';
-params.TGFb_50_NK.derivedFrom = {};
-
-% IL-12 EC50 for NK activation
-params.IL12_50_NK.Value = 0.002;
-params.IL12_50_NK.Units = 'nanomolarity';
-params.IL12_50_NK.Notes = 'Initial estimate; IL-12 EC50 for NK IFNg production (close to tumor IL-12 baseline ~0.001 nM). Pending submodel.';
-params.IL12_50_NK.derivedFrom = {};
-
-% Peripheral NK homeostasis rate (steady-state turnover)
-params.q_NK_P_in.Value = 0.05;
-params.q_NK_P_in.Units = '1/day';
-params.q_NK_P_in.Notes = 'Initial estimate; peripheral NK turnover for steady-state homeostasis.';
-params.q_NK_P_in.derivedFrom = {};
-
-% Peripheral NK steady-state count (NK ~5-10% of circulating lymphocytes)
-params.NK_P_steady.Value = 5e6;
-params.NK_P_steady.Units = 'cell';
-params.NK_P_steady.Notes = 'Initial estimate; peripheral NK count, ~5-10% of PBMC lymphocytes. Pending extraction.';
-params.NK_P_steady.derivedFrom = {};
-
-% NK cell diameter (primary; vol_NK derived via Factors/Equation pattern below)
-params.D_NK.Value = 10;
-params.D_NK.Units = 'micrometer';
-params.D_NK.Notes = 'NK cell diameter (intermediate between T cell ~7 um and macrophage ~21 um).';
-params.D_NK.derivedFrom = {};
-
-% NK cell volume (derived from D_NK; matches vol_cell/vol_Tcell/vol_Mcell pattern
-% so load_parameters.m attaches compound units micrometer^3/cell from the Equation eval)
-params.vol_NK.Value = [];
-params.vol_NK.Units = 'micrometer^3/cell';
-params.vol_NK.Notes = ['Volume of an NK cell calculated based on D_NK ' params.D_NK.Notes];
-params.vol_NK.Factors = ["D_NK", "cell"];
-params.vol_NK.Equation = '4/3*pi*(p(1)/2)^3/p(2)';
-
-% XCL1 secretion rate per NK (NK→cDC1 cross-priming axis)
-params.k_XCL1_NK.Value = 5e-13;
-params.k_XCL1_NK.Units = 'nanomole/cell/day';
-params.k_XCL1_NK.Notes = 'Initial estimate; XCL1 secretion per NK. Pending Bottcher 2018 extraction.';
-params.k_XCL1_NK.derivedFrom = {};
-
-% XCL1 degradation rate
-params.k_XCL1_deg.Value = 10;
-params.k_XCL1_deg.Units = '1/day';
-params.k_XCL1_deg.Notes = 'Initial estimate; chemokine half-life ~hours, k_deg ~10/day.';
-params.k_XCL1_deg.derivedFrom = {};
-
-% XCL1 EC50 for cDC1 recruitment via XCR1
-params.XCL1_50_cDC1.Value = 1.0;
-params.XCL1_50_cDC1.Units = 'nanomolarity';
-params.XCL1_50_cDC1.Notes = 'Initial estimate; XCL1 EC50 for XCR1-mediated cDC1 chemotaxis. Pending Bottcher 2018 submodel.';
-params.XCL1_50_cDC1.derivedFrom = {};
-
-% XCL1 → cDC1 recruitment fold-amplification (Emax of Hill modifier)
-params.Emax_XCL1.Value = 3.0;
-params.Emax_XCL1.Units = 'dimensionless';
-params.Emax_XCL1.Notes = 'Initial estimate; max XCL1-driven amplification of cDC1 recruitment (Bottcher 2018 reports ~2-5x).';
-params.Emax_XCL1.derivedFrom = {};
-
-
-%% CXCL9/10 Chemotaxis Module Parameters
-% Reactivated 2026-05-13 after chemotaxis_module.m was disassembled.
-% IFNg-induced CXCR3 ligand production (lumped CXCL9/CXCL10) drives
-% CXCR3+ CD8/Th/NK recruitment, opposed by CXCL12. Submodel anchors
-% pending: IFNg_50_CXCL9 (JAK-STAT1 dose-response), CXCL9_50_Trec
-% (Mikucki 2015 / Dangaj 2019 transwell migration).
-
-% CXCL9/10 secretion rate by tumor + M1 + mcDC1 (IFNg-induced)
-params.k_CXCL9_sec.Value = 1.43e-9;
-params.k_CXCL9_sec.Units = 'nanomole/cell/day';
-params.k_CXCL9_sec.Notes = 'Re-anchored 2026-06-24 to Antonelli 2010 (DOI 10.1016/j.cyto.2010.01.009, same paper as IFNg_50_CXCL9): IFNg-saturated CXCL9 secretion 256.7 pg/mL/24h from 3000 cells/well (Fig 1a), -> 1.43e-9 nmole/cell/day. ~1400x the old 1e-12 placeholder, which had kept bulk V_T.CXCL9 at ~pM; real production lifts it to ~10-30 nM. Maximal rate (IFNg 10000 U/ml is ~5900x IFNg_50_CXCL9, H->1). Epithelial (thyrocyte) proxy for the model''s producers (tumor/M1/cDC1). Submodel target k_CXCL9_sec_PDAC_deriv001.yaml.';
-params.k_CXCL9_sec.derivedFrom = {};
-
-% CXCL9/10 degradation rate
-params.k_CXCL9_deg.Value = 10;
-params.k_CXCL9_deg.Units = '1/day';
-params.k_CXCL9_deg.Notes = 'Initial estimate; chemokine half-life ~hours.';
-params.k_CXCL9_deg.derivedFrom = {};
-
-% IFNg EC50 for CXCL9 induction (JAK-STAT1 pathway)
-params.IFNg_50_CXCL9.Value = 0.005;
-params.IFNg_50_CXCL9.Units = 'nanomolarity';
-params.IFNg_50_CXCL9.Notes = 'Initial estimate; IFNg EC50 for CXCL9 induction. Pending submodel extraction.';
-params.IFNg_50_CXCL9.derivedFrom = {};
-
-% CXCL9 EC50 for CXCR3-mediated CD8/Th/NK recruitment
-params.CXCL9_50_Trec.Value = 1.0;
-params.CXCL9_50_Trec.Units = 'nanomolarity';
-params.CXCL9_50_Trec.Notes = 'EFFECTIVE bulk-referenced EC50, free SBI param (NOT a submodel target). Reconciled 2026-06-24: was split 1.0 (here) vs 0.0003 (priors). CXCR3 chemotaxis reads a near-vessel/endothelium-presented (GAG-bound) CXCL9 gradient, not the well-mixed bulk V_T.CXCL9 the Hill uses, so this EC50 absorbs the unmeasured bulk->local enrichment factor on top of the ~1-10 nM biochemical transwell EC50 (Mikucki 2015). Centered at the biochemical value (1.0 nM) with a wide prior (sigma 2.0) so SBI fits the effective gain; the down-tail covers the geometry discount. The old 0.0003 nM hack was mostly compensating for k_CXCL9_sec being ~1000x too low (placeholder), which kept bulk CXCL9 at ~pM. Bin-B scale-center (see submodel_priors EC50 audit).';
-params.CXCL9_50_Trec.derivedFrom = {};
-
-% CXCR3-driven CD8 recruitment rate (additive to baseline q_CD8_T_in)
-params.k_CXCR3_rec.Value = 0.1;
-params.k_CXCR3_rec.Units = '1/(milliliter*day)';
-params.k_CXCR3_rec.Notes = 'Re-centered 2026-06-24: was 1e-4, anchored to q_CD8_T_in via a per-minute/per-day unit slip — the note compared 1e-4 (1/(mL*day)) against q_CD8_T_in''s per-minute value 5.8e-5 (1/(cm^3*min)). q_CD8_T_in is actually 5.8e-5*1440 = 0.0835/(mL*day), so saturated CXCR3 at 1e-4 delivered ~835x less than the baseline door (mechanistically inert, and unreachable under the old prior). Now set to ~door parity (0.1) so a hot, CXCL9-high tumor roughly doubles its CD8 influx via this additive route.';
-params.k_CXCR3_rec.derivedFrom = {};
-
-% CXCR3-driven NK recruitment rate. For null -> V_T.NK (creation), rate must
-% be substance/time (cell/day); k_CXCR3_NK_rec needs cell/(mL*day) to give
-% cell/day after multiplication by V_T (mL). The CD8/Th equivalents use
-% 1/(mL*day) because their reactions are transfer-from-V_C (V_C.CD8 supplies
-% the cell unit), but NK creates from null and needs the cell unit explicitly
-% in the rate constant.
-params.k_CXCR3_NK_rec.Value = 4.5e4;
-params.k_CXCR3_NK_rec.Units = 'cell/(milliliter*day)';
-params.k_CXCR3_NK_rec.Notes = 'Re-centered 2026-06-24: was 1e-4, the same uniform placeholder used for the CD8/Th CXCR3 rates — but the NK route is null-source (creates cells), so its baseline k_NK_rec = 4.5e4 cell/(mL*day) is 8-9 OOM larger than the CD8/Th door, and 1e-4 made the CXCR3-NK route ~4.5e8x too weak (inert). Both reactions share the form V_T*(C^2/(C^2+K_C2_recruit))*..., so set to k_NK_rec parity: saturated CXCR3 roughly doubles NK influx in a hot (IFNg-high) tumor. SBI-fit (wide prior); k_NK_rec is itself a pending-submodel placeholder.';
-params.k_CXCR3_NK_rec.derivedFrom = {};
-
-% CXCR3-driven Th recruitment rate
-params.k_CXCR3_Th_rec.Value = 0.1;
-params.k_CXCR3_Th_rec.Units = '1/(milliliter*day)';
-params.k_CXCR3_Th_rec.Notes = 'Re-centered 2026-06-24 alongside k_CXCR3_rec (same per-minute/per-day unit slip vs the q_CD4_T_in door). CXCR3+ Th1 recruitment, additive; set to ~door parity (0.1).';
-params.k_CXCR3_Th_rec.derivedFrom = {};
-
-
 %% Phagocytosis Module
 % Binding affinity of CD47-SIRPa
 params.kd_CD47_SIRPa.Value = 1.6;
@@ -2392,31 +1900,6 @@ params.kon_CD47_SIRPa.Notes = '(Hayes 2020, PMID: 31964705)';
 params.kon_CD47_SIRPa.Factors = ["koff_CD47_SIRPa","kd_CD47_SIRPa","d_syn"];
 params.kon_CD47_SIRPa.Equation = 'p(1)/p(2)/p(3)';
 
-% Binding affinity of CD47-aCD47
-params.kd_CD47_aCD47.Value = 1; % 10-1000 nM PMID: 30133535
-params.kd_CD47_aCD47.Units = 'nanomolarity';
-params.kd_CD47_aCD47.Notes = '(Jalil 2020, PMID: 32421049)';
-% Dissociation rate of CD47-aCD47
-params.koff_CD47_aCD47.Value = 1/20; % 1e-4 - 1e-3 1/s
-params.koff_CD47_aCD47.Units = '1/minute';
-params.koff_CD47_aCD47.Notes = '(Kauder 2018, PMID: 30133535)';
-% Association rate of CD47-aCD47
-params.kon_CD47_aCD47.Value = [];
-params.kon_CD47_aCD47.Units = '';
-params.kon_CD47_aCD47.Notes = '(Kauder 2018, PMID: 30133535)';
-params.kon_CD47_aCD47.Factors = ["koff_CD47_aCD47","kd_CD47_aCD47"];
-params.kon_CD47_aCD47.Equation = 'p(1)/p(2)';
-
-% CD47-aCD47 Chi (antibody cross-arm binding strength)
-params.Chi_CD47_aCD47_3D.Value = 100;
-params.Chi_CD47_aCD47_3D.Units = 'dimensionless';
-params.Chi_CD47_aCD47_3D.Notes = '(estimated)';
-% CD47-aCD47 Chi for 2D
-params.Chi_CD47_aCD47.Value = [];
-params.Chi_CD47_aCD47.Units = '';
-params.Chi_CD47_aCD47.Notes = '(estimated)';
-params.Chi_CD47_aCD47.Factors = ["Chi_CD47_aCD47_3D","d_syn","N_avg"];
-params.Chi_CD47_aCD47.Equation = 'p(1)/(p(2)*p(3))';
 % Half-maximal SIRPa binding for phagocytosis inhibition
 params.SIRPa_50.Value = 37;
 params.SIRPa_50.Units = 'molecule/micrometer^2';
@@ -2438,108 +1921,6 @@ params.M_PD1.Value = 1.25e4;
 params.M_PD1.Units = 'molecule';
 params.M_PD1.Notes = 'estimated based on PD-1 expression on T cell (Cheng 2014, PMID: 23417675; Mkrtichyan 2012, PMID: 22837483) and adjusted to fit its inhibitory effect on phagocytosis (Gordon 2017, PMID: 28514441)';
 
-%% Cabozantinib module
-% IC50 for Cabozantinib_MET Complex
-params.IC50_MET.Value = 1.3;
-params.IC50_MET.Units = "nanomolarity";
-params.IC50_MET.Notes = "Reference: doi: 10.1177/1756287217748867";
-% IC50 for Cabozantinib_RET Complex
-params.IC50_RET.Value = 5.2;
-params.IC50_RET.Units = "nanomolarity";
-params.IC50_RET.Notes = "Reference: doi: 10.1177/1756287217748867";
-% IC50 for Cabozantinib_AXL Complex
-params.IC50_AXL.Value = 7;
-params.IC50_AXL.Units = "nanomolarity";
-params.IC50_AXL.Notes = "Reference: doi: 10.1177/1756287217748867";
-% IC50 for Cabozantinib_VEGFR2 Complex
-params.IC50_VEGFR2.Value = 0.035;
-params.IC50_VEGFR2.Units = "nanomolarity";
-params.IC50_VEGFR2.Notes = "Reference: doi: 10.1177/1756287217748867";
-
-% Effect Level for Cancer Cell Growth Inhibition
-params.lambda_C_cabo.Value = 0.37;
-params.lambda_C_cabo.Units = "dimensionless";
-params.lambda_C_cabo.Notes = "fitted using Xiang 2014, PMID: 24700742 DOI: 10.1158/1078-0432.CCR-13-2620";
-
-% Effect Level for Enhanced Vascular Transport
-params.lambda_q_cabo.Value = 0.3;
-params.lambda_q_cabo.Units = "dimensionless";
-params.lambda_q_cabo.Notes = "estimated";
-
-% Transmission rate of cabozantinib through gastro-intestinal tract to absorption site 2
-params.k_GI_cabozantinib.Value = 1.0965;
-params.k_GI_cabozantinib.Units = "1/hour";
-params.k_GI_cabozantinib.Notes = "PMID: 29687244";
-% Absorption rate of cabozantinib from site 1 to central compartment
-params.k_a1_cabozantinib.Value = 0.568;
-params.k_a1_cabozantinib.Units = "1/hour";
-params.k_a1_cabozantinib.Notes = "source: https://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/208692Orig1s000ClinPharmR.pdf";
-% Absorption rate of cabozantinib from site 2 to central compartment
-params.k_a2_cabozantinib.Value = 0.102;
-params.k_a2_cabozantinib.Units = "1/hour";
-params.k_a2_cabozantinib.Notes = "source: https://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/208692Orig1s000ClinPharmR.pdf";
-% Non-linear clearance rate of cabozantinib from central compartment
-params.k_cln_cabozantinib.Value = 137.889;
-params.k_cln_cabozantinib.Units = "molarity/hour";
-params.k_cln_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Half-maximal concentration of cabozantinib in central compartment for nonlinear clearance
-params.Kc_cabozantinib.Value = 77.003;
-params.Kc_cabozantinib.Units = "molarity";
-params.Kc_cabozantinib.Notes = "estimated";
-% Lag time of cabozantinib for fast absorption into central compartment
-params.lagP1_cabozantinib.Value = 0.476;
-params.lagP1_cabozantinib.Units = "hour";
-params.lagP1_cabozantinib.Notes = "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/208692Orig1s000ClinPharmR.pdf";
-% Lag time of cabozantinib for slow absorption into central compartment
-params.lagP2_cabozantinib.Value = 18.4;
-params.lagP2_cabozantinib.Units = "hour";
-params.lagP2_cabozantinib.Notes = "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/208692Orig1s000ClinPharmR.pdf";
-% Bioavailability of cabozantinib
-params.F_cabozantinib.Value = 0.0232;
-params.F_cabozantinib.Units = "dimensionless";
-params.F_cabozantinib.Notes = "Estimated";
-% Rate of diffusive transport of cabozantinib to the peripheral compartment
-params.q_P_cabozantinib.Value = 5.77e-2;
-params.q_P_cabozantinib.Units = "1/second";
-params.q_P_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Rate of diffusive transport of cabozantinib to the tumor compartment
-params.q_T_cabozantinib.Value = 5.321e-1;
-params.q_T_cabozantinib.Units = "1/second";
-params.q_T_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Rate of chemo-resistance development to cabozantinib
-params.k_C_resist.Value = 1e-4;
-params.k_C_resist.Units = '1/day';
-params.k_C_resist.Notes = 'Rate of chemo-resistance development to cabozantinib (estimated)';
-% Inhibition rate of maximal tumor capacity by cabozantinib
-params.k_K_cabo.Value = 2.55;
-params.k_K_cabo.Units = 'dimensionless';
-params.k_K_cabo.Notes = 'fitted using Xiang 2014, PMID: 24700742 DOI: 10.1158/1078-0432.CCR-13-2620';
-
-% Rate of diffusive transport of cabozantinib to the Lymph node compartment
-params.q_LN_cabozantinib.Value = 9.91e-2;
-params.q_LN_cabozantinib.Units = "1/second";
-params.q_LN_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Rate of lymphatic drainage of cabozantinib from TDLN to central compartment
-params.q_LD_cabozantinib.Value = 1e-3;
-params.q_LD_cabozantinib.Units = "1/second";
-params.q_LD_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Volume fraction of interstitial space available to cabozantinib in central compartment
-params.gamma_C_cabozantinib.Value = 0.4729;
-params.gamma_C_cabozantinib.Units = "dimensionless";
-params.gamma_C_cabozantinib.Notes = "Estimated";
-% Peripheral volume fraction for cabozantinib
-params.gamma_P_cabozantinib.Value = 6.2037e-5;
-params.gamma_P_cabozantinib.Units = "dimensionless";
-params.gamma_P_cabozantinib.Notes = "Estimated";
-% Tumor volume fraction for cabozantinib
-%params.gamma_T_cabozantinib.Value = 0.2448;
-params.gamma_T_cabozantinib.Value = 0.002448;
-params.gamma_T_cabozantinib.Units = "dimensionless";
-params.gamma_T_cabozantinib.Notes = "PMID: 29687244,PMID: 27139820 (estimated)";
-% Rate of diffusive transport of cabozantinib to the tumor compartment
-params.gamma_LN_cabozantinib.Value = 0.0024;
-params.gamma_LN_cabozantinib.Units = "dimensionless";
-params.gamma_LN_cabozantinib.Notes = "Estimated";
 %% fibroblast module
 % fibroblast recruitment due to tumor expansion in the tumor compartment
 params.k_CAF_encounter.Value = 1e6;
@@ -2812,7 +2193,7 @@ params.k_stroma_support.derivedFrom = {'Hwang 2008 DOI: 10.1158/0008-5472.CAN-07
 % Ratios myCAF : iCAF : apCAF = 1.0 : 0.2 : 0.05 reflect structural vs
 % inflammatory vs antigen-presenting function. myCAFs build the desmoplastic
 % architecture (αSMA+, FAP+, collagen producers — Elyada 2019, Öhlund 2017);
-% iCAFs are inflammatory secretors (IL-6, CCL5) with minimal structural role;
+% iCAFs are inflammatory secretors (IL-6, CXCL12) with minimal structural role;
 % apCAFs are rare MHC-II+ immunomodulatory cells (Huang 2022 Cancer Cell).
 % Defaults calibrated so 1.0 * (1.4*myCAF + 0.28*iCAF + 0.07*apCAF) at
 % submodel-median diagnosis ≈ old 1.05 * aPSC_total (preserves evolve_to_diagnosis).
@@ -2823,7 +2204,7 @@ params.k_stroma_myCAF.derivedFrom = {};
 
 params.k_stroma_iCAF.Value = 0.28;
 params.k_stroma_iCAF.Units = 'dimensionless';
-params.k_stroma_iCAF.Notes = 'Per-iCAF contribution to cancer C_max. iCAFs are inflammatory secretors (IL-6/CCL5), low αSMA, located distally from tumor — minimal structural carrying-capacity role (Elyada 2019, Öhlund 2017).';
+params.k_stroma_iCAF.Notes = 'Per-iCAF contribution to cancer C_max. iCAFs are inflammatory secretors (IL-6/CXCL12), low αSMA, located distally from tumor — minimal structural carrying-capacity role (Elyada 2019, Öhlund 2017).';
 params.k_stroma_iCAF.derivedFrom = {};
 
 params.k_stroma_apCAF.Value = 0.07;
@@ -3028,7 +2409,7 @@ params.CXCL12_50_Texcl.Notes = 'CXCR4 receptor affinity for CXCL12. Anchored to 
 % As PDAC grows it outpaces its vascular support: V_T.K (vasculature-dependent
 % carrying capacity) grows slower than V_T, so vascular density V_T.K/V_T falls.
 % H_vasc = (V_T.K/V_T)^n_vasc / (K50_vasc^n_vasc + (V_T.K/V_T)^n_vasc) gates the
-% per-volume extravasation rate of CD8/Th/NK recruitment reactions, encoding the
+% per-volume extravasation rate of CD8/Th recruitment reactions, encoding the
 % documented progressive immune exclusion of growing PDAC (vessel collapse under
 % desmoplastic compression — Olive 2009, Provenzano 2012). Without this gate,
 % recruitment scales with raw tumor volume and intratumoral CD8 density rises
@@ -3057,27 +2438,12 @@ params.n_vasc.Notes = 'Hill coefficient for vascular-access gating of extravasat
 params.n_vasc.derivedFrom = {};
 
 %% IL-6 Module Parameters (Myeloid Immunosuppression)
-% IL-6 secretion rate by iCAFs (was k_IL6_sec_apsc)
-params.k_IL6_sec_iCAF.Value = 2e-11;
+% Effective iCAF-scaled IL-6 source. C11 retired separately fitted cancer and
+% TAM source rates and absorbed their diagnosis flux into this coordinate.
+params.k_IL6_sec_iCAF.Value = 1.1036219418946422e-9;
 params.k_IL6_sec_iCAF.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_iCAF.Notes = 'IL-6 secretion by iCAFs. Was k_IL6_sec_apsc. iCAFs are the major IL-6 source in PDAC (Elyada 2019 PMID: 31197017; Mace 2018 PMID: 29196415).';
-params.k_IL6_sec_iCAF.derivedFrom = {'Elyada 2019 PMID: 31197017', 'Mace 2018 PMID: 29196415'};
-% IL-6 secretion rate by PDAC cancer cells (van Duijneveldt 2020: PDAC cell
-% lines exhibit variable IL-6 expression, consistently higher than normal
-% epithelium but generally lower than CAFs). Seeded at ~25% of iCAF rate;
-% SBI-calibrated against IL-6 tumor-tissue and downstream MDSC/M2 observables.
-params.k_IL6_sec_C.Value = 5e-12;
-params.k_IL6_sec_C.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_C.Notes = 'IL-6 secretion by PDAC cancer cells. van Duijneveldt 2020 DOI:10.1042/CS20191211 identifies PDAC cell lines as IL-6 producers (lower than CAFs). Initial estimate, SBI-calibrated.';
-params.k_IL6_sec_C.derivedFrom = {'van Duijneveldt 2020 DOI:10.1042/CS20191211'};
-% IL-6 secretion rate by TAMs (M1+M2 pooled). van Duijneveldt 2020 cites IHC
-% + IL-6-KO myeloid mouse model (causal evidence for myeloid IL-6 contribution
-% to PanIN progression) but no relative magnitude vs CAFs. Seeded at ~50% of
-% iCAF rate; SBI-calibrated.
-params.k_IL6_sec_TAM.Value = 1e-11;
-params.k_IL6_sec_TAM.Units = 'nanomolarity*liter/(cell*day)';
-params.k_IL6_sec_TAM.Notes = 'IL-6 secretion by TAMs (M1+M2 pooled). van Duijneveldt 2020 DOI:10.1042/CS20191211 identifies TAMs as IL-6 producers with causal mouse-model evidence. Initial estimate, SBI-calibrated.';
-params.k_IL6_sec_TAM.derivedFrom = {'van Duijneveldt 2020 DOI:10.1042/CS20191211'};
+params.k_IL6_sec_iCAF.Notes = 'Effective iCAF-scaled IL-6 source rate. Initialized to preserve the pre-C11 total source flux at prior-centre diagnosis (1.1036219419e-9); source fractions stayed within ~1% across all paper arms and through day 365. The underlying iCAF culture anchor is translated by the fixed C11 absorption factor 3.676852. Cancer- and TAM-derived IL-6 are acknowledged but not separately attributed. Requires updated-sampler refit.';
+params.k_IL6_sec_iCAF.derivedFrom = {'Saga 2018 DOI: 10.3390/ijms19103043', 'C11 nominal source-flux trace', 'estimated'};
 % IL-6 degradation rate
 params.k_IL6_deg.Value = 16.0;
 params.k_IL6_deg.Units = '1/day';
@@ -3303,70 +2669,17 @@ params.Cy_eff_50.Value = 1;  % milligram (half-saturation of the Cy_eff -> Treg-
 params.Cy_eff_50.Units = "milligram";
 params.Cy_eff_50.Notes = "Half-saturation of the Cy effect compartment on tumor-Treg proliferation (structural; weakly identifiable, fixed)";
 
-%% CCL5/CCR5-Mediated Treg Recruitment Parameters
-% Cancer-cell CCL5 source: Wang et al. (2017) Oncogene - Cancer-FOXP3 directly
-%   activates CCL5 to recruit FOXP3+Treg cells in PDAC (DOI: 10.1038/onc.2016.458)
-% CCR5/Treg homing: Tan et al. (2009) J Immunol - CCR5-dependent Treg homing
-%   in murine PDAC (DOI: 10.4049/jimmunol.182.3.1746)
-% See also: Huffman et al. (2022) J Immunother Cancer - CCR2/CCR5 inhibition
-
-% CCL5 secretion rate by cancer cells
-% PDAC cancer cells express FOXP3 which activates CCL5 transcription
-% Similar magnitude to CCL2 secretion (k_CCL2_sec = 1.7e-12 nanomole/cell/day)
-params.k_CCL5_sec.Value = 1e-12;
-params.k_CCL5_sec.Units = 'nanomole/cell/day';
-params.k_CCL5_sec.Notes = 'CCL5 secretion rate by PDAC cancer cells. Cancer-FOXP3 activates CCL5 transcription (Wang 2017, DOI: 10.1038/onc.2016.458)';
-params.k_CCL5_sec.derivedFrom = {};
-
-% CCL5 degradation rate
-% Chemokine half-life typically 1-4 hours; similar to CCL2 (k_CCL2_deg = 0.06/hour = 1.44/day)
-params.k_CCL5_deg.Value = 1.5;
-params.k_CCL5_deg.Units = '1/day';
-params.k_CCL5_deg.Notes = 'CCL5 degradation rate. Chemokine half-life ~1-4 hours (similar to CCL2)';
-params.k_CCL5_deg.derivedFrom = {};
-
-% Half-maximal CCL5 concentration for CCR5-mediated Treg recruitment
-% CCR5 EC50 for CCL5 binding ~0.1-1 nM (similar to CCL2_50 = 0.23 nM)
-params.CCL5_50_Treg.Value = 1.0;
-params.CCL5_50_Treg.Units = 'nanomolarity';
-params.CCL5_50_Treg.Notes = 'Half-maximal CCL5 for Treg recruitment via CCR5. CCR5-CCL5 Kd ~0.1-1 nM. Lowered from 0.3 to match model CCL5 ~0.09 nM.';
-params.CCL5_50_Treg.derivedFrom = {};
-
-% CCR5-dependent Treg recruitment rate (additional to baseline q_Treg_T_in)
-% Tregs express CCR5 while CD8 T cells lack CCR5, providing selective recruitment
-% Set to ~2x baseline q_Treg_T_in (5.8e-05) to significantly enhance Treg infiltration
-params.k_CCR5_Treg_rec.Value = 1e-04;
-params.k_CCR5_Treg_rec.Units = '1/(centimeter^3*minute)';
-params.k_CCR5_Treg_rec.Notes = 'CCR5-dependent Treg recruitment rate. CCR5 knockdown significantly decreases Treg infiltration in murine PDAC (Tan 2009 J Immunol, DOI: 10.4049/jimmunol.182.3.1746). Rate ~2x baseline to provide strong selective Treg recruitment';
-params.k_CCR5_Treg_rec.derivedFrom = {};
-
-% CCL5 secretion rate by iCAFs (was k_CCL5_sec_apsc)
-% iCAFs secrete CCL5 in addition to cancer cells, contributing to Treg recruitment
-params.k_CCL5_sec_iCAF.Value =  3e-11;
-params.k_CCL5_sec_iCAF.Units = 'nanomole/cell/day';
-params.k_CCL5_sec_iCAF.Notes = 'CCL5 secretion rate by iCAFs. Was k_CCL5_sec_apsc. CCL5 is inflammatory -> iCAF attribution.';
-params.k_CCL5_sec_iCAF.derivedFrom = {'estimated'};
-
 %% apCAF-Specific Parameters (Tolerogenic Antigen Presentation)
-% apCAFs express MHC-II and present tumor antigen tolerogenically (Elyada 2019)
-params.k_P1_up_apCAF.Value = 1.44;
-params.k_P1_up_apCAF.Units = '1/(cell*day)';
-params.k_P1_up_apCAF.Notes = 'Antigen uptake rate by apCAFs. ~0.1x of k_up (14.4); less efficient than professional APCs (Elyada 2019 PMID: 31197017).';
-params.k_P1_up_apCAF.derivedFrom = {'Elyada 2019 PMID: 31197017'};
-
-params.k_apCAF_Treg.Value = 0.03;
-params.k_apCAF_Treg.Units = '1/day';
-params.k_apCAF_Treg.Notes = 'Max Th-to-Treg conversion rate via apCAF tolerogenic presentation. Reduced from 0.5 to 0.03 (~1.5x TGFb pathway rate 0.022/day); apCAFs lack costimulatory molecules and are less efficient than professional APCs. Original 0.5 had no lit backing (Elyada 2019 PMID: 31197017).';
-params.k_apCAF_Treg.derivedFrom = {'Elyada 2019 PMID: 31197017'};
-
-params.K_apCAF_Treg.Value = 1e8;
-params.K_apCAF_Treg.Units = 'cell';
-params.K_apCAF_Treg.Notes = 'Half-max apCAF count for saturation of tolerogenic Treg induction. Set to 1e8 (top of the ~1e7-1e8 substantial-CAF-fraction range) so the Hill term only saturates when apCAFs are a substantial fraction of total CAFs; matches the pdac_priors.csv prior median (mu=ln(1e8)). (Stale earlier note claimed "raised to 1e7" — value and prior are both 1e8.)';
-params.K_apCAF_Treg.derivedFrom = {'estimated'};
+% apCAFs express MHC-II, engage antigen-specific CD4 T cells, and can induce
+% Tregs without canonical costimulation (Elyada 2019; Huang 2022).
+params.k_apCAF_iTreg.Value = 0.15;
+params.k_apCAF_iTreg.Units = '1/day';
+params.k_apCAF_iTreg.Notes = 'Effective antigen-specific induced-Treg rate via apCAF presentation. Multiplied by the apCAF fraction and a local-antigen QSS gate; contact geometry and absolute-count saturation are collapsed into this one fitted coordinate. The initial value preserves the retired formulation at the nominal 10% apCAF share (0.15/day * 0.1 = 0.015/day, matching 0.03/day at its half-max count gate). Requires refit. Elyada 2019 PMID: 31197017; Huang 2022 PMID: 35523176.';
+params.k_apCAF_iTreg.derivedFrom = {'Elyada 2019 PMID: 31197017', 'Huang 2022 PMID: 35523176', 'estimated'};
 
 params.P1_50_apCAF.Value = 1e-9;
 params.P1_50_apCAF.Units = 'molarity';
-params.P1_50_apCAF.Notes = 'EC50 for antigen-dependent Treg induction by apCAFs. Raised from 1e-12 to 1e-9 M; 1e-12 was effectively zero (always-on). 1e-9 M requires meaningful antigen levels for activation.';
+params.P1_50_apCAF.Notes = 'Fixed EC50 for the quasi-steady local-antigen gate on apCAF MHC-II-dependent Treg induction. Held at 1e-9 M and not varied across patients pending an operating-range trace.';
 params.P1_50_apCAF.derivedFrom = {'estimated'};
 
 %% Th Tumor-Local Proliferation Parameters
@@ -3422,7 +2735,7 @@ params.k_Th_seed.derivedFrom = {};
 %   data prefers the apCAF→Treg-cap pathway off, so the additive-cap
 %   formulation introduced in the 2026-05-01 PR was rolled back to the
 %   simpler logistic. The remaining apCAF→Treg coupling is the direct
-%   Th→Treg conversion via k_apCAF_Treg in fibroblast_module_enhanced.
+%   antigen-specific Th→Treg contribution via k_apCAF_iTreg in fibroblast_module_enhanced.
 % alpha_Th_cap and CD8_50_Tcap RETIRED 2026-06-22 (route-2 Th cap fix): the
 % CD8-inflammation Hill they parameterized was dead (H_CD8~1 everywhere) and
 % only inflated the data-anchored rho_Th_max cap. Removed from Th_module +
@@ -3431,4 +2744,3 @@ params.k_Th_seed.derivedFrom = {};
 % pathway) and apCAF_50_Tcap (Hill EC50 for that pathway) removed after
 % counterfactual SBI showed the data prefers the pathway off. See the
 % block above for the diagnostic summary.
-

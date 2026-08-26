@@ -2,7 +2,7 @@
 %
 % Models pancreatic stellate cell (PSC) biology in PDAC tumor microenvironment
 % with three functionally distinct CAF subtypes:
-%   - iCAF: inflammatory CAFs (IL-6, CCL5, CXCL12 secretion -> immunosuppression / T-cell exclusion)
+%   - iCAF: inflammatory CAFs (IL-6 and CXCL12 secretion -> immunosuppression / T-cell exclusion)
 %   - myCAF: myofibroblastic CAFs (ECM, TGFb, VEGF -> desmoplasia)
 %   - apCAF: antigen-presenting CAFs (tolerogenic antigen presentation -> Treg induction)
 %
@@ -31,7 +31,7 @@ qPSC = addspecies(model.Compartment(3),'qPSC',0,'InitialAmountUnits','cell');
 
 iCAF = addspecies(model.Compartment(3),'iCAF',0,'InitialAmountUnits','cell');
     set(iCAF,'Notes',['Inflammatory cancer-associated fibroblasts. ' ...
-        'Secrete IL-6, CCL5 and CXCL12, driving MDSC recruitment, M2 polarization, ' ...
+        'Secrete IL-6 and CXCL12, driving MDSC recruitment, M2 polarization, ' ...
         'and CXCR4-mediated T-cell exclusion (Elyada 2019, Ogawa 2021). ' ...
         'Driven by tumor-derived IL-1alpha; TGFb antagonizes via IL-1R1 repression.']);
 
@@ -318,7 +318,7 @@ p.UserData.Source = params.K_stiff_niche.Notes;
 % k_stroma_{myCAF,iCAF,apCAF}: subtype-specific weights. myCAFs are the structural
 %   /architectural CAF in PDAC (αSMA+, FAP+, collagen producers, peri-tumoral —
 %   Elyada 2019, Öhlund 2017 J Exp Med 214:579). iCAFs are inflammatory secretors
-%   (IL-6, CCL5) with minimal structural role; apCAFs are rare MHC-II+
+%   (IL-6, CXCL12) with minimal structural role; apCAFs are rare MHC-II+
 %   immunomodulatory cells (Huang 2022 Cancer Cell). Default ratios
 %   myCAF : iCAF : apCAF = 1.0 : 0.2 : 0.05 reflect the structural-vs-inflammatory
 %   distinction. LRRC15+ myCAFs specifically correlate with immunotherapy resistance
@@ -400,18 +400,12 @@ CXCL12_50_Texcl = addparameter(model,'CXCL12_50_Texcl',params.CXCL12_50_Texcl.Va
 CXCL12_50_Texcl.UserData.Source = params.CXCL12_50_Texcl.Notes;
     CXCL12_50_Texcl.UserData.derivedFrom = params.CXCL12_50_Texcl.derivedFrom;
 
-% IL-6 parameters (iCAF, cancer-cell, TAM sources — van Duijneveldt 2020)
-p = addparameter(model,'k_IL6_sec_iCAF',params.k_IL6_sec_iCAF.Value,'ValueUnits',params.k_IL6_sec_iCAF.Units, 'Notes', 'IL-6 secretion rate by iCAFs');
+% Effective IL-6 source. C11 collapsed separately fitted iCAF, cancer, and
+% TAM source rates into one iCAF-scaled coordinate after their source
+% fractions proved nearly invariant across all paper arms.
+p = addparameter(model,'k_IL6_sec_iCAF',params.k_IL6_sec_iCAF.Value,'ValueUnits',params.k_IL6_sec_iCAF.Units, 'Notes', 'Effective iCAF-scaled IL-6 source rate');
 p.UserData.Source = params.k_IL6_sec_iCAF.Notes;
     p.UserData.derivedFrom = params.k_IL6_sec_iCAF.derivedFrom;
-
-p = addparameter(model,'k_IL6_sec_C',params.k_IL6_sec_C.Value,'ValueUnits',params.k_IL6_sec_C.Units, 'Notes', 'IL-6 secretion rate by PDAC cancer cells');
-p.UserData.Source = params.k_IL6_sec_C.Notes;
-    p.UserData.derivedFrom = params.k_IL6_sec_C.derivedFrom;
-
-p = addparameter(model,'k_IL6_sec_TAM',params.k_IL6_sec_TAM.Value,'ValueUnits',params.k_IL6_sec_TAM.Units, 'Notes', 'IL-6 secretion rate by TAMs (M1+M2 pooled)');
-p.UserData.Source = params.k_IL6_sec_TAM.Notes;
-    p.UserData.derivedFrom = params.k_IL6_sec_TAM.derivedFrom;
 
 k_IL6_deg = addparameter(model,'k_IL6_deg',params.k_IL6_deg.Value,'ValueUnits',params.k_IL6_deg.Units, 'Notes', 'IL-6 degradation rate');
 k_IL6_deg.UserData.Source = params.k_IL6_deg.Notes;
@@ -479,18 +473,12 @@ p = addparameter(model,'k_vas_myCAF_sec',params.k_vas_myCAF_sec.Value,'ValueUnit
 p.UserData.Source = params.k_vas_myCAF_sec.Notes;
     p.UserData.derivedFrom = params.k_vas_myCAF_sec.derivedFrom;
 
-% apCAF-specific parameters
-p = addparameter(model,'k_P1_up_apCAF',params.k_P1_up_apCAF.Value,'ValueUnits',params.k_P1_up_apCAF.Units, 'Notes', 'Antigen uptake rate by apCAFs');
-p.UserData.Source = params.k_P1_up_apCAF.Notes;
-    p.UserData.derivedFrom = params.k_P1_up_apCAF.derivedFrom;
-
-p = addparameter(model,'k_apCAF_Treg',params.k_apCAF_Treg.Value,'ValueUnits',params.k_apCAF_Treg.Units, 'Notes', 'Max Th->Treg conversion rate via apCAF');
-p.UserData.Source = params.k_apCAF_Treg.Notes;
-    p.UserData.derivedFrom = params.k_apCAF_Treg.derivedFrom;
-
-p = addparameter(model,'K_apCAF_Treg',params.K_apCAF_Treg.Value,'ValueUnits',params.K_apCAF_Treg.Units, 'Notes', 'Half-max apCAF count for Treg induction saturation');
-p.UserData.Source = params.K_apCAF_Treg.Notes;
-    p.UserData.derivedFrom = params.K_apCAF_Treg.derivedFrom;
+% apCAF-specific parameters. The functional coordinate is an effective
+% antigen-specific induced-Treg rate; contact geometry is represented by the
+% apCAF fraction rather than a second, absolute-cell-count saturation curve.
+p = addparameter(model,'k_apCAF_iTreg',params.k_apCAF_iTreg.Value,'ValueUnits',params.k_apCAF_iTreg.Units, 'Notes', 'Effective antigen-specific induced-Treg rate via apCAF presentation');
+p.UserData.Source = params.k_apCAF_iTreg.Notes;
+    p.UserData.derivedFrom = params.k_apCAF_iTreg.derivedFrom;
 
 p = addparameter(model,'P1_50_apCAF',params.P1_50_apCAF.Value,'ValueUnits',params.P1_50_apCAF.Units, 'Notes', 'EC50 for antigen-dependent Treg induction by apCAFs');
 p.UserData.Source = params.P1_50_apCAF.Notes;
@@ -679,26 +667,17 @@ reaction = addreaction(model,'V_T.CXCL12 -> null');
     set(reaction,'ReactionRate','k_CXCL12_deg*V_T.CXCL12*V_T');
     set(reaction,'Notes','CXCL12 degradation in tumor');
 
-%% IL-6 Dynamics (inflammatory/immunosuppressive — iCAF, cancer-cell, TAM sources)
+%% IL-6 Dynamics (one effective iCAF-scaled source)
 
-% IL-6 secretion by iCAFs
+% C11 reduction (2026-08-24): three source reactions with separately fitted
+% per-cell rates were not identifiable from the single bulk IL-6 target. A
+% prior-centre trace found stable iCAF/cancer/TAM source fractions across all
+% arms and through day 365. Their diagnosis total was therefore absorbed into
+% this one iCAF-scaled rate. Cancer- and TAM-derived IL-6 remain acknowledged
+% biology, but are not source-attributed in the calibrated paper model.
 reaction = addreaction(model,'null -> V_T.IL6');
     set(reaction,'ReactionRate','k_IL6_sec_iCAF*V_T.iCAF');
-    set(reaction,'Notes','IL-6 secretion by iCAFs (drives MDSC recruitment and M2 polarization)');
-
-% IL-6 secretion by cancer cells (van Duijneveldt 2020 DOI:10.1042/CS20191211:
-% PDAC cell lines exhibit variable IL-6 expression, consistently higher than
-% normal epithelium and generally lower than CAFs).
-reaction = addreaction(model,'null -> V_T.IL6');
-    set(reaction,'ReactionRate','k_IL6_sec_C*C_total');
-    set(reaction,'Notes','IL-6 secretion by PDAC cancer cells (van Duijneveldt 2020 DOI:10.1042/CS20191211)');
-
-% IL-6 secretion by tumor-associated macrophages, M1+M2 pooled (van Duijneveldt
-% 2020 DOI:10.1042/CS20191211: TAMs identified as IL-6 producers; IL-6-KO
-% myeloid mouse model shows causal contribution to PanIN progression).
-reaction = addreaction(model,'null -> V_T.IL6');
-    set(reaction,'ReactionRate','k_IL6_sec_TAM*(V_T.Mac_M1 + V_T.Mac_M2)');
-    set(reaction,'Notes','IL-6 secretion by TAMs, M1+M2 pooled (van Duijneveldt 2020 DOI:10.1042/CS20191211)');
+    set(reaction,'Notes','Effective iCAF-scaled IL-6 source; absorbs the nominal total from retired iCAF/cancer/TAM source attribution (C11)');
 
 % IL-6 degradation
 reaction = addreaction(model,'V_T.IL6 -> null');
@@ -717,47 +696,34 @@ reaction = addreaction(model,'V_T.IL1 -> null');
     set(reaction,'ReactionRate','k_IL1_deg*V_T.IL1*V_T');
     set(reaction,'Notes','IL-1alpha degradation in tumor');
 
-%% CCL5 Secretion by iCAFs (moved from CCL5_Treg_module)
-% CCL5 is inflammatory -> attributed to iCAFs
+%% apCAF Tolerogenic Antigen Presentation (Elyada 2019; Huang 2022)
 
-% CCL5 secretion parameter (iCAF-derived)
-p = addparameter(model,'k_CCL5_sec_iCAF',params.k_CCL5_sec_iCAF.Value,'ValueUnits',params.k_CCL5_sec_iCAF.Units, 'Notes', 'CCL5 secretion rate by iCAFs');
-p.UserData.Source = params.k_CCL5_sec_iCAF.Notes;
-    p.UserData.derivedFrom = params.k_CCL5_sec_iCAF.derivedFrom;
-
-% Note: CCL5 species is created by CCL5_Treg_module. This reaction is added
-% after CCL5 species exists because fibroblast_module runs after CCL5_Treg_module
-% in assembly. If CCL5 species doesn't exist yet, skip gracefully.
-if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'CCL5'))
-    reaction = addreaction(model,'null -> V_T.CCL5');
-        set(reaction,'ReactionRate','k_CCL5_sec_iCAF*V_T.iCAF');
-        set(reaction,'Notes','CCL5 secretion by iCAFs (inflammatory chemokine, Treg recruitment)');
-end
-
-%% apCAF Tolerogenic Antigen Presentation (Elyada 2019)
-
-% Reaction A: Antigen sequestration by apCAFs
-% apCAFs take up P1 but do NOT process it into productive T cell activation - it's a sink
-% Competes with professional APC uptake (k_up * V_T.APC * V_T.P1 * V_T)
-if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'P1'))
-    reaction = addreaction(model,'V_T.P1 -> null');
-        set(reaction,'ReactionRate','k_P1_up_apCAF*V_T.apCAF*V_T.P1*V_T');
-        set(reaction,'Notes','Antigen sequestration by apCAFs (competes with professional APC uptake, Elyada 2019)');
-end
-
-% Reaction B: Tolerogenic Th -> Treg conversion by apCAFs
-% ADDITIONAL to existing TGFb-dependent Th->Treg pathway in Th_module
-% Creates distinct antigen-dependent, cell-contact-dependent tolerance circuit
-% H_P1_apCAF rule for antigen-dependent Treg induction
+% apCAFs present tumor antigen to CD4 T cells without canonical costimulation
+% and can induce antigen-specific Tregs. Represent that biology as one
+% additive contribution to the existing Th -> Treg flux. The apCAF fraction
+% captures encounter opportunity without introducing an unidentifiable
+% absolute-cell-count gate. P1 is a presentation gate, not an apCAF sink.
 if ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'P1')) && ...
    ~isempty(sbioselect(model, 'Type', 'species', 'Name', 'Th'))
-    H_P1_apCAF = addparameter(model,'H_P1_apCAF',0,'ValueUnits','dimensionless','ConstantValue',false, ...
-        'Notes', 'Hill function for antigen-dependent apCAF Treg induction');
-    addrule(model, 'H_P1_apCAF = V_T.P1/(V_T.P1 + P1_50_apCAF)', 'repeatedAssignment');
+    H_apCAF_pMHCII = addparameter(model,'H_apCAF_pMHCII',0,'ValueUnits','dimensionless','ConstantValue',false, ...
+        'Notes', 'Quasi-steady antigen-presentation gate for apCAF MHC-II-dependent Treg induction');
+    addrule(model, 'H_apCAF_pMHCII = V_T.P1/(V_T.P1 + P1_50_apCAF)', 'repeatedAssignment');
 
-    reaction = addreaction(model,'V_T.Th -> V_T.Treg');
-        set(reaction,'ReactionRate','k_apCAF_Treg*V_T.Th*(V_T.apCAF/(V_T.apCAF + K_apCAF_Treg))*H_P1_apCAF');
-        set(reaction,'Notes','Tolerogenic Th->Treg conversion by apCAFs (antigen-dependent, Elyada 2019)');
+    didAppendApCAF = false;
+    for i = 1:length(model.reaction)
+        if strcmp(model.reaction(i).reaction, 'V_T.Th -> V_T.Treg')
+            baseRate = get(model.reaction(i),'ReactionRate');
+            apCAFRate = 'k_apCAF_iTreg*V_T.Th*(V_T.apCAF/(aPSC_total + cell))*H_apCAF_pMHCII';
+            set(model.reaction(i),'ReactionRate',['(' baseRate ') + ' apCAFRate]);
+            set(model.reaction(i),'Notes','TGFb/ArgI and antigen-specific apCAF contributions to Th->Treg conversion. The Th pool is the model''s local conventional-CD4 substrate; no separate intratumoral naive-CD4 state is represented.');
+            didAppendApCAF = true;
+            break
+        end
+    end
+    if ~didAppendApCAF
+        warning('fibroblast_module_enhanced:missingThToTreg', ...
+            'Could not append the apCAF contribution because V_T.Th -> V_T.Treg was not found.');
+    end
 end
 
 %% Add rules for Hill functions used by immune modules

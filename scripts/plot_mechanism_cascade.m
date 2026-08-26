@@ -294,10 +294,10 @@ nexttile; hold on; box on;
 plot_species_comparison(simBaseline, simScenario, time, 'myCAF', 'V_T', ...
     colors, '2. myCAFs (ECM/CXCL12/TGF\beta)', 'myCAF (cells)', time_label, true);
 
-% Panel 3: iCAF (IL-6/CCL5 producers)
+% Panel 3: iCAF (IL-6/CXCL12 producers)
 nexttile; hold on; box on;
 plot_species_comparison(simBaseline, simScenario, time, 'iCAF', 'V_T', ...
-    colors, '3. iCAFs (IL-6/CCL5)', 'iCAF (cells)', time_label, true);
+    colors, '3. iCAFs (IL-6/CXCL12)', 'iCAF (cells)', time_label, true);
 
 % Panel 4: apCAF (Tolerogenic - Treg induction)
 nexttile; hold on; box on;
@@ -330,37 +330,27 @@ plot_species_comparison(simBaseline, simScenario, time, 'Treg', 'V_T', ...
 % Shows chemokines controlling immune cell infiltration vs exclusion
 fig6 = figure('Position', [300, 300, 1400, 700], 'Color', 'white');
 figs(end+1) = fig6;
-tiledlayout(3, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
+tiledlayout(2, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
 
-% Panel 1: CCL5 (Treg Chemoattractant)
-nexttile; hold on; box on;
-plot_species_comparison(simBaseline, simScenario, time, 'CCL5', 'V_T', ...
-    colors, '1. CCL5 (Treg Chemoattractant)', 'CCL5 (nM)', time_label, false);
-
-% Panel 2: CCL5 -> Treg Recruitment
-nexttile; hold on; box on;
-plot_observable_comparison(simBaseline, simScenario, time, 'H_CCL5_Treg', ...
-    colors, '2. CCL5 \rightarrow Treg Recruitment', 'H_{CCL5} (0-1)', time_label);
-
-% Panel 3: CXCL12 (T Cell Exclusion)
+% Panel 1: CXCL12 (T Cell Exclusion)
 nexttile; hold on; box on;
 plot_species_comparison(simBaseline, simScenario, time, 'CXCL12', 'V_T', ...
-    colors, '3. CXCL12 (T Cell Exclusion)', 'CXCL12 (nM)', time_label, false);
+    colors, '1. CXCL12 (T Cell Exclusion)', 'CXCL12 (nM)', time_label, false);
 
-% Panel 4: CXCL12 -> T Exclusion
+% Panel 2: CXCL12 -> T Exclusion
 nexttile; hold on; box on;
 plot_observable_comparison(simBaseline, simScenario, time, 'H_CXCL12_Texcl', ...
-    colors, '4. CXCL12 \rightarrow T Exclusion', 'H_{CXCL12} (0-1)', time_label);
+    colors, '2. CXCL12 \rightarrow T Exclusion', 'H_{CXCL12} (0-1)', time_label);
 
-% Panel 5: Pore Size -> APC Migration Block
+% Panel 3: Pore Size -> APC Migration Block
 nexttile; hold on; box on;
 plot_observable_comparison(simBaseline, simScenario, time, 'H_pore_APC', ...
-    colors, '5. Pore \rightarrow APC Migration Block', 'H_{pore,APC} (0-1)', time_label);
+    colors, '3. Pore \rightarrow APC Migration Block', 'H_{pore,APC} (0-1)', time_label);
 
-% Panel 6: HMGB1 (DAMP) -> APC Maturation
+% Panel 4: HMGB1 (DAMP) -> APC Maturation
 nexttile; hold on; box on;
 plot_observable_comparison(simBaseline, simScenario, time, 'H_HMGB1', ...
-    colors, '6. HMGB1 (DAMP) \rightarrow APC Maturation', 'H_{HMGB1} (0-1)', time_label);
+    colors, '4. HMGB1 (DAMP) \rightarrow APC Maturation', 'H_{HMGB1} (0-1)', time_label);
 
 % Title omitted - provided by presentation slide
 

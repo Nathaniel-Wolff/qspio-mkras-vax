@@ -12,7 +12,6 @@ PAPER_ROOT   ?= ../pdac-paper
 export PAPER_ROOT
 PY           := .venv/bin/python
 PYTEST       := .venv/bin/pytest
-EXPORT_MODEL := .venv/bin/qsp-export-model
 
 MATLAB_MODEL := scripts/immune_oncology_model_PDAC.m
 STRUCTURE    := model_structure.json
@@ -85,9 +84,9 @@ refresh-all: refresh-model-artifacts refresh-cpp hpc-status
 
 model-structure: $(STRUCTURE)
 
-$(STRUCTURE): $(MATLAB_MODEL) $(wildcard core/modules/*.m) parameters/parameters_PDAC.m
-	@echo ">> Regenerating $(STRUCTURE) via qsp-export-model (requires MATLAB)..."
-	$(EXPORT_MODEL) --matlab-model $(MATLAB_MODEL) --output $(STRUCTURE)
+$(STRUCTURE): $(MATLAB_MODEL) scripts/export_model_structure.m $(wildcard core/modules/*.m) parameters/parameters_PDAC.m
+	@echo ">> Regenerating $(STRUCTURE) via MATLAB..."
+	matlab -batch "run('scripts/export_model_structure.m')"
 	@echo ">> $(STRUCTURE) refreshed ($$(wc -l < $(STRUCTURE)) lines)."
 
 test-fast:
@@ -111,7 +110,7 @@ refresh-cpp: export-sbml model-structure
 	@# and writes generated C++ into the in-repo $(CPP_ODE_DIR). qsp-codegen
 	@# is a pinned sibling tool (pip install -e if editing).
 	@echo ">> qsp-codegen: $(CURDIR)/PDAC_model.sbml -> $(CPP_ODE_DIR) ..."
-	$(QSP_CODEGEN) --sbml $(CURDIR)/PDAC_model.sbml --out-dir $(CPP_ODE_DIR)
+	$(QSP_CODEGEN) generate --sbml $(CURDIR)/PDAC_model.sbml --out-dir $(CPP_ODE_DIR)
 	@echo ">> qsp-refresh-param-xml: $(CPP_ODE_DIR)/qsp_params_xml_snippet.xml -> $(CPP_PARAM_XML) ..."
 	$(QSP_REFRESH_XML) \
 	    --snippet $(CPP_ODE_DIR)/qsp_params_xml_snippet.xml \

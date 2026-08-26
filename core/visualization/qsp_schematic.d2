@@ -57,7 +57,6 @@ tumor: Primary Tumor {
   IL10: IL-10 {shape: circle}
   TGFb: TGF-β {shape: circle}
   CCL2: CCL2 {shape: circle}
-  CCL5: CCL5 {shape: circle}
   CXCL12: CXCL12 {shape: circle}
   NO: NO {shape: circle}
   ArgI: ArgI {shape: circle}
@@ -181,7 +180,6 @@ tumor.ArgI -> tumor.Teff: {
 
 # ========= TUMOR: Cancer =========
 tumor.Cancer -> tumor.CCL2: {style.stroke: "#3366cc"}
-tumor.Cancer -> tumor.CCL5: {style.stroke: "#3366cc"}
 tumor.Cancer -> tumor.Debris: {style.stroke: "#3366cc"}
 tumor.Cancer -> tumor.PDGF: {style.stroke: "#3366cc"}
 tumor.M1 -> tumor.Cancer: {
@@ -206,9 +204,6 @@ tumor.Treg -> tumor.Teff: {
   target-arrowhead.shape: cf-one
 }
 tumor.apCAF -> tumor.Treg: {style.stroke: "#3366cc"}
-
-# CCL5 recruits Tregs
-tumor.CCL5 -> tumor.Treg: {style.stroke: "#009688"; style.stroke-dash: 3}
 
 # ECM/TGFb inhibitions
 tumor.ECM -> tumor.Teff: {

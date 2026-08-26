@@ -8,14 +8,7 @@
 % Outputs: model -- SimBiology model object with new macrophage module
 
 
-function model = macrophage_module(model,params,cancer_types,varargin)
-
-% Optional Inputs
-in = inputParser;
-addParameter(in,'aCD47',1);
-% Parse Inputs
-parse(in,varargin{:});
-antiCD47 = in.Results.aCD47;
+function model = macrophage_module(model,params,cancer_types)
 
 % Add Species
 Mac_M1  = addspecies(model.Compartment(3),'Mac_M1',0,'InitialAmountUnits','cell');
@@ -202,7 +195,7 @@ reaction = addreaction(model,'null -> V_T.IL10');
 % MDSC_module (which runs before this module). The existing arginase chain then
 % carries the M2 contribution to the killing rate with no new gate or EC50:
 % H_ArgI_Teff = V_T.ArgI/(ArgI_50_Teff+V_T.ArgI) -> H_MDSC = 1-(1-H_NO)*(1-H_ArgI_Teff)
-% -> (1-H_MDSC) on k_C_Tcell_eff (and NK killing). Before this, M2 suppressed CD8
+% -> (1-H_MDSC) on k_C_Tcell_eff. Before this, M2 suppressed CD8
 % only INDIRECTLY via TGFb (line 187) and IL-10 (line 192). Per-cell arginase rate
 % reused from MDSCs (k_ArgI_sec, Rodriguez PMID 19201693) -- both are Arg1-high
 % myeloid cells and the aggregate V_T.ArgI is unidentifiable by source. NO is NOT
@@ -263,7 +256,7 @@ reaction = addreaction(model,'V_T.Mac_M2 -> V_T.Mac_M1');
     set(reaction,'ReactionRate','k_M1_pol*V_T.Mac_M2*(1 - (1-V_T.IL12/(V_T.IL12+IL12_50))*max(0, 1 - k_IFNg_response*V_T.IFNg))');
     set(reaction,'Notes','M2 to M1 macrophage polarization in tumor (IL-12 Hill + IFNg linear sub-saturating - OR logic, max rate capped at k_M1_pol)');
 
-model = phagocytosis_module(model,params,'aCD47',antiCD47);
+model = phagocytosis_module(model,params);
 
 IL10_50_phago = addparameter(model,'IL10_50_phago',params.IL10_50_phago.Value,'ValueUnits',params.IL10_50_phago.Units, 'Notes', 'Half-maximal IL-10 level for phagocytosis by macrophage ');
 IL10_50_phago.UserData.Source = params.IL10_50_phago.Notes;

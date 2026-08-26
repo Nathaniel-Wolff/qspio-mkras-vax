@@ -65,9 +65,6 @@ p.UserData.Source = params.N_div_base.Notes;
 p = addparameter(model, 'N_div_costim', params.N_div_costim.Value, 'ValueUnits', params.N_div_costim.Units, 'Notes', 'number of activated T cell generations by co-stimulatory signaling only ');
 p.UserData.Source = params.N_div_costim.Notes;
     p.UserData.derivedFrom = params.N_div_costim.derivedFrom;
-p = addparameter(model, 'alpha_PD1_costim', params.alpha_PD1_costim.Value, 'ValueUnits', params.alpha_PD1_costim.Units, 'Notes', 'maximal fractional suppression of CD28 costim divisions by PD-1 (Hui 2017 SHP-2 axis); 0<alpha<1');
-p.UserData.Source = params.alpha_PD1_costim.Notes;
-    p.UserData.derivedFrom = params.alpha_PD1_costim.derivedFrom;
 p = addparameter(model, 'N_IL2_CD8', params.N_IL2_CD8.Value, 'ValueUnits', params.N_IL2_CD8.Units, 'Notes', 'maximum number of activated T cell generations due to IL2 (CD8) ');
 p.UserData.Source = params.N_IL2_CD8.Notes;
     p.UserData.derivedFrom = params.N_IL2_CD8.derivedFrom;
@@ -95,10 +92,7 @@ p = addparameter(model, 'kappa_IL2_Treg', params.kappa_IL2_Treg.Value, 'ValueUni
     p.UserData.derivedFrom = params.kappa_IL2_Treg.derivedFrom;
 p = addparameter(model, 'V_niche', params.V_niche.Value, 'ValueUnits', params.V_niche.Units, 'Notes', 'aggregate priming-niche volume for the local IL-2 QSS (<< V_LN)');
     p.UserData.derivedFrom = params.V_niche.derivedFrom;
-% CD137 / 4-1BB agonist (urelumab): division-destiny costim RETIRED. The
-% N_div_CD137*H_CD137 term and CD137_50 moved to tla_module.m — urelumab's
-% effect is now a TLA-local CD8 activation-state conversion, not LN division
-% destiny (Heumann 2023 shows flat bulk CD8). See parameters_PDAC.m CD137 block.
+% C13 excludes the urelumab/CD137 arm; division destiny contains no CD137 term.
 
 %% Parameters — IFNg
 p = addparameter(model, 'k_IFNg_Tsec', params.k_IFNg_Tsec.Value, 'ValueUnits', params.k_IFNg_Tsec.Units, 'Notes', 'rate of IFNg secretion per CD8 T cell in tumor ');
@@ -187,7 +181,7 @@ addrule(model, 'IL2_niche = k_IL2_sec*IL2_supply/(k_IL2_cons*IL2_demand/IL2_50 +
 % Division destiny integrates additive costim signals (Marchingo 2014): TCR
 % baseline + CD28 + IL-2. The IL-2 contribution is a Hill of the local niche
 % concentration IL2_niche against the sensed-concentration EC50 IL2_50 (de Jong
-% 1998). The 4-1BB/urelumab term was RETIRED (TLA-local, tla_module).
+% 1998). C13 excludes the 4-1BB/urelumab arm.
 %
 % CD8 costim term is licensed by CD4 help (*H_div_help): productive CD28-costim
 % that programs division destiny requires CD40L licensing of the cross-presenting
@@ -205,7 +199,7 @@ addrule(model, 'IL2_niche = k_IL2_sec*IL2_supply/(k_IL2_cons*IL2_demand/IL2_50 +
 %
 % CRITICAL DEPENDENCY: H_div_help only swings the RIGHT way because the CD4 help
 % arm now responds to vaccine -- which required CD4-arm epitope spreading
-% (gvax_module Path A, f_epitope_spread_CD4). WITHOUT it the naive-CD4 pool craters
+% (gvax_module Path A, f_epitope_spread). WITHOUT it the naive-CD4 pool craters
 % and V_LN.Th *drops* under vaccine (0.76x), so H_div_help would move backwards
 % (0.61->0.54) and N_aT would FALL. With CD4 spreading, V_LN.Th rises ~7x and the
 % gate fires forward. N_aTh (CD4) keeps the unlicensed bare-H_CD28_APC form --
@@ -218,50 +212,18 @@ addrule(model, 'IL2_niche = k_IL2_sec*IL2_supply/(k_IL2_cons*IL2_demand/IL2_50 +
 % effective-costim-is-licensing-dependent behavior; the deeper form scales the B7
 % terms inside H_CD28_APC by H_CD4_help (see the matching note in checkpoint_module).
 p = addparameter(model, 'N_aT', 1, 'ValueUnits', 'dimensionless', 'ConstantValue', false, 'Notes', 'Number of Activated CD8+ T Cell Generations (see Rules)');
-% PD-1 ANTAGONIZES CD28 IN THE COSTIM TERM (wired 2026-07-13).
-%
-% H_PD1_APC -- the PD-1 Hill on the CD8:APC priming synapse -- was computed every
-% timestep and had ZERO consumers. It responds perfectly to anti-PD-1 (0.993 -> 0.002)
-% and the value was thrown away, so nivolumab had NO effect on T-cell priming at all.
-% It was never wired in any commit: `% *(1-H_PD1_APC)` sat as a trailing COMMENT on the
-% clonal-expansion reaction since the model's origin.
-%
-% WHY IT WAS NEVER UNCOMMENTED. That commented form gates the expansion RATE:
-%     k_CD8_pro/N_aT * 2^N_aT * V_LN.aCD8 * (1-H_PD1_APC)
-% and (1-H_PD1_APC) = 0.0067 at baseline, so it is a 149x collapse -- a detonator, not
-% a lever.
-%
-% THE CORRECT FORM IS HERE, NOT THERE. Per Hui et al. (Science 2017), PD-1's primary
-% target is CD28 costimulation -- PD-1 recruits SHP-2, which preferentially
-% dephosphorylates CD28 rather than the TCR. So PD-1 belongs on the COSTIM TERM, which
-% is ADDITIVE in the division count -- it removes costim's divisions, not the whole
-% expansion.
-%
-% BUT the coefficient MATTERS. The first wiring (2026-07-13) used a BARE (1-H_PD1_APC).
-% With H_PD1_APC ~ 0.993 at rest that multiplies costim by 0.007 -- a ~140x cut -- in the
-% UNTREATED tumor, where there is no drug. It asserts baseline CD8 priming runs at 0.7%
-% of costim-max, which is falsified by the data: the marginal-centering table (2026-07-14)
-% shows prior-predictive cd8_density ~1.5 cell/mm^2 vs an observed 61.3 (n=702, the single
-% best-powered target we have) -- ~41x too LOW -- and this term is a proximal cause. Cold
-% tumors prime CD8 WEAKLY, not not-at-all. See project_costim_wiring_regressed_cd8 and
-% notes/diagnostics/what_our_diagnostics_actually_measure.md.
-%
-% THE FIX (2026-07-14): PD-1 attenuates CD28 signalling by a BOUNDED FRACTION, it does not
-% abolish it. So the coefficient is (1 - alpha_PD1_costim * H_PD1_APC) with alpha < 1 --
-% alpha is the maximal fractional suppression of costim divisions by PD-1. At the default
-% alpha=0.5 and baseline H_PD1_APC~0.993, the factor is ~0.50 (suppressed but FUNCTIONAL,
-% consistent with an infiltrated-but-cold tumor), and anti-PD-1 (H_PD1_APC -> ~0) lifts it
-% toward 1.0 -- a graceful ~2x treatment effect on priming instead of a 140x detonation.
-% alpha needs a quantitative Hui-2017 anchor (CD28-vs-TCR dephosphorylation ratio); until
-% then it is SBI-exposed (pdac_priors.csv, weakly-informative prior) so the data can speak.
-% This is a Hill-FORM decision, not a re-anchor of APC_PDL1_base: that value (8e4) is
-% correct (Rieckmann 2017 ~2.1e5 total CD274/cell, ~40% surface) and H_PD1_APC~0.993 is
-% STRUCTURAL, so grading the gate belongs on this coefficient -- see
-% notes/model/apc_pdl1_base_anchor_investigation.md.
-addrule(model, 'N_aT = N_div_base + N_div_costim*H_CD28_APC*(1-alpha_PD1_costim*H_PD1_APC)*H_div_help + N_IL2_CD8*IL2_niche/(IL2_50+IL2_niche)', 'repeatedAssignment');
+% C08 reduction (2026-08-24): the separate APC-side nivolumab-sensitive
+% multiplier (1-alpha_PD1_costim*H_PD1_APC) was retired because no observable
+% uniquely identifies priming-side checkpoint relief apart from the retained
+% tumor PD-1 and Tpex mechanisms. Its nominal untreated suppression was folded
+% into N_div_costim (3 -> 1.5105), preserving basal division destiny while
+% removing the extra drug-response claim. Updated-sampler refit must recover
+% the GVAX+nivolumab composition contrasts; if it cannot, the fixed Hui-2017
+% PD-1->CD28 coupling is the smallest layer to restore.
+addrule(model, 'N_aT = N_div_base + N_div_costim*H_CD28_APC*H_div_help + N_IL2_CD8*IL2_niche/(IL2_50+IL2_niche)', 'repeatedAssignment');
 
 p = addparameter(model, 'N_aTh', 1, 'ValueUnits', 'dimensionless', 'ConstantValue', false, 'Notes', 'Number of Activated T Helper Cell Generations (see Rules)');
-addrule(model, 'N_aTh = N_div_base + N_div_costim*H_CD28_APC*(1-alpha_PD1_costim*H_PD1_APC) + N_IL2_CD4*IL2_niche/(IL2_50+IL2_niche)', 'repeatedAssignment');
+addrule(model, 'N_aTh = N_div_base + N_div_costim*H_CD28_APC + N_IL2_CD4*IL2_niche/(IL2_50+IL2_niche)', 'repeatedAssignment');
 
 %% Rules — TGFb Hill functions
 % Context-specific TGFb Hills (mid-tier #13). M1->M2 polarization inlines its

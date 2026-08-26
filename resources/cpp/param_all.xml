@@ -33,9 +33,6 @@
       <V_C_nCD8>2274.77477477477</V_C_nCD8>
       <V_C_CD8>0.0</V_C_CD8>
       <V_C_aPD1>0.0</V_C_aPD1>
-      <V_C_aPDL1>0.0</V_C_aPDL1>
-      <V_C_aCTLA4>0.0</V_C_aCTLA4>
-      <V_C_aCD137>0.0</V_C_aCD137>
       <V_C_Th>0.0</V_C_Th>
       <V_C_Cy>0.0</V_C_Cy>
       <V_C_Cy_eff>0.0</V_C_Cy_eff>
@@ -44,11 +41,7 @@
       <V_P_nCD8>113738.738738739</V_P_nCD8>
       <V_P_CD8>0.0</V_P_CD8>
       <V_P_aPD1>0.0</V_P_aPD1>
-      <V_P_aPDL1>0.0</V_P_aPDL1>
-      <V_P_aCTLA4>0.0</V_P_aCTLA4>
-      <V_P_aCD137>0.0</V_P_aCD137>
       <V_P_Th>0.0</V_P_Th>
-      <V_P_NK>5000000.0</V_P_NK>
       <V_T_C_x>0.0</V_T_C_x>
       <V_T_CD8_exh>0.0</V_T_CD8_exh>
       <V_T_CD8_pex>0.0</V_T_CD8_pex>
@@ -57,7 +50,6 @@
       <V_T_K_vasc>10300.0</V_T_K_vasc>
       <V_T_VEGF>0.0</V_T_VEGF>
       <V_T_Treg>0.0</V_T_Treg>
-      <V_T_CCL5>0.0</V_T_CCL5>
       <V_T_CD8>0.0</V_T_CD8>
       <V_T_cDC1>0.0</V_T_cDC1>
       <V_T_cDC2>0.0</V_T_cDC2>
@@ -66,9 +58,6 @@
       <V_T_P0>1e-18</V_T_P0>
       <V_T_P1>1e-18</V_T_P1>
       <V_T_aPD1>0.0</V_T_aPD1>
-      <V_T_aPDL1>0.0</V_T_aPDL1>
-      <V_T_aCTLA4>0.0</V_T_aCTLA4>
-      <V_T_aCD137>0.0</V_T_aCD137>
       <V_T_Th>0.0</V_T_Th>
       <V_T_IFNg>0.0</V_T_IFNg>
       <V_T_TGFb>0.0</V_T_TGFb>
@@ -88,12 +77,6 @@
       <V_T_CXCL12>0.0</V_T_CXCL12>
       <V_T_IL6>0.0</V_T_IL6>
       <V_T_IL1>0.0</V_T_IL1>
-      <V_T_NK>0.0</V_T_NK>
-      <V_T_XCL1>0.0</V_T_XCL1>
-      <V_T_CXCL9>0.0</V_T_CXCL9>
-      <V_T_CD8_TLA>0.0</V_T_CD8_TLA>
-      <V_T_CD8_TLA_act>0.0</V_T_CD8_TLA_act>
-      <V_T_CD8_vic>0.0</V_T_CD8_vic>
       <V_LN_nCD4>155.689655172414</V_LN_nCD4>
       <V_LN_aTreg>0.0</V_LN_aTreg>
       <V_LN_Treg>0.0</V_LN_Treg>
@@ -105,9 +88,6 @@
       <V_LN_mcDC1>0.0</V_LN_mcDC1>
       <V_LN_mcDC2>0.0</V_LN_mcDC2>
       <V_LN_aPD1>0.0</V_LN_aPD1>
-      <V_LN_aPDL1>0.0</V_LN_aPDL1>
-      <V_LN_aCTLA4>0.0</V_LN_aCTLA4>
-      <V_LN_aCD137>0.0</V_LN_aCD137>
       <V_LN_aTh>0.0</V_LN_aTh>
       <V_LN_Th>0.0</V_LN_Th>
       <V_LN_IFNg>0.0</V_LN_IFNg>
@@ -128,11 +108,7 @@
       <syn_CD8_C1_PDL2>0.0</syn_CD8_C1_PDL2>
       <syn_CD8_C1_PD1_aPD1>0.0</syn_CD8_C1_PD1_aPD1>
       <syn_CD8_C1_PD1_aPD1_PD1>0.0</syn_CD8_C1_PD1_aPD1_PD1>
-      <syn_CD8_C1_PDL1_aPDL1>0.0</syn_CD8_C1_PDL1_aPDL1>
-      <syn_CD8_C1_PDL1_aPDL1_PDL1>0.0</syn_CD8_C1_PDL1_aPDL1_PDL1>
       <syn_CD8_C1_TPDL1>0.0</syn_CD8_C1_TPDL1>
-      <syn_CD8_C1_TPDL1_aPDL1>0.0</syn_CD8_C1_TPDL1_aPDL1>
-      <syn_CD8_C1_TPDL1_aPDL1_TPDL1>0.0</syn_CD8_C1_TPDL1_aPDL1_TPDL1>
       <syn_CD8_C1_CD28_CD80>0.0</syn_CD8_C1_CD28_CD80>
       <syn_CD8_C1_CD28_CD80_CD28>0.0</syn_CD8_C1_CD28_CD80_CD28>
       <syn_CD8_C1_CD28_CD86>0.0</syn_CD8_C1_CD28_CD86>
@@ -150,8 +126,6 @@
       <syn_CD8_C1_CD80>0.0</syn_CD8_C1_CD80>
       <syn_CD8_C1_CD80m>0.0</syn_CD8_C1_CD80m>
       <syn_CD8_C1_CD86>0.0</syn_CD8_C1_CD86>
-      <syn_CD8_C1_CTLA4_aCTLA4>0.0</syn_CD8_C1_CTLA4_aCTLA4>
-      <syn_CD8_C1_CTLA4_aCTLA4_CTLA4>0.0</syn_CD8_C1_CTLA4_aCTLA4_CTLA4>
       <syn_CD8_APC_PD1_PDL1>0.0</syn_CD8_APC_PD1_PDL1>
       <syn_CD8_APC_PD1_PDL2>0.0</syn_CD8_APC_PD1_PDL2>
       <syn_CD8_APC_PD1>0.0</syn_CD8_APC_PD1>
@@ -159,11 +133,7 @@
       <syn_CD8_APC_PDL2>0.0</syn_CD8_APC_PDL2>
       <syn_CD8_APC_PD1_aPD1>0.0</syn_CD8_APC_PD1_aPD1>
       <syn_CD8_APC_PD1_aPD1_PD1>0.0</syn_CD8_APC_PD1_aPD1_PD1>
-      <syn_CD8_APC_PDL1_aPDL1>0.0</syn_CD8_APC_PDL1_aPDL1>
-      <syn_CD8_APC_PDL1_aPDL1_PDL1>0.0</syn_CD8_APC_PDL1_aPDL1_PDL1>
       <syn_CD8_APC_TPDL1>0.0</syn_CD8_APC_TPDL1>
-      <syn_CD8_APC_TPDL1_aPDL1>0.0</syn_CD8_APC_TPDL1_aPDL1>
-      <syn_CD8_APC_TPDL1_aPDL1_TPDL1>0.0</syn_CD8_APC_TPDL1_aPDL1_TPDL1>
       <syn_CD8_APC_CD28_CD80>0.0</syn_CD8_APC_CD28_CD80>
       <syn_CD8_APC_CD28_CD80_CD28>0.0</syn_CD8_APC_CD28_CD80_CD28>
       <syn_CD8_APC_CD28_CD86>0.0</syn_CD8_APC_CD28_CD86>
@@ -181,8 +151,6 @@
       <syn_CD8_APC_CD80>0.0</syn_CD8_APC_CD80>
       <syn_CD8_APC_CD80m>0.0</syn_CD8_APC_CD80m>
       <syn_CD8_APC_CD86>0.0</syn_CD8_APC_CD86>
-      <syn_CD8_APC_CTLA4_aCTLA4>0.0</syn_CD8_APC_CTLA4_aCTLA4>
-      <syn_CD8_APC_CTLA4_aCTLA4_CTLA4>0.0</syn_CD8_APC_CTLA4_aCTLA4_CTLA4>
       <syn_M_C_CD47>600.0</syn_M_C_CD47>
       <syn_M_C_SIRPa>100.0</syn_M_C_SIRPa>
       <syn_M_C_CD47_SIRPa>0.0</syn_M_C_CD47_SIRPa>
@@ -195,8 +163,6 @@
       <syn_M_C_PDL2>0.0</syn_M_C_PDL2>
       <syn_M_C_PD1_aPD1>0.0</syn_M_C_PD1_aPD1>
       <syn_M_C_PD1_aPD1_PD1>0.0</syn_M_C_PD1_aPD1_PD1>
-      <syn_M_C_PDL1_aPDL1>0.0</syn_M_C_PDL1_aPDL1>
-      <syn_M_C_PDL1_aPDL1_PDL1>0.0</syn_M_C_PDL1_aPDL1_PDL1>
       <syn_M_C_PDL1_CD80>0.0</syn_M_C_PDL1_CD80>
       <syn_M_C_CD80>0.0</syn_M_C_CD80>
       <syn_M_C_CD80m>0.0</syn_M_C_CD80m>
@@ -205,8 +171,6 @@
       <V_ID_mAPC>0.0</V_ID_mAPC>
       <V_ID_GMCSF>0.0</V_ID_GMCSF>
       <V_ID_P1_GVAX>0.0</V_ID_P1_GVAX>
-      <L_CD137>0.0</L_CD137>
-      <TLA>0.0</TLA>
     </Species>
     <Parameter>
       <k_cell_clear>0.1</k_cell_clear>
@@ -261,11 +225,6 @@
       <f_nTreg>0.25</f_nTreg>
       <k_Treg_CD8_exh>0.1</k_Treg_CD8_exh>
       <H_P0>1.0</H_P0>
-      <k_CCL5_sec>1e-12</k_CCL5_sec>
-      <k_CCL5_deg>1.5</k_CCL5_deg>
-      <CCL5_50_Treg>1.0</CCL5_50_Treg>
-      <k_CCR5_Treg_rec>0.0001</k_CCR5_Treg_rec>
-      <H_CCL5_Treg>1.0</H_CCL5_Treg>
       <div_CD8>1110000.0</div_CD8>
       <n_CD8_clones>120.0</n_CD8_clones>
       <q_nCD8_LN_in>0.076</q_nCD8_LN_in>
@@ -371,63 +330,28 @@
       <gamma_P_aPD1>0.0452</gamma_P_aPD1>
       <gamma_T_aPD1>0.522</gamma_T_aPD1>
       <gamma_LN_aPD1>0.2</gamma_LN_aPD1>
-      <q_P_aPDL1>5.56e-06</q_P_aPDL1>
-      <q_T_aPDL1>8.52e-05</q_T_aPDL1>
-      <q_LN_aPDL1>3.25e-06</q_LN_aPDL1>
-      <q_LD_aPDL1>0.0015</q_LD_aPDL1>
-      <k_cl_aPDL1>0.33</k_cl_aPDL1>
-      <gamma_C_aPDL1>0.7</gamma_C_aPDL1>
-      <gamma_P_aPDL1>0.057</gamma_P_aPDL1>
-      <gamma_T_aPDL1>0.522</gamma_T_aPDL1>
-      <gamma_LN_aPDL1>0.2</gamma_LN_aPDL1>
-      <k_cln_aPDL1>5.6</k_cln_aPDL1>
-      <Kc_aPDL1>1.69</Kc_aPDL1>
-      <q_P_aCTLA4>5.331e-06</q_P_aCTLA4>
-      <q_T_aCTLA4>8.52e-05</q_T_aCTLA4>
-      <q_LN_aCTLA4>3.25e-06</q_LN_aCTLA4>
-      <q_LD_aCTLA4>0.0015</q_LD_aCTLA4>
-      <k_cl_aCTLA4>0.3276</k_cl_aCTLA4>
-      <gamma_C_aCTLA4>0.794</gamma_C_aCTLA4>
-      <gamma_P_aCTLA4>0.062</gamma_P_aCTLA4>
-      <gamma_T_aCTLA4>0.522</gamma_T_aCTLA4>
-      <gamma_LN_aCTLA4>0.2</gamma_LN_aCTLA4>
-      <q_P_aCD137>8.8e-06</q_P_aCD137>
-      <q_T_aCD137>8.52e-05</q_T_aCD137>
-      <q_LN_aCD137>3.25e-06</q_LN_aCD137>
-      <q_LD_aCD137>0.0015</q_LD_aCD137>
-      <k_cl_aCD137>1.7</k_cl_aCD137>
-      <gamma_C_aCD137>0.61</gamma_C_aCD137>
-      <gamma_P_aCD137>0.0452</gamma_P_aCD137>
-      <gamma_T_aCD137>0.522</gamma_T_aCD137>
-      <gamma_LN_aCD137>0.2</gamma_LN_aCD137>
       <kon_PD1_PDL1>0.06</kon_PD1_PDL1>
       <k_out_PDL1>50000.0</k_out_PDL1>
       <k_in_PDL1>1.0</k_in_PDL1>
       <r_PDL1_IFNg>6.0</r_PDL1_IFNg>
       <kon_PD1_PDL2>0.08</kon_PD1_PDL2>
       <kon_PD1_aPD1>670000.0</kon_PD1_aPD1>
-      <kon_PDL1_aPDL1>430000.0</kon_PDL1_aPDL1>
       <kon_CD28_CD80>0.133333333333333</kon_CD28_CD80>
       <kon_CD28_CD86>0.466666666666667</kon_CD28_CD86>
       <kon_CTLA4_CD80>0.333333333333333</kon_CTLA4_CD80>
       <kon_CTLA4_CD86>0.666666666666667</kon_CTLA4_CD86>
       <kon_CD80_PDL1>0.106666666666667</kon_CD80_PDL1>
-      <kon_CTLA4_aCTLA4>383000.0</kon_CTLA4_aCTLA4>
       <kon_CD80_CD80>0.000196666666666667</kon_CD80_CD80>
       <koff_PD1_PDL1>1.476</koff_PD1_PDL1>
       <koff_PD1_PDL2>0.552</koff_PD1_PDL2>
       <koff_PD1_aPD1>0.00268</koff_PD1_aPD1>
-      <koff_PDL1_aPDL1>0.000172</koff_PDL1_aPDL1>
       <koff_CD28_CD80>1.6</koff_CD28_CD80>
       <koff_CD28_CD86>28.0</koff_CD28_CD86>
       <koff_CTLA4_CD80>0.42</koff_CTLA4_CD80>
       <koff_CTLA4_CD86>5.2</koff_CTLA4_CD86>
       <koff_CD80_PDL1>6.016</koff_CD80_PDL1>
-      <koff_CTLA4_aCTLA4>0.0069706</koff_CTLA4_aCTLA4>
       <koff_CD80_CD80>0.01003</koff_CD80_CD80>
       <Chi_PD1_aPD1>33.3333330953227</Chi_PD1_aPD1>
-      <Chi_PDL1_aPDL1>33.3333330953227</Chi_PDL1_aPDL1>
-      <Chi_CTLA4_aCTLA4>33.3333330953227</Chi_CTLA4_aCTLA4>
       <PD1_50>6.0</PD1_50>
       <n_PD1>2.0</n_PD1>
       <CD28_CD8X_50>200.0</CD28_CD8X_50>
@@ -471,8 +395,7 @@
       <k_IL2_cons>5e-11</k_IL2_cons>
       <IL2_50>0.32</IL2_50>
       <N_div_base>2.0</N_div_base>
-      <N_div_costim>3.0</N_div_costim>
-      <alpha_PD1_costim>0.5</alpha_PD1_costim>
+      <N_div_costim>1.5105</N_div_costim>
       <N_IL2_CD8>11.0</N_IL2_CD8>
       <N_IL2_CD4>8.5</N_IL2_CD4>
       <w_IL2_help>5.0</w_IL2_help>
@@ -618,9 +541,7 @@
       <k_CXCL12_sec_iCAF>1e-10</k_CXCL12_sec_iCAF>
       <k_CXCL12_deg>2.0</k_CXCL12_deg>
       <CXCL12_50_Texcl>8.0</CXCL12_50_Texcl>
-      <k_IL6_sec_iCAF>2e-11</k_IL6_sec_iCAF>
-      <k_IL6_sec_C>5e-12</k_IL6_sec_C>
-      <k_IL6_sec_TAM>1e-11</k_IL6_sec_TAM>
+      <k_IL6_sec_iCAF>1.10362194189464e-09</k_IL6_sec_iCAF>
       <k_IL6_deg>16.0</k_IL6_deg>
       <IL6_50_MDSC>0.015</IL6_50_MDSC>
       <IL6_50_M2>0.015</IL6_50_M2>
@@ -636,43 +557,12 @@
       <IL1_ratio>0.0</IL1_ratio>
       <H_IL1_eff>0.0</H_IL1_eff>
       <k_vas_myCAF_sec>0.002</k_vas_myCAF_sec>
-      <k_P1_up_apCAF>1.44</k_P1_up_apCAF>
-      <k_apCAF_Treg>0.03</k_apCAF_Treg>
-      <K_apCAF_Treg>100000000.0</K_apCAF_Treg>
+      <k_apCAF_iTreg>0.15</k_apCAF_iTreg>
       <P1_50_apCAF>1e-09</P1_50_apCAF>
       <aPSC_total>0.0</aPSC_total>
       <k_TGFb_sec_myCAF>2e-10</k_TGFb_sec_myCAF>
       <k_CXCL12_sec_cancer>5e-11</k_CXCL12_sec_cancer>
-      <k_CCL5_sec_iCAF>3e-11</k_CCL5_sec_iCAF>
-      <H_P1_apCAF>0.0</H_P1_apCAF>
-      <k_NK_rec>45000.0</k_NK_rec>
-      <k_NK_death>0.07</k_NK_death>
-      <k_NK_kill>0.05</k_NK_kill>
-      <K_NK_C>10.0</K_NK_C>
-      <k_IFNg_NK_sec>1e-12</k_IFNg_NK_sec>
-      <IL10_50_NK>0.05</IL10_50_NK>
-      <TGFb_50_NK>0.5</TGFb_50_NK>
-      <IL12_50_NK>0.002</IL12_50_NK>
-      <q_NK_P_in>0.05</q_NK_P_in>
-      <NK_P_steady>5000000.0</NK_P_steady>
-      <vol_NK>523.598775598299</vol_NK>
-      <H_IL10_NK>0.0</H_IL10_NK>
-      <H_TGFb_NK>0.0</H_TGFb_NK>
-      <H_IL12_NK>0.0</H_IL12_NK>
-      <k_XCL1_NK>5e-13</k_XCL1_NK>
-      <k_XCL1_deg>10.0</k_XCL1_deg>
-      <XCL1_50_cDC1>1.0</XCL1_50_cDC1>
-      <Emax_XCL1>3.0</Emax_XCL1>
-      <H_XCL1_cDC1>0.0</H_XCL1_cDC1>
-      <k_CXCL9_sec>1.43e-09</k_CXCL9_sec>
-      <k_CXCL9_deg>10.0</k_CXCL9_deg>
-      <IFNg_50_CXCL9>0.005</IFNg_50_CXCL9>
-      <CXCL9_50_Trec>1.0</CXCL9_50_Trec>
-      <k_CXCR3_rec>0.1</k_CXCR3_rec>
-      <k_CXCR3_NK_rec>45000.0</k_CXCR3_NK_rec>
-      <H_IFNg_CXCL9>0.0</H_IFNg_CXCL9>
-      <H_CXCL9_Trec>0.0</H_CXCL9_Trec>
-      <k_CXCR3_Th_rec>0.1</k_CXCR3_Th_rec>
+      <H_apCAF_pMHCII>0.0</H_apCAF_pMHCII>
       <k_GVAX_clearance>0.1</k_GVAX_clearance>
       <V_ID_volume>0.0001</V_ID_volume>
       <k_GMCSF_prod>1e-08</k_GMCSF_prod>
@@ -696,9 +586,9 @@
       <HMGB1_50_ID>10000000.0</HMGB1_50_ID>
       <H_HMGB1_ID>0.0</H_HMGB1_ID>
       <J_mature_ID>0.0</J_mature_ID>
-      <f_epitope_spread_CD8>4.0</f_epitope_spread_CD8>
+      <f_epitope_spread>4.89897948556636</f_epitope_spread>
       <H_P1_spread>0.0</H_P1_spread>
-      <f_epitope_spread_CD4>6.0</f_epitope_spread_CD4>
+      <k_CD8_T_vac_pro>0.05</k_CD8_T_vac_pro>
       <k_Cy_clear>2.5</k_Cy_clear>
       <k_Cy_Treg_deplete>0.15</k_Cy_Treg_deplete>
       <Cy_50_Treg>50.0</Cy_50_Treg>
@@ -706,40 +596,12 @@
       <Emax_Cy_Treg>0.8</Emax_Cy_Treg>
       <k_Cy_on>10.0</k_Cy_on>
       <Cy_eff_50>1.0</Cy_eff_50>
-      <CD137_50>0.3</CD137_50>
-      <k_CXCL13_sec>1e-06</k_CXCL13_sec>
-      <k_CXCL13_ff>1e-07</k_CXCL13_ff>
-      <k_CXCL13_deg>10.0</k_CXCL13_deg>
-      <CXCL13_50_TLA>0.0002</CXCL13_50_TLA>
-      <k_TLA_form>0.5</k_TLA_form>
-      <k_TLA_decay>0.05</k_TLA_decay>
-      <k_TLA_seq>0.5</k_TLA_seq>
-      <k_TLA_release>0.1</k_TLA_release>
-      <a_TLA>0.0055</a_TLA>
-      <k_CD137_act>1.0</k_CD137_act>
-      <k_CD137_deact>0.05</k_CD137_deact>
-      <f_act_base>0.0015</f_act_base>
-      <k_TLA_egress>0.03</k_TLA_egress>
-      <phi_vic_kill>2.0</phi_vic_kill>
-      <k_vic_decay>0.005</k_vic_decay>
-      <k_CD137_reinvig>1.42</k_CD137_reinvig>
-      <f_CD137_func>0.24</f_CD137_func>
-      <k_CD137_prolif>1.55</k_CD137_prolif>
-      <k_CD8_T_vac_pro>0.05</k_CD8_T_vac_pro>
-      <k_CD137_latch_on>1.0</k_CD137_latch_on>
-      <k_CD137_latch_off>0.015</k_CD137_latch_off>
-      <H_CD137_T>0.0</H_CD137_T>
-      <CXCL13>0.0</CXCL13>
-      <H_CXCL13>0.0</H_CXCL13>
-      <CD8_T_tot>0.0</CD8_T_tot>
-      <k_C_vic_eff>0.0</k_C_vic_eff>
       <CD8_total_T>0.0</CD8_total_T>
       <nucleated_total_T>0.0</nucleated_total_T>
       <CD8_exh_total_T>0.0</CD8_exh_total_T>
       <Th_total_T>0.0</Th_total_T>
       <CD4_total_T>0.0</CD4_total_T>
       <Tcell_total_T>0.0</Tcell_total_T>
-      <lymphocyte_total_T>0.0</lymphocyte_total_T>
       <Mac_total_T>0.0</Mac_total_T>
       <DC_total_T>0.0</DC_total_T>
       <mDC_total_T>0.0</mDC_total_T>
