@@ -1,7 +1,7 @@
 scenario_id: "clinical_progression"
 
 scenario_context: |
-  Clinical progression scenario for PDAC - simulates 90 days of disease progression
+  Clinical progression scenario for PDAC - simulates one year of disease progression
   to capture clinical endpoints (RECIST response, PFS, biomarkers). No therapeutic
   intervention. Patient parameters: 70 kg body weight, 1.9 m² body surface area.
 
