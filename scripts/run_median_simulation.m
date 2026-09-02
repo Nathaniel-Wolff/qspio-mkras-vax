@@ -232,29 +232,22 @@ if ~is_baseline && isfield(scenario, 'dosing') && isfield(scenario.dosing, 'drug
 
     dosing_args = {'patientWeight', patient_weight, 'patientBSA', patient_bsa};
 
-    for d = 1:length(drugs)
-        drug = drugs{d};
-        switch upper(drug)
-            case 'GVAX'
-                if isfield(dosing_cfg, 'GVAX_dose')
-                    [sched_start, sched_int, sched_repeat] = parse_schedule(dosing_cfg.GVAX_schedule);
-                    dosing_args = [dosing_args, 'GVAX_dose', dosing_cfg.GVAX_dose, ...
-                                   'GVAX_schedule', [sched_start, sched_int, sched_repeat]]; %#ok<AGROW>
-                end
-            case 'NIVOLUMAB'
-                if isfield(dosing_cfg, 'nivolumab_dose')
-                    nivo_dose_per_kg = dosing_cfg.nivolumab_dose / patient_weight;
-                    [sched_start, sched_int, sched_repeat] = parse_schedule(dosing_cfg.nivolumab_schedule);
-                    dosing_args = [dosing_args, 'nivolumab_dose', nivo_dose_per_kg, ...
-                                   'nivolumab_schedule', [sched_start, sched_int, sched_repeat]]; %#ok<AGROW>
-                end
-            case 'CY'
-                if isfield(dosing_cfg, 'Cy_dose')
-                    [sched_start, sched_int, sched_repeat] = parse_schedule(dosing_cfg.Cy_schedule);
-                    dosing_args = [dosing_args, 'Cy_dose', dosing_cfg.Cy_dose, ...
-                                   'Cy_schedule', [sched_start, sched_int, sched_repeat]]; %#ok<AGROW>
-                end
+    % Pass scenario dose fields through in the units documented by the YAML.
+    % In particular, nivolumab_dose is already mg/kg; schedule_dosing applies
+    % patient weight exactly once. Generic pass-through also preserves the
+    % explicit cyclophosphamide_* alias instead of silently using defaults.
+    dosing_fields = fieldnames(dosing_cfg);
+    for f = 1:length(dosing_fields)
+        field_name = dosing_fields{f};
+        if any(strcmp(field_name, {'drugs', 'patientWeight', 'patientBSA'}))
+            continue;
         end
+        field_value = dosing_cfg.(field_name);
+        if endsWith(field_name, '_schedule')
+            [sched_start, sched_int, sched_repeat] = parse_schedule(field_value);
+            field_value = [sched_start, sched_int, sched_repeat];
+        end
+        dosing_args = [dosing_args, field_name, field_value]; %#ok<AGROW>
     end
 
     % Convert drug names for schedule_dosing
