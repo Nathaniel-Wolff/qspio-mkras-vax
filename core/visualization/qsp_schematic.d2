@@ -12,8 +12,10 @@ blood: Blood {
 
   Th: Th
   Treg: Treg
-  Teff: Teff
+  Teff: CD8
   Cy: Cy {style.fill: "#ffcccc"}
+  CyEff: Cy_eff {style.fill: "#ffdddd"}
+  Nivo: Nivolumab {style.fill: "#d9e5ff"}
 }
 
 dln: Primary dLNs {
@@ -22,14 +24,15 @@ dln: Primary dLNs {
   direction: down
 
   # DCs at top (priming stations; receive inbound traffic from tumor cDC1 and injection moDCs)
+  cDC1: cDC1
   mcDC1: mcDC1
   mcDC2: mcDC2
   # Naive pools below
-  nTCD8: nTCD8
-  nTCD4: nTCD4
+  nTCD8: nCD8
+  nTCD4: nCD4
   IL2: IL-2 {shape: circle}
   # Activated subsets at bottom (egress targets)
-  Teff: Teff
+  Teff: CD8
   Th: Th
   Treg: Treg
 }
@@ -42,15 +45,16 @@ tumor: Primary Tumor {
   # === T cells (single instance each) ===
   Th: Th
   Treg: Treg
-  Teff: Teff
+  Teff: CD8 eff
+  CD8pex: CD8_pex
   CD8exh: CD8_exh
   Thexh: Th_exh
 
   # === Vascular carrying capacity (gates blood -> tumor extravasation) ===
-  Vasc: Vasc {shape: circle}
+  Vasc: K_vasc {shape: circle}
 
   # === Signaling molecules (single instance each) ===
-  PDL1: PD-L1 {shape: circle}
+  PDL1: PD-1/L1 {shape: circle}
   IFNg: IFNγ {shape: circle}
   IL1: IL-1 {shape: circle}
   IL12: IL-12 {shape: circle}
@@ -60,8 +64,8 @@ tumor: Primary Tumor {
   CXCL12: CXCL12 {shape: circle}
   NO: NO {shape: circle}
   ArgI: ArgI {shape: circle}
-  ECM: ECM {shape: circle}
-  PDGF: PDGF {shape: circle}
+  ECM: Collagen {shape: circle}
+  VEGF: VEGF {shape: circle}
   IL6: IL-6 {shape: circle}
 
   # === Myeloid ===
@@ -105,11 +109,8 @@ injection: Intradermal Injection {
 }
 
 # ========= BLOOD INTERNAL =========
-# Low-dose Cy preferentially depletes proliferating Tregs (Teff sparing)
-blood.Cy -> blood.Treg: {
-  style.stroke: "#cc3333"
-  target-arrowhead.shape: cf-one
-}
+# Low-dose Cy creates an acute exposure and a slower PD memory state.
+blood.Cy -> blood.CyEff: {style.stroke: "#3366cc"}
 
 # ========= BLOOD <-> dLN =========
 
@@ -122,8 +123,13 @@ dln.nTCD4 -> dln.IL2: {style.stroke: "#3366cc"}
 dln.IL2 -> dln.Treg: {style.stroke: "#009688"; style.stroke-dash: 3}
 dln.IL2 -> dln.Teff: {style.stroke: "#009688"; style.stroke-dash: 3}
 # DC priming
+dln.cDC1 -> dln.mcDC1: {style.stroke: "#3366cc"}
+# Migratory GVAX-loaded mcDC2 transfer antigen to resident cDC1.
+dln.mcDC2 -> dln.mcDC1: {style.stroke: "#009688"; style.stroke-dash: 3}
 dln.mcDC1 -> dln.nTCD8: {style.stroke: "#009688"; style.stroke-dash: 3}
 dln.mcDC2 -> dln.nTCD4: {style.stroke: "#009688"; style.stroke-dash: 3}
+# CD4 help licenses cDC1-mediated CD8 priming.
+dln.Th -> dln.mcDC1: {style.stroke: "#009688"; style.stroke-dash: 3}
 
 # ========= dLN -> BLOOD =========
 dln.Teff -> blood.Teff: {style.stroke: "#3366cc"}
@@ -138,8 +144,8 @@ blood.Teff -> tumor.Teff: {style.stroke: "#3366cc"}
 tumor.Vasc -> tumor.Teff: {style.stroke: "#009688"; style.stroke-dash: 3}
 tumor.Vasc -> tumor.Th: {style.stroke: "#009688"; style.stroke-dash: 3}
 tumor.Vasc -> tumor.Treg: {style.stroke: "#009688"; style.stroke-dash: 3}
-# Cancer-driven angiogenic capacity (VEGF/PDGF route, signal lumped here)
-tumor.Cancer -> tumor.Vasc: {style.stroke: "#3366cc"}
+# VEGF drives vascular carrying capacity, which can lag tumor growth.
+tumor.VEGF -> tumor.Vasc: {style.stroke: "#009688"; style.stroke-dash: 3}
 
 # ========= TUMOR: Immune signaling =========
 tumor.IFNg -> tumor.PDL1: {style.stroke: "#3366cc"}
@@ -150,6 +156,12 @@ tumor.PDL1 -> tumor.Teff: {
   style.stroke: "#cc3333"
   target-arrowhead.shape: cf-one
 }
+# Nivolumab blocks the PD-1:PD-L1 checkpoint and restores effector function.
+blood.Nivo -> tumor.PDL1: {
+  style.stroke: "#cc3333"
+  target-arrowhead.shape: cf-one
+}
+blood.Nivo -> tumor.Teff: {style.stroke: "#009688"; style.stroke-dash: 3}
 # CXCL12 inhibits T cell entry
 tumor.CXCL12 -> tumor.Teff: {
   style.stroke: "#cc3333"
@@ -161,6 +173,7 @@ tumor.Debris -> tumor.Teff: {style.stroke: "#009688"; style.stroke-dash: 3}
 # ========= TUMOR: Myeloid =========
 tumor.M2 -> tumor.IL10: {style.stroke: "#3366cc"}
 tumor.M2 -> tumor.TGFb: {style.stroke: "#3366cc"}
+tumor.M2 -> tumor.VEGF: {style.stroke: "#3366cc"}
 tumor.M1 -> tumor.IL12: {style.stroke: "#3366cc"}
 tumor.mcDC1 -> tumor.IL12: {style.stroke: "#3366cc"}
 tumor.CCL2 -> tumor.M1: {style.stroke: "#009688"; style.stroke-dash: 3}
@@ -181,7 +194,7 @@ tumor.ArgI -> tumor.Teff: {
 # ========= TUMOR: Cancer =========
 tumor.Cancer -> tumor.CCL2: {style.stroke: "#3366cc"}
 tumor.Cancer -> tumor.Debris: {style.stroke: "#3366cc"}
-tumor.Cancer -> tumor.PDGF: {style.stroke: "#3366cc"}
+tumor.Cancer -> tumor.VEGF: {style.stroke: "#3366cc"}
 tumor.M1 -> tumor.Cancer: {
   style.stroke: "#cc3333"
   target-arrowhead.shape: cf-one
@@ -195,9 +208,14 @@ tumor.Teff -> tumor.Cancer: {
 tumor.Th -> tumor.Treg: {style.stroke: "#3366cc"}
 tumor.Treg -> tumor.TGFb: {style.stroke: "#3366cc"}
 tumor.Th -> tumor.Thexh: {style.stroke: "#3366cc"}
-tumor.Teff -> tumor.CD8exh: {style.stroke: "#3366cc"}
-# TGFb drives both CD8 and Th exhaustion (parallel routes)
-tumor.TGFb -> tumor.CD8exh: {style.stroke: "#009688"; style.stroke-dash: 3}
+tumor.Teff -> tumor.CD8pex: {style.stroke: "#3366cc"}
+tumor.CD8pex -> tumor.CD8exh: {style.stroke: "#3366cc"}
+tumor.CD8pex -> tumor.Teff: {style.stroke: "#3366cc"}
+# PD-1 engagement, Treg pressure, and collagen-associated stiffness feed the
+# progenitor-exhausted gateway.
+tumor.PDL1 -> tumor.CD8pex: {style.stroke: "#009688"; style.stroke-dash: 3}
+tumor.Treg -> tumor.CD8pex: {style.stroke: "#009688"; style.stroke-dash: 3}
+tumor.ECM -> tumor.CD8pex: {style.stroke: "#009688"; style.stroke-dash: 3}
 tumor.TGFb -> tumor.Thexh: {style.stroke: "#009688"; style.stroke-dash: 3}
 tumor.Treg -> tumor.Teff: {
   style.stroke: "#cc3333"
@@ -227,17 +245,25 @@ tumor.IL10 -> tumor.cDC2: {
   style.stroke: "#cc3333"
   target-arrowhead.shape: cf-one
 }
+# Collagen limits cDC recruitment and egress through the stromal pore gate.
+tumor.ECM -> tumor.cDC1: {
+  style.stroke: "#cc3333"
+  target-arrowhead.shape: cf-one
+}
+tumor.ECM -> tumor.cDC2: {
+  style.stroke: "#cc3333"
+  target-arrowhead.shape: cf-one
+}
 
 # ========= TUMOR: Stroma/CAFs =========
 tumor.qPSC -> tumor.myCAF: {style.stroke: "#3366cc"}
 tumor.qPSC -> tumor.iCAF: {style.stroke: "#3366cc"}
 tumor.qPSC -> tumor.apCAF: {style.stroke: "#3366cc"}
-tumor.TGFb -> tumor.qPSC: {style.stroke: "#009688"; style.stroke-dash: 3}
-tumor.PDGF -> tumor.qPSC: {style.stroke: "#009688"; style.stroke-dash: 3}
+tumor.TGFb -> tumor.myCAF: {style.stroke: "#009688"; style.stroke-dash: 3}
 # IL-1 / TGF-β competitive signaling controlling iCAF formation
 tumor.Cancer -> tumor.IL1: {style.stroke: "#3366cc"}
 tumor.IL1 -> tumor.iCAF: {style.stroke: "#009688"; style.stroke-dash: 3}
-tumor.TGFb -> tumor.IL1: {
+tumor.TGFb -> tumor.iCAF: {
   style.stroke: "#cc3333"
   target-arrowhead.shape: cf-one
 }
@@ -250,6 +276,8 @@ tumor.M2 -> tumor.ECM: {
 tumor.iCAF -> tumor.CXCL12: {style.stroke: "#3366cc"}
 tumor.myCAF -> tumor.TGFb: {style.stroke: "#3366cc"}
 tumor.iCAF -> tumor.IL6: {style.stroke: "#3366cc"}
+tumor.IL6 -> tumor.iCAF: {style.stroke: "#009688"; style.stroke-dash: 3}
+tumor.myCAF -> tumor.VEGF: {style.stroke: "#3366cc"}
 # Cancer produces CCL2 (not iCAF) — already shown on line 169
 tumor.iCAF <-> tumor.myCAF: {style.stroke: "#9933cc"}
 # IL-6 modulates MDSC recruitment, M1->M2 polarization, and iCAF differentiation (not cancer directly)
@@ -258,6 +286,10 @@ tumor.IL6 -> tumor.M2: {style.stroke: "#009688"; style.stroke-dash: 3}
 
 # ========= CYCLOPHOSPHAMIDE =========
 blood.Cy -> tumor.Treg: {
+  style.stroke: "#cc3333"
+  target-arrowhead.shape: cf-one
+}
+blood.CyEff -> tumor.Treg: {
   style.stroke: "#cc3333"
   target-arrowhead.shape: cf-one
 }
