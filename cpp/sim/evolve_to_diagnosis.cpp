@@ -45,6 +45,8 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
     const double min_days = ev["min_days"].as<double>();
     const double max_days = ev["max_days"].as<double>();
     const double step_days = ev["step_days"].as<double>();
+    const bool healthy_state_only = ev["healthy_state_only"]
+        && ev["healthy_state_only"].as<bool>();
 
     // Target diameter: explicit arg, else read from model parameter
     // initial_tumour_diameter (stored in SI meters; convert to cm).
@@ -62,6 +64,11 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
     set_healthy_populations(ode, hp);
 
     const double d0 = current_vt_diameter_cm(ode);
+    if (healthy_state_only) {
+        r.success = true;
+        r.diameter_cm = d0;
+        return r;
+    }
     if (opts.verbose) {
         std::cerr << "[evolve] target diameter = " << target_cm
                   << " cm; initial V_T diameter = " << d0 << " cm\n";
