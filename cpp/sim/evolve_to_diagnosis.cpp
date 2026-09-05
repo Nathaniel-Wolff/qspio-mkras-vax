@@ -2,9 +2,11 @@
 #include "qsp_sim_core/trajectory_writer.h"
 #include "set_healthy_populations.h"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <memory>
 #include <sstream>
@@ -45,8 +47,8 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
     const double min_days = ev["min_days"].as<double>();
     const double max_days = ev["max_days"].as<double>();
     const double step_days = ev["step_days"].as<double>();
-    const bool healthy_state_only = ev["healthy_state_only"]
-        && ev["healthy_state_only"].as<bool>();
+    const bool diagnostic_bounds = ev["diagnostic_bounds"]
+        && ev["diagnostic_bounds"].as<bool>();
 
     // Target diameter: explicit arg, else read from model parameter
     // initial_tumour_diameter (stored in SI meters; convert to cm).
@@ -64,16 +66,11 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
     set_healthy_populations(ode, hp);
 
     const double d0 = current_vt_diameter_cm(ode);
-    if (healthy_state_only) {
-        r.success = true;
-        r.diameter_cm = d0;
-        return r;
-    }
     if (opts.verbose) {
         std::cerr << "[evolve] target diameter = " << target_cm
                   << " cm; initial V_T diameter = " << d0 << " cm\n";
     }
-    if (d0 >= target_cm) {
+    if (!diagnostic_bounds && d0 >= target_cm) {
         r.reject_reason = "EVOLVE_DEGENERATE: initial diameter already >= target";
         r.diameter_cm = d0;
         return r;
@@ -144,12 +141,16 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
     double t = 0.0;
     int steps = 0;
     double prev_d = d0;
+    double lower_cm = d0;
+    double upper_cm = d0;
     while (t < t_max) {
         ode.simOdeStep(t, dt);
         t += dt;
         steps++;
         const double t_days = t / opts.time_factor;
         const double d = current_vt_diameter_cm(ode);
+        upper_cm = std::max(upper_cm, d);
+        if (t_days <= min_days) lower_cm = std::max(lower_cm, d);
         // Dump trajectory rows whenever cumulative time crosses the next
         // multiple of dump_dt_days. Float drift is fine here — the header
         // records the actual t_end_days at finalize.
@@ -157,7 +158,7 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
             write_traj_row(t_next_dump);
             t_next_dump += dump_dt_days;
         }
-        if (d >= target_cm) {
+        if (!diagnostic_bounds && d >= target_cm) {
             if (t_days < min_days) {
                 std::ostringstream os;
                 os << "EVOLVE_TOO_FAST: target reached too fast (" << t_days
@@ -183,6 +184,17 @@ EvolveResult evolve_to_diagnosis(ODE_system& ode, const EvolveOpts& opts) {
             std::cerr << "[evolve] t=" << t / opts.time_factor
                       << " d; diameter=" << d << " cm\n";
         }
+    }
+
+    if (diagnostic_bounds) {
+        std::cout << std::setprecision(17)
+                  << "EVOLVE_BOUNDS_CM " << lower_cm << " " << upper_cm
+                  << "\n";
+        r.success = true;
+        r.t_diagnosis_days = max_days;
+        r.diameter_cm = prev_d;
+        finalize_traj(max_days, static_cast<uint64_t>(steps));
+        return r;
     }
 
     std::ostringstream os;

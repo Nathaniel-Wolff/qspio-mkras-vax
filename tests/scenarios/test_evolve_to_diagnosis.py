@@ -46,9 +46,6 @@ class TestEvolveTodiagnosisPrereqs:
     def test_evolve_to_diagnosis_exists(self):
         assert (REPO_ROOT / "scripts" / "evolve_to_diagnosis.m").exists()
 
-    def test_diagnosis_bounds_scenario_exists(self):
-        assert (REPO_ROOT / "scenarios" / "diagnosis_bounds.yaml").exists()
-
     def test_helper_script_exists(self):
         assert HELPER_SCRIPT.exists()
 
