@@ -5,7 +5,7 @@
 % Inputs: model -- SimBiology model object with four compartments
 %         ID    -- ID number for MHC [must be unique]
 %         ICs   -- array containing fraction of MHC in
-%                  - edosomal compartment
+%                  - endosomal compartment
 %                  - surface compartment
 %         MHC_T -- total amount of MHC [parameter]
 %

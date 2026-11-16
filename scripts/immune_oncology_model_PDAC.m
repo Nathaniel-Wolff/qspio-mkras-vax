@@ -87,7 +87,8 @@ model = macrophage_module(model,params_out,{'C1'});
 % Fibroblast Module
 model = fibroblast_module_enhanced(model,params_out);
 
-model = gvax_module(model, params_out, 'add_cyclophosphamide', true);
+%model = gvax_module(model, params_out, 'add_cyclophosphamide', true);
+model = mkras_vax_module(model, params_out);
 
 % Aggregate observables (derived totals for cal-target denominators).
 % Must run after all species-adding modules so nucleated_total_T can

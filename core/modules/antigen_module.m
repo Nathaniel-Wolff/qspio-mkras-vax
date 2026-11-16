@@ -10,7 +10,7 @@
 %                    - N_MHC--number of types of MHC molecules
 %                    - MHC_T--total amount of MHC per area
 %                    - kin--rate of MHC internalization
-%                    - kout--rate of MHC exernalization
+%                    - kout--rate of MHC externalization
 %                    - V_e--endosomal volume
 %                    - A_e--endosomal surface area
 %                    - A_s--APC surface area

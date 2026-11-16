@@ -45,19 +45,6 @@ if isempty(mapc_id)
     set(mapc_id, 'Notes', 'Mature APCs with antigen at injection site');
 end
 
-% Add GM-CSF species at injection site
-gmcsf_id = sbioselect(model, 'Name', 'GMCSF', 'Type', 'species', 'Parent', V_ID);
-if isempty(gmcsf_id)
-    gmcsf_id = addspecies(V_ID, 'GMCSF', 0, 'InitialAmountUnits', 'nanomole');
-    set(gmcsf_id, 'Notes', 'GM-CSF amount at injection site');
-end
-
-% Add P1_GVAX antigen species at injection site
-p1_gvax_id = sbioselect(model, 'Name', 'P1_GVAX', 'Type', 'species', 'Parent', V_ID);
-if isempty(p1_gvax_id)
-    p1_gvax_id = addspecies(V_ID, 'P1_GVAX', 0, 'InitialAmountUnits', 'nanomole');
-    set(p1_gvax_id, 'Notes', 'GVAX-derived antigen at injection site');
-end
 
 % Load parameters from params structure
 
@@ -71,15 +58,6 @@ V_ID_vol = sbioselect(model,'Type','parameter','Name','V_ID_volume');
 if isempty(V_ID_vol), V_ID_vol = addparameter(model,'V_ID_volume',params.V_ID_volume.Value,'ValueUnits',params.V_ID_volume.Units); end
 set(V_ID_vol, 'Notes', params.V_ID_volume.Notes);
 set(V_ID, 'Capacity', V_ID_vol.Value);
-
-% GM-CSF production and degradation parameters
-k_GMCSF_prod = sbioselect(model,'Type','parameter','Name','k_GMCSF_prod');
-if isempty(k_GMCSF_prod), k_GMCSF_prod = addparameter(model,'k_GMCSF_prod',params.k_GMCSF_prod.Value,'ValueUnits',params.k_GMCSF_prod.Units); end
-set(k_GMCSF_prod, 'Notes', params.k_GMCSF_prod.Notes);
-
-k_GMCSF_deg = sbioselect(model,'Type','parameter','Name','k_GMCSF_deg');
-if isempty(k_GMCSF_deg), k_GMCSF_deg = addparameter(model,'k_GMCSF_deg',params.k_GMCSF_deg.Value,'ValueUnits',params.k_GMCSF_deg.Units); end
-set(k_GMCSF_deg, 'Notes', params.k_GMCSF_deg.Notes);
 
 % APC recruitment to injection site
 k_APC_recruit_ID = sbioselect(model,'Type','parameter','Name','k_APC_recruit_ID');

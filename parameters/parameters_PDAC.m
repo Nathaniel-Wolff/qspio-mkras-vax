@@ -2669,6 +2669,209 @@ params.Cy_eff_50.Value = 1;  % milligram (half-saturation of the Cy_eff -> Treg-
 params.Cy_eff_50.Units = "milligram";
 params.Cy_eff_50.Notes = "Half-saturation of the Cy effect compartment on tumor-Treg proliferation (structural; weakly identifiable, fixed)";
 
+%% mKRAS-Vax Parameters
+%APC Recruitment to subcutaneous injection site; parameter exact values
+%Lymph node targeted is axillary, ultimate immunogenicity is comparable to intramuscular
+%still unclear how much rates are different
+
+% * New Section * 
+% transport into regional lymph node (axillary) and isoelectric point
+
+params.k_transport_mKRAS.Value = 0.05;
+params.k_transport_mKRAS.Units = '1/second'; %keep note of the scale here
+params.k_transport_mKRAS.Notes = 'Rate of transport of pooled peptide mKRASinto LN'; 
+
+
+params.k_transport_G12D.Value = 0.05;
+params.k_transport_G12D.Units = '1/second'; %keep note of the scale here
+params.k_transport_G12D.Notes = 'Rate of transport of G12D into LN'; 
+params.pI_G12D.Value = 9.66;
+params.pI_G12D.Units = 'dimensionless';
+params.pI_G12D.Notes = 'Isoelectric point of G12D';
+
+params.k_transport_G12V.Value = 0.05;
+params.k_transport_G12V.Units = '1/second'; %keep note of the scale here
+params.k_transport_G12V.Notes = 'Rate of transport of G12V into LN'; 
+params.pI_G12V.Value = 10.2;
+params.pI_G12V.Units = 'dimensionless';
+params.pI_G12V.Notes = 'Isoelectric point of G12V';
+
+params.k_transport_G12R.Value = 0.05;
+params.k_transport_G12R.Units = '1/second';
+params.k_transport_G12R.Notes = 'Rate of transport of G12R into LN';
+params_pI.G12R.Value = 10.7;
+params.pI_G12D.Units = 'dimensionless';
+params.pI_G12D.Notes = 'Isoelectric point of G12R';
+
+params.k_transport_G12C.Value = 0.05;
+params.k_transport_G12C.Units = '1/second';
+params.k_transport_G12C.Notes = 'Rate of transport of G12C into LN';
+params.pI_G12C.Value = 9.69;
+params.pI_G12C.Units = 'dimensionless';
+params.pI_G12C.Notes = 'Isoelectric point of G12C';
+
+params.k_transport_G12A.Value = 0.05;
+params.k_transport_G12A.Units = '1/second';
+params.k_transport_G12A.Notes = 'Rate of transport of G12A into LN';
+params.pI_G12A.Value = 10.2;
+params.pI_G12A.Units = 'dimensionless';
+params.pI_G12A.Notes = 'Isoelectric point of G12A';
+
+params.k_transport_G13D.Value = 0.05;
+params.k_transport_G13D.Units = '1/second';
+params.k_transport_G13D.Notes = 'Rate of transport of G13D into LN';
+params.pI_G13D.Value = 9.66;
+params.pI_G13D.Units = 'dimensionless';
+params.pI_G13D.Notes = 'Isoelectric point of G13D';
+
+
+%% mKRAS-Vax Subcutaneous Injection Site Parameters
+
+%Still not included - Poly-ICLC effects
+
+% APC capacity and baseline recruitment at injection site
+% need exact values for mKRAS? 
+params.k_APC_recruit_SC.Value = 1e6;
+params.k_APC_recruit_SC.Units = 'cell';
+params.k_APC_recruit_SC.Notes = 'Maximum APC capacity at injection site (subcutaneous)';
+
+% APC maturation at subcutaneous injection site
+% need exact values for mKRAS? 
+params.k_APC_mature_SC.Value = 2.7280598629067656;
+params.k_APC_mature_SC.Units = '1/day';
+params.k_APC_mature_SC.Notes = 'APC maturation rate at injection site (subcutaneous)';
+
+% APC migration from injection site (subcutaneous) to lymph nodes
+% need exact values for mKRAS?
+params.k_APC_mig_SC_LN.Value = 0.7;
+params.k_APC_mig_SC_LN.Units = '1/day';
+params.k_APC_mig_SC_LN.Notes = 'APC migration rate from injection site (subcutaneous) to lymph nodes';
+
+% APC death at subcutaneous injection site
+params.k_APC_death_SC.Value = 0.1;
+params.k_APC_death_SC.Units = '1/day';
+params.k_APC_death_SC.Notes = 'APC death rate at injection site (subcutaneous)';
+
+% Antigen consumption per APC maturation (replaces separate uptake kinetics)
+% Assumption: One universal antigen consumption value per all
+params.sigma_P1_per_mAPC_mKRAS.Value = 1e-9;
+params.sigma_P1_per_mAPC_mKRAS.Units = 'nanomole/cell';
+params.sigma_P1_per_mAPC_mKRAS.Notes = 'Antigen (any of mKRAS peptides) consumed per APC maturation event at injection site';
+
+% EC50s for antigen-dependent APC maturation
+% in mKRAS-VAX, there are theoretically 6 of these values, but exact values aren't currently known.
+params.EC50_G12D_mature.Value = 0.1;
+params.EC50_G12D_mature.Units = 'nanomolarity';
+params.EC50_G12D_mature.Notes = 'EC50 for antigen-dependent (G12D) APC maturation' 
+
+params.EC50_G12V_mature.Value = 0.1;
+params.EC50_G12V_mature.Units = 'nanomolarity';
+params.EC50_G12V_mature.Notes = 'EC50 for antigen-dependent (G12V) APC maturation' 
+
+params.EC50_G12R_mature.Value = 0.1;
+params.EC50_G12R_mature.Units = 'nanomolarity';
+params.EC50_G12R_mature.Notes = 'EC50 for antigen-dependent (G12R) APC maturation' 
+
+params.EC50_G12C_mature.Value = 0.1;
+params.EC50_G12C_mature.Units = 'nanomolarity';
+params.EC50_G12C_mature.Notes = 'EC50 for antigen-dependent (G12C) APC maturation' 
+
+params.EC50_G12A_mature.Value = 0.1;
+params.EC50_G12A_mature.Units = 'nanomolarity';
+params.EC50_G12A_mature.Notes = 'EC50 for antigen-dependent (G12A) APC maturation' 
+
+params.EC50_G13D_mature.Value = 0.1;
+params.EC50_G13D_mature.Units = 'nanomolarity';
+params.EC50_G13D_mature.Notes = 'EC50 for antigen-dependent (G13D) APC maturation' 
+
+% Subcutaneous mKRAS-VAX Injection site volume (not updated yet)
+params.V_SC_volume.Value = 1e-4;
+params.V_SC_volume.Units = 'liter';
+params.V_SC_volume.Notes = 'Volume of subcutaneous mKRAS-VAX at injection site (~0.1 mL)';
+
+
+% APC capacity and baseline recruitment at injection site
+% Need specific value for mKRAS?
+params.K_APC_SC.Value = 1e6;
+params.K_APC_SC.Units = 'cell';
+params.K_APC_SC.Notes = 'Maximum APC capacity at injection site';
+%recruitment rate is altered to account for migration of Langherhans DCs and
+%Dermal DCs from the epidermis and dermis upon injection
+params.k_APC_recruit0_SC.Value = 1e2;
+params.k_APC_recruit0_SC.Units = 'cell/day';
+params.k_APC_recruit0_SC.Notes = 'Baseline APC recruitment rate to subcutaneous injection site';
+
+% Separate mature APC death rate
+% Assumption: Identical to that of GVAX, added here as a reminder
+params.k_mAPC_death_SC.Value = 0.7;
+params.k_mAPC_death_SC.Units = '1/day';
+params.k_mAPC_death_SC.Notes = 'Mature APC death rate at injection site (subcutaneous)';
+
+
+%mKRAS Antigen degradation (may depend on exact residue mutation)
+% Assumption: assuming yield here is effectively 100%, but it may not be.
+% Thus, it isn't included here. 
+params.k_G12D_deg_SC.Value = 10;
+params.k_G12D_deg_SC.Units = '1/day';
+params.k_G12D_deg_SC.Notes = 'Degradation rate of G12D vaccine antigen';
+
+params.k_G12V_deg_SC.Value = 10;
+params.k_G12V_deg_SC.Units = '1/day';
+params.k_G12V_deg_SC.Notes = 'Degradation rate of G12V vaccine antigen';
+
+params.k_G12R_deg_SC.Value = 10;
+params.k_G12R_deg_SC.Units = '1/day';
+params.k_G12R_deg_SC.Notes = 'Degradation rate of G12R vaccine antigen';
+
+params.k_G12C_deg_SC.Value = 10;
+params.k_G12C_deg_SC.Units = '1/day';
+params.k_G12C_deg_SC.Notes = 'Degradation rate of G12C vaccine antigen';
+
+params.k_G12A_deg_SC.Value = 10;
+params.k_G12A_deg_SC.Units = '1/day';
+params.k_G12A_deg_SC.Notes = 'Degradation rate of G12A vaccine antigen';
+
+params.k_G13D_deg_SC.Value = 10;
+params.k_G13D_deg_SC.Units = '1/day';
+params.k_G13D_deg_SC.Notes = 'Degradation rate of G13D vaccine antigen';
+
+
+params.k_G12D_deg_ALN.Value = 8;
+params.k_G12D_deg_ALN.Units = '1/day';
+params.k_G12D_deg_ALN.Notes = 'Degradation rate of G12D vaccine antigen (ALN)';
+
+params.k_G12V_deg_ALN.Value = 8;
+params.k_G12V_deg_ALN.Units = '1/day';
+params.k_G12V_deg_ALN.Notes = 'Degradation rate of G12V vaccine antigen (ALN)';
+
+params.k_G12R_deg_ALN.Value = 8;
+params.k_G12R_deg_ALN.Units = '1/day';
+params.k_G12R_deg_ALN.Notes = 'Degradation rate of G12R vaccine antigen (ALN)';
+
+params.k_G12C_deg_ALN.Value = 8;
+params.k_G12C_deg_ALN.Units = '1/day';
+params.k_G12C_deg_ALN.Notes = 'Degradation rate of G12C vaccine antigen (ALN)';
+
+params.k_G12A_deg_ALN.Value = 8;
+params.k_G12A_deg_ALN.Units = '1/day';
+params.k_G12A_deg_ALN.Notes = 'Degradation rate of G12A vaccine antigen (ALN)';
+
+params.k_G13D_deg_ALN.Value = 8;
+params.k_G13D_deg_ALN.Units = '1/day';
+params.k_G13D_deg_ALN.Notes = 'Degradation rate of G13D vaccine antigen (ALN)';
+
+
+% - endosomal antigen-1 pool here %
+
+% APC migration saturation parameter
+% Assumption: Same as with GVAX, added here as a reminder
+params.K_APC_mig_SC.Value = 1e5;
+params.K_APC_mig_SC.Units = 'cell';
+params.K_APC_mig_SC.Notes = 'Saturation constant for APC migration to lymph nodes';
+
+
+
+
 %% apCAF-Specific Parameters (Tolerogenic Antigen Presentation)
 % apCAFs express MHC-II, engage antigen-specific CD4 T cells, and can induce
 % Tregs without canonical costimulation (Elyada 2019; Huang 2022).
