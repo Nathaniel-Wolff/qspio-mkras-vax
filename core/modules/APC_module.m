@@ -25,8 +25,8 @@
 %
 % Inputs: model        -- simbio model object with four compartments
 %         params       -- object containing model parameter Values, Units, and Notes:
-%                         - cDC1_recruit_target_T--cDC1 recruitment-target density in tumour
-%                         - cDC2_recruit_target_T--cDC2 recruitment-target density in tumour
+%                         - cDC1_recruit_target_T--cDC1 recruitment-target density in tumor
+%                         - cDC2_recruit_target_T--cDC2 recruitment-target density in tumor
 %                         - APC0_cDC1_LN--cDC1 homeostatic density in LN
 %                         - APC0_cDC2_LN--cDC2 homeostatic density in LN
 %                         - k_APC_mat_cDC1--rate of cDC1 maturation

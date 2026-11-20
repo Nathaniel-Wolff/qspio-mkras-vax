@@ -945,6 +945,13 @@ params.kin.Notes = '(Chen 2014, PMID: 25184733)';
 params.kout.Value = 28.8;
 params.kout.Units = '1/day';
 params.kout.Notes = '(Chen 2014, PMID: 25184733)';
+% Rate of Endosomal antigen processing
+params.k_P_process.Value = 6.6; 
+params.k_P_process.Units = '1/day'
+params.k_P_process.Notes = 'Not found yet.'
+
+
+
 % Number of Endosomal Vesicles per Cell
 params.N_endo.Value = 10;
 params.N_endo.Units = 'dimensionless';

@@ -16,6 +16,8 @@
 %                    - A_s--APC surface area
 %                    - k_up--rate of antigen uptake by APCs
 %                    - k_xP_deg--rate of extracellular antigen degradation
+%                    - k_P_process--rate of endosomal ag conversion to
+%                    epitope
 %                    - k_P_deg--rate of endosomal antigen degradation
 %                    - k_p_deg--rate of endosomal epitope degradation
 %                    - k_on--rate of antigen_MHC binding
@@ -73,13 +75,17 @@ end
 
 % Add Antigen and Epitope
 Pf = addspecies(model.Compartment(3),'P',1e-18,'InitialAmountUnits','molarity', 'Notes', ['Concentration of  free antigen (' antigen_name ') in the LN compartment']);
-Pe = addspecies(model.Compartment(5),'P',1e-18,'InitialAmountUnits','molarity', 'Notes', ['Concentration of antigen ' antigen_name ' in the APC endosomes']);
+%Update - Pe now refers to concentration of unprocessed antigen in endosomes
+Pe = addspecies(model.Compartment(5),'P',1e-18,'InitialAmountUnits','molarity', 'Notes', ['Concentration of unprocessed antigen ' antigen_name ' in the APC endosomes']);  
+
+%Note - epitope refers to proccessed antigen
 p = addspecies(model.Compartment(5),'p',1e-18,'InitialAmountUnits','molarity', 'Notes', ['Concentration of epitope ' antigen_name ' in the APC endosomes']);
 
 % Add Parameters
 k_up = addparameter(model,'k_up',params.k_up.Value,'ValueUnits',params.k_up.Units, 'Notes', 'Rate of antigen uptake by APCs ');
 k_up.UserData.Source = params.k_up.Notes;
     k_up.UserData.derivedFrom = params.k_up.derivedFrom;
+%following lines refer to complete degradation of antigen
 k_xP_deg = addparameter(model,'k_xP_deg', params.k_xP_deg.Value,'ValueUnits',params.k_xP_deg.Units, 'Notes', 'Rate of extracellular antigen degradation ');
 k_xP_deg.UserData.Source = params.k_xP_deg.Notes;
     k_xP_deg.UserData.derivedFrom = params.k_xP_deg.derivedFrom;
@@ -89,6 +95,12 @@ k_P_deg.UserData.Source = params.k_P_deg.Notes;
 k_p_deg = addparameter(model,'k_p_deg',params.k_p_deg.Value,'ValueUnits',params.k_p_deg.Units, 'Notes', 'Rate of endosomal epitope degradation ');
 k_p_deg.UserData.Source = params.k_p_deg.Notes;
     k_p_deg.UserData.derivedFrom = params.k_p_deg.derivedFrom;
+
+%following lines refer to processing of antigen in endosomal compartment
+k_P_process = addparameter(model,'k_iP_process', params.k_iP_process.Value,'ValueUnits',params.k_iP_process.Units, 'Notes', 'Rate of endosomal antigen processing ');
+k_P_process.UserData.Source = params.k_iP_process.Notes;
+    k_P_process.UserData.derivedFrom = params.k_iP_process.derivedFrom;
+
 k_on = addparameter(model,'k_on',params.k_on.Value,'ValueUnits',params.k_on.Units, 'Notes', 'Rate of antigen-MHC binding ');
 k_on.UserData.Source = params.k_on.Notes;
     k_on.UserData.derivedFrom = params.k_on.derivedFrom;
@@ -104,6 +116,11 @@ k_dep = antigen_rate(model,ID,antigen.cancers,antigen.concentration,nTcells);
 % Add Reactions
 % Antigen
 % Antigen Source
+
+%Note: The below reaction will be adjusted to account for differences in
+%processing/priming efficiency depending on the nature of the antigen
+%ie, whole protein from dying cancer cell lysate vs. SLPs
+%See Rosalia et. Al 2013​ for details
 reaction = addreaction(model,'null -> V_T.P');
     set(reaction,'ReactionRate',k_dep);
     set(reaction,'Notes','Antigen deposition from dying cancer cells');
@@ -115,14 +132,22 @@ reaction = addreaction(model,'V_T.P -> null');
 reaction = addreaction(model,'V_T.P -> null');
     set(reaction,'ReactionRate','k_up*APC_total_T*V_T.P*V_T');
     set(reaction,'Notes','Antigen uptake by all DC subtypes (cDC1+cDC2)');
+
 reaction = addreaction(model,'null -> V_e.P');
     set(reaction,'ReactionRate','k_up*cell*V_T.P*V_e');
     set(reaction,'Notes','Antigen uptake by mature antigen presenting cells');
-% Antigen Degradation in APC Endosomes
+
+% Antigen Processing into epitope in APC Endosomes (added 11/20/2026)
 reaction = addreaction(model,'V_e.P -> V_e.p');
+    set(reaction,'ReactionRate','k_P_process*V_e.P*V_e');
+    set(reaction,'Notes','Antigen processing into epitopes in APC endosomes');
+
+% Antigen Degradation in APC Endosomes (appears to have been processing before)
+reaction = addreaction(model,'V_e.P -> null');
     set(reaction,'ReactionRate','k_P_deg*V_e.P*V_e');
     set(reaction,'Notes','Antigen degradation in APC endosomes');
-% Epitope
+    
+% Epitope Degradation in APC Endosomes
 reaction = addreaction(model,'V_e.p -> null');
     set(reaction,'ReactionRate','k_p_deg*V_e.p*V_e');
     set(reaction,'Notes','Epitope degradation in APC endosomes');
